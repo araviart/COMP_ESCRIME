@@ -41,21 +41,11 @@ CREATE OR REPLACE TABLE PISTE(
     PRIMARY KEY(idPiste)
 );
 
-CREATE OR REPLACE TABLE CLASSEMENT_PROVISOIRE(
-    idClassementProv INT NOT NULL AUTO_INCREMENT,
-    nomClassementProv VARCHAR(50) NOT NULL,
-    PRIMARY KEY(idClassementProv)
-);
-
 CREATE OR REPLACE TABLE CLASSEMENT_FINAL(
     idClassementFinal INT NOT NULL AUTO_INCREMENT,
-    nomClassementFinal VARCHAR(50) NOT NULL,
+    idComp INT NOT NULL,
+    nomClassementFinal VARCHAR(1) NOT NULL,
     PRIMARY KEY(idClassementFinal)
-);
-
-CREATE OR REPLACE TABLE FEUILLE_MATCH(
-    idFeuille INT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY(idFeuille)
 );
 
 CREATE OR REPLACE TABLE TYPE_MATCH(
@@ -70,7 +60,6 @@ CREATE OR REPLACE TABLE COMPETITION(
     idLieu INT NOT NULL,
     idSaison INT NOT NULL,
     idCat INT NOT NULL,
-    idClassementProv INT NOT NULL,
     idClassementFinal INT NOT NULL,
     idArme INT NOT NULL,
     nomComp VARCHAR(50) NOT NULL,
@@ -80,10 +69,11 @@ CREATE OR REPLACE TABLE COMPETITION(
     FOREIGN KEY (idLieu) REFERENCES LIEU(idLieu),
     FOREIGN KEY (idSaison) REFERENCES SAISON(idSaison),
     FOREIGN KEY (idCat) REFERENCES CATEGORIE(idCat),
-    FOREIGN KEY (idClassementProv) REFERENCES CLASSEMENT_PROVISOIRE(idClassementProv),
     FOREIGN KEY (idClassementFinal) REFERENCES CLASSEMENT_FINAL(idClassementFinal),
     FOREIGN KEY (idArme) REFERENCES ARME(idArme)
 );
+
+ALTER TABLE CLASSEMENT_FINAL ADD FOREIGN KEY (idComp) REFERENCES COMPETITION(idComp);
 
 CREATE OR REPLACE TABLE ESCRIMEUR(
     idEscrimeur INT NOT NULL AUTO_INCREMENT,
@@ -91,6 +81,8 @@ CREATE OR REPLACE TABLE ESCRIMEUR(
     prenomEscrimeur VARCHAR(50) NOT NULL,
     nomEscrimeur VARCHAR(50) NOT NULL,
     dateDeNaissanceEscrimeur DATE NOT NULL,
+    numeroLicenceEscrimeur INT NOT NULL,
+    sexeEscrimeur VARCHAR(50) NOT NULL,
     PRIMARY KEY (idEscrimeur),
     FOREIGN KEY (idCat) REFERENCES CATEGORIE(idCat)
 );
@@ -98,7 +90,6 @@ CREATE OR REPLACE TABLE ESCRIMEUR(
 CREATE OR REPLACE TABLE TIREUR(
     idTireur INT NOT NULL,
     idClub INT NOT NULL,
-    numeroLicence INT NOT NULL,
     classement INT NOT NULL,
     FOREIGN KEY (idTireur) REFERENCES ESCRIMEUR(idEscrimeur),
     FOREIGN KEY (idClub) REFERENCES CLUB(idClub)
@@ -106,38 +97,63 @@ CREATE OR REPLACE TABLE TIREUR(
 
 CREATE OR REPLACE TABLE ARBITRE(
     idArbitre INT NOT NULL,
-    numeroLicence INT NOT NULL,
     FOREIGN KEY (idArbitre) REFERENCES ESCRIMEUR(idEscrimeur)
-);
-
-CREATE OR REPLACE TABLE MATCH_(
-    idMatch INT NOT NULL AUTO_INCREMENT,
-    idTypeMatch INT NOT NULL,
-    idArbitre INT NOT NULL,
-    idTireur1 INT NOT NULL,
-    idTireur2 INT NOT NULL,
-    dateMatch DATE NOT NULL,
-    PRIMARY KEY(idMatch),
-    FOREIGN KEY (idTypeMatch) REFERENCES TYPE_MATCH(idTypeMatch),
-    FOREIGN KEY (idArbitre) REFERENCES ARBITRE(idArbitre),
-    FOREIGN KEY (idTireur1) REFERENCES TIREUR(idTireur),
-    FOREIGN KEY (idTireur2) REFERENCES TIREUR(idTireur)
-);
-
-CREATE OR REPLACE TABLE RESULTAT_MATCH(
-    idResultat INT NOT NULL AUTO_INCREMENT,
-    idMatch INT NOT NULL,
-    idFeuille INT NOT NULL,
-    scoreMatch INT NOT NULL,
-    PRIMARY KEY(idResultat),
-    FOREIGN KEY (idMatch) REFERENCES MATCH_(idMatch),
-    FOREIGN KEY (idFeuille) REFERENCES FEUILLE_MATCH(idFeuille)
 );
 
 CREATE OR REPLACE TABLE POULE(
     idPoule INT NOT NULL AUTO_INCREMENT,
-    idFeuille INT NOT NULL,
+    idComp INT NOT NULL,
+    idPiste INT NOT NULL,
+    idArbitre INT NOT NULL,
     nomPoule VARCHAR(50) NOT NULL,
     PRIMARY KEY(idPoule),
-    FOREIGN KEY (idFeuille) REFERENCES FEUILLE_MATCH(idFeuille)
+    FOREIGN KEY (idPiste) REFERENCES PISTE(idPiste),
+    FOREIGN KEY (idArbitre) REFERENCES ARBITRE(idArbitre),
+    FOREIGN KEY (idComp) REFERENCES COMPETITION(idComp)
+);
+
+CREATE OR REPLACE TABLE PARTICIPANTS_POULE(
+    idPoule INT NOT NULL,
+    idTireur INT NOT NULL,
+    PRIMARY KEY(idPoule, idTireur),
+    FOREIGN KEY (idPoule) REFERENCES POULE(idPoule),
+    FOREIGN KEY (idTireur) REFERENCES TIREUR(idTireur)
+);
+
+CREATE OR REPLACE TABLE MATCH_POULE(
+    idMatch INT NOT NULL AUTO_INCREMENT,
+    idTypeMatch INT NOT NULL,
+    idPoule INT NOT NULL,
+    idPiste INT NOT NULL,
+    idArbitre INT NOT NULL,
+    idTireur1 INT NOT NULL,
+    idTireur2 INT NOT NULL,
+    dateMatch DATE NOT NULL,
+    heureMatch TIME NOT NULL,
+    touchesRecuesTireur1 INT NOT NULL,
+    touchesDonneesTireur1 INT NOT NULL,
+    touchesRecuesTireur2 INT NOT NULL,
+    touchesDonneesTireur2 INT NOT NULL,
+    PRIMARY KEY(idMatch),
+    FOREIGN KEY (idPoule) REFERENCES POULE(idPoule),
+    FOREIGN KEY (idPiste) REFERENCES PISTE(idPiste),
+    FOREIGN KEY (idTypeMatch) REFERENCES TYPE_MATCH(idTypeMatch),
+    FOREIGN KEY (idArbitre) REFERENCES POULE(idArbitre),
+    FOREIGN KEY (idTireur1) REFERENCES TIREUR(idTireur),
+    FOREIGN KEY (idTireur2) REFERENCES TIREUR(idTireur)
+);
+
+CREATE OR REPLACE TABLE FEUILLE_MATCH(
+    idFeuille INT NOT NULL AUTO_INCREMENT,
+    idPoule INT NOT NULL,
+    idComp INT NOT NULL,
+    idTireur1 INT NOT NULL,
+    idTireur2 INT NOT NULL,
+    scoreTireur1 INT NOT NULL,
+    scoreTireur2 INT NOT NULL,
+    PRIMARY KEY(idFeuille),
+    FOREIGN KEY (idPoule) REFERENCES POULE(idPoule),
+    FOREIGN KEY (idComp) REFERENCES COMPETITION(idComp),
+    FOREIGN KEY (idTireur1) REFERENCES TIREUR(idTireur),
+    FOREIGN KEY (idTireur2) REFERENCES TIREUR(idTireur)
 );
