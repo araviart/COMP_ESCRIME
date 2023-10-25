@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des compétitions</title>
+</head>
+<body>
+    <h1>Liste des compétitions</h1>
+    <ul>
+        {% for competition in competitions %}
+            <li>
+                <strong>Nom de la compétition:</strong> {{ competition.nomComp }}<br>
+                <strong>Arme:</strong> {{ competition.arme.nomArme }}<br>
+                <strong>Catégorie:</strong> {{ competition.categorie.nomCategorie }}<br>
+                <strong>Lieu:</strong> {{ competition.lieu.nomLieu }}, {{ competition.lieu.villeLieu }}, {{ competition.lieu.codePostalLieu }}<br>
+                <strong>Date:</strong> {{ competition.dateComp }}<br>
+                <strong>Heure:</strong> {{ competition.heureComp }}<br>
+                <strong>Sexe:</strong> {{ competition.sexeComp }}<br>
+                <strong>Individuelle:</strong> {{ "Oui" if competition.estIndividuelle else "Non" }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
