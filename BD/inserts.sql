@@ -6,12 +6,9 @@ VALUES
 -- Table ARME
 INSERT INTO ARME (nomArme)
 VALUES
-    ('Épée Homme'),
-    ('Épée Femme'),
-    ('Fleuret Homme'),
-    ('Fleuret Femme'),
-    ('Sabre Homme'),
-    ('Sabre Femme');
+    ('Épée'),
+    ('Fleuret'),
+    ('Sabre');
 
 -- Table SAISON
 INSERT INTO SAISON (nomSaison, dateDebutSaison, dateFinSaison)
@@ -37,16 +34,31 @@ INSERT INTO CLUB (nomClub, villeClub)
 VALUES
     ('Club Blois', 'Blois');
 
--- Table PISTE
-INSERT INTO PISTE (nomPiste, estDispo)
-VALUES
-    ('Piste 1', 1),
-    ('Piste 2', 0),
-    ('Piste 3', 1),
-    ('Piste 4', 1);
-
 -- Table TYPE_MATCH
 INSERT INTO TYPE_MATCH (nomTypeMatch, nbTouches)
 VALUES
     ('Match Poule', 5),
     ('Match Elimination', 15);
+
+-- Table COMPETITION
+
+-- Table PISTE
+
+-- Table ESCRIMEUR
+
+-- Table TIREUR
+
+-- Table ARBITRE
+
+-- Table PRATIQUER_ARME
+
+-- Table CLASSEMENT_FINAL
+
+-- Table POULE
+
+-- Table PARTICIPANTS_POULE
+
+-- Table MATCH_POULE
+
+-- Table FEUILLE_MATCH
+
