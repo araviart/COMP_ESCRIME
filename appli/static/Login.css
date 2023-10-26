@@ -1,0 +1,92 @@
+html{
+    background-color: var(--couleur-background);
+    font-family: 'Poppins', sans-serif;
+}
+
+main{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh;
+}
+
+.contenu{
+    display: flex;
+}
+
+.image-connexion{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius : 10px;
+    width: 100%;
+    object-fit: cover;
+    flex-basis: 30%;
+}
+
+.partie-connexion{
+    padding: 2% 3% 2% 3%;
+    background-color: white;
+    min-width: 40em;
+    min-height: 42em;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius : 10px;
+    flex-basis: 70%;
+}
+
+h1{
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 5%;
+}
+
+.textfield-position {
+    display: flex;
+    flex-direction: column;
+    margin-top: 7%;
+}
+
+.textfield-position input {
+    background-color: var(--couleur-fond-textfield);
+    border: none;
+    border-radius: 10px;
+    padding: 2%;
+}
+
+input::placeholder{
+    font-family: 'Poppins', sans-serif;
+}
+
+.rester-forget-mdp{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7%;
+}
+
+.forget-password{
+    color : var(--couleur-mot-de-passe-oublie);
+    text-decoration: none;
+}
+
+
+.bouton-connexion{
+    margin: 15% 0 10% 0;
+    display: flex;
+    justify-content: center;
+}
+
+.bonton-se-connecter{
+    padding: 3% 10% 3% 10%;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;;
+}
+
+.switch-to-inscription{
+    text-align: center;
+    margin-top: 15%;
+}
+
+.lien-switch-login-inscription{
+    color: var(--couleur-lien);
+}
