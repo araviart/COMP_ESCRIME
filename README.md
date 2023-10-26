@@ -24,7 +24,7 @@ Les membres impliqués dans ce projet sont :
 - Coursimault Irvin
 - Masérati Amael
 - Pigoreau Nathan 
-- Toure Chris
+- Toure Kris
 
 ## Détails Techniques :
 
