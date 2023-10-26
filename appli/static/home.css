@@ -1,1 +1,27 @@
-h1 {color: red;}
+.competition-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espace entre les tuiles */
+    margin-top: 7%;
+}
+
+.competition-tile {
+    flex: 1;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    min-width: 300px; /* Largeur minimale de la tuile */
+}
+
+.competition-info {
+    font-size: 16px;
+}
+
+.btn-info {
+    --bs-btn-bg: transparent;
+    --bs-btn-color: #0dcaf0;
+    --bs-btn-hover-color: white;
+    margin-right: 10px;
+}
