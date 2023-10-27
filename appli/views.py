@@ -1,5 +1,5 @@
 from .app import app
-from flask import render_template, url_for, redirect, request
+from flask import render_template, url_for, redirect
 from .models import User, get_sample
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
@@ -10,13 +10,13 @@ class LoginForm(FlaskForm):
     username = StringField ("Username")
     password = PasswordField("Password")
     def get_authenticated_user (self ):
-        user = User.query.get(self.username.data)
+        user = User.query.filter_by(pseudoUser=self.username.data).first()
         if user is None:
             return None
         m = sha256 ()
         m.update(self.password.data.encode ())
         passwd = m. hexdigest ()
-        return user if passwd == user.password else None
+        return user if passwd == user.mdpUser else None
     
 @app.route("/")
 def home():
