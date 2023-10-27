@@ -24,7 +24,7 @@ Les membres impliqués dans ce projet sont :
 - Coursimault Irvin
 - Masérati Amael
 - Pigoreau Nathan 
-- Toure Chris
+- Toure Kris
 
 ## Détails Techniques :
 
@@ -34,7 +34,14 @@ L'application prend en compte 6 armes (fleuret homme, fleuret femme, épée homm
 
 ![Diagramme de Cas d'Utilisation](lien)
 
-Ce diagramme représente les fonctionnalités incluses dans notre application.
+**Escrimeur :**
+- *Description :* Les escrimeurs ont les permissions de base sur la plateforme. Ils peuvent simplement se connecter, consulter les compétitions à venir et gérer leur propre compte.
+
+**Membre du Staff :**
+- *Description :* Les membres du staff ont des privilèges étendus par rapport aux escrimeurs. Ils peuvent effectuer toutes les actions d'un utilisateur standard. De plus, ils ont le pouvoir d'inscrire de nouveaux adhérents au club, ce qui implique d'entrer les informations détaillées sur les escrimeurs.
+
+**Organisateur :**
+- *Description :* Les organisateurs ont le plus haut niveau d'accès sur la plateforme. Ils peuvent effectuer toutes les tâches d'un membre du staff. En outre, ils peuvent définir des compétitions, gérer les inscriptions des escrimeurs (ajout et suppression), organiser les poules à l'aide d'un service automatique, choisir les arbitres, établir des classements (provisoires et finaux, avec la possibilité de clôturer la compétition), éditer les détails de la compétition, supprimer des compétitions, afficher des informations de compétition, faire l'appel, entrer les scores, annuler des compétitions et consulter et modifier les informations des adhérents du club.
 
 ## Modèle Conceptuel de Données (MCD) :
 
@@ -72,5 +79,3 @@ Voici les différentes contraintes de notre base de données :
   - **Clé primaire :** Identifiant unique du match d'élimination.
   - Les matchs d'élimination se jouent en 15 touches.
   - Doit avoir un lien avec la compétition à laquelle il appartient.
-
-
