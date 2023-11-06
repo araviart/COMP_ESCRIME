@@ -52,7 +52,7 @@ h1 {
 .textfield-position {
   display: flex;
   flex-direction: column;
-  margin-top: 7%;
+  margin-top: 5%;
 }
 
 .textfield-position input {
