@@ -1,4 +1,9 @@
 /* Path: appli/static/img/ajout-comp.css */
+html {
+    /* background-color: var(--couleur-background); */
+    font-family: "Poppins", sans-serif;
+  }
+
 
 main{
     background-color: var(--couleur-background);
@@ -26,7 +31,6 @@ main{
 }
 
 .center{
-    background-color: blueviolet;
     display: flex;
     flex-wrap: wrap;
     min-height: 70vh;
@@ -35,15 +39,14 @@ main{
 }
 
 .left-form{
-    background-color: chartreuse;
-    min-height: 500px;
-    min-width: 500px;
+    height: 100%;
+    border-radius: 10px;
+    flex-basis: 23%;
 }
 
 .right-form{
-    background-color: chocolate;
-    min-height: 500px;
-    min-width: 500px;
+    height: 100%;
+    flex-basis: 23%;
 }
 
 .buttons{
@@ -58,10 +61,97 @@ main{
     color: white;
 }
 
+
 .btn-annuler{
     background-color: var(--bouton-annuler);
+    padding: 2% 7%;
+    border: none;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 120%;
+    border-radius: 10px;
 }
 
 .btn-publier{
     background-color: #01437C;
+    padding: 2% 7%;
+    border: none;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 120%;
+    border-radius: 10px;
+}
+
+
+.bouton-annuler{
+    text-align: start;
+    margin-top: 3rem;
+}
+
+.bouton-publier{
+    text-align: end;
+    margin-top: 3rem;
+}
+
+.titre-formulaire{
+    text-align: center;
+    font-weight: 125%;
+    background-color: var(--bouton-confirmation-validation);
+    color: #FFF;
+    padding: 2% 0 2% 0;
+}
+
+.partie-input{
+    padding: 3%;
+}
+
+.label-input{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.label-input input{
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: thin solid #000;
+    padding: 0;
+    width: 60%;
+}
+
+.test{
+    background-color: white;
+    height: 100%;
+}
+
+.partie-input-droite{
+    padding: 5% 20%;
+}
+
+.combox-box{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+.comb-cate > label{
+    flex-grow: 1;
+}
+
+select{
+    min-width: 50%;
+    padding: 3% 2%;
+    border-radius: 8px;
+}
+
+.double-combo-box>select{
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.double-combo-box{
+    flex-basis: 50%;
 }
