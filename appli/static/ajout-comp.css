@@ -1,0 +1,67 @@
+/* Path: appli/static/img/ajout-comp.css */
+
+main{
+    background-color: var(--couleur-background);
+    min-height: 100vh;
+}
+
+.progress-bar{
+    background-color: rgb(244, 255, 123);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 3% 10% 3% 10%;
+    align-items: center;
+}
+
+.progress-bar a{
+    color: white;
+    background-color: #9A9A9A;
+    text-decoration: none;
+    padding: 1% 2% 1% 2%;
+}
+
+.active-url{
+    background-color: #01437C !important;
+}
+
+.center{
+    background-color: blueviolet;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 70vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.left-form{
+    background-color: chartreuse;
+    min-height: 500px;
+    min-width: 500px;
+}
+
+.right-form{
+    background-color: chocolate;
+    min-height: 500px;
+    min-width: 500px;
+}
+
+.buttons{
+    padding: 0 12% 0 12%;
+    background-color: cornflowerblue;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button{
+    padding: 1% 2% 1% 2%;
+    color: white;
+}
+
+.btn-annuler{
+    background-color: var(--bouton-annuler);
+}
+
+.btn-publier{
+    background-color: #01437C;
+}

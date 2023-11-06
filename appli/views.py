@@ -21,7 +21,7 @@ class LoginForm(FlaskForm):
 @app.route("/")
 def home():
     return render_template(
-    "competitionsBS.html",
+    "ajout-comp.html",
     title="Compétions ESCRIME",
     competitions=get_sample())
 
