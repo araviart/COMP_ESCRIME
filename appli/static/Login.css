@@ -1,93 +1,101 @@
-html{
-    background-color: var(--couleur-background);
-    font-family: 'Poppins', sans-serif;
+html {
+  background-color: var(--couleur-background);
+  font-family: "Poppins", sans-serif;
 }
 
-main{
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    height: 100vh;
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10% 25%;
+  min-height: 15rem;
 }
 
-.contenu{
-    display: flex;
-}
 
 .image-connexion{
-    border-top-left-radius: 10px;
-    border-bottom-left-radius : 10px;
-    width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    flex-basis: 40%;
+  height: 1000%;
+  flex-basis: 5%;
 }
 
-.partie-connexion{
-    padding: 2% 3% 2% 3%;
-    background-color: white;
-    min-width: 40em;
-    min-height: 100%;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius : 10px;
-    flex-grow: 1;
+.partie-connexion {
+  padding: 2% 3% 2% 3%;
+  background-color: white; 
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 80%;
+  flex-basis: 60%;
 }
 
-h1{
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 5%;
+h1 {
+  text-align: center;
+  font-size: 165%;
+  margin-bottom: 5%;
 }
 
 .textfield-position {
-    display: flex;
-    flex-direction: column;
-    margin-top: 7%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 7%;
 }
 
 .textfield-position input {
-    background-color: var(--couleur-fond-textfield);
-    border: none;
-    border-radius: 10px;
-    padding: 2%;
+  background-color: var(--couleur-fond-textfield);
+  border: none;
+  border-radius: 10px;
+  padding: 2%;
+  width: 95%;
 }
 
-input::placeholder{
-    font-family: 'Poppins', sans-serif;
+input::placeholder {
+  font-family: "Poppins", sans-serif;
 }
 
-.rester-forget-mdp{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 7%;
+.rester-forget-mdp {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7%;
 }
 
-.forget-password{
-    color : var(--couleur-mot-de-passe-oublie);
-    text-decoration: none;
+.forget-password {
+  color: var(--couleur-mot-de-passe-oublie);
+  text-decoration: none;
+}
+
+.bouton-connexion {
+  margin: 15% 0 10% 0;
+  display: flex;
+  justify-content: center;
+}
+
+.bouton-connexion button{
+  font-size: 1rem;
+  padding: 1.25rem 2.5rem;
+  display: block;
+  background-color: #000000;
+  border: 1px solid transparent;
+  color: #ffffff;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+}
+
+.bouton-connexion button:hover{
+  background-color: #3f3f3f;
 }
 
 
-.bouton-connexion{
-    margin: 15% 0 10% 0;
-    display: flex;
-    justify-content: center;
+.switch-to-inscription {
+  text-align: center;
+  margin-top: 15%;
 }
 
-.bonton-se-connecter{
-    padding: 3% 10% 3% 10%;
-    color: white;
-    background-color: black;
-    border: none;
-    border-radius: 10px;
-    font-family: 'Poppins', sans-serif;;
+.lien-switch-login-inscription {
+  color: var(--couleur-lien);
 }
 
-.switch-to-inscription{
-    text-align: center;
-    margin-top: 15%;
-}
-
-.lien-switch-login-inscription{
-    color: var(--couleur-lien);
+.lien-switch-login-inscription:hover{
+  text-decoration: none;
 }
