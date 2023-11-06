@@ -1,7 +1,54 @@
+#categorieSelect, #categorieArme {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#categorieSelect:hover, #categorieArme:hover {
+  border-color: #0074d9;
+}
+
+#categorieSelect option, #categorieArme option {
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}
+
+  .section-filtre {
+    width: 80vw;
+    margin: 5% auto;
+    border-radius: 8px;
+    background-color: var(--couleur-background-demi);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* répartir les sous-menus horizontalement */
+    
+  }
+  
+  .filtre {
+    flex: 1; /* occupe l'espace disponible de manière égale */
+    padding: 10px;
+    text-align: center; 
+    box-sizing: border-box;
+  }
+  
+  .titre-filtre {
+    width: 100%;
+    background-color: var(--couleur-header);
+    border-radius: 8px 8px 0 0;
+    color: whitesmoke;
+    text-align: center; 
+  }
+
+
 .competition-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Espace entre les tuiles */
+    gap: 20px; /* espace entre les tuiles */
     margin-top: 7%;
 }
 
@@ -25,3 +72,4 @@
     --bs-btn-hover-color: white;
     margin-right: 10px;
 }
+
