@@ -21,7 +21,7 @@
         <div class="Arme">
             <label for="categorieSelect">Arme:</label>
             <select id="categorieArme">
-                <option value="">Toutes les catégories</option>
+                <option value="">Non définie</option>
                 {% for arme in armes %}
                     <option value="{{ arme }}">{{ arme }}</option>
                 {% endfor %}
@@ -35,12 +35,19 @@
                 <option value="">Femme</option>
             </select>
         </div>
-
-        <div class = "Sexe"></div>
-        <div class = "Statut"></div>
+        <div class="Statut">
+            <label for="categorieSelect">Statut:</label>
+            <select id="categorieStatut">
+                <option value="">Non définie</option>
+                <option value="">A venir</option>
+                <option value="">Terminé</option>
+            </select>
+        </div>
     </div>
 </section>
 <div class="competition-container">
+    <div class = "label-colonne"> # table à faire
+    </div>
     {% for competition in competitions %}
         <div class="competition-tile">
             <div class="competition-info">

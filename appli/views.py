@@ -1,6 +1,6 @@
 from .app import app
 from flask import render_template, url_for, redirect, request
-from .models import User, get_sample, get_categories, get_armes, get_sexe
+from .models import User, get_sample, get_categories, get_armes
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from hashlib import sha256
@@ -25,8 +25,7 @@ def home():
     title="Compétitions ESCRIME",
     competitions=get_sample(),
     categories = get_categories(),
-    armes = get_armes(),
-    sexes = get_sexe())
+    armes = get_armes())
 
 @app.route("/login/", methods =("GET","POST",))
 def login():

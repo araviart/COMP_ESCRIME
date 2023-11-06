@@ -1,4 +1,4 @@
-#categorieSelect, #categorieArme {
+#categorieSelect, #categorieArme, #categorieSexe, #categorieStatut {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -8,11 +8,11 @@
   transition: border-color 0.3s;
 }
 
-#categorieSelect:hover, #categorieArme:hover {
+#categorieSelect:hover, #categorieArme:hover,  #categorieSexe:hover, #categorieStatut:hover {
   border-color: #0074d9;
 }
 
-#categorieSelect option, #categorieArme option {
+#categorieSelect option, #categorieArme option,  #categorieSexe option, #categorieStatut option {
   font-size: 16px;
   background-color: #fff;
   color: #333;
@@ -22,7 +22,7 @@
     width: 80vw;
     margin: 5% auto;
     border-radius: 8px;
-    background-color: var(--couleur-background-demi);
+    background-color: rgb(226, 226, 226);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* répartir les sous-menus horizontalement */
@@ -30,10 +30,13 @@
   }
   
   .filtre {
+    margin: 0px 5%;
     flex: 1; /* occupe l'espace disponible de manière égale */
     padding: 10px;
-    text-align: center; 
+    text-align: start; 
     box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
   }
   
   .titre-filtre {
