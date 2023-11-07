@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/Inscription.css" />
+    <link rel="stylesheet" href="../static/variables.css" />
+    <link rel="stylesheet" href="../static/responsive-inscription.css" />
+  </head>
+  <body>
+    <form>
+      <div class="div-image-inscription">
+        <img
+          class="image-inscription"
+          src="../static/img/escrime_inscription.jpg"
+          alt="Image d'un tireur en competion"
+        />
+      </div>
+      <div class="partie-inscription">
+        <h1>Créez un compte pour votre club</h1>
+        <div class="partie-textfield">
+          <div class="numero-licence textfield-position">
+            <label for="email">N° Licence</label>
+            <input
+              type="number"
+              id="numero-licence"
+              name="num-licence"
+              placeholder="Cliquez ici pour inscrire votre n° de licence"
+            />
+          </div>
+          <div class="email textfield-position">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              id="mail"
+              name="email"
+              required
+              minlength="4"
+              maxlength="8"
+              size="10"
+              placeholder="Ex : notreclub@gmail.com"
+            />
+          </div>
+          <div class="password textfield-position">
+            <label for="password">Mot de passe</label>
+            <input
+              type="password"
+              id="pass"
+              name="password"
+              minlength="8"
+              required
+              placeholder="Cliquez pour entrer votre mot de passe"
+            />
+          </div>
+        </div>
+        <div class="bouton-inscription">
+          <button id="bonton-inscrire" type="button">S'inscrire</button>
+        </div>
+        <div class="switch-to-inscription">
+          <p>
+            Déjà un compte ?
+            <a class="lien-switch-login-inscription" href="page-inscription"
+              >Connectez-vous</a
+            >
+          </p>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
