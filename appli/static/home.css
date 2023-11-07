@@ -84,3 +84,17 @@ table{
   width: 80vw;
   margin: 0 auto;
 }
+
+h1{
+  margin-bottom: 10px;
+}
+
+.affichage ul{
+  display: flex;
+}
+
+.affichage ul li a{
+  color: black;
+  padding: 10px;
+  background-color: ;
+}

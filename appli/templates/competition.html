@@ -1,85 +1,93 @@
-{% extends 'base.html' %}
-{% block styles %}
-{{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}"> 
-{% endblock %}
-{% block content %}
-<section class = "content">
-    <h1>Liste des compétitions<h1>
-<section class = "section-filtre">
-    <div class = "titre-filtre">
-        <h2>FILTRE</h2>
-    </div>
-    <div class="filtre">
-        <div class="Catégorie">
+{% extends 'base.html' %} {% block styles %} {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}" />
+{% endblock %} {% block content %}
+<section class="content">
+  <h1>
+    Liste des compétitions
+    <h1>
+      <section class="section-filtre">
+        <div class="titre-filtre">
+          <h2>FILTRE</h2>
+        </div>
+        <div class="filtre">
+          <div class="Catégorie">
             <label for="categorieSelect">Catégorie:</label>
             <select id="categorieSelect">
-                <option value="">Toutes les catégories</option>
-                {% for categorie in categories %}
-                    <option value="{{ categorie }}">{{ categorie }}</option>
-                {% endfor %}
+              <option value="">Toutes les catégories</option>
+              {% for categorie in categories %}
+              <option value="{{ categorie }}">{{ categorie }}</option>
+              {% endfor %}
             </select>
-        </div>
-        <div class="Arme">
+          </div>
+          <div class="Arme">
             <label for="categorieSelect">Arme:</label>
             <select id="categorieArme">
-                <option value="">Non définie</option>
-                {% for arme in armes %}
-                    <option value="{{ arme }}">{{ arme }}</option>
-                {% endfor %}
+              <option value="">Non définie</option>
+              {% for arme in armes %}
+              <option value="{{ arme }}">{{ arme }}</option>
+              {% endfor %}
             </select>
-        </div>
-        <div class="Sexe">
+          </div>
+          <div class="Sexe">
             <label for="categorieSelect">Sexe:</label>
             <select id="categorieSexe">
-                <option value="">Non définie</option>
-                <option value="">Homme</option>
-                <option value="">Femme</option>
+              <option value="">Non définie</option>
+              <option value="">Homme</option>
+              <option value="">Femme</option>
             </select>
-        </div>
-        <div class="Statut">
+          </div>
+          <div class="Statut">
             <label for="categorieSelect">Statut:</label>
             <select id="categorieStatut">
-                <option value="">Non définie</option>
-                <option value="">A venir</option>
-                <option value="">Terminé</option>
+              <option value="">Non définie</option>
+              <option value="">A venir</option>
+              <option value="">Terminé</option>
             </select>
+          </div>
         </div>
-    </div>
-</section>
-<div class="competition-container">
-    <table>
-        <thead>
-            <tr class ="title">
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Nom de la compétition</th>
-                <th>Arme</th>
-                <th>Participants</th>
-                <th>Catégorie</th>
-                <th>Lieu</th>
-                <th>Sexe</th>
-                <th>Individuelle</th>
-                <th>  </th>
+      </section>
+      <div class="competition-container">
+        <div class="affichage">
+          <ul>
+            <li><a href="#" class="affichage-actif">5</a></li>
+            <li><a href="#" class="affichage-actif">10</a></li>
+            <li><a href="#" class="affichage-actif">25</a></li>
+          </ul>
+        </div>
+        <table>
+          <thead>
+            <tr class="title">
+              <th>Date</th>
+              <th>Heure</th>
+              <th>Nom de la compétition</th>
+              <th>Arme</th>
+              <th>Participants</th>
+              <th>Catégorie</th>
+              <th>Lieu</th>
+              <th>Sexe</th>
+              <th>Individuelle</th>
+              <th></th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             {% for competition in competitions %}
-                <tr>
-                    <td>{{ competition.dateComp }}</td>
-                    <td>{{ competition.heureComp }}</td>
-                    <td>{{ competition.nomComp }}</td>
-                    <td>{{ competition.arme.nomArme }}</td>
-                    <td>{{ nb_participants[competition.idComp] }}</td>
-                    <td>{{ competition.categorie.nomCategorie }}</td>
-                    <td>{{ competition.lieu.nomLieu }}</td>
-                    <td>{{ competition.sexeComp }}</td>
-                    <td>{{ "Oui" if competition.estIndividuelle else "Non" }}</td>
-                    <td><a href="#" class = "consulter">Consulter</a></td>
-                </tr>
+            <tr>
+              <td>{{ competition.dateComp }}</td>
+              <td>{{ competition.heureComp }}</td>
+              <td>{{ competition.nomComp }}</td>
+              <td>{{ competition.arme.nomArme }}</td>
+              <td>{{ nb_participants[competition.idComp] }}</td>
+              <td>{{ competition.categorie.nomCategorie }}</td>
+              <td>{{ competition.lieu.nomLieu }}</td>
+              <td>{{ competition.sexeComp }}</td>
+              <td>{{ "Oui" if competition.estIndividuelle else "Non" }}</td>
+              <td><a href="#" class="consulter">Consulter</a></td>
+            </tr>
             {% endfor %}
-        </tbody>
-    </table>
-</div>
-<section>
-{% endblock %}
+          </tbody>
+        </table>
+      </div>
+      <section>{% endblock %}</section>
+    </h1>
+  </h1>
+</section>
