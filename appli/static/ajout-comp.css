@@ -13,7 +13,6 @@ main{
 }
 
 .progress-bar{
-    background-color: rgb(244, 255, 123);
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -72,6 +71,15 @@ main{
     font-family: "Poppins", sans-serif;
     font-size: 120%;
     border-radius: 10px;
+    transition-duration: 0.5s;
+}
+
+.btn-annuler:hover{
+    background-color: var(--hover-annuler);
+}
+
+.btn-publier:hover{
+    background-color: var(--hover-publier);
 }
 
 .btn-publier{
@@ -82,6 +90,7 @@ main{
     font-family: "Poppins", sans-serif;
     font-size: 120%;
     border-radius: 10px;
+    transition-duration: 0.5s;
 }
 
 
