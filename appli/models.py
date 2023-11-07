@@ -203,3 +203,7 @@ def get_categories():
 def get_armes():
     armes = Arme.query.all()
     return [arme.nomArme for arme in armes]
+
+def get_nb_participants(id_tournoi):
+    participants_count = ParticipantsPoule.query.join(Poule).join(Competition).filter(Competition.idComp == id_tournoi).count()
+    return participants_count

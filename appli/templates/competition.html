@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}"> 
 {% endblock %}
 {% block content %}
+<section class = "content">
+    <h1>Liste des compétitions<h1>
 <section class = "section-filtre">
     <div class = "titre-filtre">
         <h2>FILTRE</h2>
@@ -46,21 +48,38 @@
     </div>
 </section>
 <div class="competition-container">
-    <div class = "label-colonne"> # table à faire
-    </div>
-    {% for competition in competitions %}
-        <div class="competition-tile">
-            <div class="competition-info">
-                <strong>Nom de la compétition:</strong> {{ competition.nomComp }}<br>
-                <strong>Arme:</strong> {{ competition.arme.nomArme }}<br>
-                <strong>Catégorie:</strong> {{ competition.categorie.nomCategorie }}<br>
-                <strong>Lieu:</strong> {{ competition.lieu.nomLieu }}, {{ competition.lieu.villeLieu }}, {{ competition.lieu.codePostalLieu }}<br>
-                <strong>Date:</strong> {{ competition.dateComp }}<br>
-                <strong>Heure:</strong> {{ competition.heureComp }}<br>
-                <strong>Sexe:</strong> {{ competition.sexeComp }}<br>
-                <strong>Individuelle:</strong> {{ "Oui" if competition.estIndividuelle else "Non" }}<br>
-            </div>  
-        </div>
-    {% endfor %}
+    <table>
+        <thead>
+            <tr class ="title">
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Nom de la compétition</th>
+                <th>Arme</th>
+                <th>Participants</th>
+                <th>Catégorie</th>
+                <th>Lieu</th>
+                <th>Sexe</th>
+                <th>Individuelle</th>
+                <th>  </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for competition in competitions %}
+                <tr>
+                    <td>{{ competition.dateComp }}</td>
+                    <td>{{ competition.heureComp }}</td>
+                    <td>{{ competition.nomComp }}</td>
+                    <td>{{ competition.arme.nomArme }}</td>
+                    <td>{{ nb_participants[competition.idComp] }}</td>
+                    <td>{{ competition.categorie.nomCategorie }}</td>
+                    <td>{{ competition.lieu.nomLieu }}</td>
+                    <td>{{ competition.sexeComp }}</td>
+                    <td>{{ "Oui" if competition.estIndividuelle else "Non" }}</td>
+                    <td><a href="#" class = "consulter">Consulter</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
+<section>
 {% endblock %}

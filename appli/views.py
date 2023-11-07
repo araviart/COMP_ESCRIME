@@ -1,6 +1,6 @@
 from .app import app
 from flask import render_template, url_for, redirect, request
-from .models import User, get_sample, get_categories, get_armes
+from .models import User, get_sample, get_categories, get_armes, get_nb_participants
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from hashlib import sha256
@@ -20,12 +20,15 @@ class LoginForm(FlaskForm):
     
 @app.route("/")
 def home():
+    competitions = get_sample()
+    nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
     return render_template(
     "competition.html",
     title="Compétitions ESCRIME",
     competitions=get_sample(),
     categories = get_categories(),
-    armes = get_armes())
+    armes = get_armes(),
+    nb_participants = nb_participants)
 
 @app.route("/login/", methods =("GET","POST",))
 def login():
