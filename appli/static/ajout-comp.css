@@ -2,13 +2,12 @@
 
 /* Path: appli/static/img/ajout-comp.css */
 html {
-    /* background-color: var(--couleur-background); */
     font-family: "Poppins", sans-serif;
+    background-color: var(--couleur-background);
   }
 
 
 main{
-    background-color: var(--couleur-background);
     min-height: 100vh;
 }
 
@@ -34,7 +33,7 @@ main{
 .center{
     display: flex;
     flex-wrap: wrap;
-    min-height: 70vh;
+    height: 60vh;
     justify-content: space-around;
     align-items: center;
 }
@@ -42,12 +41,12 @@ main{
 .left-form{
     height: 100%;
     border-radius: 10px;
-    flex-basis: 23%;
+    flex-basis: 30%;
 }
 
 .right-form{
     height: 100%;
-    flex-basis: 23%;
+    flex-basis: 30%;
 }
 
 .buttons{
@@ -173,4 +172,36 @@ select{
 
 .double-combo-box{
     flex-basis: 50%;
+}
+
+
+
+
+
+
+
+/* Partie responsive */
+
+@media (max-width: 1450px){
+    .progress-bar{
+        flex-wrap: wrap;
+    }
+    
+    .progress-bar > a{
+        min-width: 20%;
+        margin: 2%;
+    }
+
+    .center{
+        display: block;
+        height: 100%;
+    }
+    .left-form, .right-form{
+        margin: 10% 25%;
+    }
+
+    .bouton-publier, .bouton-annuler{
+        text-align: center;
+    }
+    
 }
