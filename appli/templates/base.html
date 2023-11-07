@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    {% block head %}
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="static/base.css">
     <link rel="stylesheet" href="static/variables.css">
+    <link rel="stylesheet" href="static/ajout-comp.css">
+    <link rel="stylesheet" href="static/responsive-creer-comp.css">
+    <title>Compétition ESCRIME</title>
+    {% endblock %}
     <header>
         <nav>
             <div id="left">
@@ -23,6 +29,11 @@
             </div>
         </nav>
     </header>
+    <main>
+        {% block content %}
+        
+        {% endblock %}
+    </main>
 </head>
 <body>
     

@@ -27,4 +27,8 @@
     --bouton-enlever-club-tireur : #FF4015;
     --bouton-voir-tireur-blois : #01357E;
     --bouton-voir-tireur-autres : #FFAB01;
+
+    /* Pour les effets hover des boutons  */
+    --hover-annuler : #f83a3a;
+    --hover-publier : #005197;
 }
