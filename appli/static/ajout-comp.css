@@ -1,3 +1,5 @@
+
+
 /* Path: appli/static/img/ajout-comp.css */
 html {
     /* background-color: var(--couleur-background); */
@@ -143,9 +145,17 @@ main{
 
 select{
     min-width: 50%;
-    padding: 3% 2%;
-    border-radius: 8px;
+    padding: 1% 2%;
+    cursor: pointer;
+  display: inline-block;
+  position: relative;
+  background-color: #FFF;
+  border: none;
+  border-bottom: #000 thin solid;
+  border-radius: 0;
 }
+
+
 
 .double-combo-box>select{
     width: 100%;

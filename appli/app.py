@@ -4,7 +4,7 @@ from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:toure@localhost/COUP_ESCRIME'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://toure:toure@servinfo-maria/DBtoure'
 db = SQLAlchemy(app)
 
 app.config['BOOTSTRAP_SERVE_LOCAL'] = True
