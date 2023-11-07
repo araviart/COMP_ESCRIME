@@ -105,6 +105,7 @@ input::placeholder {
 
 .bouton-connexion button:hover{
   background-color: #3f3f3f;
+  cursor: pointer;
 }
 
 
@@ -119,4 +120,8 @@ input::placeholder {
 
 .lien-switch-login-inscription:hover{
   text-decoration: none;
+}
+
+.rester-connecter>*{
+  cursor: pointer;
 }

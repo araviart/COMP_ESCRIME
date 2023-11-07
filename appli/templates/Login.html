@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../static/responsive-login.css" />
   </head>
   <body>
-    <form>
+    <form action="/ajout-comp" method="POST">
       <div class="div-image-connexion">
         <img
         class="image-connexion"
@@ -35,7 +35,6 @@
               name="email"
               required
               minlength="4"
-              maxlength="8"
               size="10"
               placeholder="Ex : notreclub@gmail.com"
             />
@@ -67,7 +66,7 @@
           >
         </div>
         <div class="bouton-connexion">
-          <button id="bonton-se-connecter" type="button">Se connecter</button>
+          <button id="bonton-se-connecter" type="submit">Se connecter</button>
         </div>
         <div class="switch-to-inscription">
           <p>
