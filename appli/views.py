@@ -1,6 +1,6 @@
 from .app import app
 from flask import render_template, url_for, redirect, request
-from .models import User, get_sample, get_categories, get_armes, get_nb_participants
+from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from hashlib import sha256
@@ -23,41 +23,31 @@ def home_default():
     return home(5)
 
 
-@app.route('/home/<int:items>')
+@app.route('/home/<int:items>', methods=("GET","POST",))
 def home(items):
     competitions = get_sample()
-    competitions = competitions[:items]
+    categories = get_categories()
+    armes = get_armes()
     nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
+
+    # Récupérez les sélections du formulaire
+    categorie = request.form.get('categorie')
+    arme = request.form.get('arme')
+    sexe = request.form.get('sexe')
+    statut = request.form.get('statut')
+
+    # Filtrer les compétitions en fonction des sélections
+    filtered_competitions = filtrer_competitions(competitions, categorie, arme, sexe, statut)
+
     return render_template(
         "competition.html",
         title="Compétitions ESCRIME",
-        competitions=competitions,
-        categories=get_categories(),
-        armes=get_armes(),
+        competitions=filtered_competitions,
+        categories=categories,
+        armes=armes,
         nb_participants=nb_participants,
         items=items
     )
-    
-def filtrer_competitions(competitions, categorie, arme, sexe, statut):
-    filtered_competitions = competitions
-
-    if categorie:
-        filtered_competitions = [comp for comp in filtered_competitions if comp.categorie.nomCategorie == categorie]
-    
-    if arme:
-        filtered_competitions = [comp for comp in filtered_competitions if comp.arme.nomArme == arme]
-    
-    if sexe:
-        filtered_competitions = [comp for comp in filtered_competitions if comp.sexeComp == sexe]
-    
-    if statut:
-        if statut == "A venir":
-            filtered_competitions = [comp for comp in filtered_competitions if comp.dateComp > datetime.date.today()]
-        elif statut == "Terminé":
-            filtered_competitions = [comp for comp in filtered_competitions if comp.dateComp <= datetime.date.today()]
-    
-    return filtered_competitions
-
 @app.route("/login/", methods =("GET","POST",))
 def login():
     f = LoginForm()
