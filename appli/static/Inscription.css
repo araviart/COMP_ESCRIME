@@ -1,0 +1,106 @@
+html {
+  background-color: var(--couleur-background);
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 10% 25%;
+}
+
+.div-image-inscription {
+  background-color: #000000;
+  height: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-inscription {
+  height: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  height: 60vh;
+}
+
+.partie-inscription {
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 100%;
+  flex-grow: 1;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 5%;
+  margin: 2% 3% 0 3%;
+}
+
+.partie-textfield {
+  margin: 2% 3% 0 3%;
+}
+
+.textfield-position {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+}
+
+.textfield-position input {
+  background-color: var(--couleur-fond-textfield);
+  border: none;
+  border-radius: 10px;
+  padding: 2%;
+  width: 95%;
+}
+
+input::placeholder {
+  font-family: "Poppins", sans-serif;
+}
+
+.bouton-inscription {
+  margin: 15% 0 10% 0;
+  display: flex;
+  justify-content: center;
+}
+
+.bouton-inscription button {
+  font-size: 1rem;
+  padding: 1.25rem 2.5rem;
+  display: block;
+  background-color: #000000;
+  border: 1px solid transparent;
+  color: #ffffff;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+}
+
+.bouton-inscription button:hover {
+  background-color: #3f3f3f;
+}
+
+.switch-to-inscription {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.lien-switch-login-inscription {
+  color: var(--couleur-lien);
+}
+
+.lien-switch-login-inscription:hover {
+  text-decoration: none;
+}
