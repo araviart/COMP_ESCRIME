@@ -21,6 +21,18 @@
             </select>
           </div>
           <div class="Arme">
+            <form method="POST" action="{% url 'competition' %}">
+              {% csrf_token %}
+              <label for="categorieArme">Arme:</label>
+              <select id="categorieArme" name="arme">
+                <option value="">Non définie</option>
+                {% for arme in armes %}
+                <option value="{{ arme }}">{{ arme }}</option>
+                {% endfor %}
+              </select>
+              <button type="submit">Filtrer</button>
+            </form>
+          </div>
             <label for="categorieSelect">Arme:</label>
             <select id="categorieArme">
               <option value="">Non définie</option>
