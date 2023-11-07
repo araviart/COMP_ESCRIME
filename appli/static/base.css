@@ -33,7 +33,7 @@ nav {
     align-items: center;
 }
 
-a {
+header a {
     color: white;
     text-decoration: none;
     border-radius: 10px;
@@ -42,7 +42,7 @@ a {
     position: relative;
 }
 
-a::after {
+header a::after {
     content: "";
     display: block;
     height: 2px;
@@ -55,7 +55,7 @@ a::after {
     transform: translateX(-50%);
 }
 
-a:hover::after {
+header a:hover::after {
     width: 100%;
 }
 

@@ -10,7 +10,7 @@ def newuser(username , password ):
     from hashlib import sha256
     m = sha256()
     m.update(password.encode())
-    u = User(username=username , password=m.hexdigest())
+    u = User(pseudoUser=username , mdpUser=m.hexdigest())
     db.session.add(u)
     db.session.commit()
 
@@ -24,5 +24,5 @@ def passwd(username, password):
     m = sha256()
     m.update(password.encode())
     u = User.query.get(username)
-    u.password = m.hexdigest()
+    u.mdpUser = m.hexdigest()
     db.session.commit()
