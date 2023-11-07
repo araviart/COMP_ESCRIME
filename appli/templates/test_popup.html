@@ -1,10 +1,9 @@
 {% block content %}
-    <link rel="stylesheet" href=" {{ url_for('static', filename='popup_publier_tournoi.css') }}">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='popup_suppr_tournoi.css') }}">
     <link rel="stylesheet" href=" {{ url_for('static', filename='variables.css') }}">
     <div class="container">
         <button type="submit" class="btn" onclick="openPopup()">Cliquez ici</button>
-        {% include "popup_publier_tournoi.html" %}
+        {% include "popup_suppr_tournoi.html" %}
     </div>
     <script src=" {{ url_for('static', filename='js/script_popup.js') }}"></script> 
 {% endblock %}
-
