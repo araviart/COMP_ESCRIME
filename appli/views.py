@@ -30,24 +30,29 @@ def home(items):
     armes = get_armes()
     nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
 
-    # Récupérez les sélections du formulaire
+    # récupere les selection du from
     categorie = request.form.get('categorie')
     arme = request.form.get('arme')
     sexe = request.form.get('sexe')
     statut = request.form.get('statut')
+    print(sexe)
 
-    # Filtrer les compétitions en fonction des sélections
-    filtered_competitions = filtrer_competitions(competitions, categorie, arme, sexe, statut)
-
+    # filtre pour les compet
+    compet_filtre = filtrer_competitions(competitions, categorie, arme, sexe, statut)
+    print(categorie)
     return render_template(
-        "competition.html",
-        title="Compétitions ESCRIME",
-        competitions=filtered_competitions,
-        categories=categories,
-        armes=armes,
-        nb_participants=nb_participants,
-        items=items
-    )
+    "competition.html",
+    title="Compétitions ESCRIME",
+    competitions=compet_filtre,
+    categories=categories,
+    armes=armes,
+    nb_participants=nb_participants,
+    items=items,
+    selec_arme=arme,
+    selec_categorie=categorie,
+    selec_sexe=sexe,
+    selec_statut=statut
+)
 @app.route("/login/", methods =("GET","POST",))
 def login():
     f = LoginForm()

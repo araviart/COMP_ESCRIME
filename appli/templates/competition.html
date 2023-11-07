@@ -12,44 +12,44 @@
         </div>
         <div class="filtre">
           <div class="Catégorie">
-    <form method="POST" action="{{ url_for('home', items=items) }}" id="categorieForm">
-        <label for="categorieSelect">Catégorie:</label>
-        <select id="categorieSelect" name="categorie" onchange="document.getElementById('categorieForm').submit();">
-            <option value="">Toutes les catégories</option>
-            {% for categorie in categories %}
-            <option value="{{ categorie }}">{{ categorie }}</option>
-            {% endfor %}
-        </select>
-    </form>
-</div>
-          <div class="Arme">
+            <form method="POST" action="{{ url_for('home', items=items) }}" id="categorieForm">
+                <label for="categorieSelect">Catégorie:</label>
+                <select id="categorieSelect" name="categorie" onchange="document.getElementById('categorieForm').submit();">
+                    <option value="">Toutes les catégories</option>
+                    {% for categorie in categories %}
+                    <option value="{{ categorie }}" {% if categorie == selec_categorie %}selected{% endif %}>{{ categorie }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+        <div class="Arme">
             <form method="POST" action="{{ url_for('home', items=items) }}" id="armeForm">
                 <label for="categorieArme">Arme:</label>
                 <select id="categorieArme" name="arme" onchange="document.getElementById('armeForm').submit();">
                     <option value="">Non définie</option>
                     {% for arme in armes %}
-                    <option value="{{ arme }}">{{ arme }}</option>
+                    <option value="{{ arme }}" {% if arme == selec_arme %}selected{% endif %}>{{ arme }}</option>
                     {% endfor %}
                 </select>
             </form>
         </div>
         <div class="Sexe">
-          <form method="POST" action="{{ url_for('home', items=items) }}" id="sexeForm">
-              <label for="categorieSexe">Statut:</label>
-              <select id="categorieSexe" name="statut" onchange="document.getElementById('sexeForm').submit();">
-                  <option value=>Non définie</option>
-                  <option value="Homme">Homme</option>
-                  <option value="Femme">Femme</option>
-              </select>
-          </form>
-      </div>
+            <form method="POST" action="{{ url_for('home', items=items) }}" id="sexeForm">
+                <label for="categorieSexe">Sexe:</label>
+                <select id="categorieSexe" name="sexe" onchange="document.getElementById('sexeForm').submit();">
+                    <option value="">Non définie</option>
+                    <option value="H" {% if "Homme" == selec_sexe %}selected{% endif %}>Homme</option>
+                    <option value="F" {% if "Femme" == selec_sexe %}selected{% endif %}>Femme</option>
+                </select>
+            </form>
+        </div>
         <div class="Statut">
             <form method="POST" action="{{ url_for('home', items=items) }}" id="statutForm">
                 <label for="categorieStatut">Statut:</label>
                 <select id="categorieStatut" name="statut" onchange="document.getElementById('statutForm').submit();">
                     <option value="">Non définie</option>
-                    <option value="A venir">A venir</option>
-                    <option value="Terminé">Terminé</option>
+                    <option value="A venir" {% if "A venir" == selec_statut %}selected{% endif %}>A venir</option>
+                    <option value="Terminé" {% if "Terminé" == selec_statut %}selected{% endif %}>Terminé</option>
                 </select>
             </form>
         </div>

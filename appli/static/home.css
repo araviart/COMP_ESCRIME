@@ -13,7 +13,7 @@
 }
 
 #categorieSelect option, #categorieArme option,  #categorieSexe option, #categorieStatut option {
-  font-size: 16px;
+  font-size: 12px;
   background-color: #fff;
   color: #333;
 }
@@ -52,6 +52,7 @@
     min-height: 30vw;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
+    background: white;
 
 }
 
@@ -100,6 +101,12 @@ h1{
 
 }
 
+.affichage a{
+  font-size: 16px;
+  list-style-type: none;
+  text-decoration: none;
+}
+
 
 .affichage ul li p{
   
@@ -107,7 +114,7 @@ color: black;}
 
 
 .competition-container table tr {
-  border-bottom: 1px solid var(--gris-arbitre);
+  border-bottom: 1px solid #B0B0B0;
 }
 
 .competition-container table td, .competition-container table th {
@@ -120,8 +127,18 @@ color: black;}
   padding: 5px 10px;
   margin: 0.4em 0.4em;
   background-color: var(--cadre-affichage);
+  border-radius: 8px;
 }
 
 .active-link {
   background-color: var(--blue-escrime);
+  border-radius: 8px;
+}
+
+th{
+    font-size: 20px;
+}
+
+td{
+  font-size: 16px;
 }
