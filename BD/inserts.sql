@@ -1,3 +1,8 @@
+-- Table USER
+INSERT INTO USER (pseudoUser, mdpUser, emailUser)
+VALUES
+    ('irvyncsm', 'dc02c547057f94d418761ec354cea801bdd9741206e32a83500a3b476485192f', 'irvyncsm@gmail.com');
+
 -- Table LIEU
 INSERT INTO LIEU (nomLieu, villeLieu, codePostalLieu, adresseLieu)
 VALUES

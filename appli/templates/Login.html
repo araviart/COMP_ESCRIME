@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <title>ESCRIME</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='Login.css') }}"
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../static/responsive-login.css" />
   </head>
   <body>
-    <form action="/login" method="POST">
+    <form action="/login/" method="POST">
       <div class="div-image-connexion">
         <img
         class="image-connexion"
@@ -66,7 +66,7 @@
           >
         </div>
         <div class="bouton-connexion">
-          <button id="bonton-se-connecter" type="submit">Se connecter</button>
+          <button id="bonton-se-connecter" type="submit" name="submit">Se connecter</button>
         </div>
         <div class="switch-to-inscription">
           <p>
