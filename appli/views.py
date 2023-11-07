@@ -22,6 +22,7 @@ class LoginForm(FlaskForm):
 def home_default():
     return home(5)
 
+
 @app.route('/home/<int:items>')
 def home(items):
     competitions = get_sample()
@@ -33,8 +34,30 @@ def home(items):
         competitions=competitions,
         categories=get_categories(),
         armes=get_armes(),
-        nb_participants=nb_participants
+        nb_participants=nb_participants,
+        items=items
     )
+    
+def filtrer_competitions(competitions, categorie, arme, sexe, statut):
+    filtered_competitions = competitions
+
+    if categorie:
+        filtered_competitions = [comp for comp in filtered_competitions if comp.categorie.nomCategorie == categorie]
+    
+    if arme:
+        filtered_competitions = [comp for comp in filtered_competitions if comp.arme.nomArme == arme]
+    
+    if sexe:
+        filtered_competitions = [comp for comp in filtered_competitions if comp.sexeComp == sexe]
+    
+    if statut:
+        if statut == "A venir":
+            filtered_competitions = [comp for comp in filtered_competitions if comp.dateComp > datetime.date.today()]
+        elif statut == "Terminé":
+            filtered_competitions = [comp for comp in filtered_competitions if comp.dateComp <= datetime.date.today()]
+    
+    return filtered_competitions
+
 @app.route("/login/", methods =("GET","POST",))
 def login():
     f = LoginForm()

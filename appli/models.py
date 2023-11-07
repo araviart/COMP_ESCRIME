@@ -1,3 +1,4 @@
+import datetime
 from .app import db, login_manager
 from flask_login import UserMixin
 
@@ -208,3 +209,18 @@ def get_armes():
 def get_nb_participants(id_tournoi):
     participants_count = ParticipantsPoule.query.join(Poule).join(Competition).filter(Competition.idComp == id_tournoi).count()
     return participants_count
+
+def filtrer_competitions(competitions, categorie, arme, sexe, statut):
+    comp_filtrer = competitions
+    if categorie:
+        comp_filtrer = [comp for comp in comp_filtrer if comp.categorie.nomCategorie == categorie]
+    if arme:
+        comp_filtrer = [comp for comp in comp_filtrer if comp.arme.nomArme == arme]
+    if sexe:
+        comp_filtrer = [comp for comp in comp_filtrer if comp.sexeComp == sexe]
+    if statut:
+        if statut == "A venir":
+            comp_filtrer = [comp for comp in comp_filtrer if comp.dateComp > datetime.date.today()]
+        elif statut == "Terminé":
+            comp_filtrer = [comp for comp in comp_filtrer if comp.dateComp <= datetime.date.today()]
+    return comp_filtrer
