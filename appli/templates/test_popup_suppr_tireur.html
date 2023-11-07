@@ -1,0 +1,19 @@
+{% block content %}
+    <link rel="stylesheet" href=" {{ url_for('static', filename='test_popup_suppr_tireur.css') }}">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='variables.css') }}">
+    <div class="container">
+        <button type="submit" class="btn" onclick="openPopup()">Cliquez ici</button>
+        <div class="popup" id="popup">
+            <div id="top">
+                <h1>SUPPRIMER TIREUR</h1>
+            </div>
+            <p>Êtes-vous sûr de retirer le tireur Julien Robert du Tournoi : Compétition Régionale ?</p>
+            <div id="boutons">
+                <button type="button" onclick="closePopup()">Annuler</button>
+                <button type="button" onclick="closePopup()">Confirmer</button>
+            </div>
+        </div>
+    </div>
+    <script src=" {{ url_for('static', filename='js/script_popup_suppr_tireur.js') }}"></script> 
+{% endblock %}
+

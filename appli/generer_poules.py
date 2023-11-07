@@ -218,4 +218,4 @@ def fabriquer_poules(tireurs, arbitres, type_poule):
 
     
 
-fabriquer_poules(les_tireurs, les_arbitres, "Club")
+fabriquer_poules(les_tireurs, les_arbitres, "Classement")
