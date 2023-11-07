@@ -184,11 +184,15 @@ class FeuilleMatch(db.Model):
     tireur2 = db.relationship('Tireur', foreign_keys=[idTireur2], backref='matches_as_tireur2')
 
 class User(db.Model, UserMixin):
-    username = db.Column(db.String (50) , primary_key =True)
-    password = db.Column(db.String (64))
+    __tablename__ = 'USER'
+    idUser = db.Column(db.Integer, primary_key=True)
+    pseudoUser = db.Column(db.String (50), unique=True, nullable=False)
+    mdpUser = db.Column(db.String (64), nullable=False)
+    emailUser = db.Column(db.String (50), unique=True)
+
     def get_id(self):
-        return self.username
-    
+        return self.idUser
+
 @login_manager.user_loader
 def load_user(username):
     return User.query.get(username)
