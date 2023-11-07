@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Liste des compétitions</title>
-</head>
-<body>
-    <h1>Liste des compétitions</h1>
-    <ul>
-        {% for competition in competitions %}
-            <li>
+{% extends 'baseBS.html' %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}"> 
+{% endblock %}
+{% block content %}
+<div class="competition-container">
+    {% for competition in competitions %}
+        <div class="competition-tile">
+            <div class="competition-info">
                 <strong>Nom de la compétition:</strong> {{ competition.nomComp }}<br>
                 <strong>Arme:</strong> {{ competition.arme.nomArme }}<br>
                 <strong>Catégorie:</strong> {{ competition.categorie.nomCategorie }}<br>
@@ -16,8 +16,8 @@
                 <strong>Heure:</strong> {{ competition.heureComp }}<br>
                 <strong>Sexe:</strong> {{ competition.sexeComp }}<br>
                 <strong>Individuelle:</strong> {{ "Oui" if competition.estIndividuelle else "Non" }}<br>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

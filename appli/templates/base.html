@@ -1,11 +1,41 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="static/base.css">
+    <link rel="stylesheet" href="static/variables.css">
+    <link rel="stylesheet" href="static/ajout-comp.css">
+    <link rel="stylesheet" href="static/responsive-creer-comp.css">
+    <title>Compétition ESCRIME</title>
+    {% endblock %}
+    <header>
+        <nav>
+            <div id="left">
+                <img src="static/img/logo.png" alt="logo">
+                <ul>
+                    <li><a href="">Accueil</a></li>
+                    <li><a href="">Ajouter un tournoi</a></li>
+                    <li><a href="">Liste adhérents</a></li>
+                    <li><a href="">Liste compétitions</a></li>
+                </ul>
+            </div>
+            <div id="right">
+                <ul>
+                    <li><p>Utilisateur 1</p></li>
+                    <li><img src="static/img/Vector.png" alt="Engrenage"></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        
+        {% endblock %}
+    </main>
 </head>
 <body>
-    <h1>{{ title }}</h1>
-    {% block content %}{% endblock %}
+    
 </body>
 </html>
