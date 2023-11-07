@@ -78,7 +78,7 @@ p {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    margin-top: 1em;
+    padding: 10px;
 }
 
 #boutons button {
