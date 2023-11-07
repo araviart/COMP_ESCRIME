@@ -8,8 +8,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="stylesheet" href="static/base.css" />
-    <link rel="stylesheet" href="static/variables.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='variables.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}" />
     <title>Compétition ESCRIME</title>
     {% endblock %}
@@ -18,7 +18,7 @@
     <header>
       <nav>
         <div id="left">
-          <img src="static/img/logo.png" alt="logo" />
+          <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" />
           <ul>
             <li><a href="">Accueil</a></li>
             <li><a href="">Ajouter un tournoi</a></li>
@@ -28,7 +28,7 @@
         </div>
         <div id="right">
           <ul>
-            <li><img src="static/img/Vector.png" alt="Engrenage" /></li>
+            <li><img src="{{ url_for('static', filename='img/Vector.png') }}" alt="Engrenage" /></li>
             {% if current_user.is_authenticated %}
             <li>
               <a href="{{ url_for('edit_user', name=current_user.username)}}"

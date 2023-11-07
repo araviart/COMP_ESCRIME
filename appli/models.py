@@ -1,6 +1,7 @@
 from .app import db, login_manager
 from flask_login import UserMixin
 
+
 # Modèle pour représenter le lieu
 class Lieu(db.Model):
     __tablename__ = 'LIEU'
@@ -194,7 +195,7 @@ def load_user(username):
     return User.query.get(username)
 
 def get_sample():
-    return Competition.query.all()
+    return Competition.query.order_by(Competition.dateComp.desc()).all()
 
 def get_categories():
     categories = Categorie.query.all()

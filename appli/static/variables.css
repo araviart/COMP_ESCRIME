@@ -24,4 +24,12 @@
     --bouton-enlever-club-tireur : #FF4015;
     --bouton-voir-tireur-blois : #01357E;
     --bouton-voir-tireur-autres : #FFAB01;
-}
+
+    /* rework variable */
+    --blue-escrime : #01437C;
+    --cadre-affichage : #D9D9D9;
+    --gris-arbitre: #5f5f5f;
+    --yellow-autre-club: #FFAB01;
+    --boutton-supprimer: #D32C2C;
+    --bg : #F8F7F4;
+} 

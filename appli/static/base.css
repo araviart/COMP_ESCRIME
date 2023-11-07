@@ -3,10 +3,13 @@
     margin: 0;
 }
 
+body{
+    background-color: var(--bg);
+}
+
 header {
     background-color: var(--couleur-header);
     padding: 20px;
-    width: 100%;
     margin-bottom: 3%;
 }
 
@@ -79,6 +82,8 @@ p {
     color: white;
     font-size: 20px;
 }
+
+
 
 @media screen and (min-width: 768px) {
     p {

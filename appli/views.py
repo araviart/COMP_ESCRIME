@@ -18,18 +18,23 @@ class LoginForm(FlaskForm):
         passwd = m. hexdigest ()
         return user if passwd == user.password else None
     
-@app.route("/")
-def home():
+@app.route('/')
+def home_default():
+    return home(5)
+
+@app.route('/home/<int:items>')
+def home(items):
     competitions = get_sample()
+    competitions = competitions[:items]
     nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
     return render_template(
-    "competition.html",
-    title="Compétitions ESCRIME",
-    competitions=get_sample(),
-    categories = get_categories(),
-    armes = get_armes(),
-    nb_participants = nb_participants)
-
+        "competition.html",
+        title="Compétitions ESCRIME",
+        competitions=competitions,
+        categories=get_categories(),
+        armes=get_armes(),
+        nb_participants=nb_participants
+    )
 @app.route("/login/", methods =("GET","POST",))
 def login():
     f = LoginForm()

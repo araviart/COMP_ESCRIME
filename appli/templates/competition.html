@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block styles %} {{ super() }}
 <link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}" />
-{% endblock %} {% block content %}
+{% endblock %}
+ {% block content %}
 <section class="content">
   <h1>
     Liste des compétitions
@@ -49,9 +50,10 @@
       <div class="competition-container">
         <div class="affichage">
           <ul>
-            <li><a href="#" class="affichage-actif">5</a></li>
-            <li><a href="#" class="affichage-actif">10</a></li>
-            <li><a href="#" class="affichage-actif">25</a></li>
+            <li><p>Affichage : </p></li>
+            <a class="item-link {% if items == 5 %}active-link{% endif %}" href="{{ url_for('home', items=5) }}">5</a>
+            <a class="item-link {% if items == 10 %}active-link{% endif %}" href="{{ url_for('home', items=10) }}">10</a>
+            <a class="item-link {% if items == 25 %}active-link{% endif %}" href="{{ url_for('home', items=25) }}">25</a>
           </ul>
         </div>
         <table>
@@ -83,6 +85,7 @@
               <td>{{ "Oui" if competition.estIndividuelle else "Non" }}</td>
               <td><a href="#" class="consulter">Consulter</a></td>
             </tr>
+            <div class = "ligne"></div>
             {% endfor %}
           </tbody>
         </table>

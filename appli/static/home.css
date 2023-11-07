@@ -23,9 +23,9 @@
     background-color: rgb(226, 226, 226);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* répartir les sous-menus horizontalement */
-    
-  }
+    justify-content: space-between;
+    background-color: white; /* répartir les sous-menus horizontalement */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);  }
   
   .filtre {
     margin: 0px 5%;
@@ -43,11 +43,16 @@
     border-radius: 8px 8px 0 0;
     color: whitesmoke;
     text-align: center; 
+    text-align: left;
+    padding: 10px;
   }
 
   .competition-container {
     margin: 2em auto 0;
-    height: 30vw;
+    min-height: 30vw;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+
 }
 
 .competition-container table {
@@ -91,10 +96,32 @@ h1{
 
 .affichage ul{
   display: flex;
+  align-items: center;
+
 }
 
-.affichage ul li a{
+
+.affichage ul li p{
+  
+color: black;}
+
+
+.competition-container table tr {
+  border-bottom: 1px solid var(--gris-arbitre);
+}
+
+.competition-container table td, .competition-container table th {
+  padding: 20px 10px; 
+  text-align: center;
+}
+
+.item-link {
   color: black;
-  padding: 10px;
-  background-color: ;
+  padding: 5px 10px;
+  margin: 0.4em 0.4em;
+  background-color: var(--cadre-affichage);
+}
+
+.active-link {
+  background-color: var(--blue-escrime);
 }
