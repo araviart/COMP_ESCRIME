@@ -42,8 +42,8 @@ def logout ():
     logout_user ()
     return redirect(url_for("home"))
 
-@app.route("/test_popup_suppr_tireur/")
-def test_popup_suppr_tireur():
+@app.route("/test_popup/")
+def test_popup():
     return render_template(
-        "test_popup_suppr_tireur.html",
+        "test_popup.html",
         title="Test")
