@@ -20,12 +20,12 @@
         <h1>Créez un compte pour votre club</h1>
         <div class="partie-textfield">
           <div class="numero-licence textfield-position">
-            <label for="email">N° Licence</label>
+            <label for="email">Pseudonyme</label>
             <input
-              type="number"
-              id="numero-licence"
-              name="num-licence"
-              placeholder="Cliquez ici pour inscrire votre n° de licence"
+              type="text"
+              id="pseudoUt"
+              name="pseudo"
+              placeholder="Cliquez ici pour inscrire votre pseudonyme"
             />
           </div>
           <div class="email textfield-position">
@@ -43,6 +43,17 @@
           </div>
           <div class="password textfield-position">
             <label for="password">Mot de passe</label>
+            <input
+              type="password"
+              id="pass"
+              name="password"
+              minlength="8"
+              required
+              placeholder="Cliquez pour entrer votre mot de passe"
+            />
+          </div>
+          <div class="password textfield-position">
+            <label for="password">Confirmer mot de passe</label>
             <input
               type="password"
               id="pass"
