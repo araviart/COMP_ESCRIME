@@ -175,13 +175,7 @@ select{
 }
 
 
-
-
-
-
-
 /* Partie responsive */
-
 @media (max-width: 1450px){
     .progress-bar{
         flex-wrap: wrap;
@@ -203,5 +197,4 @@ select{
     .bouton-publier, .bouton-annuler{
         text-align: center;
     }
-    
 }
