@@ -177,8 +177,8 @@ CREATE OR REPLACE TABLE MATCH_POULE(
     FOREIGN KEY (idTireur1) REFERENCES TIREUR(idTireur),
     -- Second Tireur Information
     idTireur2 INT NOT NULL,
-    
     FOREIGN KEY (idTireur2) REFERENCES TIREUR(idTireur),
+
     dateMatch DATE NOT NULL,
     heureMatch TIME NOT NULL,
     touchesRecuesTireur1 INT,

@@ -170,6 +170,19 @@ class Arbitre(db.Model):
     def __init__(self, escrimeur):
         self._escrimeur = escrimeur
 
+# Modèle pour représenter les participants aux compétitions
+class ParticipantsCompetition(db.Model):
+    __tablename__ = 'PARTICIPANTS_COMPETITION'
+    idTireur = db.Column(db.Integer, db.ForeignKey('TIREUR.idTireur'), primary_key=True)
+    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
+
+    competition = db.relationship('Competition', backref='Competition.idComp')
+    tireur = db.relationship('Tireur', backref='Tireur.idTireur')
+    
+    def __init__(self, competition, tireur):
+        self._competition = competition
+        self._tireur = tireur
+
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
 class PratiquerArme(db.Model):
     __tablename__ = 'PRATIQUER_ARME'
