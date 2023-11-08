@@ -22,7 +22,7 @@ class LoginForm(FlaskForm):
         return user if passwd == user.mdpUser else None
 
 @app.route('/home/<int:items>', methods=("GET","POST",))
-def home(items):
+def home_def(items):
     if request.method == "POST":
         page = int(request.form.get('page', 1))
         if 'next' in request.form:

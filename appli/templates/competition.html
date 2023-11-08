@@ -12,7 +12,7 @@
         </div>
         <div class="filtre">
           <div class="Catégorie">
-            <form method="POST" action="{{ url_for('home', items=items) }}" id="categorieForm">
+            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="categorieForm">
                 <label for="categorieSelect">Catégorie:</label>
                 <select id="categorieSelect" name="categorie" onchange="document.getElementById('categorieForm').submit();">
                     <option value="">Toutes les catégories</option>
@@ -23,7 +23,7 @@
             </form>
         </div>
         <div class="Arme">
-            <form method="POST" action="{{ url_for('home', items=items) }}" id="armeForm">
+            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="armeForm">
                 <label for="categorieArme">Arme:</label>
                 <select id="categorieArme" name="arme" onchange="document.getElementById('armeForm').submit();">
                     <option value="">Non définie</option>
@@ -34,7 +34,7 @@
             </form>
         </div>
         <div class="Sexe">
-            <form method="POST" action="{{ url_for('home', items=items) }}" id="sexeForm">
+            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="sexeForm">
                 <label for="categorieSexe">Sexe:</label>
                 <select id="categorieSexe" name="sexe" onchange="document.getElementById('sexeForm').submit();">
                     <option value="">Non définie</option>
@@ -44,7 +44,7 @@
             </form>
         </div>
         <div class="Statut">
-            <form method="POST" action="{{ url_for('home', items=items) }}" id="statutForm">
+            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="statutForm">
                 <label for="categorieStatut">Statut:</label>
                 <select id="categorieStatut" name="statut" onchange="document.getElementById('statutForm').submit();">
                     <option value="">Non définie</option>
@@ -60,9 +60,9 @@
         <div class="affichage">
           <ul>
             <li><p>Affichage : </p></li>
-            <a class="item-link {% if items == 5 %}active-link{% endif %}" href="{{ url_for('home_default', items=5) }}">5</a>
-            <a class="item-link {% if items == 10 %}active-link{% endif %}" href="{{ url_for('home_default', items=10) }}">10</a>
-            <a class="item-link {% if items == 25 %}active-link{% endif %}" href="{{ url_for('home_default', items=25) }}">25</a>
+            <a class="item-link {% if items == 5 %}active-link{% endif %}" href="{{ url_for('home_def', items=5) }}">5</a>
+            <a class="item-link {% if items == 10 %}active-link{% endif %}" href="{{ url_for('home_def', items=10) }}">10</a>
+            <a class="item-link {% if items == 25 %}active-link{% endif %}" href="{{ url_for('home_def', items=25) }}">25</a>
           </ul>
         </div>
         <div class = "page">
@@ -104,7 +104,7 @@
         </table>
   </section>
   <div class="pagination">
-    <form method="POST" action="{{ url_for('home', items=items)}}">
+    <form method="POST" action="{{ url_for('home_def', items=items)}}">
       <input type="hidden" name="items" value="{{ items }}">
       <input type="hidden" name="page" value="{{ page }}">
       {% if page > 1 %}

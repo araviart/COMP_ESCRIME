@@ -140,6 +140,7 @@ color: black;}
 .active-link {
   background-color: var(--blue-escrime);
   border-radius: 8px;
+  color: white;
 }
 
 th{
