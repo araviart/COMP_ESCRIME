@@ -176,12 +176,12 @@ class ParticipantsCompetition(db.Model):
     idTireur = db.Column(db.Integer, db.ForeignKey('TIREUR.idTireur'), primary_key=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
 
-    competition = db.relationship('Competition', backref='Competition.idComp')
-    tireur = db.relationship('Tireur', backref='Tireur.idTireur')
+    tireur = db.relationship('Tireur', backref='PartTireur.idTireur')
+    competition = db.relationship('Competition', backref='PartCompetition.idComp')
     
-    def __init__(self, competition, tireur):
-        self._competition = competition
+    def __init__(self, tireur, competition):
         self._tireur = tireur
+        self._competition = competition
 
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
 class PratiquerArme(db.Model):
@@ -336,7 +336,7 @@ def get_armes():
     return [arme.nomArme for arme in armes]
 
 def get_nb_participants(id_tournoi):
-    participants_count = ParticipantsPoule.query.join(Poule).join(Competition).filter(Competition.idComp == id_tournoi).count()
+    participants_count = ParticipantsCompetition.query.join(Competition).filter(Competition.idComp == id_tournoi).count()
     return participants_count
 
 def filtrer_competitions(competitions, categorie, arme, sexe, statut):
