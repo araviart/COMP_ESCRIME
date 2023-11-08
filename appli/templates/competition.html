@@ -5,7 +5,7 @@
 <section class="content">
   <h1>
     Liste des compétitions
-    <h1>
+  </h1>
       <section class="section-filtre">
         <div class="titre-filtre">
           <h2>FILTRE</h2>
@@ -50,12 +50,13 @@
                     <option value="">Non définie</option>
                     <option value="A venir" {% if "A venir" == selec_statut %}selected{% endif %}>A venir</option>
                     <option value="Terminé" {% if "Terminé" == selec_statut %}selected{% endif %}>Terminé</option>
-                </select>
-            </form>
-        </div>
-        </div>
-      </section>
+                  </select>
+                </form>
+              </div>
+            </div>
+          </section>
       <div class="competition-container">
+        <div class = "top-section">
         <div class="affichage">
           <ul>
             <li><p>Affichage : </p></li>
@@ -64,6 +65,10 @@
             <a class="item-link {% if items == 25 %}active-link{% endif %}" href="{{ url_for('home_default', items=25) }}">25</a>
           </ul>
         </div>
+        <div class = "page">
+          <p>Page : {{ page }}</p>
+        </div>
+      </div>
         <table>
           <thead>
             <tr class="title">
@@ -97,8 +102,17 @@
             {% endfor %}
           </tbody>
         </table>
-      </div>
-      <section>{% endblock %}</section>
-    </h1>
-  </h1>
-</section>
+  </section>
+  <div class="pagination">
+    <form method="POST" action="{{ url_for('home', items=items)}}">
+      <input type="hidden" name="items" value="{{ items }}">
+      <input type="hidden" name="page" value="{{ page }}">
+      {% if page > 1 %}
+          <button type="submit" name="prev" class="left" value="prev">Page précédente</button>
+      {% endif %}
+      {% if compet_filtre|length > page * items %}
+          <button type="submit" name="next" class="right" value="next">Page suivante</button>
+      {% endif %}
+  </form>
+</div>
+  {% endblock %}

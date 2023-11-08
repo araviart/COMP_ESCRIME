@@ -20,7 +20,50 @@ class LoginForm(FlaskForm):
         m.update(self.password.data.encode())
         passwd = m.hexdigest()
         return user if passwd == user.mdpUser else None
-    
+
+@app.route('/home/<int:items>', methods=("GET","POST",))
+def home(items):
+    if request.method == "POST":
+        page = int(request.form.get('page', 1))
+        if 'next' in request.form:
+            page += 1
+        elif 'prev' in request.form:
+            page -= 1
+    else:
+        page = request.args.get('page', 1, type=int)
+    competitions = get_sample()
+    categories = get_categories()
+    armes = get_armes()
+    nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
+    # récupere les selection du from
+    categorie = request.form.get('categorie')
+    arme = request.form.get('arme')
+    sexe = request.form.get('sexe')
+    statut = request.form.get('statut')
+    print(sexe)
+    # filtre pour les compet
+    compet_filtre = filtrer_competitions(competitions, categorie, arme, sexe, statut)
+    if len(compet_filtre) !=0:
+        competitions = compet_filtre[(page - 1) * items:page * items]
+    else:
+        competitions = []
+    print(categorie)
+    return render_template(
+    "competition.html",
+    title="Compétitions ESCRIME",
+    competitions=competitions,  # Pass the paginated competitions, not compet_filtre
+    categories=categories,
+    armes=armes,
+    nb_participants=nb_participants,
+    items=items,
+    selec_arme=arme,
+    selec_categorie=categorie,
+    selec_sexe=sexe,
+    selec_statut=statut,
+    page=page,
+    compet_filtre = compet_filtre
+)
+  
 class EditUserForm(FlaskForm):
     passwd = PasswordField("Nouveau mot de passe")
     confirm = PasswordField("Confirmez le nouveau mot de passe")
@@ -114,33 +157,3 @@ def ajouter_escrimeur():
 
         return redirect(url_for('ajouter_escrimeur'))
     return render_template('test_popup.html')
-
-
-@app.route('/home/<int:items>', methods=("GET","POST",))
-def home_def(items):
-    competitions = get_sample()
-    categories = get_categories()
-    armes = get_armes()
-    nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
-
-    # récupere les selection du from
-    categorie = request.form.get('categorie')
-    arme = request.form.get('arme')
-    sexe = request.form.get('sexe')
-    statut = request.form.get('statut')
-
-    # filtre pour les compet
-    compet_filtre = filtrer_competitions(competitions, categorie, arme, sexe, statut)
-    return render_template(
-    "competition.html",
-    title="Compétitions ESCRIME",
-    competitions=compet_filtre,
-    categories=categories,
-    armes=armes,
-    nb_participants=nb_participants,
-    items=items,
-    selec_arme=arme,
-    selec_categorie=categorie,
-    selec_sexe=sexe,
-    selec_statut=statut
-)
