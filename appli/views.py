@@ -69,3 +69,9 @@ def login():
 def logout ():
     logout_user ()
     return redirect(url_for("home"))
+
+@app.route("/test_popup/")
+def test_popup():
+    return render_template(
+        "test_popup.html",
+        title="Test")
