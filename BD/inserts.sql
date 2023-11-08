@@ -437,14 +437,193 @@ VALUES
     (6, 'Thomas', 'ZIPPER', '1980-10-16', 130002, 'M', null);
 
 -- -- Table TIREUR
--- INSERT INTO TIREUR (idTireur, idClub, classement)
--- VALUES
+INSERT INTO TIREUR (idTireur, idClub, classement)
+VALUES
+    (1, 4, 1),
+    (2, 4, 2),
+    (3, 4, 3),
+    (4, 4, 4),
+    (5, 4, 5),
+    (6, 4, 6),
+    (7, 4, 7),
+    (8, 4, 8),
+    (9, 4, 9),
+    (10, 4, 10),
+    (11, 4, 1),
+    (12, 4, 2),
+    (13, 4, 3),
+    (14, 4, 4),
+    (15, 4, 5),
+    (16, 4, 6),
+    (17, 4, 7),
+    (18, 4, 8),
+    (19, 4, 9),
+    (20, 4, 10),
+    (21, 4, 1),
+    (22, 4, 2),
+    (23, 4, 3),
+    (24, 4, 4),
+    (25, 4, 5),
+    (26, 4, 6),
+    (27, 4, 7),
+    (28, 4, 8),
+    (29, 4, 9),
+    (30, 4, 10),
+    (31, 4, 1),
+    (32, 4, 2),
+    (33, 4, 3),
+    (34, 4, 4),
+    (35, 4, 5),
+    (36, 4, 6),
+    (37, 4, 7),
+    (38, 4, 8),
+    (39, 4, 9),
+    (40, 4, 10),
+    (41, 4, 1),
+    (42, 4, 2),
+    (43, 4, 3),
+    (44, 4, 4),
+    (45, 4, 5),
+    (46, 4, 6),
+    (47, 4, 7),
+    (48, 4, 8),
+    (49, 4, 9),
+    (50, 4, 10),
+    (51, 4, 1),
+    (52, 4, 2),
+    (53, 4, 3),
+    (54, 4, 4),
+    (55, 4, 5),
+    (56, 4, 6),
+    (57, 4, 7),
+    (58, 4, 8),
+    (59, 4, 9),
+    (60, 4, 10);
 
 -- -- Table ARBITRE
--- INSERT INTO ARBITRE (idArbitre)
--- VALUES
---     (1),
---     (2);
+INSERT INTO ARBITRE (idArbitre)
+VALUES
+    (70),
+    (71),
+    (72),
+    (73),
+    (74),
+    (75),
+    (76),
+    (77),
+    (78),
+    (79),
+    (80),
+    (81),
+    (82),
+    (83),
+    (84),
+    (85),
+    (86),
+    (87),
+    (88),
+    (89),
+    (90),
+    (91),
+    (92),
+    (93),
+    (94),
+    (95),
+    (96),
+    (97),
+    (98),
+    (99),
+    (100),
+    (101),
+    (102),
+    (103),
+    (104),
+    (105),
+    (106),
+    (107),
+    (108),
+    (109),
+    (110),
+    (111),
+    (112),
+    (113),
+    (114),
+    (115),
+    (116),
+    (117),
+    (118),
+    (119),
+    (120),
+    (121),
+    (122),
+    (123),
+    (124),
+    (125);
+
+-- PARTICIPANTS_COMPETITION
+INSERT INTO PARTICIPANTS_COMPETITION (idComp, idTireur)
+VALUES
+    (1, 1),  -- Compétition 1 avec le tireur 1
+    (2, 1),  -- Compétition 1 avec le tireur 2
+    (3, 1),  -- Compétition 1 avec le tireur 3
+    (4, 1),  -- Compétition 1 avec le tireur 4
+    (5, 1),  -- Compétition 1 avec le tireur 5
+    (6, 1),  -- Compétition 1 avec le tireur 6
+    (7, 1),  -- Compétition 1 avec le tireur 7
+    (8, 1),  -- Compétition 1 avec le tireur 8
+    (9, 2),  -- Compétition 2 avec le tireur 1
+    (10, 2), -- Compétition 2 avec le tireur 2
+    (11, 2), -- Compétition 2 avec le tireur 3
+    (12, 2), -- Compétition 2 avec le tireur 4
+    (13, 2), -- Compétition 2 avec le tireur 5
+    (14, 2), -- Compétition 2 avec le tireur 6
+    (15, 2), -- Compétition 2 avec le tireur 7
+    (16, 2), -- Compétition 2 avec le tireur 8
+    (17, 3), -- Compétition 3 avec le tireur 1
+    (18, 3), -- Compétition 3 avec le tireur 2
+    (19, 3), -- Compétition 3 avec le tireur 3
+    (20, 3), -- Compétition 3 avec le tireur 4
+    (21, 3), -- Compétition 3 avec le tireur 5
+    (22, 3), -- Compétition 3 avec le tireur 6
+    (23, 3), -- Compétition 3 avec le tireur 7
+    (24, 3), -- Compétition 3 avec le tireur 8
+    (25, 4), -- Compétition 4 avec le tireur 1
+    (26, 4), -- Compétition 4 avec le tireur 2
+    (27, 4), -- Compétition 4 avec le tireur 3
+    (28, 4), -- Compétition 4 avec le tireur 4
+    (29, 4), -- Compétition 4 avec le tireur 5
+    (30, 4), -- Compétition 4 avec le tireur 6
+    (31, 4), -- Compétition 4 avec le tireur 7
+    (32, 4), -- Compétition 4 avec le tireur 8
+    (33, 5), -- Compétition 5 avec le tireur 1
+    (34, 5), -- Compétition 5 avec le tireur 2
+    (35, 5), -- Compétition 5 avec le tireur 3
+    (36, 5), -- Compétition 5 avec le tireur 4
+    (37, 5), -- Compétition 5 avec le tireur 5
+    (38, 5), -- Compétition 5 avec le tireur 6
+    (39, 5), -- Compétition 5 avec le tireur 7
+    (40, 5), -- Compétition 5 avec le tireur 8
+    (41, 6), -- Compétition 6 avec le tireur 1
+    (42, 6), -- Compétition 6 avec le tireur 2
+    (43, 6), -- Compétition 6 avec le tireur 3
+    (44, 6), -- Compétition 6 avec le tireur 4
+    (45, 6), -- Compétition 6 avec le tireur 5
+    (46, 6), -- Compétition 6 avec le tireur 6
+    (47, 6), -- Compétition 6 avec le tireur 7
+    (48, 6), -- Compétition 6 avec le tireur 8
+    (49, 7), -- Compétition 7 avec le tireur 1
+    (50, 7), -- Compétition 7 avec le tireur 2
+    (51, 7), -- Compétition 7 avec le tireur 3
+    (52, 7), -- Compétition 7 avec le tireur 4
+    (53, 7), -- Compétition 7 avec le tireur 5
+    (54, 7), -- Compétition 7 avec le tireur 6
+    (55, 7), -- Compétition 7 avec le tireur 7
+    (56, 7), -- Compétition 7 avec le tireur 8
+    (57, 8), -- Compétition 8 avec le tireur 1
+    (58, 8), -- Compétition 8 avec le tireur 2
+    (59, 8), -- Compétition 8 avec le tireur 3
+    (60, 8); -- Compétition 8 avec le tireur 4
+
 
 -- Table PRATIQUER_ARME
 INSERT INTO PRATIQUER_ARME (idEscrimeur, idArme)

@@ -33,8 +33,8 @@
             <li><img src="{{ url_for('static', filename='img/Vector.png') }}" alt="Engrenage" /></li>
             {% if current_user.is_authenticated %}
             <li>
-              <a href="{{ url_for('edit_user', name=current_user.username)}}"
-                >{{ current_user.username }}</a
+              <a href="{{ url_for('edit_user', name=current_user.pseudoUser)}}"
+                >{{ current_user.pseudoUser }}</a
               >
             </li>
             <li>

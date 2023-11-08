@@ -1,11 +1,11 @@
-from .app import app
-from flask import render_template, url_for, redirect, request
+from .app import app, db
+from flask import render_template, url_for, redirect, request, flash
 from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
 from hashlib import sha256
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 
 class LoginForm(FlaskForm):
     email = StringField('email', validators=[DataRequired()])
@@ -19,13 +19,13 @@ class LoginForm(FlaskForm):
         m = sha256()
         m.update(self.password.data.encode())
         passwd = m.hexdigest()
-        print(passwd)
-        print(user.mdpUser)
         return user if passwd == user.mdpUser else None
     
-@app.route('/home/')
-def home_default():
-    return home(5)
+class EditUserForm(FlaskForm):
+    passwd = PasswordField("Nouveau mot de passe")
+    confirm = PasswordField("Confirmez le nouveau mot de passe")
+    username = StringField("Pseudonyme actuelle")
+    password = PasswordField("Mot de passe actuelle")
 
 @app.route("/")
 def home():
@@ -38,12 +38,18 @@ def login():
     if user:
         login_user(user)
         return redirect(url_for("home_default"))
+    else:
+        flash("Mot de passe incorrect", "error")
     return render_template("Login.html", form=f)
 
 @app.route("/logout/")
 def logout ():
     logout_user ()
     return redirect(url_for("home"))
+
+@app.route('/home/')
+def home_default():
+    return home_def(5)
 
 @app.route("/ajout-comp")
 def ajout_comp_page():
@@ -54,6 +60,40 @@ def test_popup():
     return render_template(
         "test_popup.html",
         title="Test")
+
+@app.route("/edit-user/<name>", methods=("GET","POST",))
+def edit_user(name):
+    form = EditUserForm()
+    if not current_user.is_authenticated:
+        next = "edit_user"
+        return redirect(url_for("login", next=next))
+
+    if form.validate_on_submit():
+        user = User.query.get(name)
+
+        if user.username != form.username.data:
+            form.username.errors.append("Pseudonyme erreur")
+            return render_template("edit-user.html", form=form)
+
+        if form.newpsswd.data != form.confirm.data:
+            form.confirm.errors.append("Les mots de passe ne correspondent pas")
+            return render_template("edit-user.html", form=form)
+
+        password_hash = sha256()
+        password_hash.update(form.password.data.encode())
+
+        if user.password != password_hash.hexdigest():
+            form.password.errors.append("Mot de passe incorrect")
+            return render_template("edit-user.html", form=form)
+
+        new_password_hash = sha256()
+        new_password_hash.update(form.newpsswd.data.encode())
+
+        user.password = new_password_hash.hexdigest()
+        db.session.commit()
+
+        return redirect(url_for("home"))
+    return render_template("edit-user.html", form=form, name=name)
 
 @app.route('/ajouter_escrimeur', methods=['GET', 'POST'])
 def ajouter_escrimeur():
@@ -77,7 +117,7 @@ def ajouter_escrimeur():
 
 
 @app.route('/home/<int:items>', methods=("GET","POST",))
-def home(items):
+def home_def(items):
     competitions = get_sample()
     categories = get_categories()
     armes = get_armes()
@@ -88,11 +128,9 @@ def home(items):
     arme = request.form.get('arme')
     sexe = request.form.get('sexe')
     statut = request.form.get('statut')
-    print(sexe)
 
     # filtre pour les compet
     compet_filtre = filtrer_competitions(competitions, categorie, arme, sexe, statut)
-    print(categorie)
     return render_template(
     "competition.html",
     title="Compétitions ESCRIME",

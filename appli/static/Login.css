@@ -144,3 +144,7 @@ input:focus{
 .pwd-eyes span{
   margin-right: 2%;
 }
+
+.flash-error {
+  color: red;
+}
