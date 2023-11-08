@@ -4,13 +4,14 @@ from .app import app,db
 @app.cli.command ()
 @click.argument("username")
 @click.argument("password")
-def newuser(username , password ):
+@click.argument("email")
+def newuser(username , password, email):
     '''Adds a new user.'''
     from .models import User
     from hashlib import sha256
     m = sha256()
     m.update(password.encode())
-    u = User(username=username , password=m.hexdigest())
+    u = User(pseudoUser=username , mdpUser=m.hexdigest(), emailUser=email)
     db.session.add(u)
     db.session.commit()
 
@@ -24,5 +25,5 @@ def passwd(username, password):
     m = sha256()
     m.update(password.encode())
     u = User.query.get(username)
-    u.password = m.hexdigest()
+    u.mdpUser = m.hexdigest()
     db.session.commit()

@@ -1,0 +1,150 @@
+html {
+  background-color: var(--couleur-background);
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+  margin: 10% 25%;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.div-image-connexion{
+  background-color: #000000;
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-connexion{
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.partie-connexion {
+  background-color: white; 
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 100%;
+  flex-grow: 1;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 5%;
+  margin: 2% 3% 0 3%;
+}
+
+.div-textfield{
+  margin: 2% 3% 0 3%;
+}
+
+.textfield-position {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7%;
+}
+
+.textfield-position input {
+  background-color: var(--couleur-fond-textfield);
+  border: none;
+  border-radius: 10px;
+  padding: 2%;
+  width: 95%;
+}
+
+input::placeholder {
+  font-family: "Poppins", sans-serif;
+}
+
+.rester-forget-mdp {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7%;
+  margin: 5% 3% 0 3%;
+}
+
+/* .rester-forget-mdp label, .rester-forget-mdp a{
+  font-size: 1px;
+} */
+
+.forget-password {
+  color: var(--couleur-mot-de-passe-oublie);
+  text-decoration: none;
+}
+
+.bouton-connexion {
+  margin: 15% 0 10% 0;
+  display: flex;
+  justify-content: center;
+}
+
+.bouton-connexion button{
+  font-size: 1rem;
+  padding: 1.25rem 2.5rem;
+  display: block;
+  background-color: #000000;
+  border: 1px solid transparent;
+  color: #ffffff;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+}
+
+.bouton-connexion button:hover{
+  background-color: #3f3f3f;
+  cursor: pointer;
+}
+
+
+.switch-to-inscription {
+  text-align: center;
+  margin-top: 15%;
+}
+
+.lien-switch-login-inscription {
+  color: var(--couleur-lien);
+}
+
+.lien-switch-login-inscription:hover{
+  text-decoration: none;
+}
+
+.rester-connecter>*{
+  cursor: pointer;
+}
+
+.pwd-eyes{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--couleur-fond-textfield);
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+}
+
+
+input:focus{
+  outline: none;
+}
+
+.pwd-eyes span{
+  margin-right: 2%;
+}
+
+.flash-error {
+  color: red;
+}

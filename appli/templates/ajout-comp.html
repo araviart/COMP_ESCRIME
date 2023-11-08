@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="progress-bar">
+    <a class="active-url" href="url">Définir une compétition</a>
+    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <a href="url">Gestion participants</a>
+    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <a href="url">Créer les poules</a>
+    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <a href="url">Appel</a>
+    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <a href="url">Gestion score</a>
+    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <a href="url">Classement Final</a>
+  </div>
+  <div class="center">
+    <div class="left-form">
+      <div class="test">
+        <div class="titre-formulaire">
+          <h2>DONNÉES TECHNIQUES</h2>
+        </div>
+        <div class="partie-input">
+          <div class="label-input">
+            <label for="title">Titre</label>
+            <input type="text" id="titre" name="titre" maxlength="12" required />
+          </div>
+          <div class="label-input">
+            <label for="title">Organisateur</label>
+            <input type="text" id="Organisateur" name="organisateur" maxlength="12" required />
+          </div>
+          <div class="label-input">
+            <label for="title">Lieu</label>
+            <input type="text" id="lieu" name="lieu" />
+          </div>
+          <div class="label-input">
+            <label for="title">Date déroulement</label>
+            <input type="date" id="deroulement" name="date-deroulement" value="2023-11-16" min="2023-11-16" />
+          </div>
+          <div class="label-input">
+            <label for="appt">Heure début</label>
+            <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
+          </div>
+        </div>
+      </div>
+      <div class="bouton-annuler">
+        <button class="btn-annuler">ANNULER</button>
+      </div>
+    </div>
+    <div class="right-form">
+      <div class="test">
+        <div class="titre-formulaire">
+          <h2>STANDARD</h2>
+        </div>
+        <div class="partie-input-droite">
+          <div class="combox-box comb-arme">
+            <label for="arme">Arme</label>
+            <select name="arme" id="arme">
+              <option value="fleuret">Fleuret</option>
+              <option value="sabre">Sabre</option>
+              <option value="epee">Epée</option>
+            </select>
+          </div>
+          <div class="combox-box comb-arme">
+            <label for="sexe">Sexe</label>
+            <select name="sexe" id="sexe">
+              <option value="homme">Homme</option>
+              <option value="femme">Femme</option>
+            </select>
+          </div>
+          <div class="combox-box comb-cate">
+            <label for="categorie">Catégorie</label>
+            <div class="double-combo-box">
+              <select name="categorie" id="sexe">
+                <option value="V1">V1</option>
+                <option value="V2">V2</option>
+              </select>
+              <select name="categorie" id="sexe">
+                <option value="U9">U9</option>
+                <option value="U11">U11</option>
+              </select>
+            </div>
+          </div>
+          <div class="combox-box comb-type">
+            <label for="type">Type</label>
+            <select name="type" id="type">
+                <option value="Match Poule">Match Poule</option>
+                <option value="Match Elimination">Match Elimination</option>
+            </select>
+          </div>
+          
+        </div>
+      </div>
+      <div class="bouton-publier">
+        <button class="btn-publier">Publier le tournoi</button>
+      </div>
+    </div>
+  </div>
+{% endblock %}

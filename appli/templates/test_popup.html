@@ -1,0 +1,10 @@
+{% block content %}
+    <link rel="stylesheet" href=" {{ url_for('static', filename='ajout_adhérent.css') }}">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='variables.css') }}">
+    <div class="container">
+        <p>Vous souhaitez ajouter un adhérent ?</p>
+        <button type="submit" class="btn" onclick="openPopup()">Cliquez ici</button>
+        {% include "ajout_adhérent.html" %}
+    </div>
+    <script src=" {{ url_for('static', filename='js/script_popup.js') }}"></script> 
+{% endblock %}

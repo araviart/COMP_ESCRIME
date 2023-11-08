@@ -1,0 +1,24 @@
+@media (max-width: 1690px) {
+    .image-inscription{
+        display: none;
+    }
+    .partie-inscription{
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .bouton-inscription {
+        margin: 10% 0 1rem 0;
+    }
+    .switch-to-inscription {
+        margin-top: 4rem;
+      }
+  }
+  
+@media(max-width : 950px){
+    form {
+        display: flex;
+        justify-content: none;
+        align-items: none;
+        width: 100%;
+    }
+}
