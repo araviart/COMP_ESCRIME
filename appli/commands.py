@@ -4,6 +4,7 @@ from .app import app,db
 @app.cli.command ()
 @click.argument("username")
 @click.argument("password")
+@click.argument("email")
 def newuser(username , password, email):
     '''Adds a new user.'''
     from .models import User

@@ -31,16 +31,17 @@ def home():
 def ajout_comp_page():
     return render_template("ajout-comp.html")
 
+@app.route("/competition")
+def competition_page():
+    return render_template("competition.html")
+
 @app.route("/login/", methods=["GET", "POST"])
 def login():
     f = LoginForm()
-    print("1")
     user = f.get_authenticated_user()
-    print("2")
     if user:
-        print("3")
         login_user(user)
-        return redirect(url_for("ajout_comp_page"))
+        return redirect(url_for("competition_page"))
     return render_template("Login.html", form=f)
 
 
