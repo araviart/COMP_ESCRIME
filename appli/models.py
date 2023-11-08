@@ -314,6 +314,9 @@ def load_user(username):
 def get_sample():
     return Competition.query.order_by(Competition.dateComp.desc()).all()
 
+def get_adherents():
+    return Tireur.query.join(Club).filter(Club.nomClub == "Club Blois").all()
+
 def get_categories():
     categories = Categorie.query.all()
     return [categorie.nomCategorie for categorie in categories]

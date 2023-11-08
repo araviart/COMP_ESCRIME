@@ -1,6 +1,6 @@
 from .app import app
 from flask import render_template, url_for, redirect, request
-from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions
+from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from hashlib import sha256
@@ -18,7 +18,36 @@ class LoginForm(FlaskForm):
         passwd = m. hexdigest ()
         return user if passwd == user.password else None
     
+    
+    
 @app.route('/')
+def adherent_default():
+    return liste_adherents(5)    
+    
+    
+@app.route('/liste-adherent/<int:items>', methods=("GET","POST",))
+def liste_adherents(items):
+    adherents = get_adherents()
+    categories = get_categories()
+    adherents = adherents[:items]
+    
+    statut = request.form.get('statut')
+    categorie = request.form.get('categorie')
+    sexe = request.form.get('sexe')
+    
+    return render_template(
+    "liste-adherents.html",
+    title="Compétitions ESCRIME",
+    categories=categories,
+    selec_categorie=categorie,
+    selec_sexe=sexe,
+    selec_statut=statut,
+    adherents = adherents,
+    items=items)
+
+
+    
+@app.route('/ok')
 def home_default():
     return home(5)
 
@@ -29,13 +58,13 @@ def home(items):
     categories = get_categories()
     armes = get_armes()
     nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
+    competitions = competitions[:items]
 
     # récupere les selection du from
     categorie = request.form.get('categorie')
     arme = request.form.get('arme')
     sexe = request.form.get('sexe')
     statut = request.form.get('statut')
-    print(sexe)
 
     # filtre pour les compet
     compet_filtre = filtrer_competitions(competitions, categorie, arme, sexe, statut)
