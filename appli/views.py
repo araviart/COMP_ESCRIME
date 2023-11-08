@@ -25,25 +25,31 @@ def adherent_default():
     return liste_adherents(5)    
     
     
-@app.route('/liste-adherent/<int:items>', methods=("GET","POST",))
+@app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
 def liste_adherents(items):
     adherents = get_adherents()
     categories = get_categories()
     adherents = adherents[:items]
-    
+
+    if request.method == "POST":
+        search_query = request.form.get('search')
+        # recherche les adhérents en fonction du nom ou prénom
+        if search_query:
+            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.prenomE.lower() or search_query.lower() in adherent.nomE.lower()]
+
     statut = request.form.get('statut')
     categorie = request.form.get('categorie')
     sexe = request.form.get('sexe')
-    
+
     return render_template(
-    "liste-adherents.html",
-    title="Compétitions ESCRIME",
-    categories=categories,
-    selec_categorie=categorie,
-    selec_sexe=sexe,
-    selec_statut=statut,
-    adherents = adherents,
-    items=items)
+        "liste-adherents.html",
+        title="Compétitions ESCRIME",
+        categories=categories,
+        selec_categorie=categorie,
+        selec_sexe=sexe,
+        selec_statut=statut,
+        adherents=adherents,
+        items=items)
 
 
     

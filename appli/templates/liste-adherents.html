@@ -4,7 +4,7 @@
  {% block content %}
 <section class="content">
   <h1>
-    <button type="button">AJOUTER UN ADHÉRENT</button> 
+    <button type="button" class ="ajoutadh" >AJOUTER UN ADHÉRENT</button> 
     <h1>
       <section class="section-filtre">
         <div class="titre-filtre">
@@ -12,10 +12,15 @@
         </div>
         <div class="filtre">
           <div class="search">
-            <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="searchForm">
-                <label for="searchInput">Recherche:</label>
-                <input id="searchInput" name="search" oninput="if (this.value.length >= 2) document.getElementById('searchForm').submit();">
-            </form>
+            <div class="search">
+              <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="searchForm">
+                  <input id="searchInput" name="search">
+                  <button type="submit" class="search-button">
+                      <img src="{{ url_for('static', filename='img/search.png') }}" class="search-icon" alt="Rechercher">
+                  </button>
+              </form>
+          </div>
+        </div>
         </div>
           <div class="Catégorie">
             <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="categorieForm">

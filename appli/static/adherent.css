@@ -30,7 +30,7 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);  }
   
   .filtre {
-    margin: 0px 5%;
+    margin: 10px 3%;
     flex: 1; /* occupe l'espace disponible de manière égale */
     padding: 10px;
     text-align: start; 
@@ -162,6 +162,12 @@ td{
   margin-right: 3%;
 }
 
+.filtre{
+  display: flex;
+  align-items: center;
+}
+
+
 #searchInput {
   width: 100%;
   padding: 10px;
@@ -170,36 +176,43 @@ td{
   font-size: 16px;
   outline: none;
   transition: border-color 0.3s;
+  margin-right: 10px; /* droite du champ de recherche */
 }
 
 #searchInput:hover {
   border-color: #0074d9;
 }
 
-/* Vous pouvez également ajouter des styles pour le label de recherche si nécessaire */
-#searchForm label {
-  color: #333; /* Couleur du texte du label */
+
+#searchForm {
+  display: flex;
+  align-items: center;
 }
 
-/* Si vous souhaitez styliser le bouton de recherche (s'il y en a un) */
-#searchForm button {
-  background-color: #0074d9;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-left: 10px; /* Pour l'espacement entre la zone de texte et le bouton */
-}
-
-#searchForm button:hover {
-  background-color: #0056b3; /* Couleur au survol du bouton */
-}
 
 button{
   padding: 10px;
   border-radius: 8px;
-  background-color: var(--blue-escrime);
-  color: white;
+  color: white;}
+
+
+.ajoutadh{
+    background-color: var(--blue-escrime);
+    color: white;
+  }
+
+#searchForm label {
+  color: #333; 
+  margin-right: 10px; /* à droite du label */
+}
+
+.search-icon {
+  width: auto; 
+  height: 2em; 
+  margin-left: 10px; 
+  vertical-align: middle; 
+  border: black;
+  border: 1px solid black;
+  border-radius: 8px;
+
 }
