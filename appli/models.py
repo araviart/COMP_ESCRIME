@@ -22,8 +22,7 @@ class Arme(db.Model):
     idArme = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nomArme = db.Column(db.String(50), nullable=False)
 
-    def __init__(self, id_arme, nom_arme):
-        self._id_arme = id_arme
+    def __init__(self, nom_arme):
         self._nom_arme = nom_arme
 
 # Modèle pour représenter la saison
@@ -43,24 +42,22 @@ class Saison(db.Model):
 # Modèle pour représenter la catégorie
 class Categorie(db.Model):
     __tablename__ = 'CATEGORIE'
-    idCat = db.Column(db.Integer, primary_key=True)
-    nomCategorie = db.Column(db.String(50), nullable=False)
+    idCat = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nomCategorie = db.Column(db.String(50), nullable=False, unique=True)
     
-    def __init__(self, id_cat, nom_categorie):
-        self._id_cat = id_cat
-        self._nom_categorie = nom_categorie
+    def __init__(self, nom_categorie):
+        self._nomCategorie = nom_categorie
 
 # Modèle pour représenter le club
 class Club(db.Model):
     __tablename__ = 'CLUB'
-    idClub = db.Column(db.Integer, primary_key=True)
+    idClub = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nomClub = db.Column(db.String(50), nullable=False)
-    villeClub = db.Column(db.String(50), nullable=False)
+    regionClub = db.Column(db.String(50), nullable=False)
     
-    def __init__(self, id_club, nom_club, ville_club):
-        self._id_club = id_club
-        self._nom_club = nom_club
-        self._ville_club = ville_club
+    def __init__(self, nom_club, region_club):
+        self._nomClub = nom_club
+        self._regionClub = region_club
 
 # Modèle pour représenter la compétition
 class Competition(db.Model):
@@ -125,48 +122,43 @@ class TypeMatch(db.Model):
 # Modèle pour représenter l'escrimeur
 class Escrimeur(db.Model):
     __tablename__ = 'ESCRIMEUR'
-    idEscrimeur = db.Column(db.Integer, primary_key=True)
+    idEscrimeur = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idCat = db.Column(db.Integer, db.ForeignKey('CATEGORIE.idCat'), nullable=False)
     prenomE = db.Column(db.String(50), nullable=False)
     nomE = db.Column(db.String(50), nullable=False)
     dateNaissanceE = db.Column(db.Date, nullable=False)
     numeroLicenceE = db.Column(db.Integer, nullable=False)
     sexeE = db.Column(db.String(50), nullable=False)
-    numTelE = db.Column(db.Integer)
+    numTelE = db.Column(db.Integer, nullable=True)
 
     categorie = db.relationship('Categorie', backref='categorie')
 
-    def __init__(self, id_escrimeur, categorie, prenom_e, nom_e, date_naissance_e, numero_licence_e, sexe_e, num_tel_e):
-        self._id_escrimeur = id_escrimeur
-        self._categorie = categorie
-        self._prenom_e = prenom_e
-        self._nom_e = nom_e
-        self._date_naissance_e = date_naissance_e
-        self._numero_licence_e = numero_licence_e
-        self._sexe_e = sexe_e
-        self._num_tel_e = num_tel_e
+    def __init__(self, categorie, prenom_e, nom_e, date_naissance_e, numero_licence_e, sexe_e, num_tel_e):
+        self._idCat = categorie
+        self._prenomE = prenom_e
+        self._nomE = nom_e
+        self._dateNaissanceE = date_naissance_e
+        self._numeroLicenceE = numero_licence_e
+        self._sexeE = sexe_e
+        self._numTelE = num_tel_e
         
 # Modèle pour représenter les tireurs
 class Tireur(db.Model):
     __tablename__ = 'TIREUR'
-    idTireur = db.Column(db.Integer, primary_key=True)
+    idTireur = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idClub = db.Column(db.Integer, db.ForeignKey('CLUB.idClub'), nullable=False)
     classement = db.Column(db.Integer, nullable=False)
 
     club = db.relationship('Club', backref='Club.idClub')
 
-    def __init__(self, escrimeur, club, classement):
-        self._escrimeur = escrimeur
+    def __init__(self, club, classement):
         self._club = club
         self._classement = classement
         
 # Modèle pour représenter les arbitres
 class Arbitre(db.Model):
     __tablename__ = 'ARBITRE'
-    idArbitre = db.Column(db.Integer, primary_key=True)
-    
-    def __init__(self, escrimeur):
-        self._escrimeur = escrimeur
+    idArbitre = db.Column(db.Integer, primary_key=True, autoincrement=True)    
 
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
 class PratiquerArme(db.Model):
@@ -177,9 +169,9 @@ class PratiquerArme(db.Model):
     escrimeur = db.relationship('Escrimeur', backref='Escrimeur.idEscrimeur')
     arme = db.relationship('Arme', backref='arme')
     
-    def __init__(self, escrimeur, arme):
-        self._escrimeur = escrimeur
-        self._arme = arme
+    def __init__(self, idEscrimeur, idArme):
+        self._idEscrimeur = idEscrimeur
+        self._idArme = idArme
 
 # Modèle pour représenter le classement final
 class ClassementFinal(db.Model):
