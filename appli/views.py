@@ -47,3 +47,23 @@ def test_popup():
     return render_template(
         "test_popup.html",
         title="Test")
+
+@app.route('/ajouter_escrimeur', methods=['GET', 'POST'])
+def ajouter_escrimeur():
+    # sexes = db.session.query(Escrimeur.sexeE).distinct().all()
+    # sexes = [s[0] for s in sexes] 
+    if request.method == 'POST':
+        nom = request.form.get('nom')
+        prenom = request.form.get('prenom')
+        date_naissance = request.form.get('date_naissance')
+        numero_licence = request.form.get('numero_licence')
+        sexe = request.form.get('sexe')
+
+        # nouvel_escrimeur = Escrimeur(nomE=nom, prenomE=prenom, dateNaissanceE=date_naissance,
+        #                             numeroLicenceE=numero_licence, sexeE=sexe)
+
+        # db.session.add(nouvel_escrimeur)
+        # db.session.commit()
+
+        return redirect(url_for('ajouter_escrimeur'))
+    return render_template('test_popup.html')

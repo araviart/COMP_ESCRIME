@@ -1,24 +1,83 @@
-{% extends "base.html" %}
-{% block main %}
-<link rel="stylesheet" href="{{ url_for('static', filename='form.css')}}"> 
-  <form class="form-horizontal" role="form" method="POST" action="{{ url_for('login') }}">
-    {{ form.hidden_tag() }}
-    <div class="form-group">
-      <label for="username" class="col-sm-2 control-label">{{ form.username.label }}</label>
-      <div class="col-sm-10">
-        {{ form.username(size=50, class_="form-control", placeholder="Username") }}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='Login.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='variables.css') }}"
+    />
+    <link rel="stylesheet" href="../static/Login.css" />
+    <link rel="stylesheet" href="../static/variables.css" />
+    <link rel="stylesheet" href="../static/responsive-login.css" />
+  </head>
+  <body>
+    <form>
+      <div class="div-image-connexion">
+        <img
+        class="image-connexion"
+        src="../static/img/escrime_connexion.jpg"
+        alt="Image d'un tireur en competion"
+      />
       </div>
-    </div>
-    <div class="form-group">
-      <label for="password" class="col-sm-2 control-label">{{ form.password.label }}</label>
-      <div class="col-sm-10">
-        {{ form.password(size=50, class_="form-control", placeholder="Password") }}
+      <div class="partie-connexion">
+        <h1>Connectez-vous à votre compte</h1>
+        <div class="div-textfield">
+          <div class="email textfield-position">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              id="mail"
+              name="email"
+              required
+              minlength="4"
+              maxlength="8"
+              size="10"
+              placeholder="Ex : notreclub@gmail.com"
+            />
+          </div>
+          <div class="password textfield-position">
+            <label for="password">Mot de passe</label>
+            <input
+              type="password"
+              id="pass"
+              name="password"
+              minlength="8"
+              required
+              placeholder="Cliquez pour entrer votre mot de passe"
+            />
+          </div>
+        </div>
+        <div class="rester-forget-mdp">
+          <div class="rester-connecter">
+            <input
+              type="checkbox"
+              id="stay-connect"
+              name="stay-connect"
+              checked
+            />
+            <label for="stay-connect">Rester connecté</label>
+          </div>
+          <a class="forget-password" href="page-mdp-oublie"
+            >Mot de passe oublié ?</a
+          >
+        </div>
+        <div class="bouton-connexion">
+          <button id="bonton-se-connecter" type="button">Se connecter</button>
+        </div>
+        <div class="switch-to-inscription">
+          <p>
+            Toujours pas de compte ?
+            <a class="lien-switch-login-inscription" href="page-inscription"
+              >Inscrivez-vous</a
+            >
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">Sign in</button>
-      </div>
-    </div>
-  </form>
-{% endblock %}
+    </form>
+  </body>
+</html>
