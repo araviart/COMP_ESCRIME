@@ -69,6 +69,15 @@
               <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" id="eye" onclick="Func()"></span>
             </div>
           </div>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <ul>
+                {% for category, message in messages %}
+                  <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
         </div>
         <div class="rester-forget-mdp">
           <div class="rester-connecter">
