@@ -18,13 +18,11 @@ class LoginForm(FlaskForm):
         m.update(self.password.data.encode ())
         passwd = m. hexdigest ()
         return user if passwd == user.password else None
-    
-@app.route("/")
-def home():
-    return render_template(
-    "competitionsBS.html",
-    title="Compétions ESCRIME",
-    competitions=get_sample())
+
+@app.route('/')
+def home_default():
+    return home(5)
+
 
 @app.route("/login/", methods =("GET","POST",))
 def login():
@@ -69,22 +67,6 @@ def ajouter_escrimeur():
         return redirect(url_for('ajouter_escrimeur'))
     return render_template('test_popup.html')
 
-class LoginForm(FlaskForm):
-    username = StringField ("Username")
-    password = PasswordField("Password")
-    def get_authenticated_user (self ):
-        user = User.query.get(self.username.data)
-        if user is None:
-            return None
-        m = sha256 ()
-        m.update(self.password.data.encode ())
-        passwd = m. hexdigest ()
-        return user if passwd == user.password else None
-    
-@app.route('/')
-def home_default():
-    return home(5)
-
 
 @app.route('/home/<int:items>', methods=("GET","POST",))
 def home(items):
@@ -116,25 +98,5 @@ def home(items):
     selec_sexe=sexe,
     selec_statut=statut
 )
-@app.route("/login/", methods =("GET","POST",))
-def login():
-    f = LoginForm()
-    if f.validate_on_submit():
-        user = f.get_authenticated_user()
-        if user:
-            login_user(user)
-            return redirect(url_for("home"))
-    return render_template(
-        "login.html",
-        form=f)
-
-@app.route("/logout/")
-def logout ():
-    logout_user ()
-    return redirect(url_for("home"))
-
-@app.route("/test_popup/")
-def test_popup():
-    return render_template(
-        "test_popup.html",
-        title="Test")
+    
+    
