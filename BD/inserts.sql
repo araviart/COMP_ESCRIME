@@ -437,7 +437,7 @@ VALUES
     (6, 'Thomas', 'ZIPPER', '1980-10-16', 130002, 'M', null);
 
 -- -- Table TIREUR
-INSERT INTO TIREUR (idTireur, idClub, classement)
+INSERT INTO TIREUR (idEscrimeur, idClub, classement)
 VALUES
     (1, 4, 1),
     (2, 4, 2),
@@ -501,7 +501,7 @@ VALUES
     (60, 4, 10);
 
 -- -- Table ARBITRE
-INSERT INTO ARBITRE (idArbitre)
+INSERT INTO ARBITRE (idEscrimeur)
 VALUES
     (70),
     (71),
@@ -561,7 +561,7 @@ VALUES
     (125);
 
 -- PARTICIPANTS_COMPETITION
-INSERT INTO PARTICIPANTS_COMPETITION (idComp, idTireur)
+INSERT INTO PARTICIPANTS_COMPETITION (idTireur, idComp)
 VALUES
     (1, 1),  -- Compétition 1 avec le tireur 1
     (2, 1),  -- Compétition 1 avec le tireur 2
@@ -1072,25 +1072,26 @@ VALUES
 -- Table MATCH_POULE
 INSERT INTO MATCH_POULE (idTypeMatch, idPoule, idPiste, idArbitre, idTireur1, idTireur2, dateMatch, heureMatch, touchesRecuesTireur1, touchesDonneesTireur1, touchesRecuesTireur2, touchesDonneesTireur2)
 VALUES
-    (1, 1, 1, 1, 1, 8, '2024-04-15', '10:00:00'),
-    (1, 1, 1, 1, 2, 7, '2024-04-15', '10:30:00'),
-    (1, 1, 1, 1, 3, 6, '2024-04-15', '11:00:00'),
-    (1, 1, 1, 1, 4, 5, '2024-04-15', '11:30:00'),
+    (1, 1, 1, 1, 1, 8, '2024-04-15', '10:00:00', 0, 0, 0, 0),
+    (1, 1, 1, 1, 2, 7, '2024-04-15', '10:30:00', 0, 0, 0, 0),
+    (1, 1, 1, 1, 3, 6, '2024-04-15', '11:00:00', 0, 0, 0, 0),
+    (1, 1, 1, 1, 4, 5, '2024-04-15', '11:30:00', 0, 0, 0, 0),
 
-    (1, 2, 2, 2, 9, 16, '2024-04-15', '12:00:00'),
-    (1, 2, 2, 2, 10, 15, '2024-04-15', '12:30:00'),
-    (1, 2, 2, 2, 11, 14, '2024-04-15', '13:00:00'),
-    (1, 2, 2, 2, 12, 13, '2024-04-15', '13:30:00'),
+    (1, 2, 2, 2, 9, 16, '2024-04-15', '12:00:00', null, null, null, null),
+    (1, 2, 2, 2, 10, 15, '2024-04-15', '12:30:00', null, null, null, null),
+    (1, 2, 2, 2, 11, 14, '2024-04-15', '13:00:00', null, null, null, null),
+    (1, 2, 2, 2, 12, 13, '2024-04-15', '13:30:00', null, null, null, null),
 
-    (1, 3, 3, 3, 17, 24, '2024-04-15', '14:00:00'),
-    (1, 3, 3, 3, 18, 23, '2024-04-15', '14:30:00'),
-    (1, 3, 3, 3, 19, 22, '2024-04-15', '15:00:00'),
-    (1, 3, 3, 3, 20, 21, '2024-04-15', '15:30:00'),
+    (1, 3, 3, 3, 17, 24, '2024-04-15', '14:00:00', 0, 0, 0, 0),
+    (1, 3, 3, 3, 18, 23, '2024-04-15', '14:30:00', 0, 0, 0, 0),
+    (1, 3, 3, 3, 19, 22, '2024-04-15', '15:00:00', 0, 0, 0, 0),
+    (1, 3, 3, 3, 20, 21, '2024-04-15', '15:30:00', 0, 0, 0, 0),
 
-    (1, 4, 4, 4, 25, 32, '2024-04-15', '16:00:00'),
-    (1, 4, 4, 4, 26, 31, '2024-04-15', '16:30:00'),
-    (1, 4, 4, 4, 27, 30, '2024-04-15', '17:00:00'),
-    (1, 4, 4, 4, 28, 29, '2024-04-15', '17:30:00');
+    (1, 4, 4, 4, 25, 32, '2024-04-15', '16:00:00', 0, 0, 0, 0),
+    (1, 4, 4, 4, 26, 31, '2024-04-15', '16:30:00', 0, 0, 0, 0),
+    (1, 4, 4, 4, 27, 30, '2024-04-15', '17:00:00', 0, 0, 0, 0),
+    (1, 4, 4, 4, 28, 29, '2024-04-15', '17:30:00', 0, 0, 0, 0);
+
 
 -- Table FEUILLE_MATCH
 INSERT INTO FEUILLE_MATCH (idPoule, idComp, idTireur1, idTireur2, scoreTireur1, scoreTireur2)

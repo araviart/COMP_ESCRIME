@@ -94,24 +94,26 @@ CREATE OR REPLACE TABLE ESCRIMEUR(
 );
 
 CREATE OR REPLACE TABLE TIREUR(
-    idTireur INT NOT NULL,
+    idTireur INT NOT NULL AUTO_INCREMENT,
+    idEscrimeur INT NOT NULL UNIQUE,
     idClub INT NOT NULL,
     classement INT NOT NULL,
     PRIMARY KEY(idTireur),
-    FOREIGN KEY (idTireur) REFERENCES ESCRIMEUR(idEscrimeur),
+    FOREIGN KEY (idEscrimeur) REFERENCES ESCRIMEUR(idEscrimeur),
     FOREIGN KEY (idClub) REFERENCES CLUB(idClub)
 );
 
 CREATE OR REPLACE TABLE ARBITRE(
-    idArbitre INT NOT NULL,
+    idArbitre INT NOT NULL AUTO_INCREMENT,
+    idEscrimeur INT NOT NULL UNIQUE,
     PRIMARY KEY(idArbitre),
-    FOREIGN KEY (idArbitre) REFERENCES ESCRIMEUR(idEscrimeur)
+    FOREIGN KEY (idEscrimeur) REFERENCES ESCRIMEUR(idEscrimeur)
 );
 
 CREATE OR REPLACE TABLE PARTICIPANTS_COMPETITION(
-    idComp INT NOT NULL,
     idTireur INT NOT NULL,
-    PRIMARY KEY(idComp, idTireur),
+    idComp INT NOT NULL,
+    PRIMARY KEY(idTireur,idComp),
     FOREIGN KEY (idComp) REFERENCES COMPETITION(idComp),
     FOREIGN KEY (idTireur) REFERENCES TIREUR(idTireur)
 );
@@ -169,8 +171,14 @@ CREATE OR REPLACE TABLE MATCH_POULE(
     idPoule INT NOT NULL,
     idPiste INT NOT NULL,
     idArbitre INT NOT NULL,
+
+    -- First Tireur Information
     idTireur1 INT NOT NULL,
+    FOREIGN KEY (idTireur1) REFERENCES TIREUR(idTireur),
+    -- Second Tireur Information
     idTireur2 INT NOT NULL,
+    
+    FOREIGN KEY (idTireur2) REFERENCES TIREUR(idTireur),
     dateMatch DATE NOT NULL,
     heureMatch TIME NOT NULL,
     touchesRecuesTireur1 INT,
@@ -181,9 +189,7 @@ CREATE OR REPLACE TABLE MATCH_POULE(
     FOREIGN KEY (idPoule) REFERENCES POULE(idPoule),
     FOREIGN KEY (idPiste) REFERENCES PISTE(idPiste),
     FOREIGN KEY (idTypeMatch) REFERENCES TYPE_MATCH(idTypeMatch),
-    FOREIGN KEY (idArbitre) REFERENCES POULE(idArbitre),
-    FOREIGN KEY (idTireur1) REFERENCES TIREUR(idTireur),
-    FOREIGN KEY (idTireur2) REFERENCES TIREUR(idTireur)
+    FOREIGN KEY (idArbitre) REFERENCES POULE(idArbitre)
 );
 
 CREATE OR REPLACE TABLE FEUILLE_MATCH(
