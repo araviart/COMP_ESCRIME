@@ -2,44 +2,52 @@ from .app import app
 from flask import render_template, url_for, redirect, request
 from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions
 from flask_wtf import FlaskForm
+from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
 from hashlib import sha256
 from flask_login import login_user, logout_user
 
-
 class LoginForm(FlaskForm):
-    username = StringField ("Username")
-    password = PasswordField("Password")
-    def get_authenticated_user (self ):
-        user = User.query.get(self.username.data)
+    email = StringField('email', validators=[DataRequired()])
+    password = PasswordField('password', validators=[DataRequired()])
+
+    def get_authenticated_user(self):
+        user = User.query.filter_by(emailUser=self.email.data).first()
         if user is None:
             return None
-        m = sha256 ()
-        m.update(self.password.data.encode ())
-        passwd = m. hexdigest ()
-        return user if passwd == user.password else None
 
-@app.route('/')
+        m = sha256()
+        m.update(self.password.data.encode())
+        passwd = m.hexdigest()
+        print(passwd)
+        print(user.mdpUser)
+        return user if passwd == user.mdpUser else None
+    
+@app.route('/home/')
 def home_default():
     return home(5)
 
+@app.route("/")
+def home():
+    return render_template("Login.html")
 
-@app.route("/login/", methods =("GET","POST",))
+@app.route("/login/", methods=["GET", "POST"])
 def login():
     f = LoginForm()
-    if f.validate_on_submit():
-        user = f.get_authenticated_user()
-        if user:
-            login_user(user)
-            return redirect(url_for("home"))
-    return render_template(
-        "login.html",
-        form=f)
+    user = f.get_authenticated_user()
+    if user:
+        login_user(user)
+        return redirect(url_for("home_default"))
+    return render_template("Login.html", form=f)
 
 @app.route("/logout/")
 def logout ():
     logout_user ()
     return redirect(url_for("home"))
+
+@app.route("/ajout-comp")
+def ajout_comp_page():
+    return render_template("ajout-comp.html")
 
 @app.route("/test_popup/")
 def test_popup():
@@ -98,5 +106,3 @@ def home(items):
     selec_sexe=sexe,
     selec_statut=statut
 )
-    
-    
