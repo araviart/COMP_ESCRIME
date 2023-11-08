@@ -25,7 +25,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
     background-color: white; /* répartir les sous-menus horizontalement */
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);  }
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+  }
   
   .filtre {
     margin: 0px 5%;
@@ -50,14 +51,16 @@
   .competition-container {
     margin: 2em auto 0;
     min-height: 30vw;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
-    background: white;
+    display: flex;
+    flex-direction: column;
 
 }
 
 .competition-container table {
   border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
 }
 
 .title{
@@ -66,7 +69,11 @@
   border-radius: 8px 8px 0 0;
   color: whitesmoke;
   text-align: center; 
-  border-radius: 15px;
+}
+
+.top-section{
+  display: flex;
+  justify-content: space-between;
 }
 
 th
@@ -141,4 +148,20 @@ th{
 
 td{
   font-size: 16px;
+}
+
+.pagination{
+text-align: center;
+}
+
+.left, .right{
+  margin: 1em;
+  color: var(--gris-arbitre);
+}
+
+.page p{
+  background-color: var(--blue-escrime);
+  color: white;
+  border-radius: 8px;
+  padding: 4px;
 }
