@@ -59,9 +59,9 @@
         <div class="affichage">
           <ul>
             <li><p>Affichage : </p></li>
-            <a class="item-link {% if items == 5 %}active-link{% endif %}" href="{{ url_for('home', items=5) }}">5</a>
-            <a class="item-link {% if items == 10 %}active-link{% endif %}" href="{{ url_for('home', items=10) }}">10</a>
-            <a class="item-link {% if items == 25 %}active-link{% endif %}" href="{{ url_for('home', items=25) }}">25</a>
+            <a class="item-link {% if items == 5 %}active-link{% endif %}" href="{{ url_for('home_default', items=5) }}">5</a>
+            <a class="item-link {% if items == 10 %}active-link{% endif %}" href="{{ url_for('home_default', items=10) }}">10</a>
+            <a class="item-link {% if items == 25 %}active-link{% endif %}" href="{{ url_for('home_default', items=25) }}">25</a>
           </ul>
         </div>
         <table>
