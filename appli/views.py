@@ -60,9 +60,7 @@ def liste_adherents(items):
 
 
     
-@app.route('/ok')
-def home_default():
-    return home(5)
+
 
 
 @app.route('/home/<int:items>', methods=("GET","POST",))
@@ -202,3 +200,10 @@ def ajouter_escrimeur():
 
         return redirect(url_for('ajouter_escrimeur'))
     return render_template('test_popup.html')
+
+
+@app.route('/gestion_poules/', methods=("GET","POST",))
+def gestion_poules():
+    return render_template(
+        "gestion_poules.html",
+        title="Gestion des poules")

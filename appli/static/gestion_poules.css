@@ -28,8 +28,26 @@
     justify-content: space-between;
 }
 
+.auto{
+    flex-basis: 30%;
+}
+
+.manuel{
+    flex-grow: 1;
+}
+
+
 .type-reglage-manuel {
     display: flex;
+}
+
+.equilibrer-tireur{
+   flex-basis: 30%; 
+}
+
+.nombre-poules{
+    display: flex;
+    flex-basis: 40%;
 }
 
 .labels {
