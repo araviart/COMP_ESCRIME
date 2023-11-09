@@ -85,7 +85,6 @@
               type="checkbox"
               id="stay-connect"
               name="stay-connect"
-              checked
             />
             <label for="stay-connect">Rester connecté</label>
           </div>
@@ -101,7 +100,7 @@
         <div class="switch-to-inscription">
           <p>
             Toujours pas de compte ?
-            <a class="lien-switch-login-inscription" href="page-inscription"
+            <a class="lien-switch-login-inscription" href="{{ url_for('inscription') }}"
               >Inscrivez-vous</a
             >
           </p>

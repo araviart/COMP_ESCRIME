@@ -342,6 +342,10 @@ def get_armes():
     armes = Arme.query.all()
     return [arme.nomArme for arme in armes]
 
+def get_type_match():
+    type_match = TypeMatch.query.all()
+    return [type_match.nomTypeMatch for type_match in type_match]
+
 def get_nb_participants(id_tournoi):
     participants_count = ParticipantsCompetition.query.join(Competition).filter(Competition.idComp == id_tournoi).count()
     return participants_count
