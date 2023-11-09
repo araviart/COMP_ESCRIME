@@ -70,7 +70,8 @@
               <th>Prenom</th>
               <th>Nom</th>
               <th>Date Naissance</th>
-              <th>Categorie</th>
+              <th>Catégorie</th>
+              <th>Licence</th>
               <th>SexeE</th>
               <th>Classement</th>
               <th></th>
@@ -82,12 +83,13 @@
               <td>{{ adherent.prenomE }}</td>
               <td>{{ adherent.nomE }}</td>
               <td>{{ adherent.dateNaissanceE }}</td>
-              <td>{{ adherent.categorie }}</td>
+              <td>{{ adherent.nomCategorie }}</td>
+              <td>{{ adherent.numeroLicenceE }}</td>
               <td>{{ adherent.sexeE }}</td>
               <td><a href="#" class="consulter">Consulter</a></td>
             </tr>
             <div class = "ligne"></div>
-            {% endfor %}
+            {% endfor %}s
           </tbody>
         </table>
       </div>

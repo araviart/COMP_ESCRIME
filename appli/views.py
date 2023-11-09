@@ -29,7 +29,7 @@ def adherent_default():
 def liste_adherents(items):
     adherents = get_adherents()
     categories = get_categories()
-    adherents = adherents[:items]
+    # adherents = adherents[:items]
 
     if request.method == "POST":
         search_query = request.form.get('search')

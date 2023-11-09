@@ -315,8 +315,10 @@ def get_sample():
     return Competition.query.order_by(Competition.dateComp.desc()).all()
 
 def get_adherents():
-    return Tireur.query.join(Club).filter(Club.nomClub == "Club Blois").all()
-
+    res =  db.session.query(Tireur, Escrimeur, Categorie).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.idTireur).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "Club Blois").add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    print(res)
+    return res
+    
 def get_categories():
     categories = Categorie.query.all()
     return [categorie.nomCategorie for categorie in categories]
