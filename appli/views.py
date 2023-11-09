@@ -1,7 +1,7 @@
 from .app import app, db
 import math
 from flask import render_template, url_for, redirect, request, flash
-from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent
+from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
@@ -141,23 +141,28 @@ def edit_user(name):
 
 @app.route('/ajouter_escrimeur', methods=['GET', 'POST'])
 def ajouter_escrimeur():
-    # sexes = db.session.query(Escrimeur.sexeE).distinct().all()
-    # sexes = [s[0] for s in sexes] 
     if request.method == 'POST':
-        nom = request.form.get('nom')
-        prenom = request.form.get('prenom')
-        date_naissance = request.form.get('date_naissance')
-        numero_licence = request.form.get('numero_licence')
-        sexe = request.form.get('sexe')
+        id = dernier_escrimeur_id()
 
-        # nouvel_escrimeur = Escrimeur(nomE=nom, prenomE=prenom, dateNaissanceE=date_naissance,
-        #                             numeroLicenceE=numero_licence, sexeE=sexe)
+        #recup donnees du formulaire
+        nom = request.form['nom_e']
+        prenom = request.form['prenom_e']
+        date_naissance = request.form['date_naissance_e']
+        numero_licence = request.form['numero_licence_e']
+        sexe = request.form['sexeE']
+        num_tel = request.form['numTelE']
+        default_cat =s
+        print(id)
+        print(nom)
+        print(prenom)
+        print(date_naissance)
+        print(numero_licence)
 
-        # db.session.add(nouvel_escrimeur)
-        # db.session.commit()
-
-        return redirect(url_for('ajouter_escrimeur'))
-    return render_template('test_popup.html')
+        # creez un nouvel enregistrement d'adherent
+        nouvel_adherent = Escrimeur(id_escrimeur=id, categorie=1, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, numero_licence_e=numero_licence, sexe_e=sexe, num_tel_e=num_tel)
+        db.session.add(nouvel_adherent)
+        db.session.commit()
+        return redirect(url_for('liste_adherents_def'))
 
 
 @app.route('/')

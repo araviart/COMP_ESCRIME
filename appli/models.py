@@ -136,7 +136,6 @@ class Escrimeur(db.Model):
     sexeE = db.Column(db.String(50), nullable=False)
     numTelE = db.Column(db.Integer)
 
-    categorie = db.relationship('Categorie', backref='categorie')
 
     def __init__(self, id_escrimeur, categorie, prenom_e, nom_e, date_naissance_e, numero_licence_e, sexe_e, num_tel_e):
         self._id_escrimeur = id_escrimeur
@@ -377,3 +376,10 @@ def get_adherents():
     res =  db.session.query(Tireur, Escrimeur, Categorie).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.idTireur).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "Club Blois").add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
     print(res)
     return res
+
+def dernier_escrimeur_id():
+    last_escrimeur = db.session.query(Escrimeur).order_by(Escrimeur.idEscrimeur.desc()).first()
+    if last_escrimeur:
+        return last_escrimeur.idEscrimeur
+    else:
+        return 0
