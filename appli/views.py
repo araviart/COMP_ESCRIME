@@ -1,51 +1,187 @@
 from .app import app
-from flask import render_template, url_for, redirect, request
-from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions
+from flask import flash, render_template, url_for, redirect, request
+from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent
 from flask_wtf import FlaskForm
+from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
 from hashlib import sha256
-from flask_login import login_user, logout_user
-
+from flask_login import login_user, logout_user, current_user
 
 class LoginForm(FlaskForm):
-    username = StringField ("Username")
-    password = PasswordField("Password")
-    def get_authenticated_user (self ):
-        user = User.query.get(self.username.data)
+    email = StringField('email', validators=[DataRequired()])
+    password = PasswordField('password', validators=[DataRequired()])
+
+    def get_authenticated_user(self):
+        user = User.query.filter_by(emailUser=self.email.data).first()
         if user is None:
             return None
         m = sha256 ()
         m.update(self.password.data.encode ())
         passwd = m. hexdigest ()
         return user if passwd == user.password else None
-
+    
+    
+    
 @app.route('/')
+def adherent_default():
+    return liste_adherents(5)    
+    
+    
+@app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
+def liste_adherents(items):
+
+    
+    adherents = get_adherents()
+    
+    categories = get_categories()
+    role = request.form.get('statut')
+    categorie = request.form.get('categorie')
+    sexe = request.form.get('sexe')
+    adherents = filtrer_adherent(adherents, categorie, sexe, role)
+
+    if request.method == "POST":
+        search_query = request.form.get('search')
+        # recherche les adhérents en fonction du nom ou prénom
+        if search_query:
+            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
+    adherents = adherents[:items]
+    
+
+
+    return render_template(
+        "liste-adherents.html",
+        title="Compétitions ESCRIME",
+        categories=categories,
+        selec_categorie=categorie,
+        selec_sexe=sexe,
+        selec_statut=role,
+        adherents=adherents,
+        items=items)
+
+
+    
+@app.route('/ok')
 def home_default():
     return home(5)
 
 
-@app.route("/login/", methods =("GET","POST",))
+@app.route('/home/<int:items>', methods=("GET","POST",))
+def home_def(items):
+    if request.method == "POST":
+        page = int(request.form.get('page', 1))
+        if 'next' in request.form:
+            page += 1
+        elif 'prev' in request.form:
+            page -= 1
+    else:
+        page = request.args.get('page', 1, type=int)
+    competitions = get_sample()
+    categories = get_categories()
+    armes = get_armes()
+    nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
+    competitions = competitions[:items]
+
+    # récupere les selection du from
+    categorie = request.form.get('categorie')
+    arme = request.form.get('arme')
+    sexe = request.form.get('sexe')
+    statut = request.form.get('statut')
+    # filtre pour les compet
+    compet_filtre = filtrer_competitions(competitions, categorie, arme, sexe, statut)
+    if len(compet_filtre) !=0:
+        competitions = compet_filtre[(page - 1) * items:page * items]
+    else:
+        competitions = []
+    print(categorie)
+    return render_template(
+    "competition.html",
+    title="Compétitions ESCRIME",
+    competitions=competitions,  # Pass the paginated competitions, not compet_filtre
+    categories=categories,
+    armes=armes,
+    nb_participants=nb_participants,
+    items=items,
+    selec_arme=arme,
+    selec_categorie=categorie,
+    selec_sexe=sexe,
+    selec_statut=statut,
+    page=page,
+    compet_filtre = compet_filtre
+)
+  
+class EditUserForm(FlaskForm):
+    passwd = PasswordField("Nouveau mot de passe")
+    confirm = PasswordField("Confirmez le nouveau mot de passe")
+    username = StringField("Pseudonyme actuelle")
+    password = PasswordField("Mot de passe actuelle")
+
+@app.route("/")
+def home():
+    return render_template("Login.html")
+
+@app.route("/login/", methods=["GET", "POST"])
 def login():
     f = LoginForm()
-    if f.validate_on_submit():
-        user = f.get_authenticated_user()
-        if user:
-            login_user(user)
-            return redirect(url_for("home"))
-    return render_template(
-        "login.html",
-        form=f)
+    user = f.get_authenticated_user()
+    if user:
+        login_user(user)
+        return redirect(url_for("home_default"))
+    else:
+        flash("Mot de passe incorrect", "error")
+    return render_template("Login.html", form=f)
 
 @app.route("/logout/")
 def logout ():
     logout_user ()
     return redirect(url_for("home"))
 
+@app.route('/home/')
+def home_default():
+    return home_def(5)
+
+@app.route("/ajout-comp")
+def ajout_comp_page():
+    return render_template("ajout-comp.html")
+
 @app.route("/test_popup/")
 def test_popup():
     return render_template(
         "test_popup.html",
         title="Test")
+
+@app.route("/edit-user/<name>", methods=("GET","POST",))
+def edit_user(name):
+    form = EditUserForm()
+    if not current_user.is_authenticated:
+        next = "edit_user"
+        return redirect(url_for("login", next=next))
+
+    if form.validate_on_submit():
+        user = User.query.get(name)
+
+        if user.username != form.username.data:
+            form.username.errors.append("Pseudonyme erreur")
+            return render_template("edit-user.html", form=form)
+
+        if form.newpsswd.data != form.confirm.data:
+            form.confirm.errors.append("Les mots de passe ne correspondent pas")
+            return render_template("edit-user.html", form=form)
+
+        password_hash = sha256()
+        password_hash.update(form.password.data.encode())
+
+        if user.password != password_hash.hexdigest():
+            form.password.errors.append("Mot de passe incorrect")
+            return render_template("edit-user.html", form=form)
+
+        new_password_hash = sha256()
+        new_password_hash.update(form.newpsswd.data.encode())
+
+        user.password = new_password_hash.hexdigest()
+        db.session.commit()
+
+        return redirect(url_for("home"))
+    return render_template("edit-user.html", form=form, name=name)
 
 @app.route('/ajouter_escrimeur', methods=['GET', 'POST'])
 def ajouter_escrimeur():
@@ -66,41 +202,3 @@ def ajouter_escrimeur():
 
         return redirect(url_for('ajouter_escrimeur'))
     return render_template('test_popup.html')
-
-
-@app.route('/home/<int:items>', methods=("GET","POST",))
-def home(items):
-    competitions = get_sample()
-    categories = get_categories()
-    armes = get_armes()
-    nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
-
-    # récupere les selection du from
-    categorie = request.form.get('categorie')
-    arme = request.form.get('arme')
-    sexe = request.form.get('sexe')
-    statut = request.form.get('statut')
-    print(sexe)
-
-    # filtre pour les compet
-    compet_filtre = filtrer_competitions(competitions, categorie, arme, sexe, statut)
-    print(categorie)
-    return render_template(
-    "competition.html",
-    title="Compétitions ESCRIME",
-    competitions=compet_filtre,
-    categories=categories,
-    armes=armes,
-    nb_participants=nb_participants,
-    items=items,
-    selec_arme=arme,
-    selec_categorie=categorie,
-    selec_sexe=sexe,
-    selec_statut=statut
-)
-    
-@app.route('/gestion_poules/', methods=("GET","POST",))
-def gestion_poules():
-    return render_template(
-        "gestion_poules.html",
-        title="Gestion des poules")

@@ -166,9 +166,24 @@ class Tireur(db.Model):
 class Arbitre(db.Model):
     __tablename__ = 'ARBITRE'
     idArbitre = db.Column(db.Integer, primary_key=True)
-    
+    idEscrimeur = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.idEscrimeur'))
+
     def __init__(self, escrimeur):
         self._escrimeur = escrimeur
+        
+
+# Modèle pour représenter les participants aux compétitions
+class ParticipantsCompetition(db.Model):
+    __tablename__ = 'PARTICIPANTS_COMPETITION'
+    idTireur = db.Column(db.Integer, db.ForeignKey('TIREUR.idTireur'), primary_key=True)
+    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
+
+    tireur = db.relationship('Tireur', backref='PartTireur.idTireur')
+    competition = db.relationship('Competition', backref='PartCompetition.idComp')
+    
+    def __init__(self, tireur, competition):
+        self._tireur = tireur
+        self._competition = competition
 
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
 class PratiquerArme(db.Model):
@@ -314,6 +329,11 @@ def load_user(username):
 def get_sample():
     return Competition.query.order_by(Competition.dateComp.desc()).all()
 
+def get_adherents():
+    res =  db.session.query(Tireur, Escrimeur, Categorie, Arbitre).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.idTireur).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).outerjoin(Arbitre, Arbitre.idEscrimeur == Escrimeur.idEscrimeur).filter(Club.nomClub == "Club Blois").add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    print(res)
+    return res
+
 def get_categories():
     categories = Categorie.query.all()
     return [categorie.nomCategorie for categorie in categories]
@@ -323,7 +343,7 @@ def get_armes():
     return [arme.nomArme for arme in armes]
 
 def get_nb_participants(id_tournoi):
-    participants_count = ParticipantsPoule.query.join(Poule).join(Competition).filter(Competition.idComp == id_tournoi).count()
+    participants_count = ParticipantsCompetition.query.join(Competition).filter(Competition.idComp == id_tournoi).count()
     return participants_count
 
 def filtrer_competitions(competitions, categorie, arme, sexe, statut):
@@ -340,3 +360,15 @@ def filtrer_competitions(competitions, categorie, arme, sexe, statut):
         elif statut == "Terminé":
             comp_filtrer = [comp for comp in comp_filtrer if comp.dateComp <= datetime.date.today()]
     return comp_filtrer
+
+def filtrer_adherent(adherents, categorie, sexeE, role):
+    adherents_filtrer = adherents 
+    if categorie:
+        adherents_filtrer = [adherent for adherent in adherents_filtrer if adherent.Categorie.nomCategorie == categorie]
+    if sexeE:
+        adherents_filtrer = [adherent for adherent in adherents_filtrer if adherent.Escrimeur.sexeE == sexeE]
+    # if role == 'tireur':
+    #     adherents_filtrer = [adherent for adherent in adherents_filtrer if adherent.Arbitre is None]
+    # elif role == 'arbitre':
+    #     adherents_filtrer = [adherent for adherent in adherents_filtrer if adherent.Arbitre is not None]
+    return adherents_filtrer

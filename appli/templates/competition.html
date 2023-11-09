@@ -5,14 +5,14 @@
 <section class="content">
   <h1>
     Liste des compétitions
-    <h1>
+  </h1>
       <section class="section-filtre">
         <div class="titre-filtre">
           <h2>FILTRE</h2>
         </div>
         <div class="filtre">
           <div class="Catégorie">
-            <form method="POST" action="{{ url_for('home', items=items) }}" id="categorieForm">
+            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="categorieForm">
                 <label for="categorieSelect">Catégorie:</label>
                 <select id="categorieSelect" name="categorie" onchange="document.getElementById('categorieForm').submit();">
                     <option value="">Toutes les catégories</option>
@@ -23,7 +23,7 @@
             </form>
         </div>
         <div class="Arme">
-            <form method="POST" action="{{ url_for('home', items=items) }}" id="armeForm">
+            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="armeForm">
                 <label for="categorieArme">Arme:</label>
                 <select id="categorieArme" name="arme" onchange="document.getElementById('armeForm').submit();">
                     <option value="">Non définie</option>
@@ -34,7 +34,7 @@
             </form>
         </div>
         <div class="Sexe">
-            <form method="POST" action="{{ url_for('home', items=items) }}" id="sexeForm">
+            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="sexeForm">
                 <label for="categorieSexe">Sexe:</label>
                 <select id="categorieSexe" name="sexe" onchange="document.getElementById('sexeForm').submit();">
                     <option value="">Non définie</option>
@@ -44,26 +44,31 @@
             </form>
         </div>
         <div class="Statut">
-            <form method="POST" action="{{ url_for('home', items=items) }}" id="statutForm">
+            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="statutForm">
                 <label for="categorieStatut">Statut:</label>
                 <select id="categorieStatut" name="statut" onchange="document.getElementById('statutForm').submit();">
                     <option value="">Non définie</option>
                     <option value="A venir" {% if "A venir" == selec_statut %}selected{% endif %}>A venir</option>
                     <option value="Terminé" {% if "Terminé" == selec_statut %}selected{% endif %}>Terminé</option>
-                </select>
-            </form>
-        </div>
-        </div>
-      </section>
+                  </select>
+                </form>
+              </div>
+            </div>
+          </section>
       <div class="competition-container">
+        <div class = "top-section">
         <div class="affichage">
           <ul>
             <li><p>Affichage : </p></li>
-            <a class="item-link {% if items == 5 %}active-link{% endif %}" href="{{ url_for('home', items=5) }}">5</a>
-            <a class="item-link {% if items == 10 %}active-link{% endif %}" href="{{ url_for('home', items=10) }}">10</a>
-            <a class="item-link {% if items == 25 %}active-link{% endif %}" href="{{ url_for('home', items=25) }}">25</a>
+            <a class="item-link {% if items == 5 %}active-link{% endif %}" href="{{ url_for('home_def', items=5) }}">5</a>
+            <a class="item-link {% if items == 10 %}active-link{% endif %}" href="{{ url_for('home_def', items=10) }}">10</a>
+            <a class="item-link {% if items == 25 %}active-link{% endif %}" href="{{ url_for('home_def', items=25) }}">25</a>
           </ul>
         </div>
+        <div class = "page">
+          <p>Page : {{ page }}</p>
+        </div>
+      </div>
         <table>
           <thead>
             <tr class="title">
@@ -97,8 +102,17 @@
             {% endfor %}
           </tbody>
         </table>
-      </div>
-      <section>{% endblock %}</section>
-    </h1>
-  </h1>
-</section>
+  </section>
+  <div class="pagination">
+    <form method="POST" action="{{ url_for('home_def', items=items)}}">
+      <input type="hidden" name="items" value="{{ items }}">
+      <input type="hidden" name="page" value="{{ page }}">
+      {% if page > 1 %}
+          <button type="submit" name="prev" class="left" value="prev">Page précédente</button>
+      {% endif %}
+      {% if compet_filtre|length > page * items %}
+          <button type="submit" name="next" class="right" value="next">Page suivante</button>
+      {% endif %}
+  </form>
+</div>
+  {% endblock %}
