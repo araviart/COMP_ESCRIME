@@ -104,3 +104,7 @@ input::placeholder {
 .lien-switch-login-inscription:hover {
   text-decoration: none;
 }
+
+.flash-error {
+  color: red;
+}
