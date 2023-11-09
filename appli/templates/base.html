@@ -10,9 +10,12 @@
     />
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='variables.css') }}" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='ajout-comp.css') }}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='responsive-creer-comp.css') }}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='gestion_poules.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='adherent.css')}}" />
-    <link rel="stylesheet" href="static/ajout-comp.css">
-    <link rel="stylesheet" href="static/responsive-creer-comp.css">
     <title>Compétition ESCRIME</title>
     {% endblock %}
   </head>
@@ -33,13 +36,9 @@
             <li><img src="{{ url_for('static', filename='img/Vector.png') }}" alt="Engrenage" /></li>
             {% if current_user.is_authenticated %}
             <li>
-<<<<<<< HEAD
               <a href="{{ url_for('edit_user', name=current_user.pseudoUser)}}"
                 >{{ current_user.pseudoUser }}</a
-=======
-              <a href=""
-                >{{ current_user.username }}</a
->>>>>>> origin/feature/liste-adherent
+
               >
             </li>
             <li>
