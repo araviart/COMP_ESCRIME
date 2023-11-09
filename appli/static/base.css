@@ -8,14 +8,13 @@
     font-size: 20px;
 }
 
-body{
+html{
     background-color: var(--bg);
 }
 
 header {
     background-color: var(--couleur-header);
     padding: 20px;
-    margin-bottom: 3%;
 }
 
 nav {

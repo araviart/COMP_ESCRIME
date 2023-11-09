@@ -1,6 +1,6 @@
-from .app import app
+from .app import app, db
 from flask import flash, render_template, url_for, redirect, request
-from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent
+from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, get_type_match
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
@@ -18,11 +18,11 @@ class LoginForm(FlaskForm):
         m = sha256 ()
         m.update(self.password.data.encode ())
         passwd = m. hexdigest ()
-        return user if passwd == user.password else None
+        return user if passwd == user.mdpUser else None
     
     
     
-@app.route('/')
+@app.route('/adherent/')
 def adherent_default():
     return liste_adherents(5)    
     
@@ -61,7 +61,7 @@ def liste_adherents(items):
 
     
 @app.route('/ok')
-def home_default():
+def home_default2():
     return home(5)
 
 
@@ -110,7 +110,7 @@ def home_def(items):
 )
   
 class EditUserForm(FlaskForm):
-    passwd = PasswordField("Nouveau mot de passe")
+    newpsswd = PasswordField("Nouveau mot de passe")
     confirm = PasswordField("Confirmez le nouveau mot de passe")
     username = StringField("Pseudonyme actuelle")
     password = PasswordField("Mot de passe actuelle")
@@ -119,13 +119,18 @@ class EditUserForm(FlaskForm):
 def home():
     return render_template("Login.html")
 
+@app.route("/inscription/")
+def inscription():
+    return render_template("Inscription.html")
+
 @app.route("/login/", methods=["GET", "POST"])
 def login():
     f = LoginForm()
     user = f.get_authenticated_user()
     if user:
         login_user(user)
-        return redirect(url_for("home_default"))
+        # return redirect(url_for("home_default"))
+        return redirect(url_for("ajout_comp_page"))
     else:
         flash("Mot de passe incorrect", "error")
     return render_template("Login.html", form=f)
@@ -141,7 +146,7 @@ def home_default():
 
 @app.route("/ajout-comp")
 def ajout_comp_page():
-    return render_template("ajout-comp.html")
+    return render_template("ajout-comp.html", listeArmes=get_armes(), listeCategories=get_categories(), listeTypeMatch=get_type_match())
 
 @app.route("/test_popup/")
 def test_popup():
@@ -157,9 +162,8 @@ def edit_user(name):
         return redirect(url_for("login", next=next))
 
     if form.validate_on_submit():
-        user = User.query.get(name)
-
-        if user.username != form.username.data:
+        user = current_user
+        if user.pseudoUser != form.username.data:
             form.username.errors.append("Pseudonyme erreur")
             return render_template("edit-user.html", form=form)
 
@@ -170,14 +174,14 @@ def edit_user(name):
         password_hash = sha256()
         password_hash.update(form.password.data.encode())
 
-        if user.password != password_hash.hexdigest():
+        if user.mdpUser != password_hash.hexdigest():
             form.password.errors.append("Mot de passe incorrect")
             return render_template("edit-user.html", form=form)
 
         new_password_hash = sha256()
         new_password_hash.update(form.newpsswd.data.encode())
 
-        user.password = new_password_hash.hexdigest()
+        user.mdpUser = new_password_hash.hexdigest()
         db.session.commit()
 
         return redirect(url_for("home"))
