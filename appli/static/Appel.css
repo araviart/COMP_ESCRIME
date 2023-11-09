@@ -67,6 +67,34 @@ thead th{
 }
 
 td{
-    padding: 1% 0% 1% 0%;
+    padding: 20px 0 20px 0;
 }
 
+.div-boutons{
+    display: flex;
+    color: black;
+    justify-content: space-between;
+}
+
+.tout-cocher{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 10%;
+    color: black;
+}
+
+.tout-cocher > p{
+    color: black;
+}
+
+.div-boutons button{
+    padding: .5% 2%;
+    cursor: pointer;
+    background-color: #01357E;
+    color: white;
+}
+
+.tout-cocher > p, .div-boutons button{
+    font-size: 24px;
+}   
