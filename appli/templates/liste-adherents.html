@@ -48,8 +48,8 @@
                 <label for="categorieStatut">Statut:</label>
                 <select id="categorieStatut" name="statut" onchange="document.getElementById('statutForm').submit();">
                     <option value="">Non définie</option>
-                    <option value="A venir" {% if "A venir" == selec_statut %}selected{% endif %}>A venir</option>
-                    <option value="Terminé" {% if "Terminé" == selec_statut %}selected{% endif %}>Terminé</option>
+                    <option value="Tireur" {% if "Tireur" == selec_statut %}selected{% endif %}>Tireur</option>
+                    <option value="Arbitre" {% if "Arbitre" == selec_statut %}selected{% endif %}>Arbitre</option>
                 </select>
             </form>
         </div>
@@ -73,7 +73,6 @@
               <th>Catégorie</th>
               <th>Licence</th>
               <th>SexeE</th>
-              <th>Classement</th>
               <th></th>
             </tr>
           </thead>

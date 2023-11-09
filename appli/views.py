@@ -1,6 +1,6 @@
 from .app import app
 from flask import render_template, url_for, redirect, request
-from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents
+from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from hashlib import sha256
@@ -27,19 +27,24 @@ def adherent_default():
     
 @app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
 def liste_adherents(items):
+
+    
     adherents = get_adherents()
+    
     categories = get_categories()
-    # adherents = adherents[:items]
+    role = request.form.get('statut')
+    categorie = request.form.get('categorie')
+    sexe = request.form.get('sexe')
+    adherents = filtrer_adherent(adherents, categorie, sexe, role)
 
     if request.method == "POST":
         search_query = request.form.get('search')
         # recherche les adhérents en fonction du nom ou prénom
         if search_query:
-            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.prenomE.lower() or search_query.lower() in adherent.nomE.lower()]
+            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
+    adherents = adherents[:items]
+    
 
-    statut = request.form.get('statut')
-    categorie = request.form.get('categorie')
-    sexe = request.form.get('sexe')
 
     return render_template(
         "liste-adherents.html",
@@ -47,7 +52,7 @@ def liste_adherents(items):
         categories=categories,
         selec_categorie=categorie,
         selec_sexe=sexe,
-        selec_statut=statut,
+        selec_statut=role,
         adherents=adherents,
         items=items)
 
