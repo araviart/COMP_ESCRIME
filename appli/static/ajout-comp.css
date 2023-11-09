@@ -21,6 +21,7 @@ main {
   background-color: #9a9a9a;
   text-decoration: none;
   padding: 1% 2% 1% 2%;
+  font-size: 15px;
 }
 
 .active-url {

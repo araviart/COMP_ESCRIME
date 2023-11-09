@@ -99,4 +99,8 @@ def home(items):
     selec_statut=statut
 )
     
-    
+@app.route('/gestion_poules/', methods=("GET","POST",))
+def gestion_poules():
+    return render_template(
+        "gestion_poules.html",
+        title="Gestion des poules")
