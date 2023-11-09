@@ -1,0 +1,19 @@
+.progress-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 3% 10% 3% 10%;
+    align-items: center;
+  }
+  
+  .progress-bar a {
+    color: white;
+    background-color: #9a9a9a;
+    text-decoration: none;
+    padding: 1% 2% 1% 2%;
+  }
+  
+  .active-url {
+    background-color: #01437c !important;
+  }
+  
