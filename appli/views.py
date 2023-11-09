@@ -8,31 +8,91 @@ from hashlib import sha256
 from flask_login import login_user, logout_user, current_user
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired()])
+    email_username = StringField('email_username', validators=[DataRequired()])
     password = PasswordField('password', validators=[DataRequired()])
 
     def get_authenticated_user(self):
-        user = User.query.filter_by(emailUser=self.email.data).first()
+        user = User.query.filter_by(emailUser=self.email_username.data).first()
         if user is None:
-            return None
+            user = User.query.filter_by(pseudoUser=self.email_username.data).first()
+            if user is None:
+                return None
         m = sha256 ()
         m.update(self.password.data.encode ())
         passwd = m. hexdigest ()
         return user if passwd == user.mdpUser else None
     
+class InscriptionForm(FlaskForm):
+    pseudo = StringField('pseudo', validators=[DataRequired()])
+    email = StringField('email', validators=[DataRequired()])
+    password = PasswordField('password', validators=[DataRequired()])
+    comfirm_password = PasswordField('comfirm_password', validators=[DataRequired()])
     
-    
+class EditUserForm(FlaskForm):
+    newpsswd = PasswordField("Nouveau mot de passe")
+    confirm = PasswordField("Confirmez le nouveau mot de passe")
+    username = StringField("Pseudonyme actuelle")
+    password = PasswordField("Mot de passe actuelle")
+
+@app.route("/")
+def home():
+    return render_template("Login.html")
+
+@app.route("/inscription-form/")
+def inscription_page():
+    return render_template("Inscription.html", form = InscriptionForm())
+
+@app.route("/inscription/", methods=["GET", "POST"])
+def inscription():
+    f = InscriptionForm()
+    if(User.query.filter_by(pseudoUser=f.pseudo.data).first() is not None or User.query.filter_by(emailUser=f.email.data).first() is not None or f.password.data != f.comfirm_password.data):
+        if(User.query.filter_by(pseudoUser=f.pseudo.data).first() is not None):
+            flash("Pseudo déjà utilisé", "error")
+        if(User.query.filter_by(emailUser=f.email.data).first() is not None):
+            flash("Email déjà utilisé", "error")
+        if(f.password.data != f.comfirm_password.data):
+            flash("Les mots de passe ne correspondent pas", "error")
+        return render_template("Inscription.html", form=f)
+    else:
+        m = sha256()
+        m.update(f.password.data.encode())
+        u = User(pseudoUser=f.pseudo.data , mdpUser=m.hexdigest(), emailUser=f.email.data)
+        db.session.add(u)
+        db.session.commit()
+        return redirect(url_for("home"))
+
+@app.route("/login/", methods=["GET", "POST"])
+def login():
+    f = LoginForm()
+    user = f.get_authenticated_user()
+    if user:
+        login_user(user)
+        # return redirect(url_for("home_default"))
+        return redirect(url_for("ajout_comp_page"))
+    else:
+        flash("Mot de passe incorrect", "error")
+    return render_template("Login.html", form=f)
+
+@app.route("/logout/")
+def logout ():
+    logout_user ()
+    return redirect(url_for("home"))
+
+@app.route('/home/')
+def home_default():
+    return home_def(5)
+
+@app.route("/ajout-comp")
+def ajout_comp_page():
+    return render_template("ajout-comp.html", listeArmes=get_armes(), listeCategories=get_categories(), listeTypeMatch=get_type_match())
+
 @app.route('/adherent/')
 def adherent_default():
     return liste_adherents(5)    
-    
-    
+      
 @app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
 def liste_adherents(items):
-
-    
     adherents = get_adherents()
-    
     categories = get_categories()
     role = request.form.get('statut')
     categorie = request.form.get('categorie')
@@ -46,8 +106,6 @@ def liste_adherents(items):
             adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
     adherents = adherents[:items]
     
-
-
     return render_template(
         "liste-adherents.html",
         title="Compétitions ESCRIME",
@@ -57,13 +115,6 @@ def liste_adherents(items):
         selec_statut=role,
         adherents=adherents,
         items=items)
-
-
-    
-@app.route('/ok')
-def home_default2():
-    return home(5)
-
 
 @app.route('/home/<int:items>', methods=("GET","POST",))
 def home_def(items):
@@ -108,45 +159,6 @@ def home_def(items):
     page=page,
     compet_filtre = compet_filtre
 )
-  
-class EditUserForm(FlaskForm):
-    newpsswd = PasswordField("Nouveau mot de passe")
-    confirm = PasswordField("Confirmez le nouveau mot de passe")
-    username = StringField("Pseudonyme actuelle")
-    password = PasswordField("Mot de passe actuelle")
-
-@app.route("/")
-def home():
-    return render_template("Login.html")
-
-@app.route("/inscription/")
-def inscription():
-    return render_template("Inscription.html")
-
-@app.route("/login/", methods=["GET", "POST"])
-def login():
-    f = LoginForm()
-    user = f.get_authenticated_user()
-    if user:
-        login_user(user)
-        # return redirect(url_for("home_default"))
-        return redirect(url_for("ajout_comp_page"))
-    else:
-        flash("Mot de passe incorrect", "error")
-    return render_template("Login.html", form=f)
-
-@app.route("/logout/")
-def logout ():
-    logout_user ()
-    return redirect(url_for("home"))
-
-@app.route('/home/')
-def home_default():
-    return home_def(5)
-
-@app.route("/ajout-comp")
-def ajout_comp_page():
-    return render_template("ajout-comp.html", listeArmes=get_armes(), listeCategories=get_categories(), listeTypeMatch=get_type_match())
 
 @app.route("/test_popup/")
 def test_popup():

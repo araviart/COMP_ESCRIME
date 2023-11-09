@@ -44,11 +44,11 @@
         <h1>Connectez-vous à votre compte</h1>
         <div class="div-textfield">
           <div class="email textfield-position">
-            <label for="email">Email</label>
+            <label for="email_username">Email ou Pseudonyme</label>
             <input
-              type="email"
-              id="mail"
-              name="email"
+              type="text"
+              id="email_username"
+              name="email_username"
               required
               minlength="4"
               size="10"
@@ -100,7 +100,7 @@
         <div class="switch-to-inscription">
           <p>
             Toujours pas de compte ?
-            <a class="lien-switch-login-inscription" href="{{ url_for('inscription') }}"
+            <a class="lien-switch-login-inscription" href="{{ url_for('inscription_page') }}"
               >Inscrivez-vous</a
             >
           </p>
