@@ -7,9 +7,10 @@ import os
 import csv
 
 @app.cli.command()
-@click.argument('filename')
+@click.argument('dirname')
 def loaddb(dirname):
     '''Creates the tables and populates them with data.'''
+    db.drop_all()
     # Create tables 
     db.create_all()
 
@@ -22,22 +23,24 @@ def loaddb(dirname):
             infos_arme_sex_cat = fichier_sans_extention.split("_")
             arme = infos_arme_sex_cat[1]
             sex = infos_arme_sex_cat[2]
-            categorie = infos_arme_sex_cat[3]
+            nom_categorie = infos_arme_sex_cat[3]
+            print(ajouter_arme(arme))
+            print(ajouter_categorie(nom_categorie))
             try:
-                with open(chemin_fichier, 'r', newline='', encoding='utf-8') as csvfile:
-                    reader = csv.DictReader(csvfile)
+                with open(chemin_fichier, 'r', newline='') as csvfile:
+                    reader = csv.DictReader(csvfile, delimiter=';')
                     for row in reader:
-                        infos = row.split(";")
-                        nom = infos[0]
-                        prenom = infos[1]
-                        date_naissance = infos[2]
-                        num_license = infos[3]
-                        region = infos[5]
-                        club = infos[6]
-                        points = infos[7]
-                        print(ajouter_arme(arme))
-                        print(ajouter_categorie(categorie))
+                        nom = row['nom']
+                        prenom = row['prenom']
+                        date_naissance = row['date naissance']
+                        num_license = row['adherent']
+                        region = row['comite regional']
+                        club = row['club']
+                        points = row['points']
                         print(ajouter_club(club, region))
+                        print(ajouter_escrimeur(nom_categorie, prenom, nom, date_naissance, num_license, sex, None))
+                        print(ajouter_tireur(num_license, club, points))
+                        print(pratiquer_arme(num_license, arme))
                 print(f"Les données du fichier {nom_fichier} ont été ajoutées à la base de données.")
 
             except Exception as e:
