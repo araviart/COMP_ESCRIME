@@ -1,11 +1,78 @@
 {% extends 'base.html' %} {% block styles %} {{ super() }}
 <link rel="stylesheet" href="{{ url_for('static', filename='adherent.css')}}" />
+<script src="{{ url_for('static', filename='js/script_popup.js') }}"></script>
 {% endblock %}
  {% block content %}
 <section class="content">
   <h2>
-    <button type="button" class ="ajoutadh" >AJOUTER UN ADHÉRENT</button> 
+    <button type="button" class="ajoutadh" onclick="showPopup()">AJOUTER UN ADHÉRENT</button> 
   </h2>
+  <div class="popup">
+    <form action="{{ url_for('ajouter_escrimeur') }}" method="POST">
+      <div class="container">
+          <div class="popup" id="popup">
+             <h1>AJOUT ADHERENT</h1> 
+                 <div class="content-popup">  
+                  <ul class = "uladdadh">
+                      <li>
+                          <div id="nom">
+                              <label for="nom">Nom :</label>
+                              <input type="text" id="nom" name="nom" required placeholder="Nom"><br>
+                          </div>
+                      </li>
+                      <li>
+                              <div id="prenom">
+                              <label for="prenom">Prénom :</label>
+                              <input type="text" id="prenom" name="prenom" required placeholder="Prénom"><br>
+                          </div>
+                      </li>
+                      <li>
+                          <div id="datenaissance">
+                              <label for="date_naissance">Date de naissance :</label>
+                              <input type="date" id="date_naissance" name="date_naissance" required><br>
+                          </div>
+                      </li>
+                      <li>
+                          <div id="numlicence"> 
+                              <label for="numero_licence">Numéro de licence :</label>
+                              <input type="text" id="numero_licence" name="numero_licence" required placeholder="Numéro de licence"><br>
+                          </div>
+                      </li>
+                      <li>
+                          <div id="sexe">
+                              <label for="categorieSexe">Sexe :</label>
+                              <select id="categorieSexe" name="sexeE">
+                                  <option value="homme">Homme</option>
+                                  <option value="femme">Femme</option>
+                              </select>
+                          </div>
+                      </li>
+                      <li>
+                          <div id ="classement">
+                              <label for="classementE">Classement (optionnel) : </label>
+                              <input type="text" id="classementE" name="classementE" required placeholder="Classement"><br>
+                          </div>
+                      </li>
+                      <li>
+                          <div id ="telephone">
+                              <label for="numTelE">Numéro de Téléphone :</label>
+                              <input type="text" id="numTelE" name="numTelE" placeholder="+33"><br>
+                          </div>
+                      </li>
+                      <li>
+                          <div id="boutons">
+                              <button type="submit">Annuler</button>
+                              <button type="submit">Ajouter</button>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+    </div>
+  </form>
+
+  </div>
       <section class="section-filtre">
         <div class="titre-filtre">
           <h2>FILTRE</h2>

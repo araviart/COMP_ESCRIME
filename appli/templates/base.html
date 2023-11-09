@@ -11,8 +11,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='variables.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='adherent.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='ajout_adherent.css')}}" />
     <link rel="stylesheet" href="static/ajout-comp.css">
     <link rel="stylesheet" href="static/responsive-creer-comp.css">
+    <script src="{{ url_for('static', filename='js/script_popup.js') }}"></script>
     <title>Compétition ESCRIME</title>
     {% endblock %}
   </head>
@@ -53,9 +55,11 @@
         </div>
       </nav>
     </header>
+    <div id="overlay" class="overlay"></div>
     {% block content %} 
     {% endblock %}
      {% block scripts %} {{
     bootstrap.load_js() }} {% endblock %}
   </body>
+  
 </html>
