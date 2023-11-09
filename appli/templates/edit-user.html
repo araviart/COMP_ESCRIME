@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<form class="form-horizontal" role="form" method="POST"
+<link rel="stylesheet" href="{{ url_for ('static', filename='formulaire-edit-user.css') }}">
+<div class="formulaire-center">
+    <img src="../static/img/image_5-removebg-preview.png" alt="">
+    <form class="form-horizontal" role="form" method="POST"
     action="{{ url_for('edit_user', name=current_user.pseudoUser) }}">
     {{ form.hidden_tag() }}
     {% if form.username.errors %}
@@ -21,7 +24,6 @@
             <div class="col-sm-10">
                 {{ form.username(size=50, class_="form-control",readonly="readonly", placeholder="Pseudonyme",
                 value=current_user.pseudoUser) }}
-                <a href=""><img src="{{ url_for('static', filename='img/edit.png') }}" alt="Edit" /></a>
             </div>
         </div>
 
@@ -79,4 +81,5 @@
                     </div>
                 </div>
 </form>
+</div>
 {% endblock %}
