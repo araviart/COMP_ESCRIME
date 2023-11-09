@@ -1,0 +1,218 @@
+
+
+#categorieSelect, #categorieArme, #categorieSexe, #categorieStatut {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#categorieSelect:hover, #categorieArme:hover,  #categorieSexe:hover, #categorieStatut:hover {
+  border-color: #0074d9;
+}
+
+#categorieSelect option, #categorieArme option,  #categorieSexe option, #categorieStatut option {
+  font-size: 12px;
+  background-color: #fff;
+  color: #333;
+}
+
+  .section-filtre {
+    border-radius: 8px;
+    background-color: rgb(226, 226, 226);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white; /* répartir les sous-menus horizontalement */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);  }
+  
+  .filtre {
+    margin: 10px 3%;
+    flex: 1; /* occupe l'espace disponible de manière égale */
+    padding: 10px;
+    text-align: start; 
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .titre-filtre {
+    width: 100%;
+    background-color: var(--couleur-header);
+    border-radius: 8px 8px 0 0;
+    color: whitesmoke;
+    text-align: center; 
+    text-align: left;
+    padding: 10px;
+  }
+
+  .competition-container {
+    margin: 2em auto 0;
+    min-height: 30vw;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    background: white;
+
+}
+
+.affichage{
+  background: var(--bg);
+}
+
+.competition-container table {
+  border-collapse: collapse;
+}
+
+.title{
+  width: 100%;
+  background-color: var(--couleur-header);
+  border-radius: 8px 8px 0 0;
+  color: whitesmoke;
+  text-align: center; 
+  border-radius: 15px;
+}
+
+.Catégorie, .Sexe, .Statut{
+  margin: 0 20px;}
+
+th
+{
+  padding: 20px; 
+}
+
+.consulter{
+  color: #01437C;
+}
+
+.competition-container table td {
+  text-align: center;
+}
+
+table{
+  width: 80vw;
+}
+
+.content{
+  width: 80vw;
+  margin: 0 auto;
+}
+
+h1{
+  margin-bottom: 10px;
+}
+
+.affichage ul{
+  display: flex;
+  align-items: center;
+
+}
+
+.affichage a{
+  font-size: 16px;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+
+.affichage ul li p{
+  
+color: black;}
+
+
+.competition-container table tr {
+  border-bottom: 1px solid #B0B0B0;
+}
+
+.competition-container table td, .competition-container table th {
+  padding: 20px 10px; 
+  text-align: center;
+}
+
+.item-link {
+  color: black;
+  padding: 5px 10px;
+  margin: 0.4em 0.4em;
+  background-color: var(--cadre-affichage);
+  border-radius: 8px;
+}
+
+.active-link {
+  background-color: var(--blue-escrime);
+  border-radius: 8px;
+  color: white;
+}
+
+th{
+    font-size: 20px;
+}
+
+td{
+  font-size: 16px;
+}
+
+
+.Catégorie, .Sexe, .Statut{
+  margin: 0 20px;
+}
+
+.search{
+  margin-right: 3%;
+}
+
+.filtre{
+  display: flex;
+  align-items: center;
+}
+
+
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  margin-right: 10px; /* droite du champ de recherche */
+}
+
+#searchInput:hover {
+  border-color: #0074d9;
+}
+
+
+#searchForm {
+  display: flex;
+  align-items: center;
+}
+
+
+button{
+  padding: 10px;
+  border-radius: 8px;
+  color: white;}
+
+
+.ajoutadh{
+    background-color: var(--blue-escrime);
+    color: white;
+  }
+
+#searchForm label {
+  color: #333; 
+  margin-right: 10px; /* à droite du label */
+}
+
+.search-icon {
+  width: auto; 
+  height: 2em; 
+  margin-left: 10px; 
+  vertical-align: middle; 
+  border: black;
+  border: 1px solid black;
+  border-radius: 8px;
+
+}
