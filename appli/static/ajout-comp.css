@@ -8,6 +8,7 @@ main {
   min-height: 100vh;
 }
 
+
 .center {
   display: flex;
   flex-wrap: wrap;
@@ -71,12 +72,12 @@ main {
 
 .bouton-annuler {
   text-align: start;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 .bouton-publier {
   text-align: end;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 .titre-formulaire {

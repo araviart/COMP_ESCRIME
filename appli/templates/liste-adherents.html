@@ -48,8 +48,13 @@
                 <label for="categorieStatut">Statut:</label>
                 <select id="categorieStatut" name="statut" onchange="document.getElementById('statutForm').submit();">
                     <option value="">Non définie</option>
+<<<<<<< HEAD
                     <option value="A venir" {% if "A venir" == selec_statut %}selected{% endif %}>A venir</option>
                     <option value="Terminé" {% if "Terminé" == selec_statut %}selected{% endif %}>Terminé</option>
+=======
+                    <option value="Tireur" {% if "Tireur" == selec_statut %}selected{% endif %}>Tireur</option>
+                    <option value="Arbitre" {% if "Arbitre" == selec_statut %}selected{% endif %}>Arbitre</option>
+>>>>>>> origin/feature/liste-adherent
                 </select>
             </form>
         </div>
@@ -70,9 +75,9 @@
               <th>Prenom</th>
               <th>Nom</th>
               <th>Date Naissance</th>
-              <th>Categorie</th>
+              <th>Catégorie</th>
+              <th>Licence</th>
               <th>SexeE</th>
-              <th>Classement</th>
               <th></th>
             </tr>
           </thead>
@@ -82,12 +87,13 @@
               <td>{{ adherent.prenomE }}</td>
               <td>{{ adherent.nomE }}</td>
               <td>{{ adherent.dateNaissanceE }}</td>
-              <td>{{ adherent.categorie }}</td>
+              <td>{{ adherent.nomCategorie }}</td>
+              <td>{{ adherent.numeroLicenceE }}</td>
               <td>{{ adherent.sexeE }}</td>
               <td><a href="#" class="consulter">Consulter</a></td>
             </tr>
             <div class = "ligne"></div>
-            {% endfor %}
+            {% endfor %}s
           </tbody>
         </table>
       </div>

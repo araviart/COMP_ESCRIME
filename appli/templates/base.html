@@ -10,9 +10,12 @@
     />
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='variables.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}" />
-    <link rel="stylesheet" href="static/ajout-comp.css">
-    <link rel="stylesheet" href="static/responsive-creer-comp.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='form-edit-user.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+    <link rel="stylesheet" href="{{ url_for ('static', filename='ajout-comp.css') }}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='responsive-creer-comp.css') }}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='gestion_poules.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='adherent.css')}}" />
     <title>Compétition ESCRIME</title>
     <script src="https://kit.fontawesome.com/b2318dca58.js" crossorigin="anonymous"></script>
     {% endblock %}
@@ -23,10 +26,10 @@
         <div id="left">
           <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" />
           <ul>
-            <li><a href="">Accueil</a></li>
-            <li><a href="">Ajouter un tournoi</a></li>
-            <li><a href="">Liste adhérents</a></li>
-            <li><a href="">Liste compétitions</a></li>
+            <li><a href="{{ url_for('home_default') }}">Accueil</a></li>
+            <li><a href="{{ url_for('ajout_comp_page') }}">Ajouter un tournoi</a></li>
+            <li><a href="{{ url_for('adherent_default') }}">Liste adhérents</a></li>
+            <li><a href="{{ url_for('home_default') }}">Liste compétitions</a></li>
           </ul>
         </div>
         <div id="right">
@@ -36,6 +39,7 @@
             <li>
               <a href="{{ url_for('edit_user', name=current_user.pseudoUser)}}"
                 >{{ current_user.pseudoUser }}</a
+
               >
             </li>
             <li>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../static/responsive-inscription.css" />
   </head>
   <body>
-    <form>
+    <form action="/inscription/" method="POST">
       <div class="div-image-inscription">
         <img
           class="image-inscription"
@@ -21,56 +21,118 @@
         <div class="partie-textfield">
           <div class="numero-licence textfield-position">
             <label for="email">Pseudonyme</label>
-            <input
-              type="text"
-              id="pseudoUt"
-              name="pseudo"
-              placeholder="Cliquez ici pour inscrire votre pseudonyme"
-            />
+            {% if not form.pseudo.data %}
+              <input
+                type="text"
+                id="pseudoUt"
+                name="pseudo"
+                required
+                value=""
+                placeholder="Cliquez ici pour inscrire votre pseudonyme"
+              />
+            {% else %}
+              <input
+                type="text"
+                id="pseudoUt"
+                name="pseudo"
+                required
+                value="{{ form.pseudo.data }}"
+                placeholder="Cliquez ici pour inscrire votre pseudonyme"
+              />
+            {% endif %}
+
           </div>
           <div class="email textfield-position">
             <label for="email">Email</label>
-            <input
-              type="text"
-              id="mail"
-              name="email"
-              required
-              minlength="4"
-              maxlength="8"
-              size="10"
-              placeholder="Ex : notreclub@gmail.com"
-            />
+            {% if not form.email.data %}
+              <input
+                type="text"
+                id="mail"
+                name="email"
+                required
+                minlength="4"
+                size="10"
+                value=""
+                placeholder="Ex : notreclub@gmail.com"
+              />
+            {% else %}
+              <input
+                type="text"
+                id="mail"
+                name="email"
+                required
+                minlength="4"
+                size="10"
+                value="{{ form.email.data }}"
+                placeholder="Ex : notreclub@gmail.com"
+              />
+            {% endif %}
           </div>
           <div class="password textfield-position">
             <label for="password">Mot de passe</label>
-            <input
-              type="password"
-              id="pass"
-              name="password"
-              minlength="8"
-              required
-              placeholder="Cliquez pour entrer votre mot de passe"
-            />
+            {% if not form.password.data %}
+              <input
+                type="password"
+                id="pass"
+                name="password"
+                minlength="8"
+                required
+                value=""
+                placeholder="Cliquez pour entrer votre mot de passe"
+              />
+            {% else %}
+              <input
+                type="password"
+                id="pass"
+                name="password"
+                minlength="8"
+                required
+                value="{{ form.password.data }}"
+                placeholder="Cliquez pour entrer votre mot de passe"
+              />
+            {% endif %}
           </div>
           <div class="password textfield-position">
             <label for="password">Confirmer mot de passe</label>
-            <input
-              type="password"
-              id="pass"
-              name="password"
-              minlength="8"
-              required
-              placeholder="Cliquez pour entrer votre mot de passe"
-            />
+            {% if not form.comfirm_password.data %}
+              <input
+                type="password"
+                id="pass"
+                name="comfirm_password"
+                minlength="8"
+                required
+                value=""
+                placeholder="Cliquez pour entrer votre mot de passe"
+              />
+            {% else %}
+              <input
+                type="password"
+                id="pass"
+                name="comfirm_password"
+                minlength="8"
+                required
+                value="{{ form.comfirm_password.data }}"
+                placeholder="Cliquez pour entrer votre mot de passe"
+              />
+            {% endif %}
           </div>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <ul>
+                {% for category, message in messages %}
+                  <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
         </div>
         <div class="bouton-inscription">
-          <button id="bonton-inscrire" type="button">S'inscrire</button>
+          <button id="bonton-inscrire" type="submit" name="submit">S'inscrire</button>
         </div>
         <div class="switch-to-inscription">
           <p>
             Déjà un compte ?
-            <a class="lien-switch-login-inscription" href="page-inscription"
+            <a class="lien-switch-login-inscription" href="{{ url_for('home') }}"
               >Connectez-vous</a
             >
           </p>

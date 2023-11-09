@@ -57,9 +57,9 @@
           <div class="combox-box comb-arme">
             <label for="arme">Arme</label>
             <select name="arme" id="arme">
-              <option value="fleuret">Fleuret</option>
-              <option value="sabre">Sabre</option>
-              <option value="epee">Epée</option>
+              {% for arme in listeArmes %}
+                <option value="{{ arme }}">{{ arme }}</option>
+              {% endfor %}
             </select>
           </div>
           <div class="combox-box comb-arme">
@@ -71,22 +71,18 @@
           </div>
           <div class="combox-box comb-cate">
             <label for="categorie">Catégorie</label>
-            <div class="double-combo-box">
-              <select name="categorie" id="sexe">
-                <option value="V1">V1</option>
-                <option value="V2">V2</option>
-              </select>
-              <select name="categorie" id="sexe">
-                <option value="U9">U9</option>
-                <option value="U11">U11</option>
-              </select>
-            </div>
+            <select name="categorie" id="sexe">
+              {% for categorie in listeCategories %}
+                <option value="{{ categorie }}">{{ categorie }}</option>
+              {% endfor %}
+            </select>
           </div>
           <div class="combox-box comb-type">
             <label for="type">Type</label>
             <select name="type" id="type">
-                <option value="Match Poule">Match Poule</option>
-                <option value="Match Elimination">Match Elimination</option>
+              {% for typeM in listeTypeMatch %}
+                <option value="{{ typeM }}">{{ typeM }}</option>
+              {% endfor %}
             </select>
           </div>
           
