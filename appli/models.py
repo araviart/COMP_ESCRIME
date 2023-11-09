@@ -361,7 +361,7 @@ def filtrer_competitions(competitions, categorie, arme, sexe, statut):
             comp_filtrer = [comp for comp in comp_filtrer if comp.dateComp <= datetime.date.today()]
     return comp_filtrer
 
-def filtrer_adherent(adherents, categorie, sexeE, role):
+def filtrer_adherent(adherents, categorie, sexeE):
     adherents_filtrer = adherents 
     if categorie:
         adherents_filtrer = [adherent for adherent in adherents_filtrer if adherent.Categorie.nomCategorie == categorie]
@@ -372,3 +372,8 @@ def filtrer_adherent(adherents, categorie, sexeE, role):
     # elif role == 'arbitre':
     #     adherents_filtrer = [adherent for adherent in adherents_filtrer if adherent.Arbitre is not None]
     return adherents_filtrer
+
+def get_adherents():
+    res =  db.session.query(Tireur, Escrimeur, Categorie).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.idTireur).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "Club Blois").add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    print(res)
+    return res

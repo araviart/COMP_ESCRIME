@@ -3,9 +3,9 @@
 {% endblock %}
  {% block content %}
 <section class="content">
-  <h1>
+  <h2>
     <button type="button" class ="ajoutadh" >AJOUTER UN ADHÉRENT</button> 
-    <h1>
+  </h2>
       <section class="section-filtre">
         <div class="titre-filtre">
           <h2>FILTRE</h2>
@@ -48,19 +48,15 @@
                 <label for="categorieStatut">Statut:</label>
                 <select id="categorieStatut" name="statut" onchange="document.getElementById('statutForm').submit();">
                     <option value="">Non définie</option>
-<<<<<<< HEAD
-                    <option value="A venir" {% if "A venir" == selec_statut %}selected{% endif %}>A venir</option>
-                    <option value="Terminé" {% if "Terminé" == selec_statut %}selected{% endif %}>Terminé</option>
-=======
                     <option value="Tireur" {% if "Tireur" == selec_statut %}selected{% endif %}>Tireur</option>
                     <option value="Arbitre" {% if "Arbitre" == selec_statut %}selected{% endif %}>Arbitre</option>
->>>>>>> origin/feature/liste-adherent
                 </select>
             </form>
         </div>
         </div>
       </section>
       <div class="competition-container">
+        <div class = "top">
         <div class="affichage">
           <ul>
             <li><p>Affichage : </p></li>
@@ -69,6 +65,10 @@
             <a class="item-link {% if items == 25 %}active-link{% endif %}" href="{{ url_for('liste_adherents', items=25) }}">25</a>
           </ul>
         </div>
+        <div class = "page">
+          <p>Page : {{ page }}/{{total_pages}}</p>
+        </div>
+      </div>
         <table>
           <thead>
             <tr class="title">
@@ -93,9 +93,21 @@
               <td><a href="#" class="consulter">Consulter</a></td>
             </tr>
             <div class = "ligne"></div>
-            {% endfor %}s
+            {% endfor %}
           </tbody>
         </table>
       </div>
-      <section>
+    </section>
+    <div class="pagination">
+      <form method="POST" action="{{ url_for('liste_adherents', items=items)}}">
+        <input type="hidden" name="items" value="{{ items }}">
+        <input type="hidden" name="page" value="{{ page }}">
+        {% if page != 1 %}
+          <button type="submit" name="prev" class="left" value="prev">Page précédente</button>
+        {% endif %}
+        {% if page != total_pages %}
+          <button type="submit" name="next" class="right" value="next">Page suivante</button>
+        {% endif %}
+      </form>
+    </div>
       {% endblock %}

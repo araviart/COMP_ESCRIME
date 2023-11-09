@@ -1,5 +1,6 @@
-from .app import app
-from flask import flash, render_template, url_for, redirect, request
+from .app import app, db
+import math
+from flask import render_template, url_for, redirect, request, flash
 from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
@@ -15,55 +16,11 @@ class LoginForm(FlaskForm):
         user = User.query.filter_by(emailUser=self.email.data).first()
         if user is None:
             return None
-        m = sha256 ()
-        m.update(self.password.data.encode ())
-        passwd = m. hexdigest ()
-        return user if passwd == user.password else None
-    
-    
-    
-@app.route('/')
-def adherent_default():
-    return liste_adherents(5)    
-    
-    
-@app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
-def liste_adherents(items):
 
-    
-    adherents = get_adherents()
-    
-    categories = get_categories()
-    role = request.form.get('statut')
-    categorie = request.form.get('categorie')
-    sexe = request.form.get('sexe')
-    adherents = filtrer_adherent(adherents, categorie, sexe, role)
-
-    if request.method == "POST":
-        search_query = request.form.get('search')
-        # recherche les adhérents en fonction du nom ou prénom
-        if search_query:
-            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
-    adherents = adherents[:items]
-    
-
-
-    return render_template(
-        "liste-adherents.html",
-        title="Compétitions ESCRIME",
-        categories=categories,
-        selec_categorie=categorie,
-        selec_sexe=sexe,
-        selec_statut=role,
-        adherents=adherents,
-        items=items)
-
-
-    
-@app.route('/ok')
-def home_default():
-    return home(5)
-
+        m = sha256()
+        m.update(self.password.data.encode())
+        passwd = m.hexdigest()
+        return user if passwd == user.mdpUser else None
 
 @app.route('/home/<int:items>', methods=("GET","POST",))
 def home_def(items):
@@ -79,13 +36,12 @@ def home_def(items):
     categories = get_categories()
     armes = get_armes()
     nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
-    competitions = competitions[:items]
-
     # récupere les selection du from
     categorie = request.form.get('categorie')
     arme = request.form.get('arme')
     sexe = request.form.get('sexe')
     statut = request.form.get('statut')
+    print(sexe)
     # filtre pour les compet
     compet_filtre = filtrer_competitions(competitions, categorie, arme, sexe, statut)
     if len(compet_filtre) !=0:
@@ -115,7 +71,7 @@ class EditUserForm(FlaskForm):
     username = StringField("Pseudonyme actuelle")
     password = PasswordField("Mot de passe actuelle")
 
-@app.route("/")
+@app.route("/ok")
 def home():
     return render_template("Login.html")
 
@@ -202,3 +158,51 @@ def ajouter_escrimeur():
 
         return redirect(url_for('ajouter_escrimeur'))
     return render_template('test_popup.html')
+
+
+@app.route('/')
+def liste_adherents_def():
+    return liste_adherents(5)
+  
+@app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
+def liste_adherents(items):
+    if request.method == "POST":
+        page = int(request.form.get('page', 1))
+        if 'next' in request.form:
+            page += 1
+        elif 'prev' in request.form:
+            page -= 1
+    else:
+        page = request.args.get('page', 1, type=int)
+
+    
+    adherents = get_adherents()
+    
+    categories = get_categories()
+    role = request.form.get('statut')
+    categorie = request.form.get('categorie')
+    sexe = request.form.get('sexe')
+    adherents = filtrer_adherent(adherents, categorie, sexe)
+    if request.method == "POST":
+        search_query = request.form.get('search')
+        # recherche les adhérents en fonction du nom ou prénom
+        if search_query:
+            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
+    if len(adherents) !=0:
+        total_pages = math.ceil(len(adherents) / items)
+        adherents = adherents[(page - 1) * items:page * items]
+    else:
+        adherents = []
+
+    
+    return render_template(
+        "liste-adherents.html",
+        title="Compétitions ESCRIME",
+        categories=categories,
+        selec_categorie=categorie,
+        selec_sexe=sexe,
+        selec_statut=role,
+        adherents=adherents,
+        items=items,
+        page=page,
+        total_pages=total_pages)
