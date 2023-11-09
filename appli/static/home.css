@@ -57,7 +57,7 @@
 
 }
 
-.competition-container table {
+.competition-container > table {
   border-collapse: collapse;
   background-color: white;
   border-radius: 8px;
@@ -85,11 +85,11 @@ th
   color: #01437C;
 }
 
-.competition-container table td {
+.competition-container > table td {
   text-align: center;
 }
 
-table{
+.table-liste-adherent{
   width: 80vw;
 }
 
@@ -120,11 +120,11 @@ h1{
 color: black;}
 
 
-.competition-container table tr {
+.competition-container > table tr {
   border-bottom: 1px solid #B0B0B0;
 }
 
-.competition-container table td, .competition-container table th {
+.competition-container > table td, .competition-container > table th {
   padding: 20px 10px; 
   text-align: center;
 }

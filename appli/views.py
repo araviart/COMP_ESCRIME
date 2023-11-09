@@ -72,7 +72,16 @@ class EditUserForm(FlaskForm):
 
 @app.route("/")
 def home():
-    return render_template("Login.html")
+    # Exemple de données à afficher dans chaque ligne
+    rows_data = [
+        {'Nom': 'Doe', 'Prenom': 'John', 'DateNaissance': '01/01/1990', 'Telephone': '07 86 97 48 35', 'Sexe': 'M', 'Club': 'Club A', 'Classement': 'A'},
+        {'Nom': 'Smith', 'Prenom': 'Alice', 'DateNaissance': '02/02/1995', 'Telephone': '07 86 97 48 35', 'Sexe': 'F', 'Club': 'Club B', 'Classement': 'B'},
+        {'Nom': 'Johnson', 'Prenom': 'Bob', 'DateNaissance': '03/03/1992', 'Telephone': '07 86 97 48 35', 'Sexe': 'M', 'Club': 'Club C', 'Classement': 'C'},
+        {'Nom': 'Williams', 'Prenom': 'Emma', 'DateNaissance': '04/04/1988', 'Telephone': '07 86 97 48 35', 'Sexe': 'F', 'Club': 'Club D', 'Classement': 'D'}
+    ]
+
+
+    return render_template('Appel.html', rows_data=rows_data)
 
 @app.route("/login/", methods=["GET", "POST"])
 def login():
