@@ -1,0 +1,100 @@
+{% extends 'base.html' %} {% block styles %} {{ super() }}
+{% endblock %}
+ {% block content %}
+<section class="content">
+  <h1>
+    <button type="button" class ="ajoutadh" >AJOUTER UN ADHÉRENT</button> 
+    <h1>
+      <section class="section-filtre">
+        <div class="titre-filtre">
+          <h2>FILTRE</h2>
+        </div>
+        <div class="filtre">
+          <div class="search">
+            <div class="search">
+              <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="searchForm">
+                  <input id="searchInput" name="search">
+                  <button type="submit" class="search-button">
+                      <img src="{{ url_for('static', filename='img/search.png') }}" class="search-icon" alt="Rechercher">
+                  </button>
+              </form>
+          </div>
+        </div>
+        </div>
+          <div class="Catégorie">
+            <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="categorieForm">
+                <label for="categorieSelect">Catégorie:</label>
+                <select id="categorieSelect" name="categorie" onchange="document.getElementById('categorieForm').submit();">
+                    <option value="">Toutes les catégories</option>
+                    {% for categorie in categories %}
+                    <option value="{{ categorie }}" {% if categorie == selec_categorie %}selected{% endif %}>{{ categorie }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+        <div class="Sexe">
+            <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="sexeForm">
+                <label for="categorieSexe">Sexe:</label>
+                <select id="categorieSexe" name="sexe" onchange="document.getElementById('sexeForm').submit();">
+                    <option value="">Non définie</option>
+                    <option value="H" {% if "Homme" == selec_sexe %}selected{% endif %}>Homme</option>
+                    <option value="F" {% if "Femme" == selec_sexe %}selected{% endif %}>Femme</option>
+                </select>
+            </form>
+        </div>
+        <div class="Statut">
+            <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="statutForm">
+                <label for="categorieStatut">Statut:</label>
+                <select id="categorieStatut" name="statut" onchange="document.getElementById('statutForm').submit();">
+                    <option value="">Non définie</option>
+<<<<<<< HEAD
+                    <option value="A venir" {% if "A venir" == selec_statut %}selected{% endif %}>A venir</option>
+                    <option value="Terminé" {% if "Terminé" == selec_statut %}selected{% endif %}>Terminé</option>
+=======
+                    <option value="Tireur" {% if "Tireur" == selec_statut %}selected{% endif %}>Tireur</option>
+                    <option value="Arbitre" {% if "Arbitre" == selec_statut %}selected{% endif %}>Arbitre</option>
+>>>>>>> origin/feature/liste-adherent
+                </select>
+            </form>
+        </div>
+        </div>
+      </section>
+      <div class="competition-container">
+        <div class="affichage">
+          <ul>
+            <li><p>Affichage : </p></li>
+            <a class="item-link {% if items == 5 %}active-link{% endif %}" href="{{ url_for('liste_adherents', items=5) }}">5</a>
+            <a class="item-link {% if items == 10 %}active-link{% endif %}" href="{{ url_for('liste_adherents', items=10) }}">10</a>
+            <a class="item-link {% if items == 25 %}active-link{% endif %}" href="{{ url_for('liste_adherents', items=25) }}">25</a>
+          </ul>
+        </div>
+        <table class="table-liste-adherent">
+          <thead>
+            <tr class="title">
+              <th>Prenom</th>
+              <th>Nom</th>
+              <th>Date Naissance</th>
+              <th>Catégorie</th>
+              <th>Licence</th>
+              <th>SexeE</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for adherent in adherents %}
+            <tr>
+              <td>{{ adherent.prenomE }}</td>
+              <td>{{ adherent.nomE }}</td>
+              <td>{{ adherent.dateNaissanceE }}</td>
+              <td>{{ adherent.nomCategorie }}</td>
+              <td>{{ adherent.numeroLicenceE }}</td>
+              <td>{{ adherent.sexeE }}</td>
+              <td><a href="#" class="consulter">Consulter</a></td>
+            </tr>
+            <div class = "ligne"></div>
+            {% endfor %}s
+          </tbody>
+        </table>
+      </div>
+      <section>
+      {% endblock %}

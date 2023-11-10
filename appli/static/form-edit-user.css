@@ -1,0 +1,8 @@
+.btn-valider-changements{
+    background-color: var(--bouton-confirmation-validation);
+    margin-top: 1rem;
+}
+
+.form-horizontal{
+    padding: 1% 5% 1% 5%;
+}

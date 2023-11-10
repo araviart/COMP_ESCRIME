@@ -50,11 +50,12 @@ def loaddb(dirname):
 @app.cli.command ()
 @click.argument("username")
 @click.argument("password")
-def newuser(username , password ):
+@click.argument("email")
+def newuser(username , password, email):
     '''Adds a new user.'''
     m = sha256()
     m.update(password.encode())
-    u = User(pseudoUser=username , mdpUser=m.hexdigest())
+    u = User(pseudoUser=username , mdpUser=m.hexdigest(), emailUser=email)
     db.session.add(u)
     db.session.commit()
 

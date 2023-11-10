@@ -1,3 +1,5 @@
+
+
 #categorieSelect, #categorieArme, #categorieSexe, #categorieStatut {
   width: 100%;
   padding: 10px;
@@ -25,11 +27,10 @@
     flex-wrap: wrap;
     justify-content: space-between;
     background-color: white; /* répartir les sous-menus horizontalement */
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
-  }
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);  }
   
   .filtre {
-    margin: 0px 5%;
+    margin: 10px 3%;
     flex: 1; /* occupe l'espace disponible de manière égale */
     padding: 10px;
     text-align: start; 
@@ -51,16 +52,18 @@
   .competition-container {
     margin: 2em auto 0;
     min-height: 30vw;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
-    display: flex;
-    flex-direction: column;
+    background: white;
 
 }
 
-.competition-container > table {
+.affichage{
+  background: var(--bg);
+}
+
+.competition-container table {
   border-collapse: collapse;
-  background-color: white;
-  border-radius: 8px;
 }
 
 .title{
@@ -69,12 +72,11 @@
   border-radius: 8px 8px 0 0;
   color: whitesmoke;
   text-align: center; 
+  border-radius: 15px;
 }
 
-.top-section{
-  display: flex;
-  justify-content: space-between;
-}
+.Catégorie, .Sexe, .Statut{
+  margin: 0 20px;}
 
 th
 {
@@ -85,11 +87,11 @@ th
   color: #01437C;
 }
 
-.competition-container > table td {
+.competition-container table td {
   text-align: center;
 }
 
-.table-liste-adherent{
+table{
   width: 80vw;
 }
 
@@ -120,11 +122,11 @@ h1{
 color: black;}
 
 
-.competition-container > table tr {
+.competition-container table tr {
   border-bottom: 1px solid #B0B0B0;
 }
 
-.competition-container > table td, .competition-container > table th {
+.competition-container table td, .competition-container table th {
   padding: 20px 10px; 
   text-align: center;
 }
@@ -151,18 +153,66 @@ td{
   font-size: 16px;
 }
 
-.pagination{
-text-align: center;
+
+.Catégorie, .Sexe, .Statut{
+  margin: 0 20px;
 }
 
-.left, .right{
-  margin: 1em;
-  color: var(--gris-arbitre);
+.search{
+  margin-right: 3%;
 }
 
-.page p{
-  background-color: var(--blue-escrime);
-  color: white;
+.filtre{
+  display: flex;
+  align-items: center;
+}
+
+
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  margin-right: 10px; /* droite du champ de recherche */
+}
+
+#searchInput:hover {
+  border-color: #0074d9;
+}
+
+
+#searchForm {
+  display: flex;
+  align-items: center;
+}
+
+
+button{
+  padding: 10px;
   border-radius: 8px;
-  padding: 4px;
+  color: white;}
+
+
+.ajoutadh{
+    background-color: var(--blue-escrime);
+    color: white;
+  }
+
+#searchForm label {
+  color: #333; 
+  margin-right: 10px; /* à droite du label */
+}
+
+.search-icon {
+  width: auto; 
+  height: 2em; 
+  margin-left: 10px; 
+  vertical-align: middle; 
+  border: black;
+  border: 1px solid black;
+  border-radius: 8px;
+
 }
