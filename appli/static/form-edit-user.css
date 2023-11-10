@@ -1,0 +1,33 @@
+.form-horizontal{
+    flex-basis: 75%;
+    width: 25%;
+    }
+    
+    .form-group{
+        margin: 3% 5%;
+    }
+    
+    .formulaire-center{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .formulaire-center > img{
+        margin-top: 5%;
+    }
+    
+    .form-control{
+        background-color: var(--couleur-fond-textfield);
+      border: none;
+      border-radius: 10px;
+      padding: 2%;
+      width: 95%;
+    }
+    
+    .col-sm-offset-2{
+        text-align: center;
+        margin-top: 10%;
+    }
