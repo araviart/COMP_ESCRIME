@@ -34,9 +34,17 @@ class EditUserForm(FlaskForm):
     username = StringField("Pseudonyme actuelle")
     password = PasswordField("Mot de passe actuelle")
 
-@app.route("/")
-def home():
-    return render_template("Login.html")
+@app.route("/appel/")
+def jenesaispas():
+    # Exemple de données à afficher dans chaque ligne
+    rows_data = [
+        {'Nom': 'Doe', 'Prenom': 'John', 'DateNaissance': '01/01/1990', 'Telephone': '123456789', 'Sexe': 'M', 'Club': 'Club A', 'Classement': 'A'},
+        {'Nom': 'Smith', 'Prenom': 'Alice', 'DateNaissance': '02/02/1995', 'Telephone': '987654321', 'Sexe': 'F', 'Club': 'Club B', 'Classement': 'B'},
+        {'Nom': 'Johnson', 'Prenom': 'Bob', 'DateNaissance': '03/03/1992', 'Telephone': '555555555', 'Sexe': 'M', 'Club': 'Club C', 'Classement': 'C'},
+        {'Nom': 'Williams', 'Prenom': 'Emma', 'DateNaissance': '04/04/1988', 'Telephone': '111111111', 'Sexe': 'F', 'Club': 'Club D', 'Classement': 'D'}
+    ]
+
+    return render_template('appel.html', rows_data=rows_data)
 
 @app.route("/inscription-form/")
 def inscription_page():
