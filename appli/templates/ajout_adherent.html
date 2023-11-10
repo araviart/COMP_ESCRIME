@@ -1,4 +1,4 @@
-<form action="{{ url_for('ajouter_escrimeur') }}" method="POST">
+<form action="/ajouter_escrimeur/" method="POST">
     <div class="container">
         <div class="popup" id="popup">
            <h1>AJOUT ADHERENT</h1> 
@@ -7,31 +7,31 @@
                     <li>
                         <div id="nom">
                             <label for="nom">Nom :</label>
-                            <input type="text" id="nom" name="nom" required placeholder="Nom"><br>
+                            <input type="text" id="nom" name="nom_e" required placeholder="Nom"><br>
                         </div>
                     </li>
                     <li>
                             <div id="prenom">
                             <label for="prenom">Prénom :</label>
-                            <input type="text" id="prenom" name="prenom" required placeholder="Prénom"><br>
+                            <input type="text" id="prenom" name="prenom_e" required placeholder="Prénom"><br>
                         </div>
                     </li>
                     <li>
                         <div id="datenaissance">
                             <label for="date_naissance">Date de naissance :</label>
-                            <input type="date" id="date_naissance" name="date_naissance" required><br>
+                            <input type="date" id="date_naissance" name="date_naissance_e" required><br>
                         </div>
                     </li>
                     <li>
                         <div id="numlicence"> 
                             <label for="numero_licence">Numéro de licence :</label>
-                            <input type="text" id="numero_licence" name="numero_licence" required placeholder="Numéro de licence"><br>
+                            <input type="text" id="numero_licence" name="numero_licence_e" required placeholder="Numéro de licence"><br>
                         </div>
                     </li>
                     <li>
                         <div id="sexe">
                             <label for="categorieSexe">Sexe :</label>
-                            <select id="categorieSexe" name="sexeE">
+                            <select id="categorieSexe" name="sexe_e">
                                 <option value="homme">Homme</option>
                                 <option value="femme">Femme</option>
                             </select>
@@ -39,8 +39,8 @@
                     </li>
                     <li>
                         <div id ="telephone">
-                            <label for="numTelE">Numéro de Téléphone :</label>
-                            <input type="text" id="numTelE" name="numTelE" placeholder="+33"><br>
+                            <label for="num_tel">Numéro de Téléphone :</label>
+                            <input type="text" id="num_tel" name="num_tel_e" placeholder="+33"><br>
                         </div>
                     </li>
                     <li>

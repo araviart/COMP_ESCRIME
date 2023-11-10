@@ -127,25 +127,25 @@ class TypeMatch(db.Model):
 # Modèle pour représenter l'escrimeur
 class Escrimeur(db.Model):
     __tablename__ = 'ESCRIMEUR'
-    idEscrimeur = db.Column(db.Integer, primary_key=True)
+    idEscrimeur = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idCat = db.Column(db.Integer, db.ForeignKey('CATEGORIE.idCat'), nullable=False)
     prenomE = db.Column(db.String(50), nullable=False)
     nomE = db.Column(db.String(50), nullable=False)
     dateNaissanceE = db.Column(db.Date, nullable=False)
     numeroLicenceE = db.Column(db.Integer, nullable=False)
-    sexeE = db.Column(db.String(50), nullable=False)
-    numTelE = db.Column(db.Integer)
+    sexeE = db.Column(db.String(1), nullable=False)
+    numTelE = db.Column(db.String(10), nullable=False)
 
+    def __init__(self, idEscrimeur, idCat, prenomE, nomE, dateNaissanceE, numeroLicenceE, sexeE, numTelE):
+        self.idEscrimeur = idEscrimeur
+        self.idCat = idCat
+        self.prenomE = prenomE
+        self.nomE = nomE
+        self.dateNaissanceE = dateNaissanceE
+        self.numeroLicenceE = numeroLicenceE
+        self.sexeE = sexeE
+        self.numTelE = numTelE
 
-    def __init__(self, id_escrimeur, categorie, prenom_e, nom_e, date_naissance_e, numero_licence_e, sexe_e, num_tel_e):
-        self._id_escrimeur = id_escrimeur
-        self._categorie = categorie
-        self._prenom_e = prenom_e
-        self._nom_e = nom_e
-        self._date_naissance_e = date_naissance_e
-        self._numero_licence_e = numero_licence_e
-        self._sexe_e = sexe_e
-        self._num_tel_e = num_tel_e
         
 # Modèle pour représenter les tireurs
 class Tireur(db.Model):
@@ -374,7 +374,6 @@ def filtrer_adherent(adherents, categorie, sexeE):
 
 def get_adherents():
     res =  db.session.query(Tireur, Escrimeur, Categorie).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.idTireur).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "Club Blois").add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
-    print(res)
     return res
 
 def dernier_escrimeur_id():

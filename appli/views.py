@@ -71,7 +71,7 @@ class EditUserForm(FlaskForm):
     username = StringField("Pseudonyme actuelle")
     password = PasswordField("Mot de passe actuelle")
 
-@app.route("/ok")
+@app.route("/")
 def home():
     return render_template("Login.html")
 
@@ -139,33 +139,41 @@ def edit_user(name):
         return redirect(url_for("home"))
     return render_template("edit-user.html", form=form, name=name)
 
-@app.route('/ajouter_escrimeur', methods=['GET', 'POST'])
+@app.route('/ajouter_escrimeur/', methods=['GET', 'POST'])
 def ajouter_escrimeur():
     if request.method == 'POST':
-        id = dernier_escrimeur_id()
+        id = dernier_escrimeur_id() + 1
+        print(id)
 
         #recup donnees du formulaire
         nom = request.form['nom_e']
-        prenom = request.form['prenom_e']
-        date_naissance = request.form['date_naissance_e']
-        numero_licence = request.form['numero_licence_e']
-        sexe = request.form['sexeE']
-        num_tel = request.form['numTelE']
-        default_cat =s
-        print(id)
         print(nom)
+        prenom = request.form['prenom_e']
         print(prenom)
+        date_naissance = request.form['date_naissance_e']
         print(date_naissance)
+        numero_licence = request.form['numero_licence_e']
+        numero_licence = int(numero_licence)
         print(numero_licence)
 
+        # sexe = request.form['sexe_e']
+        sexe = 'H'
+        print(sexe)
+        # num_tel = request.form['num_tel_e']
+        num_tel = '0648572519'
+        print(num_tel)
+        default_cat = 1
+        
         # creez un nouvel enregistrement d'adherent
-        nouvel_adherent = Escrimeur(id_escrimeur=id, categorie=1, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, numero_licence_e=numero_licence, sexe_e=sexe, num_tel_e=num_tel)
+        nouvel_adherent = Escrimeur(idEscrimeur=id, idCat=default_cat, prenomE=prenom, 
+                                nomE=nom, dateNaissanceE=date_naissance, 
+                                numeroLicenceE=numero_licence, sexeE=sexe, numTelE=num_tel)
         db.session.add(nouvel_adherent)
         db.session.commit()
         return redirect(url_for('liste_adherents_def'))
 
 
-@app.route('/')
+@app.route('/adherent/')
 def liste_adherents_def():
     return liste_adherents(5)
   

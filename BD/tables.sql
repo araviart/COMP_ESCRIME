@@ -88,7 +88,7 @@ CREATE OR REPLACE TABLE ESCRIMEUR(
     dateNaissanceE DATE NOT NULL,
     numeroLicenceE INT NOT NULL,
     sexeE VARCHAR(50) NOT NULL,
-    numTelE INT(10),
+    numTelE VARCHAR (10),
     PRIMARY KEY (idEscrimeur),
     FOREIGN KEY (idCat) REFERENCES CATEGORIE(idCat)
 );
