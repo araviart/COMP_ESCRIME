@@ -1,6 +1,6 @@
 from .app import app, db
 from flask import flash, render_template, url_for, redirect, request
-from .models import User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, get_type_match
+from .models import *
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
@@ -226,3 +226,13 @@ def ajouter_escrimeur():
 
         return redirect(url_for('ajouter_escrimeur'))
     return render_template('test_popup.html')
+
+@app.route('/')
+def home():
+    return render_template('Login.html')
+
+@app.route('/gestion_poules/<int:id_comp>', methods=["GET", "POST"])
+def gestion_poules(id_comp):
+    competition = Competition.query.get(id_comp)
+    if competition is not None:
+        return render_template('gestion_poules.html', id_comp=id_comp, competition=competition)

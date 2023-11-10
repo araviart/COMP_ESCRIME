@@ -80,12 +80,11 @@ class Competition(db.Model):
     sexeComp = db.Column(db.String(1), nullable=False)
     estIndividuelle = db.Column(db.Boolean, nullable=False)
     
-    def __init__(self, id_comp, lieu, saison, categorie, arme, nom_comp, desc_comp, date_comp, heure_comp, sexe_comp, est_individuelle):
-        self.idComp = id_comp
-        self.idLieu = lieu
-        self.idSaison = saison
-        self.idCategorie = categorie
-        self.idArme = arme
+    def __init__(self, id_lieu, id_saison, id_categorie, id_arme, nom_comp, desc_comp, date_comp, heure_comp, sexe_comp, est_individuelle):
+        self.idLieu = id_lieu
+        self.idSaison = id_saison
+        self.idCat = id_categorie  # Correction ici
+        self.idArme = id_arme
         self.nomComp = nom_comp
         self.descComp = desc_comp
         self.dateComp = date_comp
@@ -163,7 +162,9 @@ class Tireur(db.Model):
 class Arbitre(db.Model):
     __tablename__ = 'ARBITRE'
     idArbitre = db.Column(db.Integer, primary_key=True, autoincrement=True)    
-    idEscrimeur = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.idEscrimeur'))
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'))
+    
+    arbitre = db.relationship('Escrimeur', backref='Arbitre.numeroLicenceE')
 
     def __init__(self, escrimeur):
         self._escrimeur = escrimeur
@@ -172,15 +173,16 @@ class Arbitre(db.Model):
 # Modèle pour représenter les participants aux compétitions
 class ParticipantsCompetition(db.Model):
     __tablename__ = 'PARTICIPANTS_COMPETITION'
-    idTireur = db.Column(db.Integer, db.ForeignKey('TIREUR.idTireur'), primary_key=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), primary_key=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
 
-    tireur = db.relationship('Tireur', backref='PartTireur.idTireur')
+    tireur = db.relationship('Tireur', backref='PartTireur', foreign_keys=[numeroLicenceE])
     competition = db.relationship('Competition', backref='PartCompetition.idComp')
     
     def __init__(self, tireur, competition):
-        self._tireur = tireur
-        self._competition = competition
+        self.numeroLicenceE = tireur
+        self.idComp = competition
+
        
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
 class PratiquerArme(db.Model):
@@ -327,7 +329,7 @@ def get_sample():
     return Competition.query.order_by(Competition.dateComp.desc()).all()
 
 def get_adherents():
-    res =  db.session.query(Tireur, Escrimeur, Categorie, Arbitre).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.idTireur).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).outerjoin(Arbitre, Arbitre.idEscrimeur == Escrimeur.idEscrimeur).filter(Club.nomClub == "Club Blois").add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    res =  db.session.query(Tireur, Escrimeur, Categorie, Arbitre).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.numeroLicenceE).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).outerjoin(Arbitre, Arbitre.idEscrimeur == Escrimeur.idEscrimeur).filter(Club.nomClub == "Club Blois").add_columns(Tireur.numeroLicenceE, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
     print(res)
     return res
 
@@ -373,3 +375,11 @@ def filtrer_adherent(adherents, categorie, sexeE, role):
     # elif role == 'arbitre':
     #     adherents_filtrer = [adherent for adherent in adherents_filtrer if adherent.Arbitre is not None]
     return adherents_filtrer
+
+def get_id_lieu(nom_lieu):
+    lieu = Lieu.query.filter_by(nomLieu=nom_lieu).first()
+    return lieu.idLieu if lieu else None
+
+def get_id_saison(nom_saison):
+    saison = Saison.query.filter_by(nomSaison=nom_saison).first()
+    return saison.idSaison if saison else None

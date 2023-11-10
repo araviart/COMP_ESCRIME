@@ -176,4 +176,44 @@ def pratiquer_arme(str_licence, arme):
         db.session.rollback()
         return f"Une erreur s'est produite lors de l'ajout de l'arme {arme} pratiquée par {numLicense} : {str(e)}"
 
+def creer_competition(nomLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle):
+    try:
+        # Obtenez les identifiants à partir des noms
+        idLieu = get_id_lieu(nomLieu)
+        idSaison = get_id_saison(nomSaison)
+        idCat = get_id_categorie(nomCat)
+        idArme = get_id_arme(nomArme)
+
+        # Vérifiez que les identifiants sont valides
+        if None in (idLieu, idSaison, idCat, idArme):
+            return "Erreur : Impossible d'obtenir les identifiants nécessaires."
+
+        # Convertissez la date et l'heure de format texte en objets datetime et time
+        date_comp = datetime.strptime(dateComp, "%Y-%m-%d").date()
+        heure_comp = datetime.strptime(heureComp, "%H:%M").time()
+
+        # Ajoutez la compétition à la base de données
+        competition = Competition(
+            idLieu=idLieu,
+            idSaison=idSaison,
+            idCat=idCat,
+            idArme=idArme,
+            nomComp=nomComp,
+            descComp=descComp,
+            dateComp=date_comp,
+            heureComp=heure_comp,
+            sexeComp=sexeComp,
+            estIndividuelle=estIndividuelle
+        )
+        db.session.add(competition)
+        db.session.commit()
+
+        return f"La compétition {nomComp} a été créée avec succès."
     
+    except IntegrityError:
+        db.session.rollback()
+        return "Une compétition avec ce nom existe déjà."
+    
+    except Exception as e:
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de la création de la compétition {nomComp}: {str(e)}"
