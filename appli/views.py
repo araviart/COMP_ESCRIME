@@ -34,7 +34,7 @@ class EditUserForm(FlaskForm):
     username = StringField("Pseudonyme actuelle")
     password = PasswordField("Mot de passe actuelle")
 
-@app.route("/appel/")
+@app.route("/")
 def jenesaispas():
     # Exemple de données à afficher dans chaque ligne
     rows_data = [
