@@ -199,3 +199,15 @@ def load_user(username):
 
 def get_sample():
     return Competition.query.all()
+
+def get_armes():
+    armes = Arme.query.all()
+    return [arme.nomArme for arme in armes]
+
+def get_type_match():
+    type_match = TypeMatch.query.all()
+    return [type_match.nomTypeMatch for type_match in type_match]
+
+def get_categories():
+    categories = Categorie.query.all()
+    return [categorie.nomCategorie for categorie in categories]
