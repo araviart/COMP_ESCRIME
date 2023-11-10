@@ -27,24 +27,9 @@ main {
   background-color: #01437c !important;
 }
 
-.center {
-  display: flex;
-  flex-wrap: wrap;
-  height: 60vh;
-  justify-content: space-around;
-  align-items: center;
-}
 
-.left-form {
-  height: 100%;
-  border-radius: 10px;
-  flex-basis: 30%;
-}
 
-.right-form {
-  height: 100%;
-  flex-basis: 30%;
-}
+
 
 .buttons {
   padding: 0 12% 0 12%;
@@ -159,7 +144,6 @@ select {
 }
 
 .double-combo-box > select {
-  width: 100%;
   margin-bottom: 5%;
 }
 
@@ -172,23 +156,24 @@ select {
   .progress-bar {
     flex-wrap: wrap;
   }
-
+  
   .progress-bar > a {
     min-width: 20%;
     margin: 2%;
   }
-
-  .center {
-    display: block;
-    height: 100%;
-  }
-  .left-form,
-  .right-form {
-    margin: 10% 25%;
-  }
-
+  
+  
   .bouton-publier,
   .bouton-annuler {
     text-align: center;
   }
+}
+.center {
+  display: flex;
+  height: 100%;
+}
+
+.left-form, .right-form {
+  margin: auto;
+  width: 30%;
 }

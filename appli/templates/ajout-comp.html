@@ -15,7 +15,7 @@
   </div>
   <div class="center">
     <div class="left-form">
-      <div class="test">
+      <form method="POST" class="test" action="{{ url_for('ajout_comp_page') }}">
         <div class="titre-formulaire">
           <h2>DONNÉES TECHNIQUES</h2>
         </div>
@@ -41,53 +41,50 @@
             <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
           </div>
         </div>
-      </div>
-      <div class="bouton-annuler">
-        <button class="btn-annuler">ANNULER</button>
-      </div>
+        <div class="bouton-annuler">
+          <button class="btn-annuler" type="button">ANNULER</button>
+        </div>
+      </form>
     </div>
     <div class="right-form">
-      <div class="test">
+      <form method="POST" class="test" action="{{ url_for('ajout_comp_page') }}">
         <div class="titre-formulaire">
           <h2>STANDARD</h2>
         </div>
         <div class="partie-input-droite">
           <div class="combox-box comb-arme">
             <label for="arme">Arme</label>
-            <select name="arme" id="arme">
-              <option value="fleuret">Fleuret</option>
-              <option value="sabre">Sabre</option>
-              <option value="epee">Epée</option>
-            </select>
+            <select name="arme" id="arme"></select>
           </div>
           <div class="combox-box comb-arme">
             <label for="sexe">Sexe</label>
             <select name="sexe" id="sexe">
-              <option value="homme">Homme</option>
-              <option value="femme">Femme</option>
+              <option value="H">Homme</option>
+              <option value="F">Femme</option>
             </select>
           </div>
           <div class="combox-box comb-cate">
             <label for="categorie">Catégorie</label>
-            <div class="double-combo-box">
-              <select name="categorie" id="sexe">
-                <option value="V1">V1</option>
-              </select>
-            </div>
+            <select name="categorie" id="categorie">
+              <option value="">Toutes les catégories</option>
+              {% for categorie in listeCategories %}
+              <option value="{{ categorie }}">{{ categorie }}</option>
+              {% endfor %}
+            </select>
           </div>
           <div class="combox-box comb-type">
             <label for="type">Type</label>
             <select name="type" id="type">
-                <option value="Match Poule">Match Poule</option>
-                <option value="Match Elimination">Match Elimination</option>
+              {% for typeMatch in listeTypeMatch %}
+              <option value="{{ typeMatch }}">{{ typeMatch }}</option>
+              {% endfor %}
             </select>
           </div>
-          
+          <div class="bouton-publier">
+            <button class="btn-publier" type="submit">Publier le tournoi</button>
+          </div>
         </div>
-      </div>
-      <div class="bouton-publier">
-        <button class="btn-publier">Publier le tournoi</button>
-      </div>
+      </form>
     </div>
   </div>
 {% endblock %}
