@@ -1,0 +1,33 @@
+.liste-table{
+    display: flex;
+    background-color: white;
+}
+
+.textfield-score{
+    width: 100%;
+}
+
+.tr-textfield-matrice > td{
+    width: 10px;
+}
+
+.liste-table table{
+    text-align: center;
+}
+
+main{
+    margin: 0 5%;
+}
+
+.haut-tableau{
+    background-color: var(--couleur-header  );
+    margin-top: 5%;
+}
+.titre-transparent{
+    color: transparent;
+}
+
+.nom-prenom-club{
+    width: 100%;
+    font-size: 100%;
+}

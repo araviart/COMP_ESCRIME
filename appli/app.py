@@ -11,7 +11,7 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:toure@localhost/COUPE_ESCRIME'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://toure:toure@servinfo-maria/DBtoure'
 db = SQLAlchemy(app)
 
 app.config['BOOTSTRAP_SERVE_LOCAL'] = True
