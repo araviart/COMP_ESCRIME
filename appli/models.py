@@ -204,6 +204,7 @@ def get_armes():
     armes = Arme.query.all()
     return [arme.nomArme for arme in armes]
 
+
 def get_type_match():
     type_match = TypeMatch.query.all()
     return [type_match.nomTypeMatch for type_match in type_match]

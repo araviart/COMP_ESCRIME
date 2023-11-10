@@ -41,10 +41,10 @@
             <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
           </div>
         </div>
-        <div class="bouton-annuler">
-          <button class="btn-annuler" type="button">ANNULER</button>
-        </div>
       </form>
+      <div class="bouton-annuler">
+        <button class="btn-annuler" type="button">ANNULER</button>
+      </div>
     </div>
     <div class="right-form">
       <form method="POST" class="test" action="{{ url_for('ajout_comp_page') }}">
@@ -53,8 +53,13 @@
         </div>
         <div class="partie-input-droite">
           <div class="combox-box comb-arme">
-            <label for="arme">Arme</label>
-            <select name="arme" id="arme"></select>
+            <label for="arme">Catégorie</label>
+            <select name="categorieArme" id="categorieArme">
+              <option value="">Toutes les catégories</option>
+              {% for arme in listeArmes %}
+              <option value="{{ arme }}">{{ arme }}</option>
+              {% endfor %}
+            </select>
           </div>
           <div class="combox-box comb-arme">
             <label for="sexe">Sexe</label>
@@ -80,9 +85,9 @@
               {% endfor %}
             </select>
           </div>
-          <div class="bouton-publier">
-            <button class="btn-publier" type="submit">Publier le tournoi</button>
-          </div>
+        </div>
+        <div class="bouton-publier">
+          <button class="btn-publier" type="submit">Publier le tournoi</button>
         </div>
       </form>
     </div>

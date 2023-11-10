@@ -73,6 +73,10 @@ main {
   transition-duration: 0.5s;
 }
 
+.bouton-publier {
+  background-color: var(--bg);
+}
+
 .bouton-annuler {
   text-align: start;
   margin-top: 3rem;
