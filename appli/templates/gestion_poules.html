@@ -15,7 +15,7 @@
     <img class="fleche-bar" src="{{ url_for('static', filename='img/fleche.png')}}" alt="fleche" />
     <a href="url">Classement Final</a>
 </div>
-<form method="POST" action="{{ url_for('gestion_poules') }}">
+<form method="POST" action="{{ url_for('gestion_poules', id_comp=id_comp)}}">
     <div class="content">
         <div class="labels">
             <label for="nb_tireurs">Nombre de tireurs : </label>

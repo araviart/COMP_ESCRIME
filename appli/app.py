@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap4
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
@@ -11,11 +11,11 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:toure@localhost/COUPE_ESCRIME'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/coup_escrime'
 db = SQLAlchemy(app)
 
 app.config['BOOTSTRAP_SERVE_LOCAL'] = True
-bootstrap = Bootstrap(app)
+bootstrap = Bootstrap4(app)
 
 login_manager = LoginManager(app)
 
