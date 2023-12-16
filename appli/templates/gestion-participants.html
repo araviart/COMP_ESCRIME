@@ -1,39 +1,68 @@
-{% extends 'base.html' %}
-{% block content %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='gestion_participants.css') }}"/>
-
-  <section class="container-section-participants">
-    <section class="escrimeblois">
-      <h3>Participant du club de Blois</h3>
-      <p>{{ nb_participants_blois }}</p>
-      <div class="gestion_participants">
-        {% for participant in participants_blois %}
-        <div class="participant">
-          <p>Participant :</p>
-          <p>{{ participant.prenomE }}</p>
-          <p>{{ participant.nomE }}</p>
-          <p>{{ participant.Categorie.nomCategorie }}</p>
-          <div class="supprimer">
-          </div>
+{% extends 'base.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='gestion_participants.css') }}"
+/>
+<section class="content">
+  <section class="section-infopr">
+    <div class="infotitre">
+      <h2>INFORMATIONS PRINCIPALE</h2>
+    </div>
+    <div class="titrep">
+      <p>Titre : </p>
+      <p>{{ competition.nomComp }}</p>
+    </div>
+    <div class="organisateurp">
+      <p>Organisateur : </p>
+      <p>{{ competition.descComp }}</p>
+    </div>
+    <div class="lieup">
+      <p>Lieu : </p>
+      <p>{{ competition.lieu.nomLieu }}</p>
+    </div>
+    <div class="datep">
+      <p>Date : </p>
+      <p>{{ competition.dateComp }}</p>
+    </div>
+  </section>
+  <section class="gestion-participants">
+    <div class="infotitre">
+      <h2>GESTION PARTICIPANTS</h2>
+    </div>
+    <section class="container-section-participants">
+      <section class="escrimeblois">
+        <div class="subtitreparticipant">
+          <h3>Participant du club de Blois</h3>
+          <p class="nb">{{ nb_participants_blois }}</p>
         </div>
-        {% endfor %}
-      </div>
-    </section>
-
-    <section class="escrime_other">
-      <h3>Participants des autres clubs</h3>
-      <p>{{ nb_participants_other }}</p>
-      <div class="gestion_participants">
-        {% for participant in participants_other %}
-        <div class="participant">
-          <p>Participant :</p>
-          <p>{{ participant.prenomE }}</p>
-          <p>{{ participant.nomE }}</p>
-          <p>{{ participant.Categorie.nomCategorie }}</p>
+        <div class="gestion-participants">
+          {% for participant in participants_blois %}
+          <div class="participant">
+            <p>{{ participant.prenomE }}</p>
+            <p>{{ participant.nomE }}</p>
+            <p>{{ participant.Categorie.nomCategorie }}</p>
+            <div class="supprimer"></div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
-      </div>
+      </section>
+
+      <section class="escrime-other">
+        <div class="subtitreparticipant">
+          <h3>Participants des autres clubs</h3>
+          <p class="nb">{{ nb_participants_other }}</p>
+        </div>
+        <div class="gestion-participants">
+          {% for participant in participants_other %}
+          <div class="participant">
+            <p>{{ participant.prenomE }}</p>
+            <p>{{ participant.nomE }}</p>
+            <p>{{ participant.Categorie.nomCategorie }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
     </section>
   </section>
-{% endblock %}
+  {% endblock %}
+</section>

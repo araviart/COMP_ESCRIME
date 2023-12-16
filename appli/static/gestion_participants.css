@@ -1,0 +1,57 @@
+.container-section-participants, .escrime_other{
+  display: flex; 
+  flex-direction: column;
+}
+
+
+
+.section-infopr p, .section-infopr h2{
+  color: black;
+}
+
+.container-section-participants p{
+  color: black;
+}
+
+.subtitreparticipant{
+  display: flex;
+  align-items: center;
+}
+
+.escrime-other{
+  display: flex;
+  justify-content: space-around;
+}
+
+.nb{
+  padding: 0 8px;
+  background-color: var(--blue-escrime);
+  border-radius: 8px;
+  color: white;
+}
+
+.escrimeblois{
+  display: flex;
+  justify-content: space-around;
+}
+
+.titrep, .organisateurp, .lieup, .datep ,.participant{
+  display: flex;;
+}
+
+.infotitre{
+    background-color: var(--couleur-header);
+    border-radius: 8px 8px 0 0;
+    color: whitesmoke;
+    text-align: center; 
+    text-align: left;
+    padding: 10px;
+}
+
+.infotitre h2{
+  color: whitesmoke;
+}
+
+.section-infopr , .gestion-participants{
+  background-color: white;  
+}
