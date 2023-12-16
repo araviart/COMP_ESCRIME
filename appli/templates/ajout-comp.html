@@ -16,82 +16,62 @@
     <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
     <a href="url">Classement Final</a>
   </div>
-  <div class="center">
-    <div class="left-form">
-      <div class="test">
-        <div class="titre-formulaire">
-          <h2>DONNÉES TECHNIQUES</h2>
+  <form method='POST'>
+    {{ form.hidden_tag() }}
+
+    <div class="center">
+      <div class="left-form">
+        <div class="test">
+          <div class="titre-formulaire">
+            <h2>DONNÉES TECHNIQUES</h2>
+          </div>
+          <div class="partie-input">
+            <div class="label-input">
+              {{ form.titre.label(class='label') }} {{ form.titre(class='input') }}
+            </div>
+            <div class="label-input">
+              {{ form.organisateur.label(class='label') }} {{ form.organisateur(class='input') }}
+            </div>
+            <div class="label-input">
+              {{ form.lieu.label(class='label') }} {{ form.lieu(class='input') }}
+            </div>
+            <div class="label-input">
+              {{ form.date_deroulement.label(class='label') }} {{ form.date_deroulement(class='input') }}
+            </div>
+            <div class="label-input">
+              {{ form.heure_debut.label(class='label') }} {{ form.heure_debut(class='input') }}
+            </div>
+          </div>
         </div>
-        <div class="partie-input">
-          <div class="label-input">
-            <label for="title">Titre</label>
-            <input type="text" id="titre" name="titre" maxlength="12" required />
-          </div>
-          <div class="label-input">
-            <label for="title">Organisateur</label>
-            <input type="text" id="Organisateur" name="organisateur" maxlength="12" required />
-          </div>
-          <div class="label-input">
-            <label for="title">Lieu</label>
-            <input type="text" id="lieu" name="lieu" />
-          </div>
-          <div class="label-input">
-            <label for="title">Date déroulement</label>
-            <input type="date" id="deroulement" name="date-deroulement" value="2023-11-16" min="2023-11-16" />
-          </div>
-          <div class="label-input">
-            <label for="appt">Heure début</label>
-            <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
-          </div>
-        </div>
-      </div>
-      <div class="bouton-annuler">
-        <button class="btn-annuler">ANNULER</button>
-      </div>
-    </div>
-    <div class="right-form">
-      <div class="test">
-        <div class="titre-formulaire">
-          <h2>STANDARD</h2>
-        </div>
-        <div class="partie-input-droite">
-          <div class="combox-box comb-arme">
-            <label for="arme">Arme</label>
-            <select name="arme" id="arme">
-              {% for arme in listeArmes %}
-                <option value="{{ arme }}">{{ arme }}</option>
-              {% endfor %}
-            </select>
-          </div>
-          <div class="combox-box comb-arme">
-            <label for="sexe">Sexe</label>
-            <select name="sexe" id="sexe">
-              <option value="homme">Homme</option>
-              <option value="femme">Femme</option>
-            </select>
-          </div>
-          <div class="combox-box comb-cate">
-            <label for="categorie">Catégorie</label>
-            <select name="categorie" id="sexe">
-              {% for categorie in listeCategories %}
-                <option value="{{ categorie }}">{{ categorie }}</option>
-              {% endfor %}
-            </select>
-          </div>
-          <div class="combox-box comb-type">
-            <label for="type">Type</label>
-            <select name="type" id="type">
-              {% for typeM in listeTypeMatch %}
-                <option value="{{ typeM }}">{{ typeM }}</option>
-              {% endfor %}
-            </select>
-          </div>
-          
+        <div class="bouton-annuler">
+          <a href="{{ url_for('home_default') }}" class="btn-annuler">ANNULER</a>
         </div>
       </div>
-      <div class="bouton-publier">
-        <button class="btn-publier">Publier le tournoi</button>
+
+      <div class="right-form">
+        <div class="test">
+          <div class="titre-formulaire">
+            <h2>STANDARD</h2>
+          </div>
+          <div class="partie-input-droite">
+            <div class="combox-box comb-arme">
+              {{ form.arme.label(class='label') }} {{ form.arme(class='select') }}
+            </div>
+            <div class="combox-box comb-arme">
+              {{ form.sexe.label(class='label') }} {{ form.sexe(class='select') }}
+            </div>
+            <div class="combox-box comb-cate">
+              {{ form.categorie.label(class='label') }} {{ form.categorie(class='select') }}
+            </div>
+            <div class="combox-box comb-type">
+              {{ form.type_comp.label(class='label') }} {{ form.type_comp(class='select') }}
+            </div>
+          </div>
+        </div>
+        <div class="bouton-publier">
+          {{ form.submit(class='btn-publier') }}
+        </div>
       </div>
-    </div>
-  </div>
+    </div>    
+  </form>
 {% endblock %}
