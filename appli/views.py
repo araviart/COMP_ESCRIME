@@ -1,7 +1,7 @@
 from .app import app, db
 import math
 from flask import render_template, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, Saison, User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
+from .models import Arme, Categorie, Competition, Lieu, Saison, User, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import BooleanField, DateField, SelectField, StringField, PasswordField, SubmitField, TimeField
@@ -299,6 +299,22 @@ def ajout_comp():
                                   estIndividuelle=form.type_comp.data == 'individuel')
         db.session.add(competition)
         db.session.commit()
-        flash('La compétition a été ajoutée avec succès')
+        flash('La compétition a été ajoutée') # à changer avec une popup
         return redirect(url_for('home'))
     return render_template('ajout-comp.html', form=form)
+
+@app.route("/gestion_participants/<int:id_comp>", methods=("GET", "POST"))
+def gestion_participants(id_comp):
+    participants_blois = get_participants(id_comp, club="Club Blois")
+    participants_other = get_participants(id_comp, club="!")
+    nb_participants_blois = len(participants_blois)
+    nb_participants_other = len(participants_other)
+    
+    return render_template(
+      "gestion-participants.html",
+      title="Gestion des participants",
+      participants_blois=participants_blois,
+      nb_participants_blois=nb_participants_blois,
+      participants_other=participants_other,
+      nb_participants_other=nb_participants_other,
+  )

@@ -388,3 +388,13 @@ def dernier_escrimeur_id():
         return last_escrimeur.idEscrimeur
     else:
         return 0
+
+def get_participants(id_comp, club=None):
+    from sqlalchemy import and_
+    res = db.session.query(ParticipantsCompetition, Escrimeur, Categorie).join(Escrimeur, ParticipantsCompetition.idTireur == Escrimeur.idEscrimeur).join(Categorie, Escrimeur.idCat == Categorie.idCat).join(Tireur, Tireur.idTireur == Escrimeur.idEscrimeur).join(Club, Club.idClub == Tireur.idClub).filter(ParticipantsCompetition.idComp == id_comp)
+    if club is not None:
+        if club == "!":
+            res = res.filter(Club.nomClub != "ClubBlois")
+        else:
+            res = res.filter(Club.nomClub == club)
+    return res.add_columns(ParticipantsCompetition.idTireur, ParticipantsCompetition.idComp, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()

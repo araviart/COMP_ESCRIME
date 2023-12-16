@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='gestion_participants.css') }}"/>
+
+  <section class="container-section-participants">
+    <section class="escrimeblois">
+      <h3>Participant du club de Blois</h3>
+      <p>{{ nb_participants_blois }}</p>
+      <div class="gestion_participants">
+        {% for participant in participants_blois %}
+        <div class="participant">
+          <p>Participant :</p>
+          <p>{{ participant.prenomE }}</p>
+          <p>{{ participant.nomE }}</p>
+          <p>{{ participant.Categorie.nomCategorie }}</p>
+          <div class="supprimer">
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="escrime_other">
+      <h3>Participants des autres clubs</h3>
+      <p>{{ nb_participants_other }}</p>
+      <div class="gestion_participants">
+        {% for participant in participants_other %}
+        <div class="participant">
+          <p>Participant :</p>
+          <p>{{ participant.prenomE }}</p>
+          <p>{{ participant.nomE }}</p>
+          <p>{{ participant.Categorie.nomCategorie }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </section>
+{% endblock %}
