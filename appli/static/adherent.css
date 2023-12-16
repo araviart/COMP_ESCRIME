@@ -189,12 +189,18 @@ td{
   align-items: center;
 }
 
+.test, .titre-formulaire{
+  border-radius: 12px;
+}
 
 button{
   padding: 10px;
   border-radius: 8px;
   color: white;}
 
+.btn-annuler{
+  text-decoration: none;
+}
 
 .ajoutadh{
     background-color: var(--blue-escrime);
@@ -224,6 +230,8 @@ button{
 .pagination button{
   color: var(--gris-arbitre);
 }
+
+
 
 .top{
   display: flex;
