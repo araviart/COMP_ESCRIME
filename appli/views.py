@@ -1,10 +1,10 @@
 from .app import app, db
 import math
 from flask import render_template, url_for, redirect, request, flash
-from .models import Competition, User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
+from .models import Arme, Categorie, Competition, Lieu, Saison, User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
-from wtforms import StringField, PasswordField
+from wtforms import BooleanField, DateField, SelectField, StringField, PasswordField, SubmitField, TimeField
 from hashlib import sha256
 from flask_login import login_user, logout_user, current_user
 
@@ -28,7 +28,20 @@ class InscriptionForm(FlaskForm):
     email = StringField('email', validators=[DataRequired()])
     password = PasswordField('password', validators=[DataRequired()])
     comfirm_password = PasswordField('comfirm_password', validators=[DataRequired()])
-    
+
+class CompetitionForm(FlaskForm):
+    titre = StringField('Titre', validators=[DataRequired()])
+    organisateur = StringField('Organisateur', validators=[DataRequired()])
+    lieu = StringField("Lieu", validators=[DataRequired()])
+    date_deroulement = DateField('Date déroulement', format='%Y-%m-%d', validators=[DataRequired()])
+    heure_debut = TimeField('Heure début', format='%H:%M', validators=[DataRequired()])
+    arme = SelectField('Arme', choices=[('epee', 'Épée'), ('fleuret', 'Fleuret'), ('sabre', 'Sabre')])
+    sexe = SelectField('Sexe', choices=[('homme', 'Homme'), ('femme', 'Femme')])
+    categorie = SelectField('Categorie', choices=[('senior', 'Senior'), ('u13', 'U13'), ('cadet', 'Cadet'), ('u15', 'U15'), ('u17', 'U17'), ('u20', 'U20'), ('v1', 'V1'), ('v2', 'V2'), ('v3', 'V3'), ('v4', 'V4')])
+    type_comp = SelectField('Type', choices=[('individuel', 'Individuel'), ('equipe', 'Équipe')])
+    est_publie = BooleanField('Publier le tournoi')
+    submit = SubmitField('Publier le tournoi')
+
 class EditUserForm(FlaskForm):
     newpsswd = PasswordField("Nouveau mot de passe")
     confirm = PasswordField("Confirmez le nouveau mot de passe")
@@ -75,7 +88,7 @@ def login():
     if user:
         login_user(user)
         # return redirect(url_for("home_default"))
-        return redirect(url_for("ajout_comp_page"))
+        return redirect(url_for("ajout_comp"))
     else:
         flash("Mot de passe incorrect", "error")
     return render_template("Login.html", form=f)
@@ -131,10 +144,6 @@ def home_def(items):
 @app.route('/home/')
 def home_default():
     return home_def(5)
-
-@app.route("/ajout-comp")
-def ajout_comp_page():
-    return render_template("ajout-comp.html")
 
 @app.route("/test_popup/")
 def test_popup():
@@ -263,3 +272,33 @@ def liste_adherents(items):
         items=items,
         page=page,
         total_pages=total_pages)
+
+@app.route('/ajout-comp', methods=['GET', 'POST'])
+def ajout_comp():
+    form = CompetitionForm()
+
+    if form.validate_on_submit():
+        lieu = Lieu.query.filter_by(nomLieu=form.lieu.data).first()
+
+        if lieu is None:
+            # si le lieu existe pas on le crée avec un id auto incrémenté et le reste des colonnes vides
+            # à voir après si l'on gère ces colonnes avec de nouveaux champs ou une API qui autocomplète les 
+            # champs en fonction du nom du lieu
+            lieu = Lieu(nom_lieu=form.lieu.data, ville_lieu="", code_postal_lieu=0, adresse_lieu="")
+            db.session.add(lieu)
+            db.session.commit()
+        competition = Competition(idLieu=lieu.idLieu, 
+                                  idSaison=Saison.query.get(1).idSaison,
+                                  idCat=getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None),
+                                  idArme=getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None),
+                                  nomComp=form.titre.data,
+                                  descComp=f"Competition organisée par {form.organisateur.data}", 
+                                  dateComp=form.date_deroulement.data,
+                                  heureComp=form.heure_debut.data,
+                                  sexeComp=form.sexe.data[:1],
+                                  estIndividuelle=form.type_comp.data == 'individuel')
+        db.session.add(competition)
+        db.session.commit()
+        flash('La compétition a été ajoutée avec succès')
+        return redirect(url_for('home'))
+    return render_template('ajout-comp.html', form=form)
