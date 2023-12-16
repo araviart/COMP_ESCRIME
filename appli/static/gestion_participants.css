@@ -55,3 +55,18 @@
 .section-infopr , .gestion-participants{
   background-color: white;  
 }
+
+.btn-annuler {
+  background-color: var(--bouton-annuler);
+  padding: 10px 4px;
+  border: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 120%;
+  border-radius: 10px;
+  transition-duration: 0.5s;
+}
+
+.btn-annuler:hover {
+  background-color: var(--hover-annuler);
+}
