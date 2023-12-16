@@ -107,6 +107,8 @@ h1{
 .affichage ul{
   display: flex;
   align-items: center;
+  background-color: white;
+  border-radius: 10px;
 
 }
 
@@ -115,7 +117,6 @@ h1{
   list-style-type: none;
   text-decoration: none;
 }
-
 
 .affichage ul li p{
   
@@ -146,11 +147,11 @@ color: black;}
 }
 
 th{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 td{
-  font-size: 16px;
+  font-size: 14px;
 }
 
 
@@ -228,7 +229,7 @@ button{
 .top{
   display: flex;
   justify-content: space-between;
-  background-color: var(--bg);
+  background-color: white;
 }
 
 .page p{
