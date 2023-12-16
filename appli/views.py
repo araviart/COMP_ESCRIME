@@ -45,10 +45,6 @@ def jenesaispas():
     ]
 
     return render_template('appel.html', rows_data=rows_data)
-@app.route("/")
-def home():
-    return render_template("Login.html")
-
 @app.route("/inscription-form/")
 def inscription_page():
     return render_template("Inscription.html", form = InscriptionForm())
