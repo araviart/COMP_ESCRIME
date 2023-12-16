@@ -123,25 +123,25 @@ class TypeMatch(db.Model):
 # Modèle pour représenter l'escrimeur
 class Escrimeur(db.Model):
     __tablename__ = 'ESCRIMEUR'
-    numeroLicenceE = db.Column(db.Integer, nullable=False, primary_key=True)
+    idEscrimeur = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idCat = db.Column(db.Integer, db.ForeignKey('CATEGORIE.idCat'), nullable=False)
     prenomE = db.Column(db.String(50), nullable=False)
     nomE = db.Column(db.String(50), nullable=False)
     dateNaissanceE = db.Column(db.Date, nullable=False)
-    sexeE = db.Column(db.String(50), nullable=False)
-    numTelE = db.Column(db.Integer, nullable=True)
+    numeroLicenceE = db.Column(db.Integer, nullable=False)
+    sexeE = db.Column(db.String(1), nullable=False)
+    numTelE = db.Column(db.String(10), nullable=False)
 
-    categorie = db.relationship('Categorie', backref='categorie')
+    def __init__(self, idEscrimeur, idCat, prenomE, nomE, dateNaissanceE, numeroLicenceE, sexeE, numTelE):
+        self.idEscrimeur = idEscrimeur
+        self.idCat = idCat
+        self.prenomE = prenomE
+        self.nomE = nomE
+        self.dateNaissanceE = dateNaissanceE
+        self.numeroLicenceE = numeroLicenceE
+        self.sexeE = sexeE
+        self.numTelE = numTelE
 
-    def __init__(self, categorie, prenom_e, nom_e, date_naissance_e, numero_licence_e, sexe_e, num_tel_e):
-        self.idCat = categorie
-        self.numeroLicenceE = numero_licence_e
-        self.idCat = categorie
-        self.prenomE = prenom_e
-        self.nomE = nom_e
-        self.dateNaissanceE = date_naissance_e
-        self.sexeE = sexe_e
-        self.numTelE = num_tel_e
         
 # Modèle pour représenter les tireurs
 class Tireur(db.Model):
@@ -364,7 +364,7 @@ def filtrer_competitions(competitions, categorie, arme, sexe, statut):
             comp_filtrer = [comp for comp in comp_filtrer if comp.dateComp <= datetime.date.today()]
     return comp_filtrer
 
-def filtrer_adherent(adherents, categorie, sexeE, role):
+def filtrer_adherent(adherents, categorie, sexeE):
     adherents_filtrer = adherents 
     if categorie:
         adherents_filtrer = [adherent for adherent in adherents_filtrer if adherent.Categorie.nomCategorie == categorie]
@@ -383,3 +383,13 @@ def get_id_lieu(nom_lieu):
 def get_id_saison(nom_saison):
     saison = Saison.query.filter_by(nomSaison=nom_saison).first()
     return saison.idSaison if saison else None
+def get_adherents():
+    res =  db.session.query(Tireur, Escrimeur, Categorie).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.idTireur).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "Club Blois").add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    return res
+
+def dernier_escrimeur_id():
+    last_escrimeur = db.session.query(Escrimeur).order_by(Escrimeur.idEscrimeur.desc()).first()
+    if last_escrimeur:
+        return last_escrimeur.idEscrimeur
+    else:
+        return 0

@@ -1,3 +1,7 @@
 appli/__pycache__/
 venv/
+<<<<<<< HEAD
 migrations/
+=======
+appli/app.py
+>>>>>>> feature/gestion_participants

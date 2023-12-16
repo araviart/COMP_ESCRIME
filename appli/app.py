@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap4
 from flask_login import LoginManager
-from flask_migrate import Migrate
+# from flask_migrate import Migrate
 
 # username = 'root'
 # password = 'root'
@@ -10,8 +10,8 @@ from flask_migrate import Migrate
 # dataBase = 'COMP_ESCRIME'
 
 app = Flask(__name__)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/coup_escrime'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://coursimault:coursimault@servinfo-maria/DBcoursimault'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/COUPE_ESCRIME'
 db = SQLAlchemy(app)
 
 app.config['BOOTSTRAP_SERVE_LOCAL'] = True

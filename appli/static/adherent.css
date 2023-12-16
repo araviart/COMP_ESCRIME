@@ -216,3 +216,33 @@ button{
   border-radius: 8px;
 
 }
+
+.pagination{
+  text-align: center;
+}
+
+.pagination button{
+  color: var(--gris-arbitre);
+}
+
+.top{
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg);
+}
+
+.page p{
+  background-color: var(--blue-escrime);
+  color: white;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+
+.ajoutadh{
+  margin-bottom: 2%;
+}
+
+.dimmed {
+  background-color: rgba(0, 0, 0, 0.5);
+}
