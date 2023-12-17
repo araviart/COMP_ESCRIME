@@ -2,7 +2,6 @@ import datetime
 from .app import db, login_manager
 from flask_login import UserMixin
 
-
 # Modèle pour représenter le lieu
 class Lieu(db.Model):
     __tablename__ = 'LIEU'

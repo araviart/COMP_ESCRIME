@@ -1,6 +1,6 @@
 from .app import app, db
 import math
-from flask import render_template, url_for, redirect, request, flash
+from flask import render_template, session, url_for, redirect, request, flash
 from .models import Arme, Categorie, Competition, Lieu, Saison, User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
@@ -106,41 +106,43 @@ def home_def(items):
             page += 1
         elif 'prev' in request.form:
             page -= 1
+        # récupere les selection du from
+        session['categorie'] = request.form.get('categorie')
+        session['arme'] = request.form.get('arme')
+        session['sexe'] = request.form.get('sexe')
+        session['statut'] = request.form.get('statut')
     else:
         page = request.args.get('page', 1, type=int)
+        session['categorie'] = request.args.get('categorie', session.get('categorie'))
+        session['arme'] = request.args.get('arme', session.get('arme'))
+        session['sexe'] = request.args.get('sexe', session.get('sexe'))
+        session['statut'] = request.args.get('statut', session.get('statut'))
     competitions = get_sample()
     categories = get_categories()
     armes = get_armes()
     nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
-    # récupere les selection du from
-    categorie = request.form.get('categorie')
-    arme = request.form.get('arme')
-    sexe = request.form.get('sexe')
-    statut = request.form.get('statut')
-    print(sexe)
     # filtre pour les compet
-    compet_filtre = filtrer_competitions(competitions, categorie, arme, sexe, statut)
+    compet_filtre = filtrer_competitions(competitions, session.get('categorie'), session.get('arme'), session.get('sexe'), session.get('statut'))
     if len(compet_filtre) !=0:
         competitions = compet_filtre[(page - 1) * items:page * items]
     else:
         competitions = []
-    print(categorie)
     return render_template(
-    "competition.html",
-    title="Compétitions ESCRIME",
-    competitions=competitions,  # Pass the paginated competitions, not compet_filtre
-    categories=categories,
-    armes=armes,
-    nb_participants=nb_participants,
-    items=items,
-    selec_arme=arme,
-    selec_categorie=categorie,
-    selec_sexe=sexe,
-    selec_statut=statut,
-    page=page,
-    compet_filtre = compet_filtre
-)
-
+        "competition.html",
+        title="Compétitions ESCRIME",
+        competitions=competitions, 
+        categories=categories,
+        armes=armes,
+        nb_participants=nb_participants,
+        items=items,
+        selec_arme=session.get('arme'),
+        selec_categorie=session.get('categorie'),
+        selec_sexe=session.get('sexe'),
+        selec_statut=session.get('statut'),
+        page=page,
+        compet_filtre = compet_filtre
+    )
+    
 @app.route('/home/')
 def home_default():
     return home_def(5)
