@@ -53,10 +53,12 @@ main {
 
 .btn-annuler:hover {
   background-color: var(--hover-annuler);
+  cursor: pointer;
 }
 
 .btn-publier:hover {
   background-color: var(--hover-publier);
+  cursor: pointer;
 }
 
 .btn-publier {
