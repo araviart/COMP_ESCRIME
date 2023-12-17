@@ -11,6 +11,9 @@ main{
     margin-bottom: 5%;
 }
 
+tr{
+    margin-top: 1000%;
+}
 
 td{
     font-size: 25px;
@@ -40,9 +43,10 @@ th{
 }
 
 .textfield-score{
-    width: 50%;
+    width: 40%;
     height: 50px;
     border: none;
+    border-radius: 10px;
 }
 
 .liste-table table{
