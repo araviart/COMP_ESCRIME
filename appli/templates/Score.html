@@ -1,123 +1,111 @@
 {% extends 'base.html' %} {% block content %}
-<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='progress-bar.css') }}"
-/>
-<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='progress-bar.css') }}"
-/>
-<link rel="stylesheet" href="{{ url_for('static', filename='Score.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'progress-bar.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'progress-bar.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'Score.css') }}" />
 
-<div class="progress-bar">
-  <a class="active-url" href="url">Définir une compétition</a>
-  <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="url">Gestion participants</a>
-  <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="url">Créer les poules</a>
-  <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="url">Appel</a>
-  <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="url">Gestion score</a>
-  <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
-  <a href="url">Classement Final</a>
-</div>
-
-<main>
-  <div class="classement-provisoire-match">
-    <a href="">Voir classement provisoire du tournoi</a>
-    <a href="">Voir ordre des matchs</a>
+  <div class="progress-bar">
+    <a class="active-url" href="url">Définir une compétition</a>
+    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <a class="active-url" href="url">Gestion participants</a>
+    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <a class="active-url" href="url">Créer les poules</a>
+    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <a class="active-url" href="url">Appel</a>
+    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <a class="active-url" href="url">Gestion score</a>
+    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <a href="url">Classement Final</a>
   </div>
 
-  <div class="tableau-score">
-    <div class="haut-tableau">
-      <p>Poule n°1 - “heure_poule” - “nom_piste” - Arbitre : “nom_arbitre”</p>
+  <main>
+    <div class="classement-provisoire-match">
+      <a href="">Voir classement provisoire du tournoi</a>
+      <a href="">Voir ordre des matchs</a>
     </div>
-  
-    <div class="liste-table">
-      <table class="nom-prenom-club">
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Club</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for row in rows_data %}
-          <tr class="nom-prenom-club">
-            <td>{{ row['Nom'] }}</td>
-            <td>{{ row['Prenom'] }}</td>
-            <td>{{ row['Club'] }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-  
-      <table>
-        <thead>
-          <tr class="titre-transparent">
+
+    <div class="tableau-score">
+      <form action="">
+        <div class="haut-tableau">
+          <p>Poule n°1 - “heure_poule” - “nom_piste” - Arbitre : “nom_arbitre”</p>
+        </div>
+
+        <div class="liste-table">
+          <table class="nom-prenom-club">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Club</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in rows_data %}
+                <tr class="nom-prenom-club">
+                  <td>{{ row['Nom'] }}</td>
+                  <td>{{ row['Prenom'] }}</td>
+                  <td>{{ row['Club'] }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <table>
+            <thead>
+              <tr class="titre-transparent">
+                {% for i in range(rows) %}
+                  <th>?</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
               {% for i in range(rows) %}
-            <th>?</th>
-            {% endfor %}
-          </tr>
-        </thead>
-        <tbody>
-          {% for i in range(rows) %}
-          <tr class="tr-textfield-matrice">
-            {% for j in range(cols) %} {% set item = table_data[i][j] %} {% if i
-            == j %}
-            <td class="td-textfield-matrice">
-              <input
-                class="textfield-score textfield-score-disabled"
-                type="number"
-                name="{{ item }}"
-                disabled
-              />
-            </td>
-            {% else %}
-            <td class="td-textfield-matrice">
-              <input
-                class="textfield-score textfield-score-ok"
-                type="number"
-                name="{{ item }}"
-              />
-            </td>
-            {% endif %} {% endfor %}
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-  
-      <table>
-        <thead>
-          <tr>
-            <th>V</th>
-            <th>TD</th>
-            <th>TR</th>
-            <th>TD-TR</th>
-            <th>Place</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for row in rows_data %}
-          <tr>
-            <td>???</td>
-            <td>???</td>
-            <td>???</td>
-            <td>???</td>
-            <td><input id="checkbox-2" type="checkbox" /></td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+                <tr class="tr-textfield-matrice">
+                  {% for j in range(cols) %}
+                    {% set item = table_data[i][j] %} {% if i == j %}
+                      <td class="td-textfield-matrice">
+                        <input class="textfield-score textfield-score-disabled" type="number" name="{{ item }}" disabled />
+                      </td>
+                    {% else %}
+                      <td class="td-textfield-matrice">
+                        <input class="textfield-score textfield-score-ok" type="number" name="{{ item }}" />
+                      </td>
+                    {% endif %}
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <table>
+            <thead>
+              <tr>
+                <th>V</th>
+                <th>TD</th>
+                <th>TR</th>
+                <th>TD-TR</th>
+                <th>Place</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in rows_data %}
+                <tr>
+                  <td>???</td>
+                  <td>???</td>
+                  <td>???</td>
+                  <td>???</td>
+                  <td>
+                    <input id="checkbox-2" type="checkbox" />
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </form>
     </div>
-  </div>
 
-
-  <div class="div-btn-conclure">
-    <button type="submit">Conclure</button>
-  </div>
-</main>
-
+    <div class="div-btn-conclure">
+      <button type="submit">Conclure</button>
+    </div>
+  </main>
 {% endblock %}
