@@ -320,3 +320,11 @@ def gestion_participants(id_comp):
       nb_participants_other=nb_participants_other,
       competition=competition
   )
+    
+@app.route('/delete_participant/<int:id>', methods=['POST'])
+def delete_participant(id):
+    participant = Escrimeur.query.get(id)
+    if participant:
+        db.session.delete(participant)
+        db.session.commit()
+    return redirect(url_for('gestion_participants', id_comp=request.form.get('id_comp')))

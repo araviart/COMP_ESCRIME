@@ -1,13 +1,25 @@
 .container-section-participants, .escrime_other{
   display: flex; 
   flex-direction: column;
+  align-items: center;
+}
+
+.section-infopr, .gestion-participants{
+  margin: 2em auto 0
 }
 
 
-
-.section-infopr p, .section-infopr h2{
+.section-infopr p, h2{
   color: black;
+  font-size: 20px;
 }
+
+.escrimeblois p, .escrimeblois p, .section-infopr p, .escrime-other p, h3{
+  color: black;
+  font-size: 16px;
+}
+
+
 
 .container-section-participants p{
   color: black;
@@ -30,14 +42,21 @@
   color: white;
 }
 
+
+
 .escrimeblois{
   display: flex;
   justify-content: space-around;
 }
 
-.titrep, .organisateurp, .lieup, .datep ,.participant{
-  display: flex;;
+.infopr{
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
 }
+
+
+
 
 .infotitre{
     background-color: var(--couleur-header);
@@ -69,4 +88,38 @@
 
 .btn-annuler:hover {
   background-color: var(--hover-annuler);
+}
+
+
+.actionsp{
+  display: flex;
+  flex-direction: column;
+}
+
+.labelp p, .valeurp p, .actionsp img {
+  margin: 8px 0; 
+}
+
+.participant{
+  display: flex;
+  background-color: #F3F3F3;
+  padding: 10px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--grey, #9A9A9A);
+  width: 350px;
+}
+
+.participant p {
+  margin: 0 7px; /* Ajoute un espace à droite et à gauche de chaque paragraphe */
+}
+
+.gestionp{
+  display: flex;
+  align-items: center;
+}
+
+button{
+  margin-top: 10px;
+  background-color: #FF4015;
 }

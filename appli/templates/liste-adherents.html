@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block styles %} {{ super() }}
 <link rel="stylesheet" href="{{ url_for('static', filename='adherent.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='progress-bar.css')}}" />
 <script src="{{ url_for('static', filename='js/script_popup.js') }}"></script>
 {% endblock %}
  {% block content %}
@@ -172,4 +173,4 @@
         {% endif %}
       </form>
     </div>
-      {% endblock %}
+{% endblock %}
