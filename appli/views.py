@@ -143,6 +143,50 @@ def home_def(items):
         compet_filtre = compet_filtre
     )
     
+@app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
+def liste_adherents(items):
+    total_pages = 0
+    if request.method == "POST":
+        page = int(request.form.get('page', 1))
+        if 'next' in request.form:
+            page += 1
+        elif 'prev' in request.form:
+            page -= 1
+    else:
+        page = request.args.get('page', 1, type=int)
+    adherents = get_adherents()
+    categories = get_categories()
+    role = request.form.get('statut', session.get('statuta', ''))
+    categorie = request.form.get('categorie', session.get('categoriea', ''))
+    sexe = request.form.get('sexe', session.get('sexea', ''))
+    
+    adherents = filtrer_adherent(adherents, categorie, sexe)
+    if request.method == "POST":
+        search_query = request.form.get('search')
+        # recherche les adhérents en fonction du nom ou prénom
+        if search_query:
+            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
+    session['statuta'] = role
+    session['categoriea'] = categorie
+    session['sexea'] = sexe 
+    if len(adherents) !=0:
+        total_pages = math.ceil(len(adherents) / items)
+        adherents = adherents[(page - 1) * items:page * items]
+    else:
+        adherents = []
+
+    
+    return render_template(
+        "liste-adherents.html",
+        title="Compétitions ESCRIME",
+        categories=categories,
+        selec_categorie=categorie,
+        selec_sexe=sexe,
+        selec_statut=role,
+        adherents=adherents,
+        items=items,
+        page=page,
+        total_pages=total_pages)
 @app.route('/home/')
 def home_default():
     return home_def(5)
@@ -232,48 +276,6 @@ def gestion_poules(id_comp):
 def liste_adherents_def():
     return liste_adherents(5)
   
-@app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
-def liste_adherents(items):
-    if request.method == "POST":
-        page = int(request.form.get('page', 1))
-        if 'next' in request.form:
-            page += 1
-        elif 'prev' in request.form:
-            page -= 1
-    else:
-        page = request.args.get('page', 1, type=int)
-
-    
-    adherents = get_adherents()
-    
-    categories = get_categories()
-    role = request.form.get('statut')
-    categorie = request.form.get('categorie')
-    sexe = request.form.get('sexe')
-    adherents = filtrer_adherent(adherents, categorie, sexe)
-    if request.method == "POST":
-        search_query = request.form.get('search')
-        # recherche les adhérents en fonction du nom ou prénom
-        if search_query:
-            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
-    if len(adherents) !=0:
-        total_pages = math.ceil(len(adherents) / items)
-        adherents = adherents[(page - 1) * items:page * items]
-    else:
-        adherents = []
-
-    
-    return render_template(
-        "liste-adherents.html",
-        title="Compétitions ESCRIME",
-        categories=categories,
-        selec_categorie=categorie,
-        selec_sexe=sexe,
-        selec_statut=role,
-        adherents=adherents,
-        items=items,
-        page=page,
-        total_pages=total_pages)
 
 @app.route('/ajout-comp', methods=['GET', 'POST'])
 def ajout_comp():

@@ -100,8 +100,8 @@
                 <label for="categorieSexe">Sexe:</label>
                 <select id="categorieSexe" name="sexe" onchange="document.getElementById('sexeForm').submit();">
                     <option value="">Non définie</option>
-                    <option value="H" {% if "Homme" == selec_sexe %}selected{% endif %}>Homme</option>
-                    <option value="F" {% if "Femme" == selec_sexe %}selected{% endif %}>Femme</option>
+                    <option value="H" {% if "H" == selec_sexe %}selected{% endif %}>Homme</option>
+                    <option value="F" {% if "F" == selec_sexe %}selected{% endif %}>Femme</option>
                 </select>
             </form>
         </div>
