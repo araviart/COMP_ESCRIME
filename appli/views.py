@@ -124,6 +124,7 @@ def home_def(items):
     # filtre pour les compet
     compet_filtre = filtrer_competitions(competitions, session.get('categorie'), session.get('arme'), session.get('sexe'), session.get('statut'))
     if len(compet_filtre) !=0:
+        total_pages = math.ceil(len(compet_filtre) / items)
         competitions = compet_filtre[(page - 1) * items:page * items]
     else:
         competitions = []
@@ -140,7 +141,8 @@ def home_def(items):
         selec_sexe=session.get('sexe'),
         selec_statut=session.get('statut'),
         page=page,
-        compet_filtre = compet_filtre
+        compet_filtre = compet_filtre,
+        total_pages=total_pages
     )
     
 @app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
