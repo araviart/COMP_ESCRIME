@@ -1,14 +1,48 @@
 .liste-table{
     display: flex;
     background-color: white;
+    margin-bottom: 50px;
+    padding-bottom: 1%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre douce en bas */
+    border-radius: 10px;
+}
+
+main{
+    margin-bottom: 5%;
+}
+
+
+td{
+    font-size: 25px;
+}
+
+th{
+    font-size: 28px;
+}
+
+.div-btn-conclure{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.div-btn-conclure > button{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--couleur-header);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 5%;
 }
 
 .textfield-score{
-    width: 100%;
-}
-
-.tr-textfield-matrice > td{
-    width: 10px;
+    width: 50%;
+    height: 50px;
+    border: none;
 }
 
 .liste-table table{
@@ -22,6 +56,8 @@ main{
 .haut-tableau{
     background-color: var(--couleur-header  );
     margin-top: 5%;
+    padding-left: 2%;
+    border-radius: 10px 10px 0 0;
 }
 .titre-transparent{
     color: transparent;
@@ -31,3 +67,23 @@ main{
     width: 100%;
     font-size: 100%;
 }
+
+.textfield-score-disabled{
+    background-color: black;
+}
+
+.textfield-score-ok{
+    background-color: rgba(50,135,255,0.62);
+}
+
+.td-textfield-matrice{
+    width: 15px;
+}
+
+/* Pour enlever les flèches de l'input number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
