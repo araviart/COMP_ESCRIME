@@ -51,11 +51,16 @@
           </div>
           <div class="suppd">
             <form action="{{ url_for('delete_participant', id=participant.idTireur) }}" method="post">
-              <button type="submit">-</button>
+              <button style="font-size: 30px;" ype="submit">-</button>
             </form>
           </div>
           </div>
           {% endfor %}
+          <div class="addp">
+            <form action="{{ url_for('add_participant', id_comp=competition.idComp) }}" method="post">
+              <button style="font-size: 30px;" ype="submit">+</button>
+            </form>
+          </div>
         </div>
       </section>
 

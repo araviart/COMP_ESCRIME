@@ -328,3 +328,8 @@ def delete_participant(id):
         db.session.delete(participant)
         db.session.commit()
     return redirect(url_for('gestion_participants', id_comp=request.form.get('id_comp')))
+
+@app.route('/ajouter_escrimeur_competition/<int:id_comp>/', methods=['POST'])
+def add_participant(id_comp):
+    # à implémenter
+    return redirect(url_for('gestion_participants', id_comp=id_comp))
