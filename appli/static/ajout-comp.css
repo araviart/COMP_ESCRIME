@@ -149,6 +149,11 @@ select {
   flex-basis: 50%;
 }
 
+.boxLieu{
+  display: inline-flex;
+  overflow: hidden;
+}
+
 /* Partie responsive */
 @media (max-width: 1450px) {
   .progress-bar {

@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='ajout-comp.css')}}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='progress-bar.css')}}" />
-<link rel="stylesheet" href="{{ url_for ('static', filename='responsive-creer-comp.css') }}">
   <div class="progress-bar">
     <a class="active-url" href="url">Définir une compétition</a>
     <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
@@ -33,8 +30,19 @@
               {{ form.organisateur.label(class='label') }} {{ form.organisateur(class='input') }}
             </div>
             <div class="label-input">
-              {{ form.lieu.label(class='label') }} {{ form.lieu(class='input') }}
-            </div>
+              <label class="label">Lieu</label>
+              <button id="openModalButton" type="button">Ajouter un Lieu</button>
+              <div class="boxLieu">
+                <span id="lieuInfo"></span> <!-- Élément pour les informations du lieu -->
+                <!-- Champs cachés pour les informations du lieu -->
+                <input type="hidden" id="hiddenNomLieu" name="nomLieu" value="">
+                <input type="hidden" id="hiddenAdresseLieu" name="adresseLieu" value="">
+                <input type="hidden" id="hiddenVilleLieu" name="villeLieu" value="">
+                <input type="hidden" id="hiddenCodePostalLieu" name="codePostalLieu" value="">
+                <i id="editLieuIcon" class="fa fa-edit" style="cursor:pointer; display:none;"></i> <!-- Icône de modification -->
+              </div>
+              {% include 'popup_addLieu.html' %}
+            </div>            
             <div class="label-input">
               {{ form.date_deroulement.label(class='label') }} {{ form.date_deroulement(class='input') }}
             </div>
@@ -57,7 +65,7 @@
             <div class="combox-box comb-arme">
               {{ form.arme.label(class='label') }} {{ form.arme(class='select') }}
             </div>
-            <div class="combox-box comb-arme">
+            <div class="combox-box comb-sexe">
               {{ form.sexe.label(class='label') }} {{ form.sexe(class='select') }}
             </div>
             <div class="combox-box comb-cate">
@@ -74,4 +82,8 @@
       </div>
     </div>    
   </form>
+  {% block scripts %}
+  <script src="{{ url_for('static', filename='js/popup_addLieu.js') }}"></script>
+  {% endblock scripts %}
+  
 {% endblock %}

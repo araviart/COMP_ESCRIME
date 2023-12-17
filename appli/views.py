@@ -32,7 +32,6 @@ class InscriptionForm(FlaskForm):
 class CompetitionForm(FlaskForm):
     titre = StringField('Titre', validators=[DataRequired()])
     organisateur = StringField('Organisateur', validators=[DataRequired()])
-    lieu = StringField("Lieu", validators=[DataRequired()])
     date_deroulement = DateField('Date déroulement', format='%Y-%m-%d', validators=[DataRequired()])
     heure_debut = TimeField('Heure début', format='%H:%M', validators=[DataRequired()])
     arme = SelectField('Arme', choices=[('epee', 'Épée'), ('fleuret', 'Fleuret'), ('sabre', 'Sabre')])
@@ -280,15 +279,26 @@ def ajout_comp():
     form = CompetitionForm()
 
     if form.validate_on_submit():
-        lieu = Lieu.query.filter_by(nomLieu=form.lieu.data).first()
+        # Récupérez les données des champs cachés uniquement si le formulaire a été soumis
+        nom_lieu = request.form.get('nomLieu')
+        adresse_lieu = request.form.get('adresseLieu')
+        ville_lieu = request.form.get('villeLieu')
+        code_postal_lieu = request.form.get('codePostalLieu')
 
-        if lieu is None:
-            # si le lieu existe pas on le crée avec un id auto incrémenté et le reste des colonnes vides
-            # à voir après si l'on gère ces colonnes avec de nouveaux champs ou une API qui autocomplète les 
-            # champs en fonction du nom du lieu
-            lieu = Lieu(nom_lieu=form.lieu.data, ville_lieu="", code_postal_lieu=0, adresse_lieu="")
-            db.session.add(lieu)
+        if nom_lieu and adresse_lieu and ville_lieu and code_postal_lieu:  # Vérifiez si tous les champs cachés sont fournis
+            lieu = Lieu.query.filter_by(nomLieu=nom_lieu).first()
+            if lieu is None:
+                lieu = Lieu(nom_lieu=nom_lieu, adresse_lieu=adresse_lieu, ville_lieu=ville_lieu, code_postal_lieu=code_postal_lieu)
+                db.session.add(lieu)
+            else:
+                # Si le lieu existe déjà, mais que vous souhaitez mettre à jour les informations
+                lieu.adresse_lieu = adresse_lieu
+                lieu.ville_lieu = ville_lieu
+                lieu.code_postal_lieu = code_postal_lieu
             db.session.commit()
+
+        print(lieu.idLieu, Saison.query.get(1).idSaison, getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None), getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None), form.titre.data, f"Competition organisée par {form.organisateur.data}", form.date_deroulement.data, form.heure_debut.data, form.sexe.data[:1], form.type_comp.data == 'individuel')
+
         competition = Competition(idLieu=lieu.idLieu, 
                                   idSaison=Saison.query.get(1).idSaison,
                                   idCat=getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None),
@@ -297,7 +307,7 @@ def ajout_comp():
                                   descComp=f"Competition organisée par {form.organisateur.data}", 
                                   dateComp=form.date_deroulement.data,
                                   heureComp=form.heure_debut.data,
-                                  sexeComp=form.sexe.data[:1],
+                                  sexeComp=form.sexe.data[:1].upper(),
                                   estIndividuelle=form.type_comp.data == 'individuel')
         db.session.add(competition)
         db.session.commit()
