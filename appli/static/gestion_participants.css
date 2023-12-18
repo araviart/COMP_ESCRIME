@@ -2,6 +2,11 @@
   display: flex; 
   flex-direction: column;
   align-items: center;
+
+}
+
+.container-section-participants{
+  padding: 40px 0 40px 0;
 }
 
 
@@ -15,10 +20,13 @@
   font-size: 16px;
 }
 
+.escrime-other .nb{
+  background-color: #ffab01;
+
+}
 
 .container-section-participants p{
-  color: black;
-}
+  color: black;}
 
 .subtitreparticipant{
   display: flex;
@@ -31,7 +39,7 @@
   width: 70%;
 }
 
-.escrime-arb, .nb{
+.escrime-arb .nb{
   background-color: #5F5F5F;
 }
 
@@ -74,11 +82,15 @@
 }
 
 .section-infopr , .gestion-participants{
-  background-color: white;  
+  background-color: white; 
+  border-radius: 12px; 
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+
 }
 
 .section-infopr{
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+  border-radius: 12px;
 }
 
 
@@ -127,11 +139,26 @@
   margin: 10px 30px 0 0;
 }
 
-.addp button, .addother button{
+.escrimeblois .addp button{
+  background-color: var(--blue-escrime);
   margin-top: 10px;
   padding: 0 12px;
-  background-color: var(--blue-escrime);
+  
 }
+
+.escrime-arb .addp button{
+  background-color: #5F5F5F;
+  margin-top: 10px;
+  padding: 0 12px;
+
+}
+.escrime-other .addp button{
+  background-color: #ffab01;
+  margin-top: 10px;
+  padding: 0 12px;
+}
+
+
 
 .subtitreparticipant .nb{
   color: white;
@@ -139,16 +166,13 @@
 
 /* .subtitreparticipant{
   margin: 0 150px;
-}
+} 
 
 .gestion-participants{
   margin-right: 150px;
 } */
 
 
-.escrime-other .nb {
-  background-color: #ffab01;
-}
 .addother button{
   background-color: #ffab01;
 }

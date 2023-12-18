@@ -69,7 +69,7 @@
           <h3>Tireurs d’autres club</h3>
           <p class="nb">{{ nb_participants_other }}</p>
         </div>
-        <div class="gestion-participants">
+        <div class="gestion-participants-list">
           {% for participant in participants_blois %}
           <div class ="gestionp">
           <div class="participant">
@@ -85,7 +85,7 @@
           </div>
           </div>
           {% endfor %}
-          <div class="addother">
+          <div class="addp">
             <form action="{{ url_for('add_participant', id_comp=competition.idComp) }}" method="post">
               <button style="font-size: 30px;" type="submit">+</button>
             </form>
@@ -94,10 +94,10 @@
       </section>
       <section class="escrime-arb">
         <div class="subtitreparticipant">
-          <h3>Tireurs d’autres club</h3>
+          <h3>Arbitres</h3>
           <p class="nb">{{ nb_participants_other }}</p>
         </div>
-        <div class="gestion-participants">
+        <div class="gestion-participants-list">
           {% for participant in participants_blois %}
           <div class ="gestionp">
           <div class="participant">
@@ -113,7 +113,7 @@
           </div>
           </div>
           {% endfor %}
-          <div class="addother">
+          <div class="addp">
             <form action="{{ url_for('add_participant', id_comp=competition.idComp) }}" method="post">
               <button style="font-size: 30px;" type="submit">+</button>
             </form>
