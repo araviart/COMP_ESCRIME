@@ -1,11 +1,11 @@
 from .app import app, db
 import math
-from flask import render_template, url_for, redirect, request, flash
-from .models import Competition, Saison, User, get_sample, get_categories, get_armes,get_lieux, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
+from flask import render_template, session, url_for, redirect, request, flash
+from .models import *
 from .ajout_bd import creer_competition
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
-from wtforms import StringField, PasswordField
+from wtforms import BooleanField, DateField, SelectField, StringField, PasswordField, SubmitField, TimeField
 from hashlib import sha256
 from flask_login import login_user, logout_user, current_user
 
@@ -29,15 +29,51 @@ class InscriptionForm(FlaskForm):
     email = StringField('email', validators=[DataRequired()])
     password = PasswordField('password', validators=[DataRequired()])
     comfirm_password = PasswordField('comfirm_password', validators=[DataRequired()])
-    
+
+class CompetitionForm(FlaskForm):
+    titre = StringField('Titre', validators=[DataRequired()])
+    organisateur = StringField('Organisateur', validators=[DataRequired()])
+    lieu = StringField("Lieu", validators=[DataRequired()])
+    date_deroulement = DateField('Date déroulement', format='%Y-%m-%d', validators=[DataRequired()])
+    heure_debut = TimeField('Heure début', format='%H:%M', validators=[DataRequired()])
+    arme = SelectField('Arme', choices=[('epee', 'Épée'), ('fleuret', 'Fleuret'), ('sabre', 'Sabre')])
+    sexe = SelectField('Sexe', choices=[('homme', 'Homme'), ('femme', 'Femme')])
+    categorie = SelectField('Categorie', choices=[('senior', 'Senior'), ('u13', 'U13'), ('cadet', 'Cadet'), ('u15', 'U15'), ('u17', 'U17'), ('u20', 'U20'), ('v1', 'V1'), ('v2', 'V2'), ('v3', 'V3'), ('v4', 'V4')])
+    type_comp = SelectField('Type', choices=[('individuel', 'Individuel'), ('equipe', 'Équipe')])
+    est_publie = BooleanField('Publier le tournoi')
+    submit = SubmitField('Publier le tournoi')
+
 class EditUserForm(FlaskForm):
     newpsswd = PasswordField("Nouveau mot de passe")
     confirm = PasswordField("Confirmez le nouveau mot de passe")
     username = StringField("Pseudonyme actuelle")
     password = PasswordField("Mot de passe actuelle")
+    
+    
+@app.route("/")
+def gestion_score():
+    rows_data = [
+        {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A'},
+        {'Nom': 'Smith', 'Prenom': 'Alice', 'Club': 'Club A'},
+        {'Nom': 'Johnson', 'Prenom': 'Bob', 'Club': 'Club A'},
+        {'Nom': 'Williams', 'Prenom': 'Emma', 'Club': 'Club A'}
+    ]
+
+    # Définir le nombre de lignes et de colonnes dans le tableau
+    rows = len(rows_data)
+    cols = len(rows_data)
+
+    # Générer les données pour le tableau
+    table_data = [[f'input_{i}_{j}' for j in range(cols)] for i in range(rows)]
+
+    # Rendre le modèle HTML avec Flask
+    return render_template('Score.html', table_data=table_data, rows_data=rows_data, rows=rows, cols=cols)
+
+
 
 @app.route("/appel/")
-def jenesaispas():
+def appel():
+    # Exemple de données à afficher dans chaque ligne
     rows_data = [
         {'Nom': 'Doe', 'Prenom': 'John', 'DateNaissance': '01/01/1990', 'Telephone': '123456789', 'Sexe': 'M', 'Club': 'Club A', 'Classement': 'A'},
         {'Nom': 'Smith', 'Prenom': 'Alice', 'DateNaissance': '02/02/1995', 'Telephone': '987654321', 'Sexe': 'F', 'Club': 'Club B', 'Classement': 'B'},
@@ -93,41 +129,89 @@ def home_def(items):
             page += 1
         elif 'prev' in request.form:
             page -= 1
+        # récupere les selection du from
+        session['categorie'] = request.form.get('categorie')
+        session['arme'] = request.form.get('arme')
+        session['sexe'] = request.form.get('sexe')
+        session['statut'] = request.form.get('statut')
     else:
         page = request.args.get('page', 1, type=int)
+        session['categorie'] = request.args.get('categorie', session.get('categorie'))
+        session['arme'] = request.args.get('arme', session.get('arme'))
+        session['sexe'] = request.args.get('sexe', session.get('sexe'))
+        session['statut'] = request.args.get('statut', session.get('statut'))
     competitions = get_sample()
     categories = get_categories()
     armes = get_armes()
     nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
-    # récupere les selection du from
-    categorie = request.form.get('categorie')
-    arme = request.form.get('arme')
-    sexe = request.form.get('sexe')
-    statut = request.form.get('statut')
-    print(sexe)
     # filtre pour les compet
-    compet_filtre = filtrer_competitions(competitions, categorie, arme, sexe, statut)
+    compet_filtre = filtrer_competitions(competitions, session.get('categorie'), session.get('arme'), session.get('sexe'), session.get('statut'))
     if len(compet_filtre) !=0:
+        total_pages = math.ceil(len(compet_filtre) / items)
         competitions = compet_filtre[(page - 1) * items:page * items]
     else:
         competitions = []
-    print(categorie)
     return render_template(
-    "competition.html",
-    title="Compétitions ESCRIME",
-    competitions=competitions,  # Pass the paginated competitions, not compet_filtre
-    categories=categories,
-    armes=armes,
-    nb_participants=nb_participants,
-    items=items,
-    selec_arme=arme,
-    selec_categorie=categorie,
-    selec_sexe=sexe,
-    selec_statut=statut,
-    page=page,
-    compet_filtre = compet_filtre
-)
+        "competition.html",
+        title="Compétitions ESCRIME",
+        competitions=competitions, 
+        categories=categories,
+        armes=armes,
+        nb_participants=nb_participants,
+        items=items,
+        selec_arme=session.get('arme'),
+        selec_categorie=session.get('categorie'),
+        selec_sexe=session.get('sexe'),
+        selec_statut=session.get('statut'),
+        page=page,
+        compet_filtre = compet_filtre,
+        total_pages=total_pages
+    )
+    
+@app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
+def liste_adherents(items):
+    total_pages = 0
+    if request.method == "POST":
+        page = int(request.form.get('page', 1))
+        if 'next' in request.form:
+            page += 1
+        elif 'prev' in request.form:
+            page -= 1
+    else:
+        page = request.args.get('page', 1, type=int)
+    adherents = get_adherents()
+    categories = get_categories()
+    role = request.form.get('statut', session.get('statuta', ''))
+    categorie = request.form.get('categorie', session.get('categoriea', ''))
+    sexe = request.form.get('sexe', session.get('sexea', ''))
+    
+    adherents = filtrer_adherent(adherents, categorie, sexe)
+    if request.method == "POST":
+        search_query = request.form.get('search')
+        # recherche les adhérents en fonction du nom ou prénom
+        if search_query:
+            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
+    session['statuta'] = role
+    session['categoriea'] = categorie
+    session['sexea'] = sexe 
+    if len(adherents) !=0:
+        total_pages = math.ceil(len(adherents) / items)
+        adherents = adherents[(page - 1) * items:page * items]
+    else:
+        adherents = []
 
+    
+    return render_template(
+        "liste-adherents.html",
+        title="Compétitions ESCRIME",
+        categories=categories,
+        selec_categorie=categorie,
+        selec_sexe=sexe,
+        selec_statut=role,
+        adherents=adherents,
+        items=items,
+        page=page,
+        total_pages=total_pages)
 @app.route('/home/')
 def home_default():
     return home_def(5)
@@ -258,45 +342,33 @@ def gestion_poules(id_comp):
 def liste_adherents_def():
     return liste_adherents(5)
   
-@app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
-def liste_adherents(items):
-    if request.method == "POST":
-        page = int(request.form.get('page', 1))
-        if 'next' in request.form:
-            page += 1
-        elif 'prev' in request.form:
-            page -= 1
-    else:
-        page = request.args.get('page', 1, type=int)
 
-    
-    adherents = get_adherents()
-    
-    categories = get_categories()
-    role = request.form.get('statut')
-    categorie = request.form.get('categorie')
-    sexe = request.form.get('sexe')
-    adherents = filtrer_adherent(adherents, categorie, sexe)
-    if request.method == "POST":
-        search_query = request.form.get('search')
-        # recherche les adhérents en fonction du nom ou prénom
-        if search_query:
-            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
-    if len(adherents) !=0:
-        total_pages = math.ceil(len(adherents) / items)
-        adherents = adherents[(page - 1) * items:page * items]
-    else:
-        adherents = []
+@app.route('/ajout-comp', methods=['GET', 'POST'])
+def ajout_comp():
+    form = CompetitionForm()
 
-    
-    return render_template(
-        "liste-adherents.html",
-        title="Compétitions ESCRIME",
-        categories=categories,
-        selec_categorie=categorie,
-        selec_sexe=sexe,
-        selec_statut=role,
-        adherents=adherents,
-        items=items,
-        page=page,
-        total_pages=total_pages)
+    if form.validate_on_submit():
+        lieu = Lieu.query.filter_by(nomLieu=form.lieu.data).first()
+
+        if lieu is None:
+            # si le lieu existe pas on le crée avec un id auto incrémenté et le reste des colonnes vides
+            # à voir après si l'on gère ces colonnes avec de nouveaux champs ou une API qui autocomplète les 
+            # champs en fonction du nom du lieu
+            lieu = Lieu(nom_lieu=form.lieu.data, ville_lieu="", code_postal_lieu=0, adresse_lieu="")
+            db.session.add(lieu)
+            db.session.commit()
+        competition = Competition(idLieu=lieu.idLieu, 
+                                  idSaison=Saison.query.get(1).idSaison,
+                                  idCat=getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None),
+                                  idArme=getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None),
+                                  nomComp=form.titre.data,
+                                  descComp=f"Competition organisée par {form.organisateur.data}", 
+                                  dateComp=form.date_deroulement.data,
+                                  heureComp=form.heure_debut.data,
+                                  sexeComp=form.sexe.data[:1],
+                                  estIndividuelle=form.type_comp.data == 'individuel')
+        db.session.add(competition)
+        db.session.commit()
+        flash('La compétition a été ajoutée avec succès')
+        return redirect(url_for('home'))
+    return render_template('ajout-comp.html', form=form)
