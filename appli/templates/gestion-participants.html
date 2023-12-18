@@ -3,6 +3,9 @@
   rel="stylesheet"
   href="{{ url_for('static', filename='gestion_participants.css') }}"
 />
+<script>
+  var competitionId = "{{ competition.idComp }}";
+</script>
 <script src="{{ url_for('static', filename='js/gestionParticipant.js') }}"></script>
 {% include 'progress-bar.html' %}
 <section class="content">

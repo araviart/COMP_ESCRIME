@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     listItem.textContent = `${escrimeur.prenomE} ${escrimeur.nomE}`;
                     listItem.addEventListener('click', function () {
                         alert(`Selected: ${escrimeur.prenomE} ${escrimeur.nomE}`);
-                        ajouterEscrimeurACompetition(escrimeur.id);
+                        ajouterEscrimeurACompetition(escrimeur.id, competitionId);
                         submenu.style.display = 'none';
                     });
                     escrimeursList.appendChild(listItem);
@@ -29,12 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function ajouterEscrimeurACompetition(escrimeurId) {
-        fetch(`/ajouter_escrimeur_competition/${competitionId}/${escrimeurId}`, {
+        fetch(`/ajouter_escrimeur_competition/${competitionId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-
+            body: JSON.stringify({ id_tireur: escrimeurId })
         })
         .then(response => {
             if (response.ok) {

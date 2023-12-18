@@ -1,4 +1,5 @@
 from .app import app, db
+import logging
 import math
 from .ajout_bd import creer_competition
 from flask import jsonify, render_template, session, url_for, redirect, request, flash
@@ -9,6 +10,7 @@ from wtforms import BooleanField, DateField, SelectField, StringField, PasswordF
 from hashlib import sha256
 from flask_login import login_user, logout_user, current_user
 
+logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 class LoginForm(FlaskForm):
     email_username = StringField('email_username', validators=[DataRequired()])
     password = PasswordField('password', validators=[DataRequired()])
@@ -356,16 +358,30 @@ def delete_participant(id, id_comp):
         db.session.commit()
     return redirect(url_for('gestion_participants', id_comp=id_comp))
 
+import logging
+
+logging.basicConfig(filename='debug.log', level=logging.DEBUG)
+
 @app.route('/ajouter_escrimeur_competition/<int:id_comp>/', methods=['POST'])
 def add_participant(id_comp):
     if request.method == 'POST':
-        id_tireur = request.form.get('id_tireur')
+        id_tireur = request.get_json().get('id_tireur')
+        logging.debug(f'id_tireur: {id_tireur}')
+
         tireur = Tireur.query.get(id_tireur)
+        logging.debug(f'tireur: {tireur}')
+
         competition = Competition.query.get(id_comp)
+        logging.debug(f'competition: {competition}')
+
         if tireur and competition:
             participant = ParticipantsCompetition(tireur=tireur, competition=competition)
             db.session.add(participant)
             db.session.commit()
+            logging.debug('Participant added successfully')
+        else:
+            logging.debug('Failed to add participant')
+
     return redirect(url_for('gestion_participants', id_comp=id_comp))
 
 @app.route('/get_escrimeurs')

@@ -1,0 +1,55 @@
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 362-363-874
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 362-363-874
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 362-363-874
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[33mGET /gestion_participants/static/ajout-comp.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[33mGET /gestion_participants/static/responsive-creer-comp.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[33mGET /gestion_participants/static/popup_addLieu.css HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:46] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:47] "GET /get_escrimeurs HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:49] "[32mPOST /ajouter_escrimeur_competition/6 HTTP/1.1[0m" 308 -
+DEBUG:root:id_tireur: None
+DEBUG:root:tireur: None
+DEBUG:root:competition: <Competition 6>
+DEBUG:root:Failed to add participant
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:49] "[32mPOST /ajouter_escrimeur_competition/6/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:49] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:50] "GET /get_escrimeurs HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:51] "[32mPOST /ajouter_escrimeur_competition/6 HTTP/1.1[0m" 308 -
+DEBUG:root:id_tireur: None
+DEBUG:root:tireur: None
+DEBUG:root:competition: <Competition 6>
+DEBUG:root:Failed to add participant
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:51] "[32mPOST /ajouter_escrimeur_competition/6/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [18/Dec/2023 16:32:51] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 362-363-874
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 362-363-874
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/models.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 362-363-874
