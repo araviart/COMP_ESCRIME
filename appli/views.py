@@ -341,34 +341,3 @@ def gestion_poules(id_comp):
 @app.route('/adherent/')
 def liste_adherents_def():
     return liste_adherents(5)
-  
-
-@app.route('/ajout-comp', methods=['GET', 'POST'])
-def ajout_comp():
-    form = CompetitionForm()
-
-    if form.validate_on_submit():
-        lieu = Lieu.query.filter_by(nomLieu=form.lieu.data).first()
-
-        if lieu is None:
-            # si le lieu existe pas on le crée avec un id auto incrémenté et le reste des colonnes vides
-            # à voir après si l'on gère ces colonnes avec de nouveaux champs ou une API qui autocomplète les 
-            # champs en fonction du nom du lieu
-            lieu = Lieu(nom_lieu=form.lieu.data, ville_lieu="", code_postal_lieu=0, adresse_lieu="")
-            db.session.add(lieu)
-            db.session.commit()
-        competition = Competition(idLieu=lieu.idLieu, 
-                                  idSaison=Saison.query.get(1).idSaison,
-                                  idCat=getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None),
-                                  idArme=getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None),
-                                  nomComp=form.titre.data,
-                                  descComp=f"Competition organisée par {form.organisateur.data}", 
-                                  dateComp=form.date_deroulement.data,
-                                  heureComp=form.heure_debut.data,
-                                  sexeComp=form.sexe.data[:1],
-                                  estIndividuelle=form.type_comp.data == 'individuel')
-        db.session.add(competition)
-        db.session.commit()
-        flash('La compétition a été ajoutée avec succès')
-        return redirect(url_for('home'))
-    return render_template('ajout-comp.html', form=form)
