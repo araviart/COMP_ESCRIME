@@ -78,6 +78,8 @@ main{
 
 .textfield-score-ok{
     background-color: rgba(50,135,255,0.62);
+    text-align: center;
+    font-size: 100%;
 }
 
 .td-textfield-matrice{
@@ -94,4 +96,6 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
   }
+
+
   
