@@ -5,7 +5,7 @@ from .models import *
 from .ajout_bd import creer_competition
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
-from wtforms import BooleanField, DateField, SelectField, StringField, PasswordField, SubmitField, TimeField
+from wtforms import StringField, PasswordField
 from hashlib import sha256
 from flask_login import login_user, logout_user, current_user
 
@@ -29,19 +29,6 @@ class InscriptionForm(FlaskForm):
     email = StringField('email', validators=[DataRequired()])
     password = PasswordField('password', validators=[DataRequired()])
     comfirm_password = PasswordField('comfirm_password', validators=[DataRequired()])
-
-class CompetitionForm(FlaskForm):
-    titre = StringField('Titre', validators=[DataRequired()])
-    organisateur = StringField('Organisateur', validators=[DataRequired()])
-    lieu = StringField("Lieu", validators=[DataRequired()])
-    date_deroulement = DateField('Date déroulement', format='%Y-%m-%d', validators=[DataRequired()])
-    heure_debut = TimeField('Heure début', format='%H:%M', validators=[DataRequired()])
-    arme = SelectField('Arme', choices=[('epee', 'Épée'), ('fleuret', 'Fleuret'), ('sabre', 'Sabre')])
-    sexe = SelectField('Sexe', choices=[('homme', 'Homme'), ('femme', 'Femme')])
-    categorie = SelectField('Categorie', choices=[('senior', 'Senior'), ('u13', 'U13'), ('cadet', 'Cadet'), ('u15', 'U15'), ('u17', 'U17'), ('u20', 'U20'), ('v1', 'V1'), ('v2', 'V2'), ('v3', 'V3'), ('v4', 'V4')])
-    type_comp = SelectField('Type', choices=[('individuel', 'Individuel'), ('equipe', 'Équipe')])
-    est_publie = BooleanField('Publier le tournoi')
-    submit = SubmitField('Publier le tournoi')
 
 class EditUserForm(FlaskForm):
     newpsswd = PasswordField("Nouveau mot de passe")
@@ -212,6 +199,7 @@ def liste_adherents(items):
         items=items,
         page=page,
         total_pages=total_pages)
+
 @app.route('/home/')
 def home_default():
     return home_def(5)
