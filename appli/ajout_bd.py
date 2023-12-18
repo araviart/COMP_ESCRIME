@@ -31,7 +31,11 @@ def ajouter_arme(nom_arme):
         # Commencez la transaction
         # Ajoutez l'arme à la base de données
         arme = Arme(nom_arme)
-        db.session.add(arme)
+        arme_existe = Arme.query.filter_by(nomArme=nom_arme).first()
+        if not arme_existe:
+            db.session.add(arme)
+        else :
+            return f"L'arme {nom_arme} existe déjà."
         db.session.commit()  # Validez la transaction
         return f"L'arme {nom_arme} a été ajoutée avec succès."
     except IntegrityError:
@@ -50,7 +54,11 @@ def ajouter_categorie(nom_categorie):
         # Commencez la transaction
         # Ajoutez la catégorie à la base de données
         categorie = Categorie(nom_categorie)
-        db.session.add(categorie)
+        categorie_existe = Categorie.query.filter_by(nomCategorie=nom_categorie).first()
+        if not categorie_existe:
+            db.session.add(categorie)
+        else :
+            return f"La catégorie {nom_categorie} existe déjà."
         db.session.commit()  # Validez la transaction
         return f"La catégorie {nom_categorie} a été ajoutée avec succès."
     except IntegrityError:
@@ -72,7 +80,11 @@ def ajouter_club(nom, region):
     try:
         # Ajoutez le club à la base de données
         club = Club(nom, region)
-        db.session.add(club)
+        club_existe = Club.query.filter_by(nomClub=nom).first()
+        if not club_existe:
+            db.session.add(club)
+        else :
+            return f"Le club {nom} existe déjà."
         db.session.commit()  # Validez la transaction
         if db.session.is_active:
             print("Une transaction sur le club est en cours.")
@@ -156,25 +168,28 @@ def pratiquer_arme(str_licence, arme):
         numLicense = int(str_licence)
     except ValueError:
         return "Le numéro de licence doit être un nombre."
+
     id_arme = get_id_arme(arme)
     if isinstance(id_arme, str):
         return id_arme
+
     try:
+        # Vérifiez si l'escrimeur pratique déjà cette arme
+        escrimeur = Escrimeur.query.filter_by(numeroLicenceE=numLicense).first()
+        if escrimeur and any(arme_pratiquee.id_arme_fk == id_arme for arme_pratiquee in escrimeur.armes_pratiquees):
+            return f"L'escrimeur {escrimeur.nomE} {escrimeur.prenomE} pratique déjà l'arme {arme}, {id_arme}."
+
         # Ajoutez l'escrimeur à la base de données
-        pratiquer = PratiquerArme(id_arme, numLicense)
-        
-        # Utilisez session.add_all pour ajouter les objets en une seule fois
+        pratiquer = PratiquerArme(numero_licence_e_fk=numLicense, id_arme_fk=id_arme)
         db.session.add(pratiquer)
         db.session.commit()
-        
-        return f"L'escrimeur {numLicense} pratique l'arme {arme}."
-    
-    except IntegrityError:
-        db.session.rollback()
-        return "L'escrimeur pratique déjà l'arme."
+
+        return f"L'escrimeur {escrimeur.nomE} {escrimeur.prenomE} pratique maintenant l'arme {arme}, {id_arme}."
+
     except Exception as e:
         db.session.rollback()
-        return f"Une erreur s'est produite lors de l'ajout de l'arme {arme} pratiquée par {numLicense} : {str(e)}"
+        return f"Une erreur s'est produite lors de l'ajout de l'arme {arme}, {id_arme} pratiquée par {numLicense} : {str(e)}"
+
 
 def creer_competition(nomLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle):
     try:
@@ -217,3 +232,325 @@ def creer_competition(nomLieu, nomSaison, nomCat, nomArme, nomComp, descComp, da
     except Exception as e:
         db.session.rollback()
         return f"Une erreur s'est produite lors de la création de la compétition {nomComp}: {str(e)}"
+    
+def ajouter_lieu(nomLieu, adresseLieu, villeLieu, codePostalLieu):
+    try:
+        try :
+            codePostalLieu = int(codePostalLieu)
+        except ValueError:
+            return "Le code postal doit être un nombre."
+        # Ajoutez le lieu à la base de données
+        lieu = Lieu(nom_lieu = nomLieu, ville_lieu = villeLieu, code_postal_lieu = codePostalLieu,adresse_lieu = adresseLieu)
+        lieu_existe = Lieu.query.filter_by(nomLieu=nomLieu).first()
+        if not lieu_existe:
+            db.session.add(lieu)
+        else :
+            return f"Le lieu {nomLieu} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"Le lieu {nomLieu} a été ajouté avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (nom du lieu déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"Le lieu {nomLieu} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de l'ajout du lieu : {str(e)}"
+    
+def ajouter_saison(nomSaison, dateDebutSaison, dateFinSaison):
+    try:
+        dateDebutSaison = datetime.strptime(dateDebutSaison, "%Y-%m-%d").date()
+        dateFinSaison = datetime.strptime(dateFinSaison, "%Y-%m-%d").date()
+        # Ajoutez la saison à la base de données
+        saison = Saison(nom_saison = nomSaison, date_debut_saison = dateDebutSaison, date_fin_saison = dateFinSaison)
+        saison_existe = Saison.query.filter_by(nomSaison=nomSaison).first()
+        if not saison_existe:
+            db.session.add(saison)
+        else :
+            return f"La saison {nomSaison} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"La saison {nomSaison} a été ajoutée avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (nom de la saison déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"La saison {nomSaison} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de l'ajout de la saison : {str(e)}"
+    
+def ajouter_type_match(nomTypeMatch, nbTouches):
+    try:
+        # Ajoutez le type de match à la base de données
+        try :
+            nbTouches = int(nbTouches)
+        except ValueError:
+            return "Le nombre de touches doit être un nombre."
+        type_match = TypeMatch(nom_type_match = nomTypeMatch, nb_touches = nbTouches)
+        type_match_existe = TypeMatch.query.filter_by(nomTypeMatch=nomTypeMatch).first()
+        if not type_match_existe:
+            db.session.add(type_match)
+        else :
+            return f"Le type de match {nomTypeMatch} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"Le type de match {nomTypeMatch} a été ajouté avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (nom du type de match déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"Le type de match {nomTypeMatch} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de l'ajout du type de match : {str(e)}"
+    
+def ajouter_piste(idComp, nomPiste, estDispo):
+    try:
+        # Ajoutez la piste à la base de données
+        estDispo = estDispo.lower() == 'true'
+        piste = Piste(competition = idComp, nom_piste = nomPiste, est_dispo = estDispo)
+        piste_existe = Piste.query.filter_by(nomPiste=nomPiste).first()
+        if not piste_existe:
+            db.session.add(piste)
+        else :
+            return f"La piste {nomPiste} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"La piste {nomPiste} a été ajoutée avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (nom de la piste déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"La piste {nomPiste} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de l'ajout de la piste : {str(e)}"
+
+def ajouter_tireur(numLicence, idClub, classement):
+    try :
+        numLicence = int(numLicence)
+    except ValueError:
+        return "Le numéro de licence doit être un nombre."
+    try:
+        idClub = int(idClub)
+    except ValueError:
+        return "L'identifiant du club doit être un nombre."
+    try:
+        classement = int(classement)
+    except ValueError:
+        return "Le classement doit être un nombre."
+    try:
+        # Ajoutez le tireur à la base de données
+        tireur = Tireur( num_licence = numLicence, club = idClub, classement = classement)
+        tireur_existe = Tireur.query.filter_by(numLicence=numLicence).first()
+        if not tireur_existe:
+            db.session.add(tireur)
+        else :
+            return f"Le tireur {numLicence} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"Le tireur {numLicence} a été ajouté avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (numéro de licence déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"Le tireur {numLicence} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de l'ajout du tireur : {str(e)}"
+
+def ajouter_arbitre(numeroLicenceE):
+    try:
+        numeroLicenceE = int(numeroLicenceE)
+    except ValueError:
+        return "Le numéro de licence doit être un nombre."
+    try:
+        # Ajoutez l'arbitre à la base de données
+        arbitre = Arbitre(numeroLicenceE = numeroLicenceE)
+        arbitre_existe = Arbitre.query.filter_by(numeroLicenceE=numeroLicenceE).first()
+        if not arbitre_existe:
+            db.session.add(arbitre)
+        else :
+            return f"L'arbitre {numeroLicenceE} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"L'arbitre {numeroLicenceE} a été ajouté avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (numéro de licence déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"L'arbitre {numeroLicenceE} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de l'ajout de l'arbitre : {str(e)}"
+
+def ajouter_participant(idTireur, idComp):
+    try:
+        idTireur = int(idTireur)
+    except ValueError:
+        return "L'identifiant du tireur doit être un nombre."
+    try:
+        idComp = int(idComp)
+    except ValueError:
+        return "L'identifiant de la compétition doit être un nombre."
+    try:
+        # Ajoutez le participant à la base de données
+        tireur = Tireur.query.filter_by(numLicence=idTireur).first()
+        participant = ParticipantsCompetition(numeroLicenceE = tireur.numeroLicenceE, idComp = idComp)
+        participant_existe = ParticipantsCompetition.query.filter_by(idTireur=idTireur, idComp=idComp).first()
+        if not participant_existe:
+            db.session.add(participant)
+        else :
+            return f"Le participant {idTireur} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"Le participant {idTireur} a été ajouté avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (numéro de licence déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"Le participant {idTireur} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de l'ajout du participant : {str(e)}"
+    
+def ajouter_classement_final(idComp, idTireur, classement):
+    try:
+        idComp = int(idComp)
+    except ValueError:
+        return "L'identifiant de la compétition doit être un nombre."
+    try:
+        idTireur = int(idTireur)
+    except ValueError:
+        return "L'identifiant du tireur doit être un nombre."
+    try:
+        classement = int(classement)
+    except ValueError:
+        return "Le classement doit être un nombre."
+    try:
+        # Ajoutez le classement final à la base de données
+        classement_final = ClassementFinal(idComp = idComp, idTireur = idTireur, classement = classement)
+        classement_final_existe = ClassementFinal.query.filter_by(idComp=idComp, idTireur=idTireur).first()
+        if not classement_final_existe:
+            db.session.add(classement_final)
+        else :
+            return f"Le classement final {idComp} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"Le classement final {idComp} a été ajouté avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (numéro de licence déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"Le classement final {idComp} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de l'ajout du classement final : {str(e)}"
+
+def ajouter_poule(idComp, idPiste, idArbitre, nomPoule):
+    try:
+        idComp = int(idComp)
+    except ValueError:
+        return "L'identifiant de la compétition doit être un nombre."
+    try:
+        idPiste = int(idPiste)
+    except ValueError:
+        return "L'identifiant de la piste doit être un nombre."
+    try:
+        idArbitre = int(idArbitre)
+    except ValueError:
+        return "L'identifiant de l'arbitre doit être un nombre."
+    try:
+        # Ajoutez la poule à la base de données
+        poule = Poule(competition = idComp, piste = idPiste, arbitre = idArbitre, nom_poule = nomPoule)
+        poule_existe = Poule.query.filter_by(idComp=idComp).first()
+        if not poule_existe:
+            db.session.add(poule)
+        else :
+            return f"La poule {idComp} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"La poule {idComp} a été ajoutée avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (numéro de licence déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"La poule {idComp} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de l'ajout de la poule : {str(e)}"
+
+def ajouter_participant_poule(idPoule, idTireur):
+    try:
+        idPoule = int(idPoule)
+    except ValueError:
+        return "L'identifiant de la poule doit être un nombre."
+    try:
+        idTireur = int(idTireur)
+    except ValueError:
+        return "L'identifiant du tireur doit être un nombre."
+    try:
+        # Ajoutez le participant à la base de données
+        tireur = Tireur.query.filter_by(numLicence=idTireur).first()
+        participant_poule = ParticipantsPoule(poule = idPoule, tireur = tireur.numeroLicenceE)
+        participant_poule_existe = ParticipantsPoule.query.filter_by(idPoule=idPoule, idTireur=idTireur).first()
+        if not participant_poule_existe:
+            db.session.add(participant_poule)
+        else :
+            return f"Le participant poule {idPoule} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"Le participant poule {idPoule} a été ajouté avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (numéro de licence déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"Le participant poule {idPoule} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produite participant poule : {str(e)}"
+    
+def ajouter_match_poule(idTypeMatch, idPoule, idPiste, idArbitre, idTireur1, idTireur2, dateMatch, heureMatch, toucheRecuTireur1, toucheDonnerTireur1, toucheRecuTireur2, toucheDonnerTireur2):
+    try :
+        idTypeMatch = int(idTypeMatch)
+    except ValueError:
+        return "L'identifiant du type de match doit être un nombre."
+    try:
+        idPoule = int(idPoule)
+    except ValueError:
+        return "L'identifiant de la poule doit être un nombre."
+    try:
+        idPiste = int(idPiste)
+    except ValueError:
+        return "L'identifiant de la piste doit être un nombre."
+    try:
+        idArbitre = int(idArbitre)
+    except ValueError:
+        return "L'identifiant de l'arbitre doit être un nombre."
+    try:
+        idTireur1 = int(idTireur1)
+        idTireur2 = int(idTireur2)
+    except ValueError:
+        return "L'identifiant des tireurs doivent être un nombre."
+    try:
+        toucheRecuTireur1 = int(toucheRecuTireur1)
+        toucheDonnerTireur1 = int(toucheDonnerTireur1)
+        toucheRecuTireur2 = int(toucheRecuTireur2)
+        toucheDonnerTireur2 = int(toucheDonnerTireur2)
+    except ValueError:
+        return "Le nombre de touches doit être un nombre."
+    try:
+        dateMatch = datetime.strptime(dateMatch, "%Y-%m-%d").date()
+        heureMatch = datetime.strptime(heureMatch, "%H:%M").time()
+    except ValueError:
+        return "La date et l'heure doivent être au format valide (jour/mois/année)"
+    try:
+        # Ajoutez le match poule à la base de données
+        match_poule = MatchPoule(type_match = idTypeMatch, poule = idPoule, piste = idPiste, arbitre = idArbitre, tireur1 = idTireur1, tireur2 = idTireur2, date_match = dateMatch, heure_match = heureMatch, touche_recu_tireur1 = toucheRecuTireur1, touche_donner_tireur1 = toucheDonnerTireur1, touche_recu_tireur2 = toucheRecuTireur2, touche_donner_tireur2 = toucheDonnerTireur2)
+        match_poule_existe = MatchPoule.query.filter_by(type_match=idTypeMatch, poule=idPoule, piste=idPiste, arbitre=idArbitre, tireur1=idTireur1, tireur2=idTireur2).first()
+        if not match_poule_existe:
+            db.session.add(match_poule)
+        else :
+            return f"Le match poule {idTypeMatch} existe déjà."
+        db.session.commit()  # Validez la transaction
+        return f"Le match poule {idTypeMatch} a été ajouté avec succès."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (numéro de licence déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"Le match poule {idTypeMatch} existe déjà."
+    except Exception as e:
+        # En cas d'autres erreurs, annulez la transaction
+        db.session.rollback()
+        return f"Une erreur s'est produitematch poule : {str(e)}"
