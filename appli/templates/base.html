@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='ajout_adherent.css')}}" />
     <link rel="stylesheet" href="static/ajout-comp.css">
     <link rel="stylesheet" href="static/responsive-creer-comp.css">
+    <link rel="stylesheet" href="static/popup_addLieu.css">
     <script src="{{ url_for('static', filename='js/script_popup.js') }}"></script>
     <script src="https://kit.fontawesome.com/b2318dca58.js" crossorigin="anonymous"></script>
     <title>Compétition ESCRIME</title>
@@ -30,7 +31,7 @@
           <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" />
           <ul>
             <li><a href="{{ url_for('home_default')}}">Accueil</a></li>
-            <li><a href="{{ url_for('ajout_comp')}}">Ajouter un tournoi</a></li>
+            <li><a href="{{ url_for('ajout_comp_page')}}">Ajouter un tournoi</a></li>
             <li><a href="{{ url_for('liste_adherents_def')}}">Liste adhérents</a></li>
             <li><a href="{{ url_for('home_default')}}">Liste compétitions</a></li>
           </ul>

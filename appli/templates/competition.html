@@ -6,55 +6,49 @@
   <h1>
     Liste des compétitions
   </h1>
-      <section class="section-filtre">
-        <div class="titre-filtre">
-          <h2>FILTRE</h2>
-        </div>
-        <div class="filtre">
-          <div class="Catégorie">
-            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="categorieForm">
-                <label for="categorieSelect">Catégorie:</label>
-                <select id="categorieSelect" name="categorie" onchange="document.getElementById('categorieForm').submit();">
-                    <option value="">Toutes les catégories</option>
-                    {% for categorie in categories %}
-                    <option value="{{ categorie }}" {% if categorie == selec_categorie %}selected{% endif %}>{{ categorie }}</option>
-                    {% endfor %}
-                </select>
-            </form>
+  <section class="section-filtre">
+    <div class="titre-filtre">
+      <h2>FILTRE</h2>
+    </div>
+    <form method="POST" action="{{ url_for('home_def', items=items) }}" id="filtreForm">
+      <div class="filtre">
+        <div class="Catégorie">
+          <label for="categorieSelect">Catégorie:</label>
+          <select id="categorieSelect" name="categorie" onchange="document.getElementById('filtreForm').submit();">
+            <option value="">Toutes les catégories</option>
+            {% for categorie in categories %}
+            <option value="{{ categorie }}" {% if categorie == selec_categorie %}selected{% endif %}>{{ categorie }}</option>
+            {% endfor %}
+          </select>
         </div>
         <div class="Arme">
-            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="armeForm">
-                <label for="categorieArme">Arme:</label>
-                <select id="categorieArme" name="arme" onchange="document.getElementById('armeForm').submit();">
-                    <option value="">Non définie</option>
-                    {% for arme in armes %}
-                    <option value="{{ arme }}" {% if arme == selec_arme %}selected{% endif %}>{{ arme }}</option>
-                    {% endfor %}
-                </select>
-            </form>
+          <label for="categorieArme">Arme:</label>
+          <select id="categorieArme" name="arme" onchange="document.getElementById('filtreForm').submit();">
+            <option value="">Non définie</option>
+            {% for arme in armes %}
+            <option value="{{ arme }}" {% if arme == selec_arme %}selected{% endif %}>{{ arme }}</option>
+            {% endfor %}
+          </select>
         </div>
         <div class="Sexe">
-            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="sexeForm">
-                <label for="categorieSexe">Sexe:</label>
-                <select id="categorieSexe" name="sexe" onchange="document.getElementById('sexeForm').submit();">
-                    <option value="">Non définie</option>
-                    <option value="H" {% if "Homme" == selec_sexe %}selected{% endif %}>Homme</option>
-                    <option value="F" {% if "Femme" == selec_sexe %}selected{% endif %}>Femme</option>
-                </select>
-            </form>
-        </div>
+          <label for="categorieSexe">Sexe:</label>
+          <select id="categorieSexe" name="sexe" onchange="document.getElementById('filtreForm').submit();">
+              <option value="">Non définie</option>
+              <option value="H" {% if "H" == selec_sexe %}selected{% endif %}>Homme</option>
+              <option value="F" {% if "F" == selec_sexe %}selected{% endif %}>Femme</option>
+          </select>
+      </div>
         <div class="Statut">
-            <form method="POST" action="{{ url_for('home_def', items=items) }}" id="statutForm">
-                <label for="categorieStatut">Statut:</label>
-                <select id="categorieStatut" name="statut" onchange="document.getElementById('statutForm').submit();">
-                    <option value="">Non définie</option>
-                    <option value="A venir" {% if "A venir" == selec_statut %}selected{% endif %}>A venir</option>
-                    <option value="Terminé" {% if "Terminé" == selec_statut %}selected{% endif %}>Terminé</option>
-                  </select>
-                </form>
-              </div>
-            </div>
-          </section>
+          <label for="categorieStatut">Statut:</label>
+          <select id="categorieStatut" name="statut" onchange="document.getElementById('filtreForm').submit();">
+            <option value="">Non définie</option>
+            <option value="A venir" {% if "A venir" == selec_statut %}selected{% endif %}>A venir</option>
+            <option value="Terminé" {% if "Terminé" == selec_statut %}selected{% endif %}>Terminé</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </section>
       <div class="competition-container">
         <div class = "top-section">
         <div class="affichage">
@@ -110,7 +104,7 @@
           <button type="submit" name="prev" class="left" value="prev">Page précédente</button>
       {% endif %}
       {% if compet_filtre|length > page * items %}
-          <button type="submit" name="next" class="right" value="next">Page suivante</button>
+      <a href="{{ url_for('home_def', items=items, page=page+1, categorie=selec_categorie, arme=selec_arme, sexe=selec_sexe, statut=selec_statut) }}" class="right">Page suivante</a>
       {% endif %}
   </form>
 </div>
