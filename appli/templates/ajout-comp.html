@@ -33,13 +33,19 @@
               <input type="text" id="Organisateur" name="organisateur" maxlength="12" required />
             </div>
             <div class="combox-box comb-lieu">
-              <label for="arme">Lieu</label>
-              <select name="lieu" id="lieu">
-                {% for lieu in lieux %}
-                  <option value="{{ lieu }}">{{ lieu }}</option>
-                {% endfor %}
-              </select>
-            </div>
+              <label for="lieu">Lieu</label>
+              <button id="openModalButton" type="button">Ajouter un Lieu</button>
+              <div class="boxLieu">
+                <span id="lieuInfo"></span> <!-- Élément pour les informations du lieu -->
+                <!-- Champs cachés pour les informations du lieu -->
+                <input type="hidden" id="hiddenNomLieu" name="nomLieu" value="">
+                <input type="hidden" id="hiddenAdresseLieu" name="adresseLieu" value="">
+                <input type="hidden" id="hiddenVilleLieu" name="villeLieu" value="">
+                <input type="hidden" id="hiddenCodePostalLieu" name="codePostalLieu" value="">
+                <i id="editLieuIcon" class="fa fa-edit" style="cursor:pointer; display:none;"></i> <!-- Icône de modification -->
+              </div>
+              {% include 'popup_addLieu.html' %}
+            </div>  
             <div class="label-input">
               <label for="title">Date déroulement</label>
               <input type="date" id="deroulement" name="date-deroulement" value="2023-11-16" min="2023-11-16" />
@@ -102,4 +108,7 @@
       </div>
     </div>
   </form>
+  {% block scripts %}
+  <script src="{{ url_for('static', filename='js/popup_addLieu.js') }}"></script>
+  {% endblock scripts %}
 {% endblock %}

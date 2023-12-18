@@ -1,7 +1,7 @@
 from .app import app, db
 import math
 from flask import render_template, url_for, redirect, request, flash
-from .models import Competition, User, get_sample, get_categories, get_armes,get_lieux, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
+from .models import Competition, Saison, User, get_sample, get_categories, get_armes,get_lieux, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
 from .ajout_bd import creer_competition
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
@@ -143,37 +143,28 @@ def ajout_comp_page():
 @app.route('/ajout-comp/', methods=['POST'])
 def ajout_comp():
     # Récupérez les données du formulaire
-    nomLieu = request.form.get('lieu')
-    nomSaison = 'Saison 2023'  # Supposons que c'est fixe pour cet exemple
-    nomCat = request.form.get('categorie')  # Assurez-vous que le nom correspond au champ dans le HTML
-    nomArme = request.form.get('arme')  # Idem
+    nomLieu = request.form.get('nomLieu')
+    adresseLieu = request.form.get('adresseLieu')
+    villeLieu = request.form.get('villeLieu')
+    codePostalLieu = request.form.get('codePostalLieu')
+    nomSaison = Saison.query.get(1).nomSaison # Renvoie la dernière saison enregistrée
+    nomCat = request.form.get('categorie')
+    nomArme = request.form.get('arme')
     nomComp = request.form.get('titre')
-    descComp = 'Description de la compétition'  # Ajoutez un champ pour la description si nécessaire
+    nomOrga = request.form.get('organisateur')
+    descComp = f"Competition {nomComp} organisée par {nomOrga}"
     dateComp = request.form.get('date-deroulement')
     heureComp = request.form.get('appt')
-    sexeComp = request.form.get('sexe')
-    estIndividuelle = True  # ou False, selon votre logique
-    print(nomLieu)
-    print(nomSaison)
-    print(nomCat)
-    print(nomArme)
-    print(nomComp)
-    print(descComp)
-    print(dateComp)
-    print(heureComp)
-    print(sexeComp)
-    print(estIndividuelle)
+    sexeComp = request.form.get('sexe')[:1].upper()
+    estIndividuelle = request.form.get('typeM') == 'Individuelle'
+    print(nomLieu, adresseLieu, villeLieu, codePostalLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
     
-
-    # Appeler la fonction pour créer la compétition
-    resultat = creer_competition(nomLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
+    # Ajoutez la compétition à la base de données
+    resultat = creer_competition(nomLieu,adresseLieu,villeLieu,codePostalLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
     print(resultat)
-    # Gérer le résultat (par exemple, afficher un message à l'utilisateur)
     if 'succès' in resultat:
-        # Redirige vers une page de confirmation ou la liste des compétitions
         return redirect(url_for('home_default'))
     else:
-        # Gérer l'erreur (par exemple, afficher un message d'erreur sur la page actuelle)
         flash(resultat, 'error')
         return redirect(url_for('ajout_comp_page'))
     
@@ -181,19 +172,6 @@ def ajout_comp():
 def annuler_comp():
     # Rediriger vers l'URL d'origine
     return redirect(request.referrer or url_for('home_default'))
-
-@app.route('/publier', methods=['POST'])
-def publier():
-    # Récupérer les données du formulaire ici, par exemple :
-    # titre = request.form.get('titre')
-    # organisateur = request.form.get('organisateur')
-    # ...
-
-    # Traiter les données, enregistrer dans la base de données, etc.
-
-    # Redirection ou réponse
-    return redirect(url_for('confirmation_publication'))  # Redirige vers une page de confirmation
-
 
 @app.route("/test_popup/")
 def test_popup():

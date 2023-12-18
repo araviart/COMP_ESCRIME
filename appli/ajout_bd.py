@@ -190,15 +190,25 @@ def pratiquer_arme(str_licence, arme):
         db.session.rollback()
         return f"Une erreur s'est produite lors de l'ajout de l'arme {arme} pratiquée par {numLicense} : {str(e)}"
 
-def creer_competition(nomLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle):
+def creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle):
     try:
+        if nomLieu and adresseLieu and villeLieu and cpLieu:  # Vérifiez si tous les champs cachés sont fournis
+            lieu = Lieu.query.filter_by(nomLieu=nomLieu).first()
+            if lieu is None:
+                lieu = Lieu(nom_lieu=nomLieu, adresse_lieu=adresseLieu, ville_lieu=villeLieu, code_postal_lieu=cpLieu)
+                db.session.add(lieu)
+            else:
+                # Si le lieu existe déjà, mais que vous souhaitez mettre à jour les informations
+                lieu.adresse_lieu = adresseLieu
+                lieu.ville_lieu = villeLieu
+                lieu.code_postal_lieu = cpLieu
+            db.session.commit()
         # Obtenez les objets à partir des noms
-        lieu = Lieu.query.filter_by(nomLieu=nomLieu).first()
         saison = Saison.query.filter_by(nomSaison=nomSaison).first()
         categorie = Categorie.query.filter_by(nomCategorie=nomCat).first()
         arme = Arme.query.filter_by(nomArme=nomArme).first()
-        if sexeComp == "homme": sexeComp = "M"
-        elif sexeComp == "femme": sexeComp = "F"
+
+        print(lieu, saison, categorie, arme)
 
         # Vérifiez que les objets sont valides
         if not all([lieu, saison, categorie, arme]):
@@ -217,14 +227,10 @@ def creer_competition(nomLieu, nomSaison, nomCat, nomArme, nomComp, descComp, da
 
         return f"La compétition {nomComp} a été créée avec succès."
     
-    except Exception as e:
-        db.session.rollback()
-        return f"Une erreur s'est produite lors de la création de la compétition {nomComp}: {e}"
-    
     except IntegrityError:
         db.session.rollback()
         return "Une compétition avec ce nom existe déjà."
     
     except Exception as e:
         db.session.rollback()
-        return f"Une erreur s'est produite lors de la création de la compétition {nomComp}: {str(e)}"
+        return f"Une erreur s'est produite lors de la création de la compétition {nomComp}: {e}"
