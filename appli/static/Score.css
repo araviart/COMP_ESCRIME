@@ -7,10 +7,6 @@
     border-radius: 10px;
 }
 
-main{
-    margin-bottom: 5%;
-}
-
 tr{
     margin-top: 1000%;
 }
@@ -55,6 +51,7 @@ th{
 
 main{
     margin: 0 5%;
+    margin-bottom: 5%;
 }
 
 .haut-tableau{

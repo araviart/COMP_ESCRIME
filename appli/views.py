@@ -287,9 +287,14 @@ def ajouter_escrimeur():
         db.session.add(nouvel_adherent)
         db.session.commit()
         return redirect(url_for('liste_adherents_def'))
+    
 @app.route('/')
 def home():
-    return render_template('Login.html')
+    return render_template('arbre.html')
+
+@app.route('/arbre-competition/')
+def arbre():
+        return render_template('arbre.html')
 
 @app.route('/gestion_poules/<int:id_comp>', methods=["GET", "POST"])
 def gestion_poules(id_comp):

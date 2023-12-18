@@ -1,0 +1,148 @@
+{% extends 'base.html'%} {% block content %} {%include 'progress-bar.html'%}
+<link rel="stylesheet" href="{{ url_for ('static', filename='arbre.css') }}" />
+<main>
+  <div class="classement-provisoire-match">
+    <a href="">Voir classement provisoire du tournoi</a>
+    <a href="">Voir ordre des matchs</a>
+  </div>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Quart de finale</th>
+          <th>Demi finale</th>
+          <th>Finale</th>
+          <th>Vainqueur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div>
+              <div class="joueur joueur1">
+                <p>Joueur 1</p>
+                <p class="score-joueur">8</p>
+              </div>
+              <div class="joueur joueur2">
+                <p>Joueur 2</p>
+                <p class="score-joueur score-joueur-perdu">6</p>
+              </div>
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <div>
+              <div class="joueur joueur1">
+                <p>Joueur 1</p>
+                <p class="score-joueur">8</p>
+              </div>
+              <div class="joueur joueur2">
+                <p>Joueur 2</p>
+                <p class="score-joueur score-joueur-perdu">6</p>
+              </div>
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div class="joueur joueur1">
+                <p>Joueur 1</p>
+                <p class="score-joueur">8</p>
+              </div>
+              <div class="joueur joueur2">
+                <p>Joueur 2</p>
+                <p class="score-joueur score-joueur-perdu">6</p>
+              </div>
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <div>
+              <div class="joueur joueur1">
+                <p>Joueur 1</p>
+                <p class="score-joueur">8</p>
+              </div>
+              <div class="joueur joueur2">
+                <p>Joueur 2</p>
+                <p class="score-joueur score-joueur-perdu">6</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="joueur joueur1">
+              <p>Joueur 1</p>
+              <p class="score-joueur">8</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div class="joueur joueur1">
+                <p>Joueur 1</p>
+                <p class="score-joueur">8</p>
+              </div>
+              <div class="joueur joueur2">
+                <p>Joueur 2</p>
+                <p class="score-joueur score-joueur-perdu">6</p>
+              </div>
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <div>
+              <div class="joueur joueur1">
+                <p>Joueur 1</p>
+                <p class="score-joueur">8</p>
+              </div>
+              <div class="joueur joueur2">
+                <p>Joueur 2</p>
+                <p class="score-joueur score-joueur-perdu">6</p>
+              </div>
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <div class="joueur joueur1">
+                <p>Joueur 1</p>
+                <p class="score-joueur">8</p>
+              </div>
+              <div class="joueur joueur2">
+                <p>Joueur 2</p>
+                <p class="score-joueur score-joueur-perdu">6</p>
+              </div>
+            </div>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}
