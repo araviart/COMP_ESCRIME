@@ -107,3 +107,14 @@ label {
 .tableau th {
     text-align: left;
 }
+
+.div-btn-valider-poule{
+    text-align: end;
+}
+
+.btn-valider-poule{
+    padding: 1% 3%;
+    color: white;
+    background-color: var(--bouton-confirmation-validation);
+    border-radius: 10px;
+}
