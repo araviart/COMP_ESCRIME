@@ -156,7 +156,7 @@ def ajout_comp():
     dateComp = request.form.get('date-deroulement')
     heureComp = request.form.get('appt')
     sexeComp = request.form.get('sexe')[:1].upper()
-    estIndividuelle = request.form.get('typeM') == 'Individuelle'
+    estIndividuelle = request.form.get('type') == "Individuelle"
     print(nomLieu, adresseLieu, villeLieu, codePostalLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
     
     # Ajoutez la compétition à la base de données

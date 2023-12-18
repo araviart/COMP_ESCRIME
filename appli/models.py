@@ -126,17 +126,15 @@ class TypeMatch(db.Model):
 # Modèle pour représenter l'escrimeur
 class Escrimeur(db.Model):
     __tablename__ = 'ESCRIMEUR'
-    idEscrimeur = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idCat = db.Column(db.Integer, db.ForeignKey('CATEGORIE.idCat'), nullable=False)
     prenomE = db.Column(db.String(50), nullable=False)
     nomE = db.Column(db.String(50), nullable=False)
     dateNaissanceE = db.Column(db.Date, nullable=False)
-    numeroLicenceE = db.Column(db.Integer, nullable=False)
+    numeroLicenceE = db.Column(db.Integer, nullable=False, primary_key=True)
     sexeE = db.Column(db.String(1), nullable=False)
     numTelE = db.Column(db.String(10), nullable=False)
 
-    def __init__(self, idEscrimeur, idCat, prenomE, nomE, dateNaissanceE, numeroLicenceE, sexeE, numTelE):
-        self.idEscrimeur = idEscrimeur
+    def __init__(self, idCat, prenomE, nomE, dateNaissanceE, numeroLicenceE, sexeE, numTelE):
         self.idCat = idCat
         self.prenomE = prenomE
         self.nomE = nomE
@@ -150,10 +148,12 @@ class Escrimeur(db.Model):
 class Tireur(db.Model):
     __tablename__ = 'TIREUR'
     idTireur = db.Column(db.Integer, primary_key=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), nullable=False)
     idClub = db.Column(db.Integer, db.ForeignKey('CLUB.idClub'), nullable=False)
     classement = db.Column(db.Integer, nullable=False)
 
     club = db.relationship('Club', backref='Club.idClub')
+    escrimeur = db.relationship('Escrimeur', backref='Escrimeur.numeroLicenceE')
 
     def __init__(self, escrimeur, club, classement):
         self._escrimeur = escrimeur
@@ -163,38 +163,40 @@ class Tireur(db.Model):
 # Modèle pour représenter les arbitres
 class Arbitre(db.Model):
     __tablename__ = 'ARBITRE'
-    idArbitre = db.Column(db.Integer, primary_key=True)
-    idEscrimeur = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.idEscrimeur'))
+    idArbitre = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), nullable=False)
+
+    escrimeur = db.relationship('Escrimeur', backref='arbitre_backref')
 
     def __init__(self, escrimeur):
         self._escrimeur = escrimeur
-        
 
-# Modèle pour représenter les participants aux compétitions
 class ParticipantsCompetition(db.Model):
     __tablename__ = 'PARTICIPANTS_COMPETITION'
-    idTireur = db.Column(db.Integer, db.ForeignKey('TIREUR.idTireur'), primary_key=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
 
-    tireur = db.relationship('Tireur', backref='PartTireur.idTireur')
-    competition = db.relationship('Competition', backref='PartCompetition.idComp')
-    
-    def __init__(self, tireur, competition):
-        self._tireur = tireur
+    escrimeur = db.relationship('Escrimeur', backref='participants_competition')
+    competition = db.relationship('Competition', backref='participations')
+
+    def __init__(self, escrimeur, competition):
+        self._escrimeur = escrimeur
         self._competition = competition
+
 
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
 class PratiquerArme(db.Model):
     __tablename__ = 'PRATIQUER_ARME'
-    idEscrimeur = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.idEscrimeur'), primary_key=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
     idArme = db.Column(db.Integer, db.ForeignKey('ARME.idArme'), primary_key=True)
 
-    escrimeur = db.relationship('Escrimeur', backref='Escrimeur.idEscrimeur')
+    escrimeur = db.relationship('Escrimeur', backref='pratiquer_arme')
     arme = db.relationship('Arme', backref='arme')
-    
+
     def __init__(self, escrimeur, arme):
         self._escrimeur = escrimeur
         self._arme = arme
+
 
 # Modèle pour représenter le classement final
 class ClassementFinal(db.Model):
