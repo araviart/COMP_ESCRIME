@@ -47,9 +47,32 @@ class EditUserForm(FlaskForm):
     confirm = PasswordField("Confirmez le nouveau mot de passe")
     username = StringField("Pseudonyme actuelle")
     password = PasswordField("Mot de passe actuelle")
+    
+    
+@app.route("/")
+def gestion_score():
+    rows_data = [
+        {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A'},
+        {'Nom': 'Smith', 'Prenom': 'Alice', 'Club': 'Club A'},
+        {'Nom': 'Johnson', 'Prenom': 'Bob', 'Club': 'Club A'},
+        {'Nom': 'Williams', 'Prenom': 'Emma', 'Club': 'Club A'}
+    ]
+
+    # Définir le nombre de lignes et de colonnes dans le tableau
+    rows = len(rows_data)
+    cols = len(rows_data)
+
+    # Générer les données pour le tableau
+    table_data = [[f'input_{i}_{j}' for j in range(cols)] for i in range(rows)]
+
+    # Rendre le modèle HTML avec Flask
+    return render_template('Score.html', table_data=table_data, rows_data=rows_data, rows=rows, cols=cols)
+
+
 
 @app.route("/appel/")
-def jenesaispas():
+def appel():
+    # Exemple de données à afficher dans chaque ligne
     rows_data = [
         {'Nom': 'Doe', 'Prenom': 'John', 'DateNaissance': '01/01/1990', 'Telephone': '123456789', 'Sexe': 'M', 'Club': 'Club A', 'Classement': 'A'},
         {'Nom': 'Smith', 'Prenom': 'Alice', 'DateNaissance': '02/02/1995', 'Telephone': '987654321', 'Sexe': 'F', 'Club': 'Club B', 'Classement': 'B'},
