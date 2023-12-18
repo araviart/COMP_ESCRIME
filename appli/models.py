@@ -67,7 +67,7 @@ class Club(db.Model):
 # Modèle pour représenter la compétition
 class Competition(db.Model):
     __tablename__ = 'COMPETITION'
-    idComp = db.Column(db.Integer, primary_key=True)
+    idComp = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idLieu = db.Column(db.Integer, db.ForeignKey('LIEU.idLieu'), nullable=False)
     lieu = db.relationship('Lieu', backref='Lieu.idLieu')
     idSaison = db.Column(db.Integer, db.ForeignKey('SAISON.idSaison'), nullable=False)
@@ -83,18 +83,17 @@ class Competition(db.Model):
     sexeComp = db.Column(db.String(1), nullable=False)
     estIndividuelle = db.Column(db.Boolean, nullable=False)
     
-    def init(self, id_comp, lieu, saison, categorie, arme, nom_comp, desc_comp, date_comp, heure_comp, sexe_comp, est_individuelle):
-        self._id_comp = id_comp
-        self._lieu = lieu
-        self._saison = saison
-        self._categorie = categorie
-        self._id_arme = arme
-        self._nom_comp = nom_comp
-        self._desc_comp = desc_comp
-        self._date_comp = date_comp
-        self._heure_comp = heure_comp
-        self._sexe_comp = sexe_comp
-        self._est_individuelle = est_individuelle
+    def __init__(self, lieu, saison, categorie, arme, nom_comp, desc_comp, date_comp, heure_comp, sexe_comp, est_individuelle):
+        self.idLieu = lieu.idLieu
+        self.idSaison = saison.idSaison
+        self.idCat = categorie.idCat
+        self.idArme = arme.idArme
+        self.nomComp = nom_comp
+        self.descComp = desc_comp
+        self.dateComp = date_comp
+        self.heureComp = heure_comp
+        self.sexeComp = sexe_comp
+        self.estIndividuelle = est_individuelle
 
 # Modèle pour représenter la piste
 class Piste(db.Model):
@@ -127,17 +126,15 @@ class TypeMatch(db.Model):
 # Modèle pour représenter l'escrimeur
 class Escrimeur(db.Model):
     __tablename__ = 'ESCRIMEUR'
-    idEscrimeur = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idCat = db.Column(db.Integer, db.ForeignKey('CATEGORIE.idCat'), nullable=False)
     prenomE = db.Column(db.String(50), nullable=False)
     nomE = db.Column(db.String(50), nullable=False)
     dateNaissanceE = db.Column(db.Date, nullable=False)
-    numeroLicenceE = db.Column(db.Integer, nullable=False)
+    numeroLicenceE = db.Column(db.Integer, nullable=False, primary_key=True)
     sexeE = db.Column(db.String(1), nullable=False)
     numTelE = db.Column(db.String(10), nullable=False)
 
-    def __init__(self, idEscrimeur, idCat, prenomE, nomE, dateNaissanceE, numeroLicenceE, sexeE, numTelE):
-        self.idEscrimeur = idEscrimeur
+    def __init__(self, idCat, prenomE, nomE, dateNaissanceE, numeroLicenceE, sexeE, numTelE):
         self.idCat = idCat
         self.prenomE = prenomE
         self.nomE = nomE
@@ -151,10 +148,12 @@ class Escrimeur(db.Model):
 class Tireur(db.Model):
     __tablename__ = 'TIREUR'
     idTireur = db.Column(db.Integer, primary_key=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), nullable=False)
     idClub = db.Column(db.Integer, db.ForeignKey('CLUB.idClub'), nullable=False)
     classement = db.Column(db.Integer, nullable=False)
 
     club = db.relationship('Club', backref='Club.idClub')
+    escrimeur = db.relationship('Escrimeur', backref='Escrimeur.numeroLicenceE')
 
     def __init__(self, escrimeur, club, classement):
         self._escrimeur = escrimeur
@@ -164,38 +163,40 @@ class Tireur(db.Model):
 # Modèle pour représenter les arbitres
 class Arbitre(db.Model):
     __tablename__ = 'ARBITRE'
-    idArbitre = db.Column(db.Integer, primary_key=True)
-    idEscrimeur = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.idEscrimeur'))
+    idArbitre = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), nullable=False)
+
+    escrimeur = db.relationship('Escrimeur', backref='arbitre_backref')
 
     def __init__(self, escrimeur):
         self._escrimeur = escrimeur
-        
 
-# Modèle pour représenter les participants aux compétitions
 class ParticipantsCompetition(db.Model):
     __tablename__ = 'PARTICIPANTS_COMPETITION'
-    idTireur = db.Column(db.Integer, db.ForeignKey('TIREUR.idTireur'), primary_key=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
 
-    tireur = db.relationship('Tireur', backref='PartTireur.idTireur')
-    competition = db.relationship('Competition', backref='PartCompetition.idComp')
-    
-    def __init__(self, tireur, competition):
-        self._tireur = tireur
+    escrimeur = db.relationship('Escrimeur', backref='participants_competition')
+    competition = db.relationship('Competition', backref='participations')
+
+    def __init__(self, escrimeur, competition):
+        self._escrimeur = escrimeur
         self._competition = competition
+
 
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
 class PratiquerArme(db.Model):
     __tablename__ = 'PRATIQUER_ARME'
-    idEscrimeur = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.idEscrimeur'), primary_key=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
     idArme = db.Column(db.Integer, db.ForeignKey('ARME.idArme'), primary_key=True)
 
-    escrimeur = db.relationship('Escrimeur', backref='Escrimeur.idEscrimeur')
+    escrimeur = db.relationship('Escrimeur', backref='pratiquer_arme')
     arme = db.relationship('Arme', backref='arme')
-    
+
     def __init__(self, escrimeur, arme):
         self._escrimeur = escrimeur
         self._arme = arme
+
 
 # Modèle pour représenter le classement final
 class ClassementFinal(db.Model):
@@ -330,6 +331,14 @@ def get_sample():
 def get_categories():
     categories = Categorie.query.all()
     return [categorie.nomCategorie for categorie in categories]
+
+def get_saisons():
+    saisons = Saison.query.all()
+    return [saison.nomSaison for saison in saisons]
+
+def get_lieux():
+    lieux = Lieu.query.all()
+    return [lieu.nomLieu for lieu in lieux]
 
 def get_armes():
     armes = Arme.query.all()

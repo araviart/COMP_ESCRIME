@@ -1,4 +1,4 @@
-from .models import *
+from .models import Categorie, Arme, Lieu, Saison, Club, Escrimeur, Tireur, PratiquerArme, Competition
 from .app import db
 from datetime import datetime
 from sqlalchemy.exc import IntegrityError
@@ -16,6 +16,20 @@ def get_id_arme(nom_arme):
         return arme.idArme
     else:
         return "L'arme n'existe pas."
+    
+def get_id_lieu(nom_lieu):
+    lieu = Lieu.query.filter_by(nomLieu=nom_lieu).first()
+    if lieu:
+        return lieu.idLieu
+    else:
+        return "Le lieu n'existe pas."
+    
+def get_id_saison(nom_saison):
+    saison = Saison.query.filter_by(nomSaison=nom_saison).first()
+    if saison:
+        return saison.idSaison
+    else:
+        return "La saison n'existe pas."
     
 def get_id_club(nom_club):
     club = Club.query.filter_by(nomClub=nom_club).first()
@@ -176,34 +190,37 @@ def pratiquer_arme(str_licence, arme):
         db.session.rollback()
         return f"Une erreur s'est produite lors de l'ajout de l'arme {arme} pratiquée par {numLicense} : {str(e)}"
 
-def creer_competition(nomLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle):
+def creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle):
     try:
-        # Obtenez les identifiants à partir des noms
-        idLieu = get_id_lieu(nomLieu)
-        idSaison = get_id_saison(nomSaison)
-        idCat = get_id_categorie(nomCat)
-        idArme = get_id_arme(nomArme)
+        if nomLieu and adresseLieu and villeLieu and cpLieu:  # Vérifiez si tous les champs cachés sont fournis
+            lieu = Lieu.query.filter_by(nomLieu=nomLieu).first()
+            if lieu is None:
+                lieu = Lieu(nom_lieu=nomLieu, adresse_lieu=adresseLieu, ville_lieu=villeLieu, code_postal_lieu=cpLieu)
+                db.session.add(lieu)
+            else:
+                # Si le lieu existe déjà, mais que vous souhaitez mettre à jour les informations
+                lieu.adresse_lieu = adresseLieu
+                lieu.ville_lieu = villeLieu
+                lieu.code_postal_lieu = cpLieu
+            db.session.commit()
+        # Obtenez les objets à partir des noms
+        saison = Saison.query.filter_by(nomSaison=nomSaison).first()
+        categorie = Categorie.query.filter_by(nomCategorie=nomCat).first()
+        arme = Arme.query.filter_by(nomArme=nomArme).first()
 
-        # Vérifiez que les identifiants sont valides
-        if None in (idLieu, idSaison, idCat, idArme):
-            return "Erreur : Impossible d'obtenir les identifiants nécessaires."
+        print(lieu, saison, categorie, arme)
 
-        # Convertissez la date et l'heure de format texte en objets datetime et time
+        # Vérifiez que les objets sont valides
+        if not all([lieu, saison, categorie, arme]):
+            return "Erreur : Un ou plusieurs éléments nécessaires sont introuvables."
+
+        # Convertissez la date et l'heure
         date_comp = datetime.strptime(dateComp, "%Y-%m-%d").date()
         heure_comp = datetime.strptime(heureComp, "%H:%M").time()
 
-        # Ajoutez la compétition à la base de données
+        # Créez la compétition
         competition = Competition(
-            idLieu=idLieu,
-            idSaison=idSaison,
-            idCat=idCat,
-            idArme=idArme,
-            nomComp=nomComp,
-            descComp=descComp,
-            dateComp=date_comp,
-            heureComp=heure_comp,
-            sexeComp=sexeComp,
-            estIndividuelle=estIndividuelle
+            lieu, saison, categorie, arme, nomComp, descComp, date_comp, heure_comp, sexeComp, estIndividuelle
         )
         db.session.add(competition)
         db.session.commit()
@@ -216,4 +233,4 @@ def creer_competition(nomLieu, nomSaison, nomCat, nomArme, nomComp, descComp, da
     
     except Exception as e:
         db.session.rollback()
-        return f"Une erreur s'est produite lors de la création de la compétition {nomComp}: {str(e)}"
+        return f"Une erreur s'est produite lors de la création de la compétition {nomComp}: {e}"

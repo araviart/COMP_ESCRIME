@@ -1,7 +1,8 @@
 from .app import app, db
 import math
 from flask import render_template, session, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, Saison, User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
+from .models import *
+from .ajout_bd import creer_competition
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import BooleanField, DateField, SelectField, StringField, PasswordField, SubmitField, TimeField
@@ -110,8 +111,7 @@ def login():
     user = f.get_authenticated_user()
     if user:
         login_user(user)
-        # return redirect(url_for("home_default"))
-        return redirect(url_for("ajout_comp"))
+        return redirect(url_for("home_default"))
     else:
         flash("Mot de passe incorrect", "error")
     return render_template("Login.html", form=f)
@@ -215,6 +215,47 @@ def liste_adherents(items):
 @app.route('/home/')
 def home_default():
     return home_def(5)
+
+@app.route("/ajout-comp")
+def ajout_comp_page():
+    armes = get_armes()
+    categories = get_categories()
+    lieux = get_lieux()
+    types = ["Individuelle", "Equipe"]
+    return render_template("ajout-comp.html", listeArmes=armes, listeCategories=categories, listeTypeMatch=types, lieux=lieux)
+
+@app.route('/ajout-comp/', methods=['POST'])
+def ajout_comp():
+    # Récupérez les données du formulaire
+    nomLieu = request.form.get('nomLieu')
+    adresseLieu = request.form.get('adresseLieu')
+    villeLieu = request.form.get('villeLieu')
+    codePostalLieu = request.form.get('codePostalLieu')
+    nomSaison = Saison.query.get(1).nomSaison # Renvoie la dernière saison enregistrée
+    nomCat = request.form.get('categorie')
+    nomArme = request.form.get('arme')
+    nomComp = request.form.get('titre')
+    nomOrga = request.form.get('organisateur')
+    descComp = f"Competition {nomComp} organisée par {nomOrga}"
+    dateComp = request.form.get('date-deroulement')
+    heureComp = request.form.get('appt')
+    sexeComp = request.form.get('sexe')[:1].upper()
+    estIndividuelle = request.form.get('type') == "Individuelle"
+    print(nomLieu, adresseLieu, villeLieu, codePostalLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
+    
+    # Ajoutez la compétition à la base de données
+    resultat = creer_competition(nomLieu,adresseLieu,villeLieu,codePostalLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
+    print(resultat)
+    if 'succès' in resultat:
+        return redirect(url_for('home_default'))
+    else:
+        flash(resultat, 'error')
+        return redirect(url_for('ajout_comp_page'))
+    
+@app.route('/annuler_comp', methods=['POST'])
+def annuler_comp():
+    # Rediriger vers l'URL d'origine
+    return redirect(request.referrer or url_for('home_default'))
 
 @app.route("/test_popup/")
 def test_popup():
