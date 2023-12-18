@@ -30,6 +30,26 @@
 
 .type-reglage-manuel {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.manuel{
+    flex-basis: 80%;
+}
+
+.auto{
+    flex-basis: 20%;
+}
+
+.type-reglage-manuel > div:nth-child(2){
+    flex-basis: 60%;
+    display: flex;
+    align-items: center;
+}
+
+select{
+    width: 80px ;
 }
 
 .labels {
