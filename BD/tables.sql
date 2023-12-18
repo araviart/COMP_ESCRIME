@@ -81,48 +81,47 @@ CREATE OR REPLACE TABLE TYPE_MATCH(
 );
 
 CREATE OR REPLACE TABLE ESCRIMEUR(
-    idEscrimeur INT NOT NULL AUTO_INCREMENT,
     idCat INT NOT NULL,
     prenomE VARCHAR(50) NOT NULL,
     nomE VARCHAR(50) NOT NULL,
     dateNaissanceE DATE NOT NULL,
     numeroLicenceE INT NOT NULL,
     sexeE VARCHAR(50) NOT NULL,
-    numTelE INT(10),
-    PRIMARY KEY (idEscrimeur),
+    numTelE VARCHAR (10),
+    PRIMARY KEY (numeroLicenceE),
     FOREIGN KEY (idCat) REFERENCES CATEGORIE(idCat)
 );
 
 CREATE OR REPLACE TABLE TIREUR(
     idTireur INT NOT NULL AUTO_INCREMENT,
-    idEscrimeur INT NOT NULL UNIQUE,
+    numeroLicenceE INT NOT NULL UNIQUE,
     idClub INT NOT NULL,
     classement INT NOT NULL,
     PRIMARY KEY(idTireur),
-    FOREIGN KEY (idEscrimeur) REFERENCES ESCRIMEUR(idEscrimeur),
+    FOREIGN KEY (numeroLicenceE) REFERENCES ESCRIMEUR(numeroLicenceE),
     FOREIGN KEY (idClub) REFERENCES CLUB(idClub)
 );
 
 CREATE OR REPLACE TABLE ARBITRE(
     idArbitre INT NOT NULL AUTO_INCREMENT,
-    idEscrimeur INT NOT NULL UNIQUE,
+    numeroLicenceE INT NOT NULL UNIQUE,
     PRIMARY KEY(idArbitre),
-    FOREIGN KEY (idEscrimeur) REFERENCES ESCRIMEUR(idEscrimeur)
+    FOREIGN KEY (numeroLicenceE) REFERENCES ESCRIMEUR(numeroLicenceE)
 );
 
 CREATE OR REPLACE TABLE PARTICIPANTS_COMPETITION(
-    idTireur INT NOT NULL,
+    numeroLicenceE INT NOT NULL,
     idComp INT NOT NULL,
-    PRIMARY KEY(idTireur,idComp),
+    PRIMARY KEY(numeroLicenceE,idComp),
     FOREIGN KEY (idComp) REFERENCES COMPETITION(idComp),
-    FOREIGN KEY (idTireur) REFERENCES TIREUR(idTireur)
+    FOREIGN KEY (numeroLicenceE) REFERENCES ESCRIMEUR(numeroLicenceE)
 );
 
 CREATE OR REPLACE TABLE PRATIQUER_ARME(
-    idEscrimeur INT NOT NULL,
+    numeroLicenceE INT NOT NULL,
     idArme INT NOT NULL,
-    PRIMARY KEY(idEscrimeur, idArme),
-    FOREIGN KEY (idEscrimeur) REFERENCES ESCRIMEUR(idEscrimeur),
+    PRIMARY KEY(numeroLicenceE, idArme),
+    FOREIGN KEY (numeroLicenceE) REFERENCES ESCRIMEUR(numeroLicenceE),
     FOREIGN KEY (idArme) REFERENCES ARME(idArme)
 );
 

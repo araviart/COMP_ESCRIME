@@ -182,7 +182,6 @@ def fabriquer_poules_selon_classement(tireurs, arbitres):
                 tireurs_dans_poule.add(liste_triee[-i-1])    
     return liste_poules
 
-
 def fabriquer_poules_decalage_club(tireurs, arbitres):
     if not poules_fabriquables(tireurs, arbitres):
         return "Les poules ne sont pas fabriquables"
@@ -214,8 +213,5 @@ def fabriquer_poules(tireurs, arbitres, type_poule):
     for i in range(len(liste_poules)):
         print(f"Poule {i+1}: {liste_poules[i]}")
     return liste_poules
-
-
-    
 
 fabriquer_poules(les_tireurs, les_arbitres, "Classement")
