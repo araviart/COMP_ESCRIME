@@ -82,4 +82,32 @@
                 </div>
 </form>
 </div>
+
+<!-- Popup pour saisir le code de vérification -->
+<div id="verificationPopup" style="display:none;">
+    <form action="{{ url_for('verify_code', name=name) }}" method="post">
+        <label for="verificationCode">Code de vérification :</label>
+        <input type="text" id="verificationCode" name="code">
+        <input type="submit" value="Vérifier">
+    </form>
+</div>
+
+<script>
+    // Fonction pour afficher la popup
+    function showVerificationPopup() {
+        document.getElementById("verificationPopup").style.display = "block";
+    }
+
+    // Fonction pour cacher la popup
+    function hideVerificationPopup() {
+        document.getElementById("verificationPopup").style.display = "none";
+    }
+
+    // Fonction pour afficher la popup si paramètre show_verification_popup == True
+    {% if show_verification_popup %}
+    showVerificationPopup();
+    {% else %}
+    hideVerificationPopup();
+    {% endif %}
+</script>
 {% endblock %}
