@@ -69,3 +69,44 @@ def passwd(username, password):
     u = User.query.get(username)
     u.mdpUser = m.hexdigest()
     db.session.commit()
+    
+        
+@app.cli.command()
+@click.argument("nom_lieu")
+@click.argument("saison")
+@click.argument("categorie")
+@click.argument("arme")
+@click.argument("nom_competition")
+@click.argument("desc_competition")
+@click.argument("date_competition")
+@click.argument("heure_competition")
+@click.argument("sexe_competition")
+@click.argument("est_individuelle")
+def add_competition(nom_lieu, saison, categorie, arme, nom_competition, desc_competition, date_competition, heure_competition, sexe_competition, est_individuelle):
+    try:
+        id_lieu = get_id_lieu(nom_lieu)
+        id_saison = get_id_saison(saison)
+        id_categorie = get_id_categorie(categorie)
+        id_arme = get_id_arme(arme)
+        est_individuelle = est_individuelle.lower() == 'true'
+
+        print(f"Avant la création de l'objet Competition - idCat: {id_categorie}")
+
+        nouvelle_comp = Competition(id_lieu, id_saison, id_categorie, id_arme, nom_competition, desc_competition, date_competition, heure_competition, sexe_competition, est_individuelle)
+
+        print(f"Avant l'ajout à la base de données - idCat: {id_categorie}")
+
+        print(db.session.query(Competition).filter_by(idCat=id_categorie).statement)
+        db.session.add(nouvelle_comp)
+        db.session.commit()
+        print("La compétition a été ajoutée avec succès.")
+
+    except IntegrityError as e:
+        print(f"Erreur d'intégrité : {e}")
+        db.session.rollback()
+        return "Une compétition avec ce nom existe déjà."
+
+    except Exception as e:
+        print(id_categorie)
+        print(f"Erreur lors de l'ajout de la compétition : {e}")
+        db.session.rollback()

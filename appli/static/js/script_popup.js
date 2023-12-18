@@ -1,9 +1,14 @@
-let popup = document.getElementById("popup");
+document.addEventListener("DOMContentLoaded", function() {
+  let popup = document.getElementById("popup");
+  let overlay = document.getElementById("overlay");
 
-function openPopup() {
-    popup.classList.add("open-popup");
-}
+  window.showPopup = function() {
+      popup.classList.add("open-popup");
+      overlay.style.display = "block";
+  }
 
-function closePopup() {
-    popup.classList.remove("open-popup");
-}
+  window.closePopup = function() {
+      popup.classList.remove("open-popup");
+      overlay.style.display = "none";
+  }
+});

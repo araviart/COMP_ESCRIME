@@ -107,6 +107,8 @@ h1{
 .affichage ul{
   display: flex;
   align-items: center;
+  background-color: white;
+  border-radius: 10px;
 
 }
 
@@ -115,7 +117,6 @@ h1{
   list-style-type: none;
   text-decoration: none;
 }
-
 
 .affichage ul li p{
   
@@ -146,16 +147,17 @@ color: black;}
 }
 
 th{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 td{
-  font-size: 16px;
+  font-size: 14px;
 }
 
 
 .Catégorie, .Sexe, .Statut{
-  margin: 0 20px;
+  margin: 0 10x;
+  width: 20%;
 }
 
 .search{
@@ -189,12 +191,18 @@ td{
   align-items: center;
 }
 
+.test, .titre-formulaire{
+  border-radius: 12px;
+}
 
 button{
   padding: 10px;
   border-radius: 8px;
   color: white;}
 
+.btn-annuler{
+  text-decoration: none;
+}
 
 .ajoutadh{
     background-color: var(--blue-escrime);
@@ -215,4 +223,36 @@ button{
   border: 1px solid black;
   border-radius: 8px;
 
+}
+
+.pagination{
+  text-align: center;
+}
+
+.pagination button{
+  color: var(--gris-arbitre);
+}
+
+
+
+.top{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.page p{
+  background-color: var(--blue-escrime);
+  color: white;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+
+.ajoutadh{
+  margin-bottom: 2%;
+}
+
+.dimmed {
+  background-color: rgba(0, 0, 0, 0.5);
 }
