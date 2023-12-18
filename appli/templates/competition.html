@@ -90,8 +90,7 @@
               <td>{{ competition.lieu.nomLieu }}</td>
               <td>{{ competition.sexeComp }}</td>
               <td>{{ "Oui" if competition.estIndividuelle else "Non" }}</td>
-              <td><a href="#" class="consulter">Consulter</a></td>
-            </tr>
+              <td><a href="{{ url_for('gestion_participants', id_comp=competition.idComp) }}" class="consulter">Consulter</a></td>            </tr>
             <div class = "ligne"></div>
             {% endfor %}
           </tbody>

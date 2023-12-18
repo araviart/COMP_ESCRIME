@@ -104,3 +104,34 @@ p {
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
 }
+.btn-annuler {
+  background-color: var(--bouton-annuler);
+  padding: 14px 7px;
+  border: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 120%;
+  border-radius: 10px;
+  transition-duration: 0.5s;
+}
+
+.btn-annuler:hover {
+    background-color: var(--hover-annuler);
+  }
+  
+  .btn-publier:hover {
+    background-color: var(--hover-publier);
+  }
+  
+  .btn-publier {
+    background-color: #01437c;
+    padding: 14px 7px;
+    border: none;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 120%;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+    text-decoration: none;
+  }
+  
