@@ -1,8 +1,8 @@
 from .app import app, db
 import math
 from .ajout_bd import creer_competition
-from flask import render_template, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, User, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
+from flask import jsonify, render_template, session, url_for, redirect, request, flash
+from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, get_lieux, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import BooleanField, DateField, SelectField, StringField, PasswordField, SubmitField, TimeField
@@ -304,32 +304,29 @@ def ajout_comp():
         flash(resultat, 'error')
         return redirect(url_for('ajout_comp_page'))
 
-@app.route('/annuler_comp', methods=['POST'])
-def annuler_comp():
-    # Rediriger vers l'URL d'origine
-    return redirect(request.referrer or url_for('home_default'))
-        if lieu is None:
-            # si le lieu existe pas on le crée avec un id auto incrémenté et le reste des colonnes vides
-            # à voir après si l'on gère ces colonnes avec de nouveaux champs ou une API qui autocomplète les 
-            # champs en fonction du nom du lieu
-            lieu = Lieu(nom_lieu=form.lieu.data, ville_lieu="", code_postal_lieu=0, adresse_lieu="")
-            db.session.add(lieu)
-            db.session.commit()
-        competition = Competition(idLieu=lieu.idLieu, 
-                                  idSaison=Saison.query.get(1).idSaison,
-                                  idCat=getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None),
-                                  idArme=getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None),
-                                  nomComp=form.titre.data,
-                                  descComp=f"Competition organisée par {form.organisateur.data}", 
-                                  dateComp=form.date_deroulement.data,
-                                  heureComp=form.heure_debut.data,
-                                  sexeComp=form.sexe.data[:1],
-                                  estIndividuelle=form.type_comp.data == 'individuel')
-        db.session.add(competition)
-        db.session.commit()
-        flash('La compétition a été ajoutée') # à changer avec une popup
-        return redirect(url_for('home'))
-    return render_template('ajout-comp.html', form=form)
+# @app.route('/annuler_comp', methods=['POST'])
+# def annuler_comp():
+#     if lieu is None:
+#         lieu = Lieu(nom_lieu=form.lieu.data, ville_lieu="", code_postal_lieu=0, adresse_lieu="")
+#         db.session.add(lieu)
+#         db.session.commit()
+#         competition = Competition(idLieu=lieu.idLieu, 
+#                                   idSaison=Saison.query.get(1).idSaison,
+#                                   idCat=getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None),
+#                                   idArme=getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None),
+#                                   nomComp=form.titre.data,
+#                                   descComp=f"Competition organisée par {form.organisateur.data}", 
+#                                   dateComp=form.date_deroulement.data,
+#                                   heureComp=form.heure_debut.data,
+#                                   sexeComp=form.sexe.data[:1],
+#                                   estIndividuelle=form.type_comp.data == 'individuel')
+#         db.session.add(competition)
+#         db.session.commit()
+#         flash('La compétition a été ajoutée') # à changer avec une popup
+#         return redirect(url_for('home'))
+
+#     # Rediriger vers l'URL d'origine
+#     return redirect(request.referrer or url_for('home_default'))
 
 @app.route("/gestion_participants/<int:id_comp>", methods=("GET", "POST"))
 def gestion_participants(id_comp):
@@ -361,5 +358,17 @@ def delete_participant(id, id_comp):
 
 @app.route('/ajouter_escrimeur_competition/<int:id_comp>/', methods=['POST'])
 def add_participant(id_comp):
-    # à implémenter
+    if request.method == 'POST':
+        id_tireur = request.form.get('id_tireur')
+        tireur = Tireur.query.get(id_tireur)
+        competition = Competition.query.get(id_comp)
+        if tireur and competition:
+            participant = ParticipantsCompetition(tireur=tireur, competition=competition)
+            db.session.add(participant)
+            db.session.commit()
     return redirect(url_for('gestion_participants', id_comp=id_comp))
+
+@app.route('/get_escrimeurs')
+def get_escrimeurs():
+    escrimeurs = Escrimeur.query.all()
+    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])

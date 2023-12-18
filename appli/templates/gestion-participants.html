@@ -3,6 +3,7 @@
   rel="stylesheet"
   href="{{ url_for('static', filename='gestion_participants.css') }}"
 />
+<script src="{{ url_for('static', filename='js/gestionParticipant.js') }}"></script>
 {% include 'progress-bar.html' %}
 <section class="content">
   <section class="section-infopr">
@@ -75,12 +76,12 @@
           <p class="nullparticipant">Aucun participant de l'escrime de Blois</p>
           {% endif %}
           <div class="addp">
-            <form
-              action="{{ url_for('add_participant', id_comp=competition.idComp) }}"
-              method="post"
-            >
-              <button style="font-size: 30px" type="submit">+</button>
-            </form>
+            <button style="font-size: 30px">+</button>
+          <div id="submenu" style="display: none;">
+            <input type="text" id="search" placeholder="Rechercher...">
+            <ul id="escrimeurs-list"></ul>
+    </div>
+            </div>
           </div>
         </div>
       </section>

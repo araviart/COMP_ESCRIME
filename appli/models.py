@@ -143,6 +143,18 @@ class Escrimeur(db.Model):
         self.numeroLicenceE = numeroLicenceE
         self.sexeE = sexeE
         self.numTelE = numTelE
+        
+    def to_dict(self):
+        return {
+            'idEscrimeur': self.idEscrimeur,
+            'idCat': self.idCat,
+            'prenomE': self.prenomE,
+            'nomE': self.nomE,
+            'dateNaissanceE': self.dateNaissanceE.isoformat() if self.dateNaissanceE else None,
+            'numeroLicenceE': self.numeroLicenceE,
+            'sexeE': self.sexeE,
+            'numTelE': self.numTelE
+        }
 
         
 # Modèle pour représenter les tireurs
