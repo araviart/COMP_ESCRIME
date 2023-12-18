@@ -388,3 +388,15 @@ def add_participant(id_comp):
 def get_escrimeurs():
     escrimeurs = Escrimeur.query.all()
     return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
+
+@app.route('/update_database', methods=['POST'])
+def update_database():
+    data = request.get_json()
+    field = data.get('field')
+    value = data.get('value')
+    competition_id = data.get('competitionId')
+    competition = Competition.query.get(competition_id)
+    setattr(competition, field, value)
+    db.session.commit()
+    return 'OK'
+

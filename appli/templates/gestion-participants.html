@@ -21,27 +21,27 @@
         <p>Date :</p>
       </div>
       <div class="valeurp">
-        <p>{{ competition.nomComp }}</p>
-        <p>{{ competition.descComp }}</p>
-        <p>{{ competition.lieu.nomLieu }}</p>
-        <p>{{ competition.dateComp }}</p>
+        <p id="nomComp">{{ competition.nomComp }}</p>
+        <p id="descComp">{{ competition.descComp }}</p>
+        <p id="lieu">{{ competition.lieu.nomLieu }}</p>
+        <p id="dateComp">{{ competition.dateComp }}</p>
       </div>
       <div class="actionsp">
         <img
           src="{{ url_for('static', filename='../static/img/edit.png') }}"
-          onclick="editTitle()"
+          onclick="editField('nomComp')"
         />
         <img
           src="{{ url_for('static', filename='../static/img/edit.png') }}"
-          onclick="editOrganizer()"
+          onclick="editField('descComp')"
         />
         <img
           src="{{ url_for('static', filename='../static/img/edit.png') }}"
-          onclick="editLocation()"
+          onclick="editField('lieu')"
         />
         <img
           src="{{ url_for('static', filename='../static/img/edit.png') }}"
-          onclick="editDate()"
+          onclick="editField('dateComp')"
         />
       </div>
     </section>
