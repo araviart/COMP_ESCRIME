@@ -50,7 +50,7 @@
             <p>{{ participant.Categorie.nomCategorie }}</p>
           </div>
           <div class="suppd">
-            <form action="{{ url_for('delete_participant', id=participant.idTireur) }}" method="post">
+            <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.idTireur) }}" method="post">
               <button style="font-size: 30px;" type="submit">-</button>
             </form>
           </div>
@@ -79,14 +79,14 @@
             <p>{{ participant.Categorie.nomCategorie }}</p>
           </div>
           <div class="suppd">
-            <form action="{{ url_for('delete_participant', id=participant.idTireur) }}" method="post">
+            <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.idTireur) }}" method="post">
               <button style="font-size: 30px;" type="submit">-</button>
             </form>
           </div>
           </div>
           {% endfor %}
           <div class="addp">
-            <form action="{{ url_for('add_participant', id_comp=competition.idComp) }}" method="post">
+            <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.idTireur) }}" method="post">
               <button style="font-size: 30px;" type="submit">+</button>
             </form>
           </div>
@@ -107,7 +107,7 @@
             <p>{{ participant.Categorie.nomCategorie }}</p>
           </div>
           <div class="suppd">
-            <form action="{{ url_for('delete_participant', id=participant.idTireur) }}" method="post">
+            <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.idTireur) }}" method="post">
               <button style="font-size: 30px;" type="submit">-</button>
             </form>
           </div>

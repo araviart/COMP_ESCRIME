@@ -1,7 +1,7 @@
 from .app import app, db
 import math
 from flask import render_template, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, Saison, User, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
+from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, User, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import BooleanField, DateField, SelectField, StringField, PasswordField, SubmitField, TimeField
@@ -322,13 +322,15 @@ def gestion_participants(id_comp):
       competition=competition
   )
     
-@app.route('/delete_participant/<int:id>', methods=['POST'])
-def delete_participant(id):
-    participant = Escrimeur.query.get(id)
+
+@app.route('/delete_participant/<int:id_comp>/<int:id>/', methods=['POST'])
+def delete_participant(id, id_comp):
+    participant = ParticipantsCompetition.query.filter_by(idTireur=id).first()
+
     if participant:
         db.session.delete(participant)
         db.session.commit()
-    return redirect(url_for('gestion_participants', id_comp=request.form.get('id_comp')))
+    return redirect(url_for('gestion_participants', id_comp=id_comp))
 
 @app.route('/ajouter_escrimeur_competition/<int:id_comp>/', methods=['POST'])
 def add_participant(id_comp):
