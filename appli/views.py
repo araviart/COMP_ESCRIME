@@ -1,7 +1,8 @@
 from .app import app, db
 import math
 from flask import render_template, session, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, Saison, User, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
+from .ajout_bd import creer_competition
+from .models import Arme, Categorie, Competition, Lieu, Saison, User, get_lieux, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import BooleanField, DateField, SelectField, StringField, PasswordField, SubmitField, TimeField
@@ -29,18 +30,6 @@ class InscriptionForm(FlaskForm):
     password = PasswordField('password', validators=[DataRequired()])
     comfirm_password = PasswordField('comfirm_password', validators=[DataRequired()])
 
-class CompetitionForm(FlaskForm):
-    titre = StringField('Titre', validators=[DataRequired()])
-    organisateur = StringField('Organisateur', validators=[DataRequired()])
-    date_deroulement = DateField('Date déroulement', format='%Y-%m-%d', validators=[DataRequired()])
-    heure_debut = TimeField('Heure début', format='%H:%M', validators=[DataRequired()])
-    arme = SelectField('Arme', choices=[('epee', 'Épée'), ('fleuret', 'Fleuret'), ('sabre', 'Sabre')])
-    sexe = SelectField('Sexe', choices=[('homme', 'Homme'), ('femme', 'Femme')])
-    categorie = SelectField('Categorie', choices=[('senior', 'Senior'), ('u13', 'U13'), ('cadet', 'Cadet'), ('u15', 'U15'), ('u17', 'U17'), ('u20', 'U20'), ('v1', 'V1'), ('v2', 'V2'), ('v3', 'V3'), ('v4', 'V4')])
-    type_comp = SelectField('Type', choices=[('individuel', 'Individuel'), ('equipe', 'Équipe')])
-    est_publie = BooleanField('Publier le tournoi')
-    submit = SubmitField('Publier le tournoi')
-
 class EditUserForm(FlaskForm):
     newpsswd = PasswordField("Nouveau mot de passe")
     confirm = PasswordField("Confirmez le nouveau mot de passe")
@@ -57,6 +46,7 @@ def jenesaispas():
     ]
 
     return render_template('appel.html', rows_data=rows_data)
+
 @app.route("/inscription-form/")
 def inscription_page():
     return render_template("Inscription.html", form = InscriptionForm())
@@ -86,8 +76,7 @@ def login():
     user = f.get_authenticated_user()
     if user:
         login_user(user)
-        # return redirect(url_for("home_default"))
-        return redirect(url_for("ajout_comp"))
+        return redirect(url_for("ajout_comp_page"))
     else:
         flash("Mot de passe incorrect", "error")
     return render_template("Login.html", form=f)
@@ -274,43 +263,47 @@ def liste_adherents(items):
         page=page,
         total_pages=total_pages)
 
-@app.route('/ajout-comp', methods=['GET', 'POST'])
+@app.route("/ajout-comp")
+def ajout_comp_page():
+    armes = get_armes()
+    categories = get_categories()
+    lieux = get_lieux()
+    types = ["Individuelle", "Equipe"]
+    return render_template("ajout-comp.html", listeArmes=armes, listeCategories=categories, listeTypeMatch=types, lieux=lieux)
+
+@app.route('/ajout-comp/', methods=['POST'])
 def ajout_comp():
-    form = CompetitionForm()
+    # Récupérez les données du formulaire
+    nomLieu = request.form.get('nomLieu')
+    adresseLieu = request.form.get('adresseLieu')
+    villeLieu = request.form.get('villeLieu')
+    cpLieu = request.form.get('codePostalLieu')
+    nomSaison = "Saison 2023"  # Supposons que c'est fixe pour cet exemple
+    nomCat = request.form.get('categorie')  # Assurez-vous que le nom correspond au champ dans le HTML
+    nomArme = request.form.get('arme')  # Idem
+    nomComp = request.form.get('titre')
+    nomOrga = request.form.get('organisateur')
+    descComp = f"Competition {nomComp} organisée par {nomOrga}" # Ajoutez un champ pour la description si nécessaire
+    dateComp = request.form.get('date-deroulement')
+    heureComp = request.form.get('appt')
+    sexeComp = request.form.get('sexe')[:1].upper()
+    estIndividuelle = request.form.get('type-comp') == 'Individuelle'
+    print(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, nomOrga, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
 
-    if form.validate_on_submit():
-        # Récupérez les données des champs cachés uniquement si le formulaire a été soumis
-        nom_lieu = request.form.get('nomLieu')
-        adresse_lieu = request.form.get('adresseLieu')
-        ville_lieu = request.form.get('villeLieu')
-        code_postal_lieu = request.form.get('codePostalLieu')
 
-        if nom_lieu and adresse_lieu and ville_lieu and code_postal_lieu:  # Vérifiez si tous les champs cachés sont fournis
-            lieu = Lieu.query.filter_by(nomLieu=nom_lieu).first()
-            if lieu is None:
-                lieu = Lieu(nom_lieu=nom_lieu, adresse_lieu=adresse_lieu, ville_lieu=ville_lieu, code_postal_lieu=code_postal_lieu)
-                db.session.add(lieu)
-            else:
-                # Si le lieu existe déjà, mais que vous souhaitez mettre à jour les informations
-                lieu.adresse_lieu = adresse_lieu
-                lieu.ville_lieu = ville_lieu
-                lieu.code_postal_lieu = code_postal_lieu
-            db.session.commit()
+    # Appeler la fonction pour créer la compétition
+    resultat = creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
+    print(resultat)
+    # Gérer le résultat (par exemple, afficher un message à l'utilisateur)
+    if 'succès' in resultat:
+        # Redirige vers une page de confirmation ou la liste des compétitions
+        return redirect(url_for('home_default'))
+    else:
+        # Gérer l'erreur (par exemple, afficher un message d'erreur sur la page actuelle)
+        flash(resultat, 'error')
+        return redirect(url_for('ajout_comp_page'))
 
-        print(lieu.idLieu, Saison.query.get(1).idSaison, getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None), getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None), form.titre.data, f"Competition organisée par {form.organisateur.data}", form.date_deroulement.data, form.heure_debut.data, form.sexe.data[:1], form.type_comp.data == 'individuel')
-
-        competition = Competition(idLieu=lieu.idLieu, 
-                                  idSaison=Saison.query.get(1).idSaison,
-                                  idCat=getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None),
-                                  idArme=getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None),
-                                  nomComp=form.titre.data,
-                                  descComp=f"Competition organisée par {form.organisateur.data}", 
-                                  dateComp=form.date_deroulement.data,
-                                  heureComp=form.heure_debut.data,
-                                  sexeComp=form.sexe.data[:1].upper(),
-                                  estIndividuelle=form.type_comp.data == 'individuel')
-        db.session.add(competition)
-        db.session.commit()
-        flash('La compétition a été ajoutée avec succès')
-        return redirect(url_for('home'))
-    return render_template('ajout-comp.html', form=form)
+@app.route('/annuler_comp', methods=['POST'])
+def annuler_comp():
+    # Rediriger vers l'URL d'origine
+    return redirect(request.referrer or url_for('home_default'))

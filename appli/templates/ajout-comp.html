@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='ajout-comp.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='progress-bar.css')}}" />
+<link rel="stylesheet" href="{{ url_for ('static', filename='responsive-creer-comp.css') }}">
   <div class="progress-bar">
     <a class="active-url" href="url">Définir une compétition</a>
     <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
@@ -13,9 +16,7 @@
     <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
     <a href="url">Classement Final</a>
   </div>
-  <form method='POST'>
-    {{ form.hidden_tag() }}
-
+  <form action="{{ url_for('ajout_comp') }}" method="post">
     <div class="center">
       <div class="left-form">
         <div class="test">
@@ -24,13 +25,15 @@
           </div>
           <div class="partie-input">
             <div class="label-input">
-              {{ form.titre.label(class='label') }} {{ form.titre(class='input') }}
+              <label for="title">Titre</label>
+              <input type="text" id="titre" name="titre" maxlength="12" required />
             </div>
             <div class="label-input">
-              {{ form.organisateur.label(class='label') }} {{ form.organisateur(class='input') }}
+              <label for="title">Organisateur</label>
+              <input type="text" id="Organisateur" name="organisateur" maxlength="12" required />
             </div>
-            <div class="label-input">
-              <label class="label">Lieu</label>
+            <div class="combox-box comb-lieu">
+              <label for="arme">Lieu</label>
               <button id="openModalButton" type="button">Ajouter un Lieu</button>
               <div class="boxLieu">
                 <span id="lieuInfo"></span> <!-- Élément pour les informations du lieu -->
@@ -44,18 +47,21 @@
               {% include 'popup_addLieu.html' %}
             </div>            
             <div class="label-input">
-              {{ form.date_deroulement.label(class='label') }} {{ form.date_deroulement(class='input') }}
+              <label for="title">Date déroulement</label>
+              <input type="date" id="deroulement" name="date-deroulement" value="2023-11-16" min="2023-11-16" />
             </div>
             <div class="label-input">
-              {{ form.heure_debut.label(class='label') }} {{ form.heure_debut(class='input') }}
+              <label for="appt">Heure début</label>
+              <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
             </div>
           </div>
         </div>
         <div class="bouton-annuler">
-          <a href="{{ url_for('home_default') }}" class="btn-annuler">ANNULER</a>
+          <form action="{{ url_for('annuler_comp') }}" method="post">
+            <button class="btn-annuler" type="submit">ANNULER</button>
+          </form>
         </div>
       </div>
-
       <div class="right-form">
         <div class="test">
           <div class="titre-formulaire">
@@ -63,27 +69,46 @@
           </div>
           <div class="partie-input-droite">
             <div class="combox-box comb-arme">
-              {{ form.arme.label(class='label') }} {{ form.arme(class='select') }}
+              <label for="arme">Arme</label>
+              <select name="arme" id="arme">
+                {% for arme in listeArmes %}
+                  <option value="{{ arme }}">{{ arme }}</option>
+                {% endfor %}
+              </select>
             </div>
-            <div class="combox-box comb-sexe">
-              {{ form.sexe.label(class='label') }} {{ form.sexe(class='select') }}
+            <div class="combox-box comb-arme">
+              <label for="sexe">Sexe</label>
+              <select name="sexe" id="sexe">
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+              </select>
             </div>
             <div class="combox-box comb-cate">
-              {{ form.categorie.label(class='label') }} {{ form.categorie(class='select') }}
+              <label for="categorie">Catégorie</label>
+              <select name="categorie" id="sexe">
+                {% for categorie in listeCategories %}
+                  <option value="{{ categorie }}">{{ categorie }}</option>
+                {% endfor %}
+              </select>
             </div>
             <div class="combox-box comb-type">
-              {{ form.type_comp.label(class='label') }} {{ form.type_comp(class='select') }}
+              <label for="type">Type</label>
+              <select name="type" id="type">
+                {% for typeM in listeTypeMatch %}
+                  <option value="{{ typeM }}">{{ typeM }}</option>
+                {% endfor %}
+              </select>
             </div>
+            
           </div>
         </div>
         <div class="bouton-publier">
-          {{ form.submit(class='btn-publier') }}
+          <button class="btn-publier" type="submit">Publier le tournoi</button>
         </div>
       </div>
-    </div>    
+    </div>
   </form>
   {% block scripts %}
   <script src="{{ url_for('static', filename='js/popup_addLieu.js') }}"></script>
   {% endblock scripts %}
-  
 {% endblock %}
