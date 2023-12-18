@@ -82,4 +82,10 @@
                 </div>
 </form>
 </div>
+
+{% include 'popup_code_mail.html' %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script_popup_reset.js') }}"></script>
+{% endblock scripts %}
 {% endblock %}

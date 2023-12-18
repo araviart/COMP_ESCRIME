@@ -1,4 +1,5 @@
-from .app import app, db
+import random
+from .app import app, db, mail
 import math
 from flask import render_template, session, url_for, redirect, request, flash
 from .models import *
@@ -8,6 +9,13 @@ from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
 from hashlib import sha256
 from flask_login import login_user, logout_user, current_user
+from flask_mail import Message
+
+def send_verification_email(user_email, code):
+    with app.app_context():
+        msg = Message("Votre code de vérification", recipients=[user_email])
+        msg.body = f"Votre code de vérification est : {code}"
+        mail.send(msg)
 
 class LoginForm(FlaskForm):
     email_username = StringField('email_username', validators=[DataRequired()])
@@ -259,30 +267,58 @@ def edit_user(name):
         return redirect(url_for("login", next=next))
 
     if form.validate_on_submit():
+        print("Formulaire valide")
         user = current_user
         if user.pseudoUser != form.username.data:
             form.username.errors.append("Pseudonyme erreur")
-            return render_template("edit-user.html", form=form)
+            return render_template("edit-user.html", form=form, name=name, show_verification_popup=False)
 
         if form.newpsswd.data != form.confirm.data:
             form.confirm.errors.append("Les mots de passe ne correspondent pas")
-            return render_template("edit-user.html", form=form)
+            return render_template("edit-user.html", form=form, name=name, show_verification_popup=False)
+        
+        code = str(random.randint(1000, 9999))
+        print(code)
+        print(user.emailUser)
+        send_verification_email(user.emailUser, code)
+        print("Email envoyé")
+        session['verification_code'] = code  # Stocker le code temporairement
+        session['user_id'] = user.idUser
+        session['new_password'] = form.newpsswd.data  # Stocker le nouveau mot de passe temporairement
+        print("affichage popup")
+        return render_template("edit-user.html", form=form, name=name, show_verification_popup=True)
 
-        password_hash = sha256()
-        password_hash.update(form.password.data.encode())
+    return render_template("edit-user.html", form=form, name=name, show_verification_popup=False)
 
-        if user.mdpUser != password_hash.hexdigest():
-            form.password.errors.append("Mot de passe incorrect")
-            return render_template("edit-user.html", form=form)
+@app.route("/verify-code/<name>", methods=["GET", "POST"])
+def verify_code(name):
+    if request.method == "POST":
+        user_code = request.form['code']
+        print(user_code)
+        if user_code == session.get('verification_code'):
+            # Récupérer l'utilisateur et les informations nécessaires
+            user = User.query.get(session.get('user_id'))
+            if not user:
+                return "Utilisateur non trouvé", 404
 
-        new_password_hash = sha256()
-        new_password_hash.update(form.newpsswd.data.encode())
+            # Procéder à la mise à jour du mot de passe
+            new_password = session.get('new_password')
+            new_password_hash = sha256()
+            new_password_hash.update(new_password.encode())
 
-        user.mdpUser = new_password_hash.hexdigest()
-        db.session.commit()
+            user.mdpUser = new_password_hash.hexdigest()
+            db.session.commit()
 
-        return redirect(url_for("home"))
-    return render_template("edit-user.html", form=form, name=name)
+            # Nettoyer la session
+            del session['verification_code']
+            del session['user_id']
+            del session['new_password']
+
+            return redirect(url_for("home")) # "Mot de passe mis à jour avec succès!"
+        else:
+            flash("Code de vérification incorrect", "error")
+
+    return render_template("edit-user.html", name=name, form=EditUserForm(), show_verification_popup=True)
 
 @app.route('/ajouter_escrimeur/', methods=['GET', 'POST'])
 def ajouter_escrimeur():
