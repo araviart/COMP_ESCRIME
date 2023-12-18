@@ -963,68 +963,35 @@ VALUES
     (280152);
 
 -- PARTICIPANTS_COMPETITION
-INSERT INTO PARTICIPANTS_COMPETITION (idTireur, idComp)
+INSERT INTO PARTICIPANTS_COMPETITION (numeroLicenceE, idComp)
 VALUES
-    (1, 1),  -- Compétition 1 avec le tireur 1
-    (2, 1),  -- Compétition 1 avec le tireur 2
-    (3, 1),  -- Compétition 1 avec le tireur 3
-    (4, 1),  -- Compétition 1 avec le tireur 4
-    (5, 1),  -- Compétition 1 avec le tireur 5
-    (6, 1),  -- Compétition 1 avec le tireur 6
-    (7, 1),  -- Compétition 1 avec le tireur 7
-    (8, 1),  -- Compétition 1 avec le tireur 8
-    (9, 2),  -- Compétition 2 avec le tireur 1
-    (10, 2), -- Compétition 2 avec le tireur 2
-    (11, 2), -- Compétition 2 avec le tireur 3
-    (12, 2), -- Compétition 2 avec le tireur 4
-    (13, 2), -- Compétition 2 avec le tireur 5
-    (14, 2), -- Compétition 2 avec le tireur 6
-    (15, 2), -- Compétition 2 avec le tireur 7
-    (16, 2), -- Compétition 2 avec le tireur 8
-    (17, 3), -- Compétition 3 avec le tireur 1
-    (18, 3), -- Compétition 3 avec le tireur 2
-    (19, 3), -- Compétition 3 avec le tireur 3
-    (20, 3), -- Compétition 3 avec le tireur 4
-    (21, 3), -- Compétition 3 avec le tireur 5
-    (22, 3), -- Compétition 3 avec le tireur 6
-    (23, 3), -- Compétition 3 avec le tireur 7
-    (24, 3), -- Compétition 3 avec le tireur 8
-    (25, 4), -- Compétition 4 avec le tireur 1
-    (26, 4), -- Compétition 4 avec le tireur 2
-    (27, 4), -- Compétition 4 avec le tireur 3
-    (28, 4), -- Compétition 4 avec le tireur 4
-    (29, 4), -- Compétition 4 avec le tireur 5
-    (30, 4), -- Compétition 4 avec le tireur 6
-    (31, 4), -- Compétition 4 avec le tireur 7
-    (32, 4), -- Compétition 4 avec le tireur 8
-    (33, 5), -- Compétition 5 avec le tireur 1
-    (34, 5), -- Compétition 5 avec le tireur 2
-    (35, 5), -- Compétition 5 avec le tireur 3
-    (36, 5), -- Compétition 5 avec le tireur 4
-    (37, 5), -- Compétition 5 avec le tireur 5
-    (38, 5), -- Compétition 5 avec le tireur 6
-    (39, 5), -- Compétition 5 avec le tireur 7
-    (40, 5), -- Compétition 5 avec le tireur 8
-    (41, 6), -- Compétition 6 avec le tireur 1
-    (42, 6), -- Compétition 6 avec le tireur 2
-    (43, 6), -- Compétition 6 avec le tireur 3
-    (44, 6), -- Compétition 6 avec le tireur 4
-    (45, 6), -- Compétition 6 avec le tireur 5
-    (46, 6), -- Compétition 6 avec le tireur 6
-    (47, 6), -- Compétition 6 avec le tireur 7
-    (48, 6), -- Compétition 6 avec le tireur 8
-    (49, 7), -- Compétition 7 avec le tireur 1
-    (50, 7), -- Compétition 7 avec le tireur 2
-    (51, 7), -- Compétition 7 avec le tireur 3
-    (52, 7), -- Compétition 7 avec le tireur 4
-    (53, 7), -- Compétition 7 avec le tireur 5
-    (54, 7), -- Compétition 7 avec le tireur 6
-    (55, 7), -- Compétition 7 avec le tireur 7
-    (56, 7), -- Compétition 7 avec le tireur 8
-    (57, 8), -- Compétition 8 avec le tireur 1
-    (58, 8), -- Compétition 8 avec le tireur 2
-    (59, 8), -- Compétition 8 avec le tireur 3
-    (60, 8); -- Compétition 8 avec le tireur 4
+    (175387, 1),  -- Compétition 1 avec le tireur 1
+    (17545, 1),  -- Compétition 1 avec le tireur 2
+    (177583, 1),  -- Compétition 1 avec le tireur 3
+    (185987, 1),  -- Compétition 1 avec le tireur 4
+    (164751, 1),  -- Compétition 1 avec le tireur 5
+    (168928, 1),  -- Compétition 1 avec le tireur 6
+    (205331, 1),  -- Compétition 1 avec le tireur 7
+    (224542, 1),  -- Compétition 1 avec le tireur 8
+
+    (175387, 2),  -- Compétition 2 avec le tireur 1
+    (17545, 2),  -- Compétition 2 avec le tireur 2
+    (177583, 2),  -- Compétition 2 avec le tireur 3
+    (185987, 2),  -- Compétition 2 avec le tireur 4
+    (164751, 2),  -- Compétition 2 avec le tireur 5
+    (168928, 2),  -- Compétition 2 avec le tireur 6
+    (205331, 2),  -- Compétition 2 avec le tireur 7
+    (224542, 2),  -- Compétition 2 avec le tireur 8
+
+    (175387, 3),  -- Compétition 3 avec le tireur 1
+    (17545, 3),  -- Compétition 3 avec le tireur 2
+    (177583, 3),  -- Compétition 3 avec le tireur 3
+    (185987, 3),  -- Compétition 3 avec le tireur 4
+    (164751, 3),  -- Compétition 3 avec le tireur 5
+    (168928, 3),  -- Compétition 3 avec le tireur 6
+    (205331, 3),  -- Compétition 3 avec le tireur 7
+    (224542, 3);
+
 
 
 -- Table PRATIQUER_ARME
