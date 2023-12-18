@@ -51,25 +51,6 @@ main {
   transition-duration: 0.5s;
 }
 
-.btn-annuler:hover {
-  background-color: var(--hover-annuler);
-}
-
-.btn-publier:hover {
-  background-color: var(--hover-publier);
-}
-
-.btn-publier {
-  background-color: #01437c;
-  padding: 2% 7%;
-  border: none;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  font-size: 120%;
-  border-radius: 10px;
-  transition-duration: 0.5s;
-}
-
 .bouton-annuler {
   text-align: start;
   margin-top: 1rem;

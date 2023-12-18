@@ -232,6 +232,7 @@ def liste_adherents_def():
   
 @app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
 def liste_adherents(items):
+    total_pages = 0
     if request.method == "POST":
         page = int(request.form.get('page', 1))
         if 'next' in request.form:
