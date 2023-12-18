@@ -388,12 +388,18 @@ def get_id_saison(nom_saison):
     return saison.idSaison if saison else None
 
 def get_adherents():
-    res =  db.session.query(Tireur, Escrimeur, Categorie).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.idTireur).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "Club Blois").add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    res =  db.session.query(Tireur, Escrimeur, Categorie) \
+    .join(Escrimeur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
+    .join(Club, Club.idClub == Tireur.idClub) \
+    .join(Categorie, Escrimeur.idCat == Categorie.idCat) \
+    .add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    #.filter(Club.nomClub == "Club Blois") pour filtrer seulement les tireurs du club de Blois
+    print(res)
     return res
 
 def dernier_escrimeur_id():
-    last_escrimeur = db.session.query(Escrimeur).order_by(Escrimeur.idEscrimeur.desc()).first()
+    last_escrimeur = db.session.query(Escrimeur).order_by(Escrimeur.numeroLicenceE.desc()).first()
     if last_escrimeur:
-        return last_escrimeur.idEscrimeur
+        return last_escrimeur.numeroLicenceE
     else:
         return 0
