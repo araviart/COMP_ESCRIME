@@ -42,8 +42,8 @@
                           <div id="sexe">
                               <label id="label-liste-adherent" for="categorieSexe">Sexe :</label>
                               <select id="categorieSexe" name="sexeE">
-                                  <option value="homme">Homme</option>
-                                  <option value="femme">Femme</option>
+                                  <option value="M">Homme</option>
+                                  <option value="F">Femme</option>
                               </select>
                           </div>
                       </li>
@@ -100,7 +100,7 @@
                 <label id="label-liste-adherent" for="categorieSexe">Sexe:</label>
                 <select id="categorieSexe" name="sexe" onchange="document.getElementById('sexeForm').submit();">
                     <option value="">Non définie</option>
-                    <option value="H" {% if "H" == selec_sexe %}selected{% endif %}>Homme</option>
+                    <option value="M" {% if "M" == selec_sexe %}selected{% endif %}>Homme</option>
                     <option value="F" {% if "F" == selec_sexe %}selected{% endif %}>Femme</option>
                 </select>
             </form>

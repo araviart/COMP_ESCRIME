@@ -394,7 +394,6 @@ def get_adherents():
     .join(Categorie, Escrimeur.idCat == Categorie.idCat) \
     .add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
     #.filter(Club.nomClub == "Club Blois") pour filtrer seulement les tireurs du club de Blois
-    print(res)
     return res
 
 def dernier_escrimeur_id():
