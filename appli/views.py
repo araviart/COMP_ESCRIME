@@ -121,6 +121,7 @@ def logout ():
 
 @app.route('/home/<int:items>', methods=("GET","POST",))
 def home_def(items):
+    total_pages = 0
     if request.method == "POST":
         page = int(request.form.get('page', 1))
         if 'next' in request.form:
@@ -314,9 +315,7 @@ def ajouter_escrimeur():
         default_cat = 1
         
         # creez un nouvel enregistrement d'adherent
-        nouvel_adherent = Escrimeur(idEscrimeur=id, idCat=default_cat, prenomE=prenom, 
-                                nomE=nom, dateNaissanceE=date_naissance, 
-                                numeroLicenceE=numero_licence, sexeE=sexe, numTelE=num_tel)
+        nouvel_adherent = Escrimeur(categorie=default_cat, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, numero_licence_e=numero_licence, sexe_e=sexe, num_tel_e=num_tel)
         db.session.add(nouvel_adherent)
         db.session.commit()
         return redirect(url_for('liste_adherents_def'))
@@ -459,8 +458,8 @@ logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 @app.route('/ajouter_escrimeur_competition/<int:id_comp>/', methods=['POST'])
 def add_participant(id_comp):
     if request.method == 'POST':
-        tireur = request.get_json().get('idTireur')
-        logging.debug(f'id_tireur: {tireur}')
+        tireur = request.get_json().get('numeroLicenceE')
+        logging.debug(f'numerolicence_tireur: {tireur}')
         
         tireur = Tireur.query.get(tireur)
         
@@ -470,7 +469,7 @@ def add_participant(id_comp):
         logging.debug(f'competition: {competition}')
         getattr(competition, "idComp", None)
         if tireur and competition:
-            participant = ParticipantsCompetition(idTireur=getattr(tireur, "idTireur", None), idComp=getattr(competition, "idComp", None))
+            participant = ParticipantsCompetition(numeroLicenceE=getattr(tireur, "numeroLicenceE", None), idComp=getattr(competition, "idComp", None))
             logging.debug('creation participant')
             db.session.add(participant)
             logging.debug('crash ?')
@@ -487,7 +486,7 @@ def add_participant(id_comp):
 
 @app.route('/get_escrimeurs')
 def get_escrimeurs():
-    escrimeurs = Escrimeur.query.all()
+    escrimeurs = Escrimeur.query.limit(50).all()
     return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
 
 @app.route('/update_database', methods=['POST'])

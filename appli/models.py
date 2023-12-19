@@ -141,6 +141,18 @@ class Escrimeur(db.Model):
         self.sexeE = sexe_e
         self.numTelE = num_tel_e
         
+    def to_dict(self):
+        return {
+            'idCat': self.idCat,
+            'prenomE': self.prenomE,
+            'nomE': self.nomE,
+            'dateNaissanceE': self.dateNaissanceE.isoformat() if self.dateNaissanceE else None,
+            'numeroLicenceE': self.numeroLicenceE,
+            'sexeE': self.sexeE,
+            'numTelE': self.numTelE
+        }
+
+    
 # Modèle pour représenter les tireurs
 class Tireur(db.Model):
     __tablename__ = 'TIREUR'
@@ -512,9 +524,8 @@ def get_adherents():
     res =  db.session.query(Tireur, Escrimeur, Categorie) \
     .join(Escrimeur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
     .join(Club, Club.idClub == Tireur.idClub) \
-    .join(Categorie, Escrimeur.idCat == Categorie.idCat) \
-    .add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
-    #.filter(Club.nomClub == "Club Blois") pour filtrer seulement les tireurs du club de Blois
+    .join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "Club Blois") \
+    .add_columns(Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
     return res
 
 def dernier_escrimeur_id():
@@ -525,11 +536,11 @@ def dernier_escrimeur_id():
         return 0
 
 def get_participants(id_comp, club=None):
-    res = db.session.query(ParticipantsCompetition, Escrimeur, Categorie).join(Escrimeur, ParticipantsCompetition.idTireur == Escrimeur.idEscrimeur).join(Categorie, Escrimeur.idCat == Categorie.idCat).join(Tireur, Tireur.idTireur == Escrimeur.idEscrimeur).join(Club, Club.idClub == Tireur.idClub).filter(ParticipantsCompetition.idComp == id_comp)
+    res = db.session.query(ParticipantsCompetition, Escrimeur, Categorie).join(Escrimeur, ParticipantsCompetition.numeroLicenceE == Escrimeur.numeroLicenceE).join(Categorie, Escrimeur.idCat == Categorie.idCat).join(Tireur, Tireur.numeroLicenceE == Escrimeur.numeroLicenceE).join(Club, Club.idClub == Tireur.idClub).filter(ParticipantsCompetition.idComp == id_comp)
     if club is not None:
         if club == "!":
             res = res.filter(Club.nomClub != "ClubBlois")
         else:
             res = res.filter(Club.nomClub == club)
-    return res.add_columns(ParticipantsCompetition.idTireur, ParticipantsCompetition.idComp, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    return res.add_columns(ParticipantsCompetition.numeroLicenceE, ParticipantsCompetition.idComp, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
 

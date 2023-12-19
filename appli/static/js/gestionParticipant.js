@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const listItem = document.createElement('div');
                     listItem.textContent = `${escrimeur.prenomE} ${escrimeur.nomE}`;
                     listItem.addEventListener('click', function () {
-                        ajouterEscrimeurACompetition(escrimeur.idEscrimeur, competitionId);
+                        ajouterEscrimeurACompetition(escrimeur.numeroLicenceE, competitionId);
                         submenu.style.display = 'none';
                     });
                     escrimeursList.appendChild(listItem);
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ idTireur: escrimeurId })
+            body: JSON.stringify({ idTireur: numeroLicenceE })
         })
         .then(response => {
             if (response.ok) {
