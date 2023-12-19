@@ -91,6 +91,7 @@ input::placeholder {
 
 .bouton-inscription button:hover {
   background-color: #3f3f3f;
+  cursor: pointer;
 }
 
 .switch-to-inscription {
