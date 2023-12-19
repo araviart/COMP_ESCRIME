@@ -71,10 +71,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
     function ajouterEscrimeurACompetition(escrimeurId) {
-        const url = addButton.closest(".escrime-arb")
-          ? `/ajouter_arbitre_competition/${competitionId}`
-          : `/ajouter_escrimeur_competition/${competitionId}`;
-
+        let url;
+        let confirmationMessage;
+    
+        if (addButton.closest(".escrime-arb")) {
+          url = `/ajouter_arbitre_competition/${competitionId}`;
+          confirmationMessage = "L’arbitre a bien été ajouté à la compétition."; // Message pour l’arbitre
+        } else {
+          url = `/ajouter_escrimeur_competition/${competitionId}`;
+          confirmationMessage = "Le tireur a bien été ajouté à la compétition."; // Message pour le tireur
+        }
+    
         fetch(url, {
           method: "POST",
           headers: {
@@ -84,23 +91,15 @@ document.addEventListener("DOMContentLoaded", function () {
         })
           .then((response) => {
             if (response.ok) {
-              console.log("Escrimeur ajouté à la compétition avec succès.");
-              localStorage.setItem(
-                "confirmation",
-                "Escrimeur ajouté à la compétition avec succès."
-              );
+              console.log(confirmationMessage);
+              localStorage.setItem("confirmation", confirmationMessage);
               location.reload();
             } else {
-              console.error(
-                "Erreur lors de l'ajout de l'escrimeur à la compétition."
-              );
+              console.error("Erreur lors de l’ajout à la compétition.");
             }
           })
           .catch((error) => {
-            console.error(
-              "Erreur lors de la requête pour ajouter l'escrimeur à la compétition:",
-              error
-            );
+            console.error("Erreur lors de la requête pour ajouter à la compétition:", error);
           });
       }
 

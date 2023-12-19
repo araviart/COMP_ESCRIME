@@ -236,7 +236,7 @@
 }
 
 .submenu div:hover {
-  background-color: #f2f2f2; /* Light grey */
+  background-color: #f2f2f2; 
 }
 
 .escrimeurs-list {
@@ -252,4 +252,17 @@
 .gestion-participants-list{
   width: 400px;
 
+}
+
+.escrimeblois,
+.escrime-other,
+.escrime-arb {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc; 
+  padding-bottom: 20px;
+}
+
+.container-section-participants section:last-of-type {
+  margin-bottom: 0;
+  border-bottom: none;
 }

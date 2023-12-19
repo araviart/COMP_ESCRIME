@@ -49,20 +49,17 @@
           <p class="nb">{{ nb_participants_blois }}</p>
         </div>
         <div class="gestion-participants-list">
-          {% if participants_blois %} {% for participant in participants_blois
-          %}
+          {% if participants_blois %} 
+          {% for participant in participants_blois %}
           <div class="gestionp">
             <div class="participant">
-              <p>{{ participant.prenomE }}</p>
-              <p>{{ participant.nomE }}</p>
+              <p>{{ participant.Escrimeur.prenomE }}</p>
+              <p>{{ participant.Escrimeur.nomE }}</p>
               <p>|</p>
               <p>{{ participant.Categorie.nomCategorie }}</p>
             </div>
             <div class="suppd">
-              <form
-                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.numeroLicenceE) }}"
-                method="post"
-              >
+              <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.Escrimeur.numeroLicenceE) }}" method="post">
                 <button style="font-size: 30px" type="submit">-</button>
               </form>
             </div>
@@ -87,25 +84,22 @@
           <p class="nb">{{ nb_participants_other }}</p>
         </div>
         <div class="gestion-participants-list">
-          {% if participants_other %} {% for participant in participants_other
-          %}
+          {% if participants_other %} 
+          {% for participant in participants_other %}
           <div class="gestionp">
             <div class="participant">
-              <p>{{ participant.prenomE }}</p>
-              <p>{{ participant.nomE }}</p>
+              <p>{{ participant.Escrimeur.prenomE }}</p>
+              <p>{{ participant.Escrimeur.nomE }}</p>
               <p>|</p>
               <p>{{ participant.Categorie.nomCategorie }}</p>
             </div>
             <div class="suppd">
-              <form
-                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.numeroLicenceE) }}"
-                method="post"
-              >
+              <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.Escrimeur.numeroLicenceE) }}" method="post">
                 <button style="font-size: 30px" type="submit">-</button>
               </form>
             </div>
           </div>
-          {% endfor %} {% else %}
+          {% endfor %}{% else %}
           <p class="nullparticipant">Aucun participant d'autres clubs</p>
           {% endif %}
           <div class="addp">
