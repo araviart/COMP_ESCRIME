@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         showConfirmation(confirmation);
         localStorage.removeItem('confirmation');
     }
+});
     
     
     function updateDatabase(field, value) {
@@ -96,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.removeChild(confirmation);
         }, 4000);
     }
-});
 
 
 function editField(id) {
