@@ -1,0 +1,21 @@
+<!-- Popup pour saisir le code de vérification -->
+<div id="verificationPopup" data-show-popup="{% if show_verification_popup %}true{% else %}false{% endif %}">
+    <div class="modal-content">
+        <span class="close" id="closeModalButton">&times;</span>
+        <form action="{{ url_for('verify_code', name=name) }}" method="post">
+            <h2>Vérification</h2>
+            {% with messages = get_flashed_messages(category_filter=["error"]) %}
+                {% if messages %}
+                    <div class="error-messages">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <label for="verificationCode">Code de vérification :</label>
+            <input type="text" id="verificationCode" name="code">
+            <input type="submit" value="Vérifier">
+        </form>
+    </div>
+</div>

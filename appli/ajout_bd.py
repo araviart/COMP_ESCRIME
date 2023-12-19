@@ -1,4 +1,4 @@
-from .models import *
+from .models import Categorie, Arme, Lieu, Saison, Club, Escrimeur, Tireur, PratiquerArme, Competition
 from .app import db
 from datetime import datetime
 from sqlalchemy.exc import IntegrityError
@@ -16,6 +16,20 @@ def get_id_arme(nom_arme):
         return arme.idArme
     else:
         return "L'arme n'existe pas."
+    
+def get_id_lieu(nom_lieu):
+    lieu = Lieu.query.filter_by(nomLieu=nom_lieu).first()
+    if lieu:
+        return lieu.idLieu
+    else:
+        return "Le lieu n'existe pas."
+    
+def get_id_saison(nom_saison):
+    saison = Saison.query.filter_by(nomSaison=nom_saison).first()
+    if saison:
+        return saison.idSaison
+    else:
+        return "La saison n'existe pas."
     
 def get_id_club(nom_club):
     club = Club.query.filter_by(nomClub=nom_club).first()
@@ -223,4 +237,4 @@ def creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, n
     
     except Exception as e:
         db.session.rollback()
-        return f"Une erreur s'est produite lors de la création de la compétition {nomComp}: {str(e)}"
+        return f"Une erreur s'est produite lors de la création de la compétition {nomComp}: {e}"

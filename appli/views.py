@@ -6,9 +6,16 @@ from flask import jsonify, render_template, session, url_for, redirect, request,
 from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, get_lieux, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
-from wtforms import BooleanField, DateField, SelectField, StringField, PasswordField, SubmitField, TimeField
+from wtforms import StringField, PasswordField
 from hashlib import sha256
 from flask_login import login_user, logout_user, current_user
+from flask_mail import Message
+
+def send_verification_email(user_email, code):
+    with app.app_context():
+        msg = Message("Votre code de vérification", recipients=[user_email])
+        msg.body = f"Votre code de vérification est : {code}"
+        mail.send(msg)
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 class LoginForm(FlaskForm):
@@ -37,9 +44,32 @@ class EditUserForm(FlaskForm):
     confirm = PasswordField("Confirmez le nouveau mot de passe")
     username = StringField("Pseudonyme actuelle")
     password = PasswordField("Mot de passe actuelle")
+    
+    
+@app.route("/")
+def gestion_score():
+    rows_data = [
+        {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A'},
+        {'Nom': 'Smith', 'Prenom': 'Alice', 'Club': 'Club A'},
+        {'Nom': 'Johnson', 'Prenom': 'Bob', 'Club': 'Club A'},
+        {'Nom': 'Williams', 'Prenom': 'Emma', 'Club': 'Club A'}
+    ]
+
+    # Définir le nombre de lignes et de colonnes dans le tableau
+    rows = len(rows_data)
+    cols = len(rows_data)
+
+    # Générer les données pour le tableau
+    table_data = [[f'input_{i}_{j}' for j in range(cols)] for i in range(rows)]
+
+    # Rendre le modèle HTML avec Flask
+    return render_template('Score.html', table_data=table_data, rows_data=rows_data, rows=rows, cols=cols)
+
+
 
 @app.route("/appel/")
-def jenesaispas():
+def appel():
+    # Exemple de données à afficher dans chaque ligne
     rows_data = [
         {'Nom': 'Doe', 'Prenom': 'John', 'DateNaissance': '01/01/1990', 'Telephone': '123456789', 'Sexe': 'M', 'Club': 'Club A', 'Classement': 'A'},
         {'Nom': 'Smith', 'Prenom': 'Alice', 'DateNaissance': '02/02/1995', 'Telephone': '987654321', 'Sexe': 'F', 'Club': 'Club B', 'Classement': 'B'},
@@ -78,7 +108,7 @@ def login():
     user = f.get_authenticated_user()
     if user:
         login_user(user)
-        return redirect(url_for("ajout_comp_page"))
+        return redirect(url_for("home_default"))
     else:
         flash("Mot de passe incorrect", "error")
     return render_template("Login.html", form=f)
@@ -114,6 +144,7 @@ def home_def(items):
     # filtre pour les compet
     compet_filtre = filtrer_competitions(competitions, session.get('categorie'), session.get('arme'), session.get('sexe'), session.get('statut'))
     if len(compet_filtre) !=0:
+        total_pages = math.ceil(len(compet_filtre) / items)
         competitions = compet_filtre[(page - 1) * items:page * items]
     else:
         competitions = []
@@ -130,12 +161,64 @@ def home_def(items):
         selec_sexe=session.get('sexe'),
         selec_statut=session.get('statut'),
         page=page,
-        compet_filtre = compet_filtre
+        compet_filtre = compet_filtre,
+        total_pages=total_pages
     )
     
+@app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
+def liste_adherents(items):
+    total_pages = 0
+    if request.method == "POST":
+        page = int(request.form.get('page', 1))
+        if 'next' in request.form:
+            page += 1
+        elif 'prev' in request.form:
+            page -= 1
+    else:
+        page = request.args.get('page', 1, type=int)
+    adherents = get_adherents()
+    categories = get_categories()
+    role = request.form.get('statut', session.get('statuta', ''))
+    categorie = request.form.get('categorie', session.get('categoriea', ''))
+    sexe = request.form.get('sexe', session.get('sexea', ''))
+    
+    adherents = filtrer_adherent(adherents, categorie, sexe)
+    if request.method == "POST":
+        search_query = request.form.get('search')
+        # recherche les adhérents en fonction du nom ou prénom
+        if search_query:
+            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
+    session['statuta'] = role
+    session['categoriea'] = categorie
+    session['sexea'] = sexe 
+    if len(adherents) !=0:
+        total_pages = math.ceil(len(adherents) / items)
+        adherents = adherents[(page - 1) * items:page * items]
+    else:
+        adherents = []
+
+    
+    return render_template(
+        "liste-adherents.html",
+        title="Compétitions ESCRIME",
+        categories=categories,
+        selec_categorie=categorie,
+        selec_sexe=sexe,
+        selec_statut=role,
+        adherents=adherents,
+        items=items,
+        page=page,
+        total_pages=total_pages)
+
 @app.route('/home/')
 def home_default():
     return home_def(5)
+
+    
+@app.route('/annuler_comp', methods=['POST'])
+def annuler_comp():
+    # Rediriger vers l'URL d'origine
+    return redirect(request.referrer or url_for('home_default'))
 
 @app.route("/test_popup/")
 def test_popup():
@@ -151,30 +234,58 @@ def edit_user(name):
         return redirect(url_for("login", next=next))
 
     if form.validate_on_submit():
+        print("Formulaire valide")
         user = current_user
         if user.pseudoUser != form.username.data:
             form.username.errors.append("Pseudonyme erreur")
-            return render_template("edit-user.html", form=form)
+            return render_template("edit-user.html", form=form, name=name, show_verification_popup=False)
 
         if form.newpsswd.data != form.confirm.data:
             form.confirm.errors.append("Les mots de passe ne correspondent pas")
-            return render_template("edit-user.html", form=form)
+            return render_template("edit-user.html", form=form, name=name, show_verification_popup=False)
+        
+        code = str(random.randint(1000, 9999))
+        print(code)
+        print(user.emailUser)
+        send_verification_email(user.emailUser, code)
+        print("Email envoyé")
+        session['verification_code'] = code  # Stocker le code temporairement
+        session['user_id'] = user.idUser
+        session['new_password'] = form.newpsswd.data  # Stocker le nouveau mot de passe temporairement
+        print("affichage popup")
+        return render_template("edit-user.html", form=form, name=name, show_verification_popup=True)
 
-        password_hash = sha256()
-        password_hash.update(form.password.data.encode())
+    return render_template("edit-user.html", form=form, name=name, show_verification_popup=False)
 
-        if user.mdpUser != password_hash.hexdigest():
-            form.password.errors.append("Mot de passe incorrect")
-            return render_template("edit-user.html", form=form)
+@app.route("/verify-code/<name>", methods=["GET", "POST"])
+def verify_code(name):
+    if request.method == "POST":
+        user_code = request.form['code']
+        print(user_code)
+        if user_code == session.get('verification_code'):
+            # Récupérer l'utilisateur et les informations nécessaires
+            user = User.query.get(session.get('user_id'))
+            if not user:
+                return "Utilisateur non trouvé", 404
 
-        new_password_hash = sha256()
-        new_password_hash.update(form.newpsswd.data.encode())
+            # Procéder à la mise à jour du mot de passe
+            new_password = session.get('new_password')
+            new_password_hash = sha256()
+            new_password_hash.update(new_password.encode())
 
-        user.mdpUser = new_password_hash.hexdigest()
-        db.session.commit()
+            user.mdpUser = new_password_hash.hexdigest()
+            db.session.commit()
 
-        return redirect(url_for("home"))
-    return render_template("edit-user.html", form=form, name=name)
+            # Nettoyer la session
+            del session['verification_code']
+            del session['user_id']
+            del session['new_password']
+
+            return redirect(url_for("home")) # "Mot de passe mis à jour avec succès!"
+        else:
+            flash("Code de vérification incorrect", "error")
+
+    return render_template("edit-user.html", name=name, form=EditUserForm(), show_verification_popup=True)
 
 @app.route('/ajouter_escrimeur/', methods=['GET', 'POST'])
 def ajouter_escrimeur():
@@ -222,49 +333,6 @@ def gestion_poules(id_comp):
 def liste_adherents_def():
     return liste_adherents(5)
   
-@app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
-def liste_adherents(items):
-    total_pages = 0
-    if request.method == "POST":
-        page = int(request.form.get('page', 1))
-        if 'next' in request.form:
-            page += 1
-        elif 'prev' in request.form:
-            page -= 1
-    else:
-        page = request.args.get('page', 1, type=int)
-
-    
-    adherents = get_adherents()
-    
-    categories = get_categories()
-    role = request.form.get('statut')
-    categorie = request.form.get('categorie')
-    sexe = request.form.get('sexe')
-    adherents = filtrer_adherent(adherents, categorie, sexe)
-    if request.method == "POST":
-        search_query = request.form.get('search')
-        # recherche les adhérents en fonction du nom ou prénom
-        if search_query:
-            adherents = [adherent for adherent in adherents if search_query.lower() in adherent.Escrimeur.prenomE.lower() or search_query.lower() in adherent.Escrimeur.nomE.lower() or search_query.lower() in str(adherent.Escrimeur.numeroLicenceE)]            
-    if len(adherents) !=0:
-        total_pages = math.ceil(len(adherents) / items)
-        adherents = adherents[(page - 1) * items:page * items]
-    else:
-        adherents = []
-
-    
-    return render_template(
-        "liste-adherents.html",
-        title="Compétitions ESCRIME",
-        categories=categories,
-        selec_categorie=categorie,
-        selec_sexe=sexe,
-        selec_statut=role,
-        adherents=adherents,
-        items=items,
-        page=page,
-        total_pages=total_pages)
 
 @app.route("/ajout-comp")
 def ajout_comp_page():
@@ -406,4 +474,5 @@ def update_database():
     setattr(competition, field, value)
     db.session.commit()
     return 'OK'
+
 

@@ -155,7 +155,8 @@ td{
 
 
 .Catégorie, .Sexe, .Statut{
-  margin: 0 20px;
+  margin: 0 10x;
+  width: 20%;
 }
 
 .search{
