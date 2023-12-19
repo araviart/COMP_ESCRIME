@@ -4,8 +4,12 @@
   href="{{ url_for('static', filename='gestion_participants.css') }}"
 />
 <script>
-  var competitionId = "{{ competition.idComp }}";
+  var nbParticipantsBlois = {{ nb_participants_blois }};
+  var nbParticipantsOther = {{ nb_participants_other }};
+  var nbParticipantsArb = {{ participants_arb|length }};
+  var competitionId = {{ competition.idComp }};
 </script>
+<script src="{{ url_for('static', filename='js/condCompetValide.js') }}"></script>
 <script src="{{ url_for('static', filename='js/gestionParticipant.js') }}"></script>
 <script src="{{ url_for('static', filename='js/editField.js') }}"></script>
 {% include 'progress-bar.html' %}
@@ -113,7 +117,7 @@
       <section class="escrime-arb">
         <div class="subtitreparticipant">
           <h3>Arbitres</h3>
-          <p class="nb">{{ nb_participants_other }}</p>
+          <p class="nb">{{ nb_participants_arb }}</p>
         </div>
         <div class="gestion-participants-list">
           {% if participants_arb %}
@@ -150,7 +154,7 @@
   <div class="center">
     <div class="btndiv">
       <a href="{{ url_for('home_default') }}" class="btn-annuler">ANNULER</a>
-      <a href="{{ url_for('home_default') }}" class="btn-publier"
+      <a href="{{ url_for('gestion_poules', id_comp = competition.idComp) }}" class="btn-publier"
         >CREER LES POULES</a
       >
     </div>

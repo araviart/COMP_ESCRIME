@@ -441,6 +441,7 @@ def gestion_participants(id_comp):
     participants_arb = get_arbitres(id_comp)
     nb_participants_blois = len(participants_blois)
     nb_participants_other = len(participants_other)
+    nb_participants_arb = len(participants_arb)
     
     return render_template(
       "gestion-participants.html",
@@ -450,7 +451,8 @@ def gestion_participants(id_comp):
       participants_other=participants_other,
       nb_participants_other=nb_participants_other,
       competition=competition,
-      participants_arb=participants_arb
+      participants_arb=participants_arb,
+      nb_participants_arb=nb_participants_arb
   )
 
 @app.route('/ajouter_arbitre_competition/<int:id_comp>', methods=['POST'])
