@@ -223,7 +223,7 @@ def creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, n
 
         # Créez la compétition
         competition = Competition(
-            lieu, saison, categorie, arme, nomComp, descComp, date_comp, heure_comp, sexeComp, estIndividuelle
+            lieu.idLieu, saison.idSaison, categorie.idCat, arme.idArme, nomComp, descComp, date_comp, heure_comp, sexeComp, estIndividuelle
         )
         db.session.add(competition)
         db.session.commit()

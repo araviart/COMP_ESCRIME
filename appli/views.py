@@ -396,9 +396,8 @@ def ajout_comp():
     dateComp = request.form.get('date-deroulement')
     heureComp = request.form.get('appt')
     sexeComp = request.form.get('sexe')[:1].upper()
-    estIndividuelle = request.form.get('type-comp') == 'Individuelle'
+    estIndividuelle = request.form.get('type') == 'Individuelle'
     print(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, nomOrga, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
-
 
     # Appeler la fonction pour créer la compétition
     resultat = creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
@@ -411,30 +410,6 @@ def ajout_comp():
         # Gérer l'erreur (par exemple, afficher un message d'erreur sur la page actuelle)
         flash(resultat, 'error')
         return redirect(url_for('ajout_comp_page'))
-
-# @app.route('/annuler_comp', methods=['POST'])
-# def annuler_comp():
-#     if lieu is None:
-#         lieu = Lieu(nom_lieu=form.lieu.data, ville_lieu="", code_postal_lieu=0, adresse_lieu="")
-#         db.session.add(lieu)
-#         db.session.commit()
-#         competition = Competition(idLieu=lieu.idLieu, 
-#                                   idSaison=Saison.query.get(1).idSaison,
-#                                   idCat=getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None),
-#                                   idArme=getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None),
-#                                   nomComp=form.titre.data,
-#                                   descComp=f"Competition organisée par {form.organisateur.data}", 
-#                                   dateComp=form.date_deroulement.data,
-#                                   heureComp=form.heure_debut.data,
-#                                   sexeComp=form.sexe.data[:1],
-#                                   estIndividuelle=form.type_comp.data == 'individuel')
-#         db.session.add(competition)
-#         db.session.commit()
-#         flash('La compétition a été ajoutée') # à changer avec une popup
-#         return redirect(url_for('home'))
-
-#     # Rediriger vers l'URL d'origine
-#     return redirect(request.referrer or url_for('home_default'))
 
 @app.route("/gestion_participants/<int:id_comp>", methods=("GET", "POST"))
 def gestion_participants(id_comp):

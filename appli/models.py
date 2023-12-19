@@ -80,17 +80,17 @@ class Competition(db.Model):
     sexeComp = db.Column(db.String(1), nullable=False)
     estIndividuelle = db.Column(db.Boolean, nullable=False)
     
-    def __init__(self, lieu, saison, categorie, arme, nom_comp, desc_comp, date_comp, heure_comp, sexe_comp, est_individuelle):
-        self.idLieu = lieu.idLieu
-        self.idSaison = saison.idSaison
-        self.idCat = categorie.idCat
-        self.idArme = arme.idArme
-        self.nomComp = nom_comp
-        self.descComp = desc_comp
-        self.dateComp = date_comp
-        self.heureComp = heure_comp
-        self.sexeComp = sexe_comp
-        self.estIndividuelle = est_individuelle
+    def __init__(self, idLieu, idSaison, idCat, idArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle):
+        self.idLieu = idLieu
+        self.idSaison = idSaison
+        self.idCat = idCat
+        self.idArme = idArme
+        self.nomComp = nomComp
+        self.descComp = descComp
+        self.dateComp = dateComp
+        self.heureComp = heureComp
+        self.sexeComp = sexeComp
+        self.estIndividuelle = estIndividuelle
 
 # Modèle pour représenter la piste
 class Piste(db.Model):
