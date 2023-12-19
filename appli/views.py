@@ -45,9 +45,9 @@ class EditUserForm(FlaskForm):
     confirm = PasswordField("Confirmez le nouveau mot de passe")
     username = StringField("Pseudonyme actuelle")
     password = PasswordField("Mot de passe actuelle")
-    
-    
-@app.route("/")
+
+
+@app.route("/gestion_score/")
 def gestion_score():
     rows_data = [
         {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A'},
@@ -121,7 +121,6 @@ def logout ():
 
 @app.route('/home/<int:items>', methods=("GET","POST",))
 def home_def(items):
-    total_pages = 0
     if request.method == "POST":
         page = int(request.form.get('page', 1))
         if 'next' in request.form:
@@ -315,15 +314,11 @@ def ajouter_escrimeur():
         default_cat = 1
         
         # creez un nouvel enregistrement d'adherent
-        nouvel_adherent = Escrimeur(categorie=default_cat, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, numero_licence_e=numero_licence, sexe_e=sexe, num_tel_e=num_tel)
+        nouvel_adherent = Escrimeur(idEscrimeur=id, idCat=default_cat, prenomE=prenom, 
+                                nomE=nom, dateNaissanceE=date_naissance, 
+                                numeroLicenceE=numero_licence, sexeE=sexe, numTelE=num_tel)
         db.session.add(nouvel_adherent)
         db.session.commit()
-        id_club_blois = 169 
-        classement_tireur = 0 
-        nouveau_tireur = Tireur(num_licence=numero_licence, club=id_club_blois, classement=classement_tireur)
-        db.session.add(nouveau_tireur)
-        db.session.commit()
-
         return redirect(url_for('liste_adherents_def'))
       
 @app.route('/')
@@ -341,9 +336,7 @@ def gestion_poules(id_comp):
         club_checked = 'club' in request.form
         equilibrer_checked = 'equilibrer' in request.form
         nb_poules = int(request.form.get('nb_poules'))
-        nb_tireurs_poules_str = request.form.get('nb_tireurs/poules')
-        if nb_tireurs_poules_str and nb_tireurs_poules_str.isdigit():
-            nb_tireurs_poules = int(nb_tireurs_poules_str)
+        nb_tireurs_poules = int(request.form.get('nb_tireurs/poules'))
         liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
         liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
         nb_tireurs_par_poule = nb_tireurs // nb_arbitres
@@ -357,12 +350,10 @@ def gestion_poules(id_comp):
         return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=get_nb_tireurs(id_comp), nb_arbitres=get_nb_arbitres(id_comp), liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
     liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
     liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
-    competition = Competition.query.get(id_comp)    
+    competition = Competition.query.get(id_comp)
     
     if competition is not None:
-        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=nb_tireurs, nb_arbitres=nb_arbitres, 
-                               liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, 
-                               liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
+        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=nb_tireurs, nb_arbitres=nb_arbitres, liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
 
 @app.route('/adherent/')
 def liste_adherents_def():
@@ -383,28 +374,56 @@ def ajout_comp():
     nomLieu = request.form.get('nomLieu')
     adresseLieu = request.form.get('adresseLieu')
     villeLieu = request.form.get('villeLieu')
-    codePostalLieu = request.form.get('codePostalLieu')
-    nomSaison = Saison.query.get(1).nomSaison # Renvoie la dernière saison enregistrée
-    nomCat = request.form.get('categorie')
-    nomArme = request.form.get('arme')
+    cpLieu = request.form.get('codePostalLieu')
+    nomSaison = "Saison 2023"  # Supposons que c'est fixe pour cet exemple
+    nomCat = request.form.get('categorie')  # Assurez-vous que le nom correspond au champ dans le HTML
+    nomArme = request.form.get('arme')  # Idem
     nomComp = request.form.get('titre')
     nomOrga = request.form.get('organisateur')
-    descComp = f"Competition {nomComp} organisée par {nomOrga}"
+    descComp = f"Competition {nomComp} organisée par {nomOrga}" # Ajoutez un champ pour la description si nécessaire
     dateComp = request.form.get('date-deroulement')
     heureComp = request.form.get('appt')
     sexeComp = request.form.get('sexe')[:1].upper()
-    estIndividuelle = request.form.get('type') == "Individuelle"
-    print(nomLieu, adresseLieu, villeLieu, codePostalLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
-    
-    # Ajoutez la compétition à la base de données
-    resultat = creer_competition(nomLieu,adresseLieu,villeLieu,codePostalLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
+    estIndividuelle = request.form.get('type-comp') == 'Individuelle'
+    print(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, nomOrga, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
+
+
+    # Appeler la fonction pour créer la compétition
+    resultat = creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
     print(resultat)
+    # Gérer le résultat (par exemple, afficher un message à l'utilisateur)
     if 'succès' in resultat:
+        # Redirige vers une page de confirmation ou la liste des compétitions
         return redirect(url_for('home_default'))
     else:
+        # Gérer l'erreur (par exemple, afficher un message d'erreur sur la page actuelle)
         flash(resultat, 'error')
         return redirect(url_for('ajout_comp_page'))
-     
+
+# @app.route('/annuler_comp', methods=['POST'])
+# def annuler_comp():
+#     if lieu is None:
+#         lieu = Lieu(nom_lieu=form.lieu.data, ville_lieu="", code_postal_lieu=0, adresse_lieu="")
+#         db.session.add(lieu)
+#         db.session.commit()
+#         competition = Competition(idLieu=lieu.idLieu, 
+#                                   idSaison=Saison.query.get(1).idSaison,
+#                                   idCat=getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None),
+#                                   idArme=getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None),
+#                                   nomComp=form.titre.data,
+#                                   descComp=f"Competition organisée par {form.organisateur.data}", 
+#                                   dateComp=form.date_deroulement.data,
+#                                   heureComp=form.heure_debut.data,
+#                                   sexeComp=form.sexe.data[:1],
+#                                   estIndividuelle=form.type_comp.data == 'individuel')
+#         db.session.add(competition)
+#         db.session.commit()
+#         flash('La compétition a été ajoutée') # à changer avec une popup
+#         return redirect(url_for('home'))
+
+#     # Rediriger vers l'URL d'origine
+#     return redirect(request.referrer or url_for('home_default'))
+
 @app.route("/gestion_participants/<int:id_comp>", methods=("GET", "POST"))
 def gestion_participants(id_comp):
     competition = Competition.query.get(id_comp)
@@ -426,7 +445,7 @@ def gestion_participants(id_comp):
 
 @app.route('/delete_participant/<int:id_comp>/<int:id>/', methods=['POST'])
 def delete_participant(id, id_comp):
-    participant = ParticipantsCompetition.query.filter_by(numeroLicenceE=id).first()
+    participant = ParticipantsCompetition.query.filter_by(idTireur=id).first()
 
     if participant:
         db.session.delete(participant)
@@ -440,8 +459,8 @@ logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 @app.route('/ajouter_escrimeur_competition/<int:id_comp>/', methods=['POST'])
 def add_participant(id_comp):
     if request.method == 'POST':
-        tireur = request.get_json().get('numeroLicenceE')
-        logging.debug(f'numerolicence_tireur: {tireur}')
+        tireur = request.get_json().get('idTireur')
+        logging.debug(f'id_tireur: {tireur}')
         
         tireur = Tireur.query.get(tireur)
         
@@ -451,7 +470,7 @@ def add_participant(id_comp):
         logging.debug(f'competition: {competition}')
         getattr(competition, "idComp", None)
         if tireur and competition:
-            participant = ParticipantsCompetition(numeroLicenceE=getattr(tireur, "numeroLicenceE", None), idComp=getattr(competition, "idComp", None))
+            participant = ParticipantsCompetition(idTireur=getattr(tireur, "idTireur", None), idComp=getattr(competition, "idComp", None))
             logging.debug('creation participant')
             db.session.add(participant)
             logging.debug('crash ?')
@@ -468,7 +487,7 @@ def add_participant(id_comp):
 
 @app.route('/get_escrimeurs')
 def get_escrimeurs():
-    escrimeurs = Escrimeur.query.limit(50).all()
+    escrimeurs = Escrimeur.query.all()
     return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
 
 @app.route('/update_database', methods=['POST'])
