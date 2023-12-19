@@ -227,6 +227,10 @@ def creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, n
 
         return f"La compétition {nomComp} a été créée avec succès."
     
+    except Exception as e:
+        db.session.rollback()
+        return f"Une erreur s'est produite lors de la création de la compétition {nomComp}: {e}"
+    
     except IntegrityError:
         db.session.rollback()
         return "Une compétition avec ce nom existe déjà."

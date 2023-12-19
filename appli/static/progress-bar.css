@@ -17,3 +17,7 @@
     background-color: #01437c !important;
   }
   
+
+  .progress-bar a{
+    border-radius: 8px;
+  }

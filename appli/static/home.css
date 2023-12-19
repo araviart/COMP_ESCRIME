@@ -52,7 +52,6 @@
 
   .competition-container {
     margin: 2em auto 0;
-    min-height: 30vw;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -169,3 +168,4 @@ text-align: center;
   border-radius: 8px;
   padding: 4px;
 }
+

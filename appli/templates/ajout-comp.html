@@ -1,22 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='ajout-comp.css')}}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='progress-bar.css')}}" />
 <link rel="stylesheet" href="{{ url_for ('static', filename='responsive-creer-comp.css') }}">
-  <div class="progress-bar">
-    <a class="active-url" href="url">Définir une compétition</a>
-    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
-    <a href="url">Gestion participants</a>
-    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
-    <a href="url">Créer les poules</a>
-    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
-    <a href="url">Appel</a>
-    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
-    <a href="url">Gestion score</a>
-    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
-    <a href="url">Classement Final</a>
-  </div>
-  <form action="{{ url_for('ajout_comp') }}" method="post">
+{% include 'progress-bar.html' %}
+  <form method='POST'>
+    {{ form.hidden_tag() }}
     <div class="center">
       <div class="left-form">
         <div class="test">
@@ -45,7 +33,6 @@
                 <i id="editLieuIcon" class="fa fa-edit" style="cursor:pointer; display:none;"></i> <!-- Icône de modification -->
               </div>
               {% include 'popup_addLieu.html' %}
-            </div>  
             <div class="label-input">
               <label for="title">Date déroulement</label>
               <input type="date" id="deroulement" name="date-deroulement" value="2023-11-16" min="2023-11-16" />
@@ -57,9 +44,9 @@
           </div>
         </div>
         <div class="bouton-annuler">
-          <form action="{{ url_for('annuler_comp') }}" method="post">
+          <!-- <form action="{{ url_for('annuler_comp') }}" method="post">
             <button class="btn-annuler" type="submit">ANNULER</button>
-          </form>
+          </form> -->
         </div>
       </div>
       <div class="right-form">
@@ -112,3 +99,4 @@
   <script src="{{ url_for('static', filename='js/popup_addLieu.js') }}"></script>
   {% endblock scripts %}
 {% endblock %}
+

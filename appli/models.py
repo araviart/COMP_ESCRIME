@@ -124,7 +124,8 @@ class TypeMatch(db.Model):
         self._nb_touches = nb_touches
 
 # Modèle pour représenter l'escrimeur
-class Escrimeur(db.Model):
+class 
+(db.Model):
     __tablename__ = 'ESCRIMEUR'
     idCat = db.Column(db.Integer, db.ForeignKey('CATEGORIE.idCat'), nullable=False)
     prenomE = db.Column(db.String(50), nullable=False)
@@ -142,6 +143,17 @@ class Escrimeur(db.Model):
         self.numeroLicenceE = numeroLicenceE
         self.sexeE = sexeE
         self.numTelE = numTelE
+        
+    def to_dict(self):
+        return {
+            'idCat': self.idCat,
+            'prenomE': self.prenomE,
+            'nomE': self.nomE,
+            'dateNaissanceE': self.dateNaissanceE.isoformat() if self.dateNaissanceE else None,
+            'numeroLicenceE': self.numeroLicenceE,
+            'sexeE': self.sexeE,
+            'numTelE': self.numTelE
+        }
 
         
 # Modèle pour représenter les tireurs
@@ -176,13 +188,13 @@ class ParticipantsCompetition(db.Model):
     numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
 
+
     escrimeur = db.relationship('Escrimeur', backref='participants_competition')
     competition = db.relationship('Competition', backref='participations')
 
     def __init__(self, escrimeur, competition):
         self._escrimeur = escrimeur
         self._competition = competition
-
 
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
 class PratiquerArme(db.Model):
@@ -332,6 +344,7 @@ def get_categories():
     categories = Categorie.query.all()
     return [categorie.nomCategorie for categorie in categories]
 
+
 def get_saisons():
     saisons = Saison.query.all()
     return [saison.nomSaison for saison in saisons]
@@ -402,3 +415,12 @@ def dernier_escrimeur_id():
         return last_escrimeur.numeroLicenceE
     else:
         return 0
+
+def get_participants(id_comp, club=None):
+    res = db.session.query(ParticipantsCompetition, Escrimeur, Categorie).join(Escrimeur, ParticipantsCompetition.idTireur == Escrimeur.idEscrimeur).join(Categorie, Escrimeur.idCat == Categorie.idCat).join(Tireur, Tireur.idTireur == Escrimeur.idEscrimeur).join(Club, Club.idClub == Tireur.idClub).filter(ParticipantsCompetition.idComp == id_comp)
+    if club is not None:
+        if club == "!":
+            res = res.filter(Club.nomClub != "ClubBlois")
+        else:
+            res = res.filter(Club.nomClub == club)
+    return res.add_columns(ParticipantsCompetition.idTireur, ParticipantsCompetition.idComp, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
