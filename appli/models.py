@@ -78,22 +78,22 @@ class Competition(db.Model):
     sexeComp = db.Column(db.String(1), nullable=False)
     estIndividuelle = db.Column(db.Boolean, nullable=False)
     
-    def __init__(self, id_lieu, id_saison, id_categorie, id_arme, nom_comp, desc_comp, date_comp, heure_comp, sexe_comp, est_individuelle):
-        self.idLieu = id_lieu
-        self.idSaison = id_saison
-        self.idCat = id_categorie  # Correction ici
-        self.idArme = id_arme
-        self.nomComp = nom_comp
-        self.descComp = desc_comp
-        self.dateComp = date_comp
-        self.heureComp = heure_comp
-        self.sexeComp = sexe_comp
-        self.estIndividuelle = est_individuelle
+    def __init__(self, idLieu, idSaison, idCat, idArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle):
+        self.idLieu = idLieu
+        self.idSaison = idSaison
+        self.idCat = idCat
+        self.idArme = idArme
+        self.nomComp = nomComp
+        self.descComp = descComp
+        self.dateComp = dateComp
+        self.heureComp = heureComp
+        self.sexeComp = sexeComp
+        self.estIndividuelle = estIndividuelle
 
 # Modèle pour représenter la piste
 class Piste(db.Model):
     __tablename__ = 'PISTE'
-    idPiste = db.Column(db.Integer, primary_key=True, autincrement=True)
+    idPiste = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), nullable=False)
     nomPiste = db.Column(db.String(50), nullable=False)
     estDispo = db.Column(db.Boolean, nullable=False)
@@ -147,8 +147,8 @@ class Tireur(db.Model):
     classement = db.Column(db.Integer, nullable=False)
 
     club = db.relationship('Club', backref='Club.idClub')
-    num_licence = db.relationship('Escrimeur', backref='Escrimeur.numeroLicenceE')
-    
+    escrimeur = db.relationship('Escrimeur', backref='Escrimeur.tireur')
+
     def __init__(self, num_licence, club, classement):
         self.numeroLicenceE = num_licence
         self.idClub = club
@@ -204,7 +204,7 @@ class ClassementFinal(db.Model):
     competition = db.relationship('Competition', backref='competition')
     tireur = db.relationship('Tireur', backref='Tireur.numeroLicenceE')
     
-    def __init__(self, id_classement_final, comp, tireur, position):
+    def __init__(self, comp, tireur, position):
         self.idComp = comp
         self.numeroLicenceE = tireur
         self.position = position
@@ -282,7 +282,7 @@ class MatchPoule(db.Model):
 # Modèle pour représenter les feuilles de match
 class FeuilleMatch(db.Model):
     __tablename__ = 'FEUILLE_MATCH'
-    idFeuille = db.Column(db.Integer, primary_key=True)
+    idFeuille = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idPoule = db.Column(db.Integer, db.ForeignKey('POULE.idPoule'), nullable=False)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), nullable=False)
     numeroLicenceE1 = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), nullable=False)
@@ -295,8 +295,7 @@ class FeuilleMatch(db.Model):
     tireur1 = db.relationship('Tireur', foreign_keys=[numeroLicenceE1], backref='matches_as_tireur1')
     tireur2 = db.relationship('Tireur', foreign_keys=[numeroLicenceE2], backref='matches_as_tireur2')
 
-    def __init__(self, id_feuille, poule, competition, tireur1, tireur2, score_tireur1, score_tireur2):
-        self.idFeuille = id_feuille
+    def __init__(self, poule, competition, tireur1, tireur2, score_tireur1, score_tireur2):
         self.idPoule = poule
         self.idComp = competition
         self.numeroLicenceE1 = tireur1
@@ -373,7 +372,7 @@ def get_id_saison(nom_saison):
     return saison.idSaison if saison else None
 
 def get_adherents():
-    res =  db.session.query(Tireur, Escrimeur, Categorie).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.idTireur).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "Club Blois").add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    res =  db.session.query(Tireur, Escrimeur, Categorie).join(Escrimeur, Escrimeur.idEscrimeur == Tireur.numeroLicenceE).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "Club Blois").add_columns(Tireur.numeroLicenceE, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
     return res
 
 def dernier_escrimeur_id():

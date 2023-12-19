@@ -14,195 +14,15 @@ def loaddb(dirname):
     # Create tables 
     db.create_all()
 
+    chemin_dossier = ""
+
     # Parcours de tous les fichiers du dossier
     for nom_fichier in os.listdir(dirname):
         chemin_fichier = os.path.join(dirname, nom_fichier)
         if os.path.isdir(chemin_fichier):
-            for nom_fichie in os.listdir(chemin_fichier):
-                chemin_fichier = os.path.join(dirname, nom_fichier, nom_fichie)
-                if os.path.isfile(chemin_fichier) and nom_fichie.endswith('.csv'):
-                    if nom_fichie == "lieu.csv":
-                        print(f"Traitement du fichier CSV {nom_fichie} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader:
-                                    nom_lieu = row['nomLieu']
-                                    ville = row['villeLieu']
-                                    codePostale = row['codePostalLieu']
-                                    adresse = row['adresseLieu']
-                                    print(ajouter_lieu(nom_lieu, ville, codePostale, adresse))
-                            print(f"Les données du fichier {nom_fichie} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichie}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "saison.csv":
-                        print(f"Traitement du fichier CSV {nom_fichie} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader:
-                                    nom = row['nomSaison']
-                                    debut = row['dateDebutSaison']
-                                    fin = row['dateFinSaison']
-                                    print(ajouter_saison(nom, debut, fin))
-                            print(f"Les données du fichier {nom_fichie} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichie}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "type_match.csv":
-                        print(f"Traitement du fichier CSV {nom_fichie} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader:
-                                    nom = row['nomTypeMatch']
-                                    nbTouches = row['nbTouches']
-                                    print(ajouter_type_match(nom, nbTouches))
-                            print(f"Les données du fichier {nom_fichie} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichie}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "competition.csv":
-                        print(f"Traitement du fichier CSV {nom_fichie} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader:
-                                    idLieu = row['idLieu']
-                                    saison = row['idSaison']
-                                    idArme = row['idArme']
-                                    idCat = row['idCat']
-                                    nomComp = row['nomComp']
-                                    desc_competition = row['descComp']
-                                    date_competition = row['dateComp']
-                                    heure_competition = row['heureComp']
-                                    sexe_competition = row['sexeComp']
-                                    est_individuelle = row['estIndividuelle']
-                                    print(creer_competition(idLieu, saison, idArme, idCat, nomComp, desc_competition, date_competition, heure_competition, sexe_competition, est_individuelle))
-                            print(f"Les données du fichier {nom_fichie} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichie}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "piste.csv":
-                        print(f"Traitement du fichier CSV {nom_fichie} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader:
-                                    idComp = row['idComp']
-                                    nomPiste = row['nomPiste']
-                                    estDispo = row['estDispo']
-                                    print(ajouter_piste(idComp, nomPiste, estDispo))
-                            print(f"Les données du fichier {nom_fichie} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichie}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "tireur.csv":
-                        print(f"Traitement du fichier CSV {nom_fichie} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader:
-                                    numLicence = row['numeroLicenceE']
-                                    idClub = row['idClub']
-                                    classement = row['classement']
-                                    print(ajouter_tireur(num_license, idClub, classement))
-                            print(f"Les données du fichier {nom_fichie} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichie}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "arbitre.csv":
-                        print(f"Traitement du fichier CSV {nom_fichie} :")
-                        try :
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader:
-                                    numLicence = row['numeroLicenceA']
-                                    print(ajouter_arbitre(numLicence))
-                            print(f"Les données du fichier {nom_fichie} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichie}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "participants_comp.csv":
-                        print(f"Traitement du fichier CSV {nom_fichie} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader:
-                                    idTireur = row['idTireur']
-                                    idComp = row['idComp']
-                                    print(ajouter_participant(idTireur, idComp))
-                            print(f"Les données du fichier {nom_fichie} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichie}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "classement_final.csv":
-                        print(f"Traitement du fichier CSV {nom_fichie} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader: 
-                                    idTireur = row['idTireur']
-                                    idComp = row['idComp']
-                                    rang = row['position']
-                                    print(ajouter_classement_final(idComp, idTireur, rang))
-                            print(f"Les données du fichier {nom_fichie} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichier}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "poule.csv":
-                        print(f"Traitement du fichier CSV {nom_fichier} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader: 
-                                    idComp = row['idComp']
-                                    idPiste = row['idPiste']
-                                    idArbitre = row['idArbitre']
-                                    nomPoule = row['nomPoule']
-                                    print(ajouter_poule(idComp, idPiste, idArbitre, nomPoule))
-                            print(f"Les données du fichier {nom_fichier} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichier}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "participants_poule.csv":
-                        print(f"Traitement du fichier CSV {nom_fichier} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader: 
-                                    idPoule = row['idPoule']
-                                    idTireur = row['idTireur']
-                                    print(ajouter_participant_poule(idPoule, idTireur))
-                            print(f"Les données du fichier {nom_fichier} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichier}: {e}")
-                            db.session.rollback()
-                    elif nom_fichie == "match_poule.csv":
-                        print(f"Traitement du fichier CSV {nom_fichier} :")
-                        try:
-                            with open(chemin_fichier, 'r', newline='') as csvfile:
-                                reader = csv.DictReader(csvfile, delimiter=';')
-                                for row in reader: 
-                                    idTypeMatch = row['idTypeMatch']
-                                    idPoule = row['idPoule']
-                                    idPiste = row['idPiste']
-                                    idArbitre = row['idArbitre']
-                                    idTireur1 = row['idTireur1']
-                                    idTireur2 = row['idTireur2']
-                                    dateMatch = row['dateMatch']
-                                    heureMatch = row['heureMatch']
-                                    toucheRecuTireur1 = row['touchesRecuesTireur1']
-                                    toucheDonnerTireur1 = row['touchesDonneesTireur1']
-                                    toucheRecuTireur2 = row['touchesRecuesTireur2']
-                                    toucheDonnerTireur2 = row['touchesDonneesTireur2']
-                                    print(ajouter_match_poule(idTypeMatch, idPoule, idPiste, idArbitre, idTireur1, idTireur2, dateMatch, heureMatch, toucheRecuTireur1, toucheDonnerTireur1, toucheRecuTireur2, toucheDonnerTireur2))
-                            print(f"Les données du fichier {nom_fichier} ont été ajoutées à la base de données.")
-                        except Exception as e:
-                            print(f"Erreur lors du traitement du fichier {nom_fichier}: {e}")
-                            db.session.rollback()
+            chemin_dossier = chemin_fichier
         if os.path.isfile(chemin_fichier) and nom_fichier.endswith('.csv'):
+            #continue
             print(f"Traitement du fichier CSV {nom_fichier} :")
             fichier_sans_extention = os.path.splitext(nom_fichier)[0]
             infos_arme_sex_cat = fichier_sans_extention.split("_")
@@ -224,13 +44,25 @@ def loaddb(dirname):
                         points = row['points']
                         print(ajouter_club(club, region))
                         print(ajouter_escrimeur(nom_categorie, prenom, nom, date_naissance, num_license, sex, None))
-                        print(ajouter_tireur(num_license, club, points))
+                        print(ajouter_tireur_via_str(num_license, club, points))
                         print(pratiquer_arme(num_license, arme))
                 print(f"Les données du fichier {nom_fichier} ont été ajoutées à la base de données.")
-
             except Exception as e:
                 print(f"Erreur lors du traitement du fichier {nom_fichier}: {e}")
                 db.session.rollback()
+    if chemin_dossier != "":
+        fichiers = os.listdir(chemin_dossier)
+        fichiers_tries = sorted(fichiers, key=lambda x: int(priorite_fichier.get(x, float('inf'))))
+        for nom_fichier in fichiers_tries:
+            chemin_fichier = os.path.join(chemin_dossier, nom_fichier)
+            if os.path.isfile(chemin_fichier) and nom_fichier.endswith('.csv'):
+                # Vérifier si le nom du fichier est dans le dictionnaire
+                if nom_fichier in fonctions_csv:
+                    print(f"Traitement du fichier CSV {nom_fichier} :")
+                    # Appeler la fonction associée
+                    print(fonctions_csv[nom_fichier](chemin_fichier, db))
+                else:
+                    print(f"Aucune fonction définie pour le fichier {nom_fichier}.")
 
 @app.cli.command ()
 @click.argument("username")
