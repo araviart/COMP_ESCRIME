@@ -1,7 +1,8 @@
 import datetime
+
+from sqlalchemy import func
 from .app import db, login_manager
 from flask_login import UserMixin
-from sqlalchemy import func
 
 # Modèle pour représenter le lieu
 class Lieu(db.Model):
@@ -54,10 +55,11 @@ class Club(db.Model):
     __tablename__ = 'CLUB'
     idClub = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nomClub = db.Column(db.String(50), nullable=False, unique = True)
+    regionClub = db.Column(db.String(50), nullable=False)
     
-    def __init__(self, nom_club):
+    def __init__(self, nom_club, region_club):
         self.nomClub = nom_club
-
+        self.regionClub = region_club
 
 # Modèle pour représenter la compétition
 class Competition(db.Model):
@@ -77,24 +79,23 @@ class Competition(db.Model):
     heureComp = db.Column(db.Time, nullable=False)
     sexeComp = db.Column(db.String(1), nullable=False)
     estIndividuelle = db.Column(db.Boolean, nullable=False)
-
-    def __init__(self, idLieu, idSaison, idCat, idArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle):
-        self.idLieu = idLieu
-        self.idSaison = idSaison
-        self.idCat = idCat
-        self.idArme = idArme
-        self.nomComp = nomComp
-        self.descComp = descComp
-        self.dateComp = dateComp
-        self.heureComp = heureComp
-        self.sexeComp = sexeComp
-        self.estIndividuelle = estIndividuelle
-
+    
+    def __init__(self, id_lieu, id_saison, id_categorie, id_arme, nom_comp, desc_comp, date_comp, heure_comp, sexe_comp, est_individuelle):
+        self.idLieu = id_lieu
+        self.idSaison = id_saison
+        self.idCat = id_categorie  # Correction ici
+        self.idArme = id_arme
+        self.nomComp = nom_comp
+        self.descComp = desc_comp
+        self.dateComp = date_comp
+        self.heureComp = heure_comp
+        self.sexeComp = sexe_comp
+        self.estIndividuelle = est_individuelle
 
 # Modèle pour représenter la piste
 class Piste(db.Model):
     __tablename__ = 'PISTE'
-    idPiste = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    idPiste = db.Column(db.Integer, primary_key=True, autincrement=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), nullable=False)
     nomPiste = db.Column(db.String(50), nullable=False)
     estDispo = db.Column(db.Boolean, nullable=False)
@@ -118,8 +119,7 @@ class TypeMatch(db.Model):
         self.nbTouches = nb_touches
 
 # Modèle pour représenter l'escrimeur
-class 
-(db.Model):
+class Escrimeur(db.Model):
     __tablename__ = 'ESCRIMEUR'
     numeroLicenceE = db.Column(db.Integer, nullable=False, primary_key=True)
     idCat = db.Column(db.Integer, db.ForeignKey('CATEGORIE.idCat'), nullable=False)
@@ -134,23 +134,12 @@ class
     def __init__(self, categorie, prenom_e, nom_e, date_naissance_e, numero_licence_e, sexe_e, num_tel_e):
         self.idCat = categorie
         self.numeroLicenceE = numero_licence_e
+        self.idCat = categorie
         self.prenomE = prenom_e
         self.nomE = nom_e
         self.dateNaissanceE = date_naissance_e
         self.sexeE = sexe_e
         self.numTelE = num_tel_e
-
-    def to_dict(self):
-        return {
-            'idCat': self.idCat,
-            'prenomE': self.prenomE,
-            'nomE': self.nomE,
-            'dateNaissanceE': self.dateNaissanceE.isoformat() if self.dateNaissanceE else None,
-            'numeroLicenceE': self.numeroLicenceE,
-            'sexeE': self.sexeE,
-            'numTelE': self.numTelE
-        }
-
         
 # Modèle pour représenter les tireurs
 class Tireur(db.Model):
@@ -160,8 +149,8 @@ class Tireur(db.Model):
     classement = db.Column(db.Integer, nullable=False)
 
     club = db.relationship('Club', backref='Club.idClub')
-    escrimeur = db.relationship('Escrimeur', backref='Escrimeur.numeroLicenceE')
-
+    num_licence = db.relationship('Escrimeur', backref='Escrimeur.numeroLicenceE')
+    
     def __init__(self, num_licence, club, classement):
         self.numeroLicenceE = num_licence
         self.idClub = club
@@ -178,6 +167,7 @@ class Arbitre(db.Model):
     def __init__(self, numeroLicenceE):
         self.numeroLicenceE = numeroLicenceE
         
+
 # Modèle pour représenter les participants aux compétitions
 class ParticipantsCompetition(db.Model):
     __tablename__ = 'PARTICIPANTS_COMPETITION'
@@ -190,9 +180,9 @@ class ParticipantsCompetition(db.Model):
     def __init__(self, numeroLicenceE, idComp):
         self.numeroLicenceE = numeroLicenceE
         self.idComp = idComp
+
        
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
-
 class PratiquerArme(db.Model):
     __tablename__ = 'PRATIQUER_ARME'
     numero_licence_e_fk = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
@@ -205,8 +195,6 @@ class PratiquerArme(db.Model):
         self.numero_licence_e_fk = numero_licence_e_fk
         self.id_arme_fk = id_arme_fk
 
-
-
 # Modèle pour représenter le classement final
 class ClassementFinal(db.Model):
     __tablename__ = 'CLASSEMENT_FINAL'
@@ -218,7 +206,7 @@ class ClassementFinal(db.Model):
     competition = db.relationship('Competition', backref='competition')
     tireur = db.relationship('Tireur', backref='Tireur.numeroLicenceE')
     
-    def __init__(self, comp, tireur, position):
+    def __init__(self, id_classement_final, comp, tireur, position):
         self.idComp = comp
         self.numeroLicenceE = tireur
         self.position = position
@@ -296,7 +284,7 @@ class MatchPoule(db.Model):
 # Modèle pour représenter les feuilles de match
 class FeuilleMatch(db.Model):
     __tablename__ = 'FEUILLE_MATCH'
-    idFeuille = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    idFeuille = db.Column(db.Integer, primary_key=True)
     idPoule = db.Column(db.Integer, db.ForeignKey('POULE.idPoule'), nullable=False)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), nullable=False)
     numeroLicenceE1 = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), nullable=False)
@@ -309,7 +297,8 @@ class FeuilleMatch(db.Model):
     tireur1 = db.relationship('Tireur', foreign_keys=[numeroLicenceE1], backref='matches_as_tireur1')
     tireur2 = db.relationship('Tireur', foreign_keys=[numeroLicenceE2], backref='matches_as_tireur2')
 
-    def __init__(self, poule, competition, tireur1, tireur2, score_tireur1, score_tireur2):
+    def __init__(self, id_feuille, poule, competition, tireur1, tireur2, score_tireur1, score_tireur2):
+        self.idFeuille = id_feuille
         self.idPoule = poule
         self.idComp = competition
         self.numeroLicenceE1 = tireur1
