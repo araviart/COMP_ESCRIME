@@ -318,6 +318,12 @@ def ajouter_escrimeur():
         nouvel_adherent = Escrimeur(categorie=default_cat, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, numero_licence_e=numero_licence, sexe_e=sexe, num_tel_e=num_tel)
         db.session.add(nouvel_adherent)
         db.session.commit()
+        id_club_blois = 169 
+        classement_tireur = 0 
+        nouveau_tireur = Tireur(num_licence=numero_licence, club=id_club_blois, classement=classement_tireur)
+        db.session.add(nouveau_tireur)
+        db.session.commit()
+
         return redirect(url_for('liste_adherents_def'))
       
 @app.route('/')

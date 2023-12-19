@@ -522,10 +522,21 @@ def get_nb_arbitres(id_comp):
   
 def get_adherents():
     res =  db.session.query(Tireur, Escrimeur, Categorie) \
-    .join(Escrimeur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
-    .join(Club, Club.idClub == Tireur.idClub) \
-    .join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "Club Blois") \
-    .add_columns(Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+        .join(Escrimeur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
+        .join(Club, Club.idClub == Tireur.idClub) \
+        .join(Categorie, Escrimeur.idCat == Categorie.idCat) \
+        .filter(Club.nomClub == "BLOIS CE") \
+        .add_columns(
+            Tireur.idClub,
+            Escrimeur.prenomE,
+            Escrimeur.nomE,
+            Escrimeur.dateNaissanceE,
+            Escrimeur.numeroLicenceE,
+            Escrimeur.sexeE,
+            Escrimeur.numTelE,
+            Categorie.nomCategorie
+        ) \
+        .all()
     return res
 
 def dernier_escrimeur_id():
