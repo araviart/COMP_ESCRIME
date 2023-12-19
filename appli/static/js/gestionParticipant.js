@@ -13,9 +13,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 escrimeursList.innerHTML = ''; // Clear the previous list
                 escrimeurs.forEach(escrimeur => {
                     const listItem = document.createElement('div');
-                    listItem.textContent = `${escrimeur.prenomE} ${escrimeur.nomE}`;
+                    listItem.textContent = `${escrimeur.prenomE} ${escrimeur.nomE}${escrimeur.numeroLicenceE}`;
                     listItem.addEventListener('click', function () {
-                        ajouterEscrimeurACompetition(escrimeur.numeroLicenceE, competitionId);
+                        console.log(' pas numeroLicence');
+                        ajouterEscrimeurACompetition(escrimeur.numeroLicenceE);
+                        console.log('numeroLicence');
+
+    
                         submenu.style.display = 'none';
                     });
                     escrimeursList.appendChild(listItem);
@@ -33,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ idTireur: numeroLicenceE })
+            body: JSON.stringify({ numeroLicenceE: escrimeurId })
         })
         .then(response => {
             if (response.ok) {
