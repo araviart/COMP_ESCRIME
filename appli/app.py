@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_bootstrap import Bootstrap4
+from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 from flask_mail import Mail
 #from flask_migrate import Migrate
@@ -12,6 +12,7 @@ from flask_mail import Mail
 
 app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://coursimault:coursimault@servinfo-maria/DBcoursimault'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@127.0.0.1:3306/test'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:irvyn@localhost/coupe_escrime'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://raviart:raviart@servinfo-maria/DBraviart'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/coupe_escrime2'
@@ -28,7 +29,7 @@ app.config['MAIL_DEFAULT_SENDER'] = 'competitionescrime@gmail.com'
 mail = Mail(app)
     
 app.config['BOOTSTRAP_SERVE_LOCAL'] = True
-bootstrap = Bootstrap4(app)
+bootstrap = Bootstrap(app)
 
 login_manager = LoginManager(app)
 

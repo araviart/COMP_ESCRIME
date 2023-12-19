@@ -14,10 +14,15 @@ def loaddb(dirname):
     # Create tables 
     db.create_all()
 
+    chemin_dossier = ""
+
     # Parcours de tous les fichiers du dossier
     for nom_fichier in os.listdir(dirname):
         chemin_fichier = os.path.join(dirname, nom_fichier)
+        if os.path.isdir(chemin_fichier):
+            chemin_dossier = chemin_fichier
         if os.path.isfile(chemin_fichier) and nom_fichier.endswith('.csv'):
+            #continue
             print(f"Traitement du fichier CSV {nom_fichier} :")
             fichier_sans_extention = os.path.splitext(nom_fichier)[0]
             infos_arme_sex_cat = fichier_sans_extention.split("_")
@@ -39,13 +44,25 @@ def loaddb(dirname):
                         points = row['points']
                         print(ajouter_club(club, region))
                         print(ajouter_escrimeur(nom_categorie, prenom, nom, date_naissance, num_license, sex, None))
-                        print(ajouter_tireur(num_license, club, points))
+                        print(ajouter_tireur_via_str(num_license, club, points))
                         print(pratiquer_arme(num_license, arme))
                 print(f"Les données du fichier {nom_fichier} ont été ajoutées à la base de données.")
-
             except Exception as e:
                 print(f"Erreur lors du traitement du fichier {nom_fichier}: {e}")
                 db.session.rollback()
+    if chemin_dossier != "":
+        fichiers = os.listdir(chemin_dossier)
+        fichiers_tries = sorted(fichiers, key=lambda x: int(priorite_fichier.get(x, float('inf'))))
+        for nom_fichier in fichiers_tries:
+            chemin_fichier = os.path.join(chemin_dossier, nom_fichier)
+            if os.path.isfile(chemin_fichier) and nom_fichier.endswith('.csv'):
+                # Vérifier si le nom du fichier est dans le dictionnaire
+                if nom_fichier in fonctions_csv:
+                    print(f"Traitement du fichier CSV {nom_fichier} :")
+                    # Appeler la fonction associée
+                    print(fonctions_csv[nom_fichier](chemin_fichier, db))
+                else:
+                    print(f"Aucune fonction définie pour le fichier {nom_fichier}.")
 
 @app.cli.command ()
 @click.argument("username")
