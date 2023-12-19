@@ -30,9 +30,9 @@
                     <h6>Répartition automatique</h6>
                     <div class="type-reglage-auto">
                         <label for="check">Classement</label>
-                        <input class="checkbox" type="checkbox" name="classement" id="check"/>
+                        <input class="checkbox" type="checkbox" name="classement" id="classement"/>
                         <label for="check">club</label>
-                        <input class="checkbox" type="checkbox" name="club" id="check"/>
+                        <input class="checkbox" type="checkbox" name="club" id="club"/>
                     </div>
                 </section>
                 <section class="manuel">
@@ -47,15 +47,17 @@
                             <label for="nb_poules">Nombre de poules :</label>
                             <div class="select">
                                 <select name="nb_poules" id="nb_poules">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
+                                    {% for i in range(1, nb_arbitres+1) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                             <label for="nb_tireurs/poules"> Nb tireurs/poules :</label>
                             <div class="select">
                                 <select name="nb_tireurs/poules" id="nb_tireurs/poules">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
+                                    {% for i in range(1, nb_tireurs_par_poule+1) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -80,9 +82,8 @@
                             <tr>
                                 {% if loop.first %}
                                     <td>Arbitre : {{ escrimeur }}</td>
-                                {% endif %}
-                                {% if not loop.first %}
-                                    <td>Tireur : {{ escrimeur }}</td>
+                                {% else %}
+                                    <td>{{ escrimeur }}</td>
                                 {% endif %}
                             </tr>
                         {% endfor %}
@@ -95,4 +96,31 @@
         </div>
     </div>
 </form>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const classementCheckbox = document.getElementById('classement');
+        const clubCheckbox = document.getElementById('club');
+        const equilibrerCheckbox = document.getElementById('equilibrer');
+        classementCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                clubCheckbox.checked = false;
+                equilibrerCheckbox.checked = false;
+            }
+        });
+
+        clubCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                classementCheckbox.checked = false;
+                equilibrerCheckbox.checked = false;
+            }
+        });
+
+        equilibrerCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                classementCheckbox.checked = false;
+                clubCheckbox.checked = false;
+            }
+        });
+    });
+</script>
 {% endblock %}

@@ -234,6 +234,9 @@ def home():
 @app.route('/gestion_poules/<int:id_comp>', methods=["GET", "POST"])
 def gestion_poules(id_comp):
     liste_poules = []
+    nb_tireurs = get_nb_tireurs(id_comp)
+    nb_arbitres = get_nb_arbitres(id_comp)
+    nb_tireurs_par_poule = nb_tireurs // nb_arbitres
     if request.method == "POST":
         classement_checked = 'classement' in request.form
         club_checked = 'club' in request.form
@@ -242,20 +245,20 @@ def gestion_poules(id_comp):
         nb_tireurs_poules = int(request.form.get('nb_tireurs/poules'))
         liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
         liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
+        nb_tireurs_par_poule = nb_tireurs // nb_arbitres
         if classement_checked:
             liste_tireurs = classer_tireurs(liste_tireurs)
             if poules_fabriquables(liste_tireurs, liste_arbitres):
                 liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, "Classement")
         elif club_checked:
-            liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, "Club")
-        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=get_nb_tireurs(id_comp), nb_arbitres=get_nb_arbitres(id_comp), liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules)
+            if poules_fabriquables(liste_tireurs, liste_arbitres):
+                liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, "Club")
+        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=get_nb_tireurs(id_comp), nb_arbitres=get_nb_arbitres(id_comp), liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
     liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
     liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
-    nb_tireurs = get_nb_tireurs(id_comp)
-    nb_arbitres = get_nb_arbitres(id_comp)
     competition = Competition.query.get(id_comp)
     
     if competition is not None:
-        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=nb_tireurs, nb_arbitres=nb_arbitres, liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules)
+        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=nb_tireurs, nb_arbitres=nb_arbitres, liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
 
 
