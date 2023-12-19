@@ -30,6 +30,15 @@
     height: 7em;
 }
 
+.type-reglage-auto {
+    display: flex;
+    align-items: center;
+}
+
+.type-reglage-auto > * {
+    margin-right: 1em;
+}
+
 .type-reglage-manuel {
     display: flex;
     align-items: center;
