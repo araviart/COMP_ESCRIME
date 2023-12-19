@@ -183,10 +183,10 @@ class Arbitre(db.Model):
 # Modèle pour représenter les participants aux compétitions
 class ParticipantsCompetition(db.Model):
     __tablename__ = 'PARTICIPANTS_COMPETITION'
-    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), primary_key=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
 
-    tireur = db.relationship('Tireur', backref='PartTireur', foreign_keys=[numeroLicenceE])
+    escrimeur = db.relationship('Escrimeur', backref='PartEscrimeur', foreign_keys=[numeroLicenceE])
     competition = db.relationship('Competition', backref='PartCompetition.idComp')
     
     def __init__(self, numeroLicenceE, idComp):
@@ -513,13 +513,13 @@ def fabriquer_poules(tireurs, arbitres, type_poule):
         print(f"Poule {i+1}: {liste_poules[i]}")
     return liste_poules
 
+
+def get_nb_arbitres(id_comp):
+    return ParticipantsCompetition.query.join(Arbitre, ParticipantsCompetition.numeroLicenceE == Arbitre.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).count()
+
 def get_nb_tireurs(id_comp):
     return ParticipantsCompetition.query.filter_by(idComp=id_comp).count() - get_nb_arbitres(id_comp)
 
-def get_nb_arbitres(id_comp):
-    return db.session.query(func.count()).select_from(ParticipantsCompetition).join(Arbitre, ParticipantsCompetition.numeroLicenceE == Arbitre.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).scalar()
-
-  
 def get_adherents():
     res =  db.session.query(Tireur, Escrimeur, Categorie) \
         .join(Escrimeur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
