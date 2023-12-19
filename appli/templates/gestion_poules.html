@@ -73,7 +73,7 @@
                 <h2>Proposition</h2>
             </div>
             <div class="tableau">
-                <table>
+                <table id="table">
                     {% for poule in liste_poules %}
                         <tr>
                             <th>Poule {{ loop.index }}</th>
@@ -81,9 +81,9 @@
                         {% for escrimeur in poule %}
                             <tr>
                                 {% if loop.first %}
-                                    <td>Arbitre : {{ escrimeur }}</td>
+                                    <td draggable="true">Arbitre : {{ escrimeur }}</td>
                                 {% else %}
-                                    <td>{{ escrimeur }}</td>
+                                    <td draggable="true">Tireur : {{ escrimeur }}</td>
                                 {% endif %}
                             </tr>
                         {% endfor %}
@@ -92,7 +92,7 @@
             </div>
         </section>
         <div class="div-btn-valider-poule">
-            <a href="{{url_for('home_default')}}" class="btn-valider-poule">Valider</a>
+            <a href="{{url_for('appel')}}" class="btn-valider-poule">Valider</a>
         </div>
     </div>
 </form>
@@ -101,6 +101,7 @@
         const classementCheckbox = document.getElementById('classement');
         const clubCheckbox = document.getElementById('club');
         const equilibrerCheckbox = document.getElementById('equilibrer');
+
         classementCheckbox.addEventListener('change', function() {
             if (this.checked) {
                 clubCheckbox.checked = false;

@@ -4,7 +4,7 @@ import logging
 import math
 from .ajout_bd import creer_competition
 from flask import jsonify, render_template, session, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_nb_arbitres, get_nb_tireurs, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
+from .models import *
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
@@ -346,23 +346,26 @@ def gestion_poules(id_comp):
             nb_tireurs_poules = int(nb_tireurs_poules_str)
         liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
         liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
+        liste_pistes = get_liste_pistes_selon_nb_arbitres(id_comp, nb_arbitres)
         nb_tireurs_par_poule = nb_tireurs // nb_arbitres
         if classement_checked:
             liste_tireurs = classer_tireurs(liste_tireurs)
             if poules_fabriquables(liste_tireurs, liste_arbitres):
-                liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, "Classement")
+                liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, liste_pistes, "Classement")
         elif club_checked:
             if poules_fabriquables(liste_tireurs, liste_arbitres):
-                liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, "Club")
-        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=get_nb_tireurs(id_comp), nb_arbitres=get_nb_arbitres(id_comp), liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
+                liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, liste_pistes, "Club")
+        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=get_nb_tireurs(id_comp), 
+                               nb_arbitres=get_nb_arbitres(id_comp), liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, 
+                               liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule, liste_pistes=liste_pistes)
     liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
     liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
+    liste_pistes = get_liste_pistes_selon_nb_arbitres(id_comp, nb_arbitres)
     competition = Competition.query.get(id_comp)    
-    
     if competition is not None:
         return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=nb_tireurs, nb_arbitres=nb_arbitres, 
                                liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, 
-                               liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
+                               liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule, liste_pistes=liste_pistes)
 
 @app.route('/adherent/')
 def liste_adherents_def():
