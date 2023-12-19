@@ -374,56 +374,28 @@ def ajout_comp():
     nomLieu = request.form.get('nomLieu')
     adresseLieu = request.form.get('adresseLieu')
     villeLieu = request.form.get('villeLieu')
-    cpLieu = request.form.get('codePostalLieu')
-    nomSaison = "Saison 2023"  # Supposons que c'est fixe pour cet exemple
-    nomCat = request.form.get('categorie')  # Assurez-vous que le nom correspond au champ dans le HTML
-    nomArme = request.form.get('arme')  # Idem
+    codePostalLieu = request.form.get('codePostalLieu')
+    nomSaison = Saison.query.get(1).nomSaison # Renvoie la dernière saison enregistrée
+    nomCat = request.form.get('categorie')
+    nomArme = request.form.get('arme')
     nomComp = request.form.get('titre')
     nomOrga = request.form.get('organisateur')
-    descComp = f"Competition {nomComp} organisée par {nomOrga}" # Ajoutez un champ pour la description si nécessaire
+    descComp = f"Competition {nomComp} organisée par {nomOrga}"
     dateComp = request.form.get('date-deroulement')
     heureComp = request.form.get('appt')
     sexeComp = request.form.get('sexe')[:1].upper()
-    estIndividuelle = request.form.get('type-comp') == 'Individuelle'
-    print(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, nomOrga, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
-
-
-    # Appeler la fonction pour créer la compétition
-    resultat = creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
+    estIndividuelle = request.form.get('type') == "Individuelle"
+    print(nomLieu, adresseLieu, villeLieu, codePostalLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
+    
+    # Ajoutez la compétition à la base de données
+    resultat = creer_competition(nomLieu,adresseLieu,villeLieu,codePostalLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
     print(resultat)
-    # Gérer le résultat (par exemple, afficher un message à l'utilisateur)
     if 'succès' in resultat:
-        # Redirige vers une page de confirmation ou la liste des compétitions
         return redirect(url_for('home_default'))
     else:
-        # Gérer l'erreur (par exemple, afficher un message d'erreur sur la page actuelle)
         flash(resultat, 'error')
         return redirect(url_for('ajout_comp_page'))
-
-# @app.route('/annuler_comp', methods=['POST'])
-# def annuler_comp():
-#     if lieu is None:
-#         lieu = Lieu(nom_lieu=form.lieu.data, ville_lieu="", code_postal_lieu=0, adresse_lieu="")
-#         db.session.add(lieu)
-#         db.session.commit()
-#         competition = Competition(idLieu=lieu.idLieu, 
-#                                   idSaison=Saison.query.get(1).idSaison,
-#                                   idCat=getattr(Categorie.query.filter_by(nomCategorie=form.categorie.data).first(), 'idCat', None),
-#                                   idArme=getattr(Arme.query.filter_by(nomArme=form.arme.data).first(), 'idArme', None),
-#                                   nomComp=form.titre.data,
-#                                   descComp=f"Competition organisée par {form.organisateur.data}", 
-#                                   dateComp=form.date_deroulement.data,
-#                                   heureComp=form.heure_debut.data,
-#                                   sexeComp=form.sexe.data[:1],
-#                                   estIndividuelle=form.type_comp.data == 'individuel')
-#         db.session.add(competition)
-#         db.session.commit()
-#         flash('La compétition a été ajoutée') # à changer avec une popup
-#         return redirect(url_for('home'))
-
-#     # Rediriger vers l'URL d'origine
-#     return redirect(request.referrer or url_for('home_default'))
-
+     
 @app.route("/gestion_participants/<int:id_comp>", methods=("GET", "POST"))
 def gestion_participants(id_comp):
     competition = Competition.query.get(id_comp)

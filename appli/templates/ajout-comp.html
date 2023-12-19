@@ -19,7 +19,7 @@
             <label for="title">Organisateur</label>
             <input type="text" id="Organisateur" name="organisateur" maxlength="12" required />
           </div>
-          <div class="combox-box comb-lieu">
+          <div class="label-input">
             <label for="lieu">Lieu</label>
             <button id="openModalButton" type="button">Ajouter un Lieu</button>
             <div class="boxLieu">
@@ -33,21 +33,21 @@
               <!-- Icône de modification -->
             </div>
             {% include 'popup_addLieu.html' %}
-            <div class="label-input">
-              <label for="title">Date déroulement</label>
-              <input type="date" id="deroulement" name="date-deroulement" value="2023-11-16" min="2023-11-16" />
-            </div>
-            <div class="label-input">
-              <label for="appt">Heure début</label>
-              <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
-            </div>
+          </div>
+          <div class="label-input">
+            <label for="title">Date déroulement</label>
+            <input type="date" id="deroulement" name="date-deroulement" value="2023-11-16" min="2023-11-16" />
+          </div>
+          <div class="label-input">
+            <label for="appt">Heure début</label>
+            <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
           </div>
         </div>
-        <div class="bouton-annuler">
-          <form action="{{ url_for('annuler_comp') }}" method="post">
-            <button class="btn-annuler" type="submit">ANNULER</button>
-          </form>
-        </div>
+      </div>
+      <div class="bouton-annuler">
+        <form action="{{ url_for('annuler_comp') }}" method="post">
+          <button class="btn-annuler" type="submit">ANNULER</button>
+        </form>
       </div>
     </div>
     <div class="right-form">
@@ -64,7 +64,7 @@
               {% endfor %}
             </select>
           </div>
-          <div class="combox-box comb-arme">
+          <div class="combox-box comb-sexe">
             <label for="sexe">Sexe</label>
             <select name="sexe" id="sexe">
               <option value="homme">Homme</option>

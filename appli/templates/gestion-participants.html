@@ -59,7 +59,7 @@
             </div>
             <div class="suppd">
               <form
-                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.idTireur) }}"
+                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.numeroLicenceE) }}"
                 method="post"
               >
                 <button style="font-size: 30px" type="submit">-</button>
@@ -97,7 +97,7 @@
             </div>
             <div class="suppd">
               <form
-                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.idTireur) }}"
+                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.numeroLicenceE) }}"
                 method="post"
               >
                 <button style="font-size: 30px" type="submit">-</button>
@@ -133,7 +133,7 @@
               <p>{{ participant.Categorie.nomCategorie }}</p>
             </div>
             <div class="suppd">
-              <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.idTireur) }}" method="post">
+              <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.numeroLicenceE) }}" method="post">
                 <button style="font-size: 30px;" type="submit">-</button>
               </form>
             </div>

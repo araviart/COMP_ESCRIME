@@ -11,10 +11,10 @@ from flask_mail import Mail
 # dataBase = 'COMP_ESCRIME'
 
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://coursimault:coursimault@servinfo-maria/DBcoursimault'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://coursimault:coursimault@servinfo-maria/DBcoursimault'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@127.0.0.1:3306/test'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:irvyn@localhost/coupe_escrime'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://raviart:raviart@servinfo-maria/DBraviart'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://raviart:raviart@servinfo-maria/DBraviart'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/coupe_escrime2'
 db = SQLAlchemy(app)
 
