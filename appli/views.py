@@ -290,7 +290,7 @@ def ajouter_escrimeur():
     
 @app.route('/')
 def home():
-    return render_template('arbre.html')
+    return render_template('Login.html')
 
 @app.route('/arbre-competition/')
 def arbre():
