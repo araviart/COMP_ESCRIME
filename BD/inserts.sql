@@ -502,16 +502,14 @@ INSERT INTO TIREUR (numeroLicenceE, idClub, classement)
 VALUES
     -- insertions avec les bon numeros de licence, idclub=1 et classement de 1 à 10
     -- EPEE DAMES U15
-    (175387, 1, 1),
-    (17545, 1, 2),
     (177583, 1, 3),
-    (185987, 1, 4),
-    (164751, 1, 5),
-    (168928, 1, 6),
+    (185987, 3, 4),
+    (164751, 2, 5),
+    (168928, 2, 6),
     (205331, 1, 7),
-    (224542, 1, 8),
+    (224542, 2, 8),
     (148250, 1, 9),
-    (228366, 1, 10),
+    (228366, 3, 10),
 
     -- EPEE DAMES U17
     (129212, 1, 1),
@@ -865,108 +863,13 @@ VALUES
 INSERT INTO ARBITRE (numeroLicenceE)
 VALUES
     (175387),
-    (17545),
-    (177583),
-    (185987),
-    (164751),
-    (168928),
-    (205331),
-    (224542),
-    (148250),
-    (228366),
-    (129212),
-    (76700),
-    (147282),
-    (113544),
-    (113759),
-    (174028),
-    (161090),
-    (131480),
-    (175451),
-    (259042),
-    (71982),
-    (98466),
-    (135870),
-    (31330),
-    (144492),
-    (129588),
-    (25072),
-    (42935),
-    (187363),
-    (149821),
-    (9918),
-    (38480),
-    (37514),
-    (30369),
-    (43182),
-    (49657),
-    (53830),
-    (59316),
-    (57866),
-    (59193),
-    (210895),
-    (20166),
-    (12231),
-    (38334),
-    (130778),
-    (238600),
-    (55799),
-    (6658),
-    (27812),
-    (64584),
-    (133478),
-    (169221),
-    (163749),
-    (116048),
-    (133493),
-    (182444),
-    (138405),
-    (190486),
-    (187370),
-    (215767),
-    (135555),
-    (109958),
-    (65718),
-    (100420),
-    (230041),
-    (67982),
-    (163748),
-    (167483),
-    (133479),
-    (191353),
-    (85977),
-    (106336),
-    (80966),
-    (15432),
-    (77431),
-    (83032),
-    (38749),
-    (51037),
-    (135556),
-    (82742),
-    (49227),
-    (56061),
-    (9456),
-    (130899),
-    (45139),
-    (8799),
-    (32498),
-    (79731),
-    (5982),
-    (43387),
-    (140691),
-    (21121),
-    (71384),
-    (208782),
-    (11005),
-    (131194),
-    (280152);
+    (17545);
 
 -- PARTICIPANTS_COMPETITION
 INSERT INTO PARTICIPANTS_COMPETITION (numeroLicenceE, idComp)
 VALUES
-    (175387, 1),  -- Compétition 1 avec le tireur 1
-    (17545, 1),  -- Compétition 1 avec le tireur 2
+    (175387, 1),  -- Compétition 1 avec l'arbitre 1
+    (17545, 1),  -- Compétition 1 avec l'arbitre 2
     (177583, 1),  -- Compétition 1 avec le tireur 3
     (185987, 1),  -- Compétition 1 avec le tireur 4
     (164751, 1),  -- Compétition 1 avec le tireur 5
@@ -974,8 +877,8 @@ VALUES
     (205331, 1),  -- Compétition 1 avec le tireur 7
     (224542, 1),  -- Compétition 1 avec le tireur 8
 
-    (175387, 2),  -- Compétition 2 avec le tireur 1
-    (17545, 2),  -- Compétition 2 avec le tireur 2
+    (175387, 2),  -- Compétition 2 avec l'arbitre 1
+    (17545, 2),  -- Compétition 2 avec l'arbitre 2
     (177583, 2),  -- Compétition 2 avec le tireur 3
     (185987, 2),  -- Compétition 2 avec le tireur 4
     (164751, 2),  -- Compétition 2 avec le tireur 5
@@ -983,8 +886,8 @@ VALUES
     (205331, 2),  -- Compétition 2 avec le tireur 7
     (224542, 2),  -- Compétition 2 avec le tireur 8
 
-    (175387, 3),  -- Compétition 3 avec le tireur 1
-    (17545, 3),  -- Compétition 3 avec le tireur 2
+    (175387, 3),  -- Compétition 3 avec l'arbitre 1
+    (17545, 3),  -- Compétition 3 avec l'arbitrre 2
     (177583, 3),  -- Compétition 3 avec le tireur 3
     (185987, 3),  -- Compétition 3 avec le tireur 4
     (164751, 3),  -- Compétition 3 avec le tireur 5
@@ -998,8 +901,6 @@ VALUES
 INSERT INTO PRATIQUER_ARME (numeroLicenceE, idArme)
 VALUES
 -- EPEE DAMES U15
-    (175387, 1),
-    (17545, 1),
     (177583, 1),
     (185987, 1),
     (164751, 1),
@@ -1018,7 +919,6 @@ VALUES
     (174028, 1),
     (161090, 1),
     (131480, 1),
-    (175451, 1),
     (259042, 1),
 
 -- EPEE DAMES U20
@@ -1362,7 +1262,6 @@ INSERT INTO PRATIQUER_ARME (numeroLicenceE, idArme)
 VALUES
     -- EPEE DAMES U15
     (175387, 2),
-    (17545, 2),
     (177583, 2),
     (185987, 2),
     (164751, 2),
@@ -1381,7 +1280,6 @@ VALUES
     (174028, 2),
     (161090, 2),
     (131480, 2),
-    (175451, 2),
     (259042, 2),
 
 -- EPEE DAMES U20
@@ -1438,9 +1336,7 @@ VALUES
 INSERT INTO POULE (idComp, idPiste, idArbitre, nomPoule)
 VALUES
     (1, 1, 1, 'Poule A'),
-    (1, 2, 2, 'Poule B'),
-    (1, 3, 3, 'Poule C'),
-    (1, 4, 4, 'Poule D');
+    (1, 2, 2, 'Poule B');
 
 -- Table PARTICIPANTS_POULE
 INSERT INTO PARTICIPANTS_POULE (idPoule, idTireur)
@@ -1460,23 +1356,7 @@ VALUES
     (2, 13),
     (2, 14),
     (2, 15),
-    (2, 16),
-    (3, 17),
-    (3, 18),
-    (3, 19),
-    (3, 20),
-    (3, 21),
-    (3, 22),
-    (3, 23),
-    (3, 24),
-    (4, 25),
-    (4, 26),
-    (4, 27),
-    (4, 28),
-    (4, 29),
-    (4, 30),
-    (4, 31),
-    (4, 32);
+    (2, 16);
 
 -- Table MATCH_POULE
 INSERT INTO MATCH_POULE (idTypeMatch, idPoule, idPiste, idArbitre, idTireur1, idTireur2, dateMatch, heureMatch, touchesRecuesTireur1, touchesDonneesTireur1, touchesRecuesTireur2, touchesDonneesTireur2)
@@ -1489,18 +1369,7 @@ VALUES
     (1, 2, 2, 2, 9, 16, '2024-04-15', '12:00:00', null, null, null, null),
     (1, 2, 2, 2, 10, 15, '2024-04-15', '12:30:00', null, null, null, null),
     (1, 2, 2, 2, 11, 14, '2024-04-15', '13:00:00', null, null, null, null),
-    (1, 2, 2, 2, 12, 13, '2024-04-15', '13:30:00', null, null, null, null),
-
-    (1, 3, 3, 3, 17, 24, '2024-04-15', '14:00:00', 0, 0, 0, 0),
-    (1, 3, 3, 3, 18, 23, '2024-04-15', '14:30:00', 0, 0, 0, 0),
-    (1, 3, 3, 3, 19, 22, '2024-04-15', '15:00:00', 0, 0, 0, 0),
-    (1, 3, 3, 3, 20, 21, '2024-04-15', '15:30:00', 0, 0, 0, 0),
-
-    (1, 4, 4, 4, 25, 32, '2024-04-15', '16:00:00', 0, 0, 0, 0),
-    (1, 4, 4, 4, 26, 31, '2024-04-15', '16:30:00', 0, 0, 0, 0),
-    (1, 4, 4, 4, 27, 30, '2024-04-15', '17:00:00', 0, 0, 0, 0),
-    (1, 4, 4, 4, 28, 29, '2024-04-15', '17:30:00', 0, 0, 0, 0);
-
+    (1, 2, 2, 2, 12, 13, '2024-04-15', '13:30:00', null, null, null, null);
 
 -- Table FEUILLE_MATCH
 INSERT INTO FEUILLE_MATCH (idPoule, idComp, idTireur1, idTireur2, scoreTireur1, scoreTireur2)
