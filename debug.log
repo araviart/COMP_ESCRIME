@@ -6076,3 +6076,9 @@ INFO:werkzeug:127.0.0.1 - - [19/Dec/2023 02:00:56] "[36mGET /static/img/logo.pn
 INFO:werkzeug:127.0.0.1 - - [19/Dec/2023 02:00:56] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [19/Dec/2023 02:00:56] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [19/Dec/2023 02:00:56] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 920-035-455

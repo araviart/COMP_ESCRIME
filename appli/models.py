@@ -95,7 +95,7 @@ class Competition(db.Model):
 # Modèle pour représenter la piste
 class Piste(db.Model):
     __tablename__ = 'PISTE'
-    idPiste = db.Column(db.Integer, primary_key=True, autincrement=True)
+    idPiste = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), nullable=False)
     nomPiste = db.Column(db.String(50), nullable=False)
     estDispo = db.Column(db.Boolean, nullable=False)
