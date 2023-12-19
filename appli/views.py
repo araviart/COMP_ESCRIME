@@ -258,6 +258,10 @@ def edit_user(name):
 
     return render_template("edit-user.html", form=form, name=name, show_verification_popup=False)
 
+@app.route("/arbre-competition")
+def arbre():
+    return render_template("arbre.html")
+
 @app.route("/verify-code/<name>", methods=["GET", "POST"])
 def verify_code(name):
     if request.method == "POST":
