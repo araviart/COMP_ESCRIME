@@ -18,8 +18,8 @@
 <form method="POST" action="{{ url_for('gestion_poules', id_comp=id_comp)}}">
     <div class="content">
         <div class="labels">
-            <label for="nb_tireurs">Nombre de tireurs : </label>
-            <label for="nb_arbitres">Nombre d'arbitres : </label>
+            <label for="nb_tireurs">Nombre de tireurs : {{ nb_tireurs }} </label>
+            <label for="nb_arbitres">Nombre d'arbitres : {{ nb_arbitres }} </label>
         </div>
         <section class="section-param">
             <div class="titre-param">
@@ -30,9 +30,9 @@
                     <h6>Répartition automatique</h6>
                     <div class="type-reglage-auto">
                         <label for="check">Classement</label>
-                        <input class="checkbox" type="checkbox" name="classement" id="check"/>
+                        <input class="checkbox" type="checkbox" name="classement" id="classement"/>
                         <label for="check">club</label>
-                        <input class="checkbox" type="checkbox" name="club" id="check"/>
+                        <input class="checkbox" type="checkbox" name="club" id="club"/>
                     </div>
                 </section>
                 <section class="manuel">
@@ -40,26 +40,32 @@
                     <div class="type-reglage-manuel">
                         <div>
                             <label for="equilibrer">Equilibrer les tireurs :</label>
-                        <input class="checkbox" type="checkbox" name="equilibrer" id="equilibrer"/>
+                            <input class="checkbox" type="checkbox" name="equilibrer" id="equilibrer"/>
                         </div>
                         
                         <div>
                             <label for="nb_poules">Nombre de poules :</label>
-                        <div class="select">
-                            <select name="nb_poules" id="nb_poules">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
+                            <div class="select">
+                                <select name="nb_poules" id="nb_poules">
+                                    {% for i in range(1, nb_arbitres+1) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <label for="nb_tireurs/poules"> Nb tireurs/poules :</label>
+                            <div class="select">
+                                <select name="nb_tireurs/poules" id="nb_tireurs/poules">
+                                    {% for i in range(1, nb_tireurs_par_poule+1) %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
-                        
-                        
-                        <label for="nb_tireurs/poules"> Nb tireurs/poules :</label>
-                        <div class="select">
-                            <select name="nb_tireurs/poules" id="nb_tireurs/poules">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                </section>               
+                    </div>
+                </section> 
+                <form method="POST" action="{{ url_for('gestion_poules', id_comp=id_comp)}}">
+                    <input type="submit" value="Générer" class="btn-generer" />
+                </form>              
             </div>
         </section>
         <section class="section-proposition">
@@ -68,30 +74,53 @@
             </div>
             <div class="tableau">
                 <table>
-                    <tr>
-                        <th>Poule 1</th>
-                        <th>Poule 2</th>
-                        <th>Poule 3</th>
-                    </tr>
-                    <tr>
-                        <td>Joueur 1</td>
-                        <td>Joueur 2</td>
-                        <td>Joueur 3</td>
-                    </tr>
-                    <tr>
-                        <td>Joueur 1</td>
-                        <td>Joueur 2</td>
-                        <td>Joueur 3</td>
-                    </tr>
-                    <tr>
-                        <td>Joueur 1</td>
-                        <td>Joueur 2</td>
-                        <td>Joueur 3</td>
-                    </tr>
+                    {% for poule in liste_poules %}
+                        <tr>
+                            <th>Poule {{ loop.index }}</th>
+                        </tr>
+                        {% for escrimeur in poule %}
+                            <tr>
+                                {% if loop.first %}
+                                    <td>Arbitre : {{ escrimeur }}</td>
+                                {% else %}
+                                    <td>{{ escrimeur }}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
                 </table>
             </div>
         </section>
+        <div class="div-btn-valider-poule">
+            <a href="{{url_for('home_default')}}" class="btn-valider-poule">Valider</a>
+        </div>
     </div>
 </form>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const classementCheckbox = document.getElementById('classement');
+        const clubCheckbox = document.getElementById('club');
+        const equilibrerCheckbox = document.getElementById('equilibrer');
+        classementCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                clubCheckbox.checked = false;
+                equilibrerCheckbox.checked = false;
+            }
+        });
+
+        clubCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                classementCheckbox.checked = false;
+                equilibrerCheckbox.checked = false;
+            }
+        });
+
+        equilibrerCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                classementCheckbox.checked = false;
+                clubCheckbox.checked = false;
+            }
+        });
+    });
+</script>
 {% endblock %}
-    

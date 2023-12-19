@@ -51,12 +51,15 @@ main {
   transition-duration: 0.5s;
 }
 
+
 .btn-annuler:hover {
   background-color: var(--hover-annuler);
+  cursor: pointer;
 }
 
 .btn-publier:hover {
   background-color: var(--hover-publier);
+  cursor: pointer;
 }
 
 .btn-publier {
@@ -69,6 +72,7 @@ main {
   border-radius: 10px;
   transition-duration: 0.5s;
 }
+
 
 .bouton-annuler {
   text-align: start;
@@ -147,6 +151,11 @@ select {
 
 .double-combo-box {
   flex-basis: 50%;
+}
+
+.boxLieu{
+  display: inline-flex;
+  overflow: hidden;
 }
 
 /* Partie responsive */

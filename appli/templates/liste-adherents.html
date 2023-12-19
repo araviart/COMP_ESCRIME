@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block styles %} {{ super() }}
 <link rel="stylesheet" href="{{ url_for('static', filename='adherent.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='progress-bar.css')}}" />
 <script src="{{ url_for('static', filename='js/script_popup.js') }}"></script>
 {% endblock %}
  {% block content %}
@@ -16,42 +17,42 @@
                   <ul class = "uladdadh">
                       <li>
                           <div id="nom">
-                              <label for="nom">Nom :</label>
-                              <input type="text" id="nom" name="nom_e" required placeholder="Nom"><br>
+                              <label id="label-liste-adherent" for="nom">Nom :</label>
+                              <input type="text" id="iinput-liste-adherent nom" name="nom_e" required placeholder="Nom"><br>
                           </div>
                       </li>
                       <li>
                               <div id="prenom">
-                              <label for="prenom">Prénom :</label>
-                              <input type="text" id="prenom" name="prenom_e" required placeholder="Prénom"><br>
+                              <label id="label-liste-adherent" for="prenom">Prénom :</label>
+                              <input type="text" id="input-liste-adherent prenom" name="prenom_e" required placeholder="Prénom"><br>
                           </div>
                       </li>
                       <li>
                           <div id="datenaissance">
-                              <label for="date_naissance">Date de naissance :</label>
-                              <input type="date" id="date_naissance" name="date_naissance_e" required><br>
+                              <label id="label-liste-adherent" for="date_naissance">Date de naissance :</label>
+                              <input type="date" id="input-liste-adherent date_naissance" name="date_naissance_e" required><br>
                           </div>
                       </li>
                       <li>
                           <div id="numlicence"> 
-                              <label for="numero_licence">Numéro de licence :</label>
-                              <input type="text" id="numero_licence" name="numero_licence_e" required placeholder="Numéro de licence"><br>
+                              <label id="label-liste-adherent" for="numero_licence">Numéro de licence :</label>
+                              <input type="text" id="input-liste-adherent numero_licence" name="numero_licence_e" required placeholder="Numéro de licence"><br>
                           </div>
                       </li>
                       <li>
                           <div id="sexe">
-                              <label for="categorieSexe">Sexe :</label>
+                              <label id="label-liste-adherent" for="categorieSexe">Sexe :</label>
                               <select id="categorieSexe" name="sexeE">
-                                  <option value="homme">Homme</option>
-                                  <option value="femme">Femme</option>
+                                  <option value="M">Homme</option>
+                                  <option value="F">Femme</option>
                               </select>
                           </div>
                       </li>
     
                       <li>
                           <div id ="telephone">
-                              <label for="numTelE">Numéro de Téléphone :</label>
-                              <input type="text" id="numTelE" name="numTelE" placeholder="+33"><br>
+                              <label id="label-liste-adherent" for="numTelE">Numéro de Téléphone :</label>
+                              <input type="text" id="input-liste-adherent numTelE" name="numTelE" placeholder="+33"><br>
                           </div>
                       </li>
                       <li>
@@ -86,7 +87,7 @@
         </div>
           <div class="Catégorie">
             <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="categorieForm">
-                <label for="categorieSelect">Catégorie:</label>
+                <label id="label-liste-adherent" for="categorieSelect">Catégorie:</label>
                 <select id="categorieSelect" name="categorie" onchange="document.getElementById('categorieForm').submit();">
                     <option value="">Toutes les catégories</option>
                     {% for categorie in categories %}
@@ -97,17 +98,17 @@
         </div>
         <div class="Sexe">
             <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="sexeForm">
-                <label for="categorieSexe">Sexe:</label>
+                <label id="label-liste-adherent" for="categorieSexe">Sexe:</label>
                 <select id="categorieSexe" name="sexe" onchange="document.getElementById('sexeForm').submit();">
                     <option value="">Non définie</option>
-                    <option value="H" {% if "H" == selec_sexe %}selected{% endif %}>Homme</option>
+                    <option value="M" {% if "M" == selec_sexe %}selected{% endif %}>Homme</option>
                     <option value="F" {% if "F" == selec_sexe %}selected{% endif %}>Femme</option>
                 </select>
             </form>
         </div>
         <div class="Statut">
             <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="statutForm">
-                <label for="categorieStatut">Statut:</label>
+                <label id="label-liste-adherent" for="categorieStatut">Statut:</label>
                 <select id="categorieStatut" name="statut" onchange="document.getElementById('statutForm').submit();">
                     <option value="">Non définie</option>
                     <option value="Tireur" {% if "Tireur" == selec_statut %}selected{% endif %}>Tireur</option>
@@ -172,4 +173,4 @@
         {% endif %}
       </form>
     </div>
-      {% endblock %}
+{% endblock %}

@@ -67,17 +67,6 @@ ul li{
     text-align: left;
 }
 
-label {
-    display: inline-block;
-    width: 150px; 
-    text-align: right;
-    margin-right: 10px; 
-}
-
-
-label {
-    text-align: left;
-}
 
 
 #boutons {
@@ -102,18 +91,21 @@ label {
     background: linear-gradient(0deg, #01437C 0%, #01437C 100%), lightgray 50% / cover no-repeat;
 }
 
-input {
+#input-liste-adherent {
     width: 12em;
     border-radius: 8px;
     background: #F5F5F5;
     border-style: none;
 }
 
-input::placeholder {
+#input-liste-adherent::placeholder {
     padding: 0.5em;
 }
 
-label {
+#label-liste-adherent {
+    display: inline-block;
+    width: 150px; 
+    margin-right: 10px;
     color: #000;
     font-size: 15px;
     font-style: normal;
@@ -136,7 +128,6 @@ select {
 #sexe {
     display: flex;
     justify-content: center;
-    width: 100%; 
     margin-bottom: 1em; 
 }
 
