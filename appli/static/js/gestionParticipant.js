@@ -108,3 +108,14 @@ function validateField(id) {
     p.innerHTML = text;
     updateDatabase(id, text)
 }
+
+// function verifierParticipants() {
+//     var nb_participants_blois = document.getElementById('nb_participants_blois').textContent;
+//     var nb_participants_other = document.getElementById('nb_participants_other').textContent;
+//     var nb_arbitres = document.getElementById('nb_arbitres').textContent;
+
+//     if (nb_participants_blois + nb_participants_other < 6 || nb_arbitres < 2) {
+//         alert('Il faut au moins 6 escrimeurs et 2 arbitres pour créer les poules.');
+//         event.preventDefault();
+//     }
+// }
