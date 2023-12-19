@@ -7,6 +7,7 @@
   var competitionId = "{{ competition.idComp }}";
 </script>
 <script src="{{ url_for('static', filename='js/gestionParticipant.js') }}"></script>
+<script src="{{ url_for('static', filename='js/editField.js') }}"></script>
 {% include 'progress-bar.html' %}
 <section class="content">
   <section class="section-infopr">
@@ -71,10 +72,10 @@
           {% endif %}
           <div class="addp">
             <button style="font-size: 30px">+</button>
-          <div id="submenu" style="display: none;">
-            <input type="text" id="search" placeholder="Rechercher...">
-            <ul id="escrimeurs-list"></ul>
-    </div>
+            <div class="submenu" style="display: none;">
+                <input type="text" class="search" placeholder="Rechercher…">
+                <ul class="escrimeurs-list"></ul>
+            </div>
             </div>
           </div>
         </div>
@@ -108,13 +109,11 @@
           <p class="nullparticipant">Aucun participant d'autres clubs</p>
           {% endif %}
           <div class="addp">
-            <form
-              action="{{ url_for('add_participant', id_comp=competition.idComp) }}"
-              method="post"
-            >
-              <button style="font-size: 30px" type="submit">+</button>
-            </form>
-          </div>
+            <button style="font-size: 30px">+</button>
+            <div class="submenu" style="display: none;">
+                <input type="text" class="search" placeholder="Rechercher…">
+                <ul class="escrimeurs-list"></ul>
+            </div>
         </div>
       </section>
       <section class="escrime-arb">
@@ -146,10 +145,11 @@
             <p class = "nullparticipant">Aucun arbitres pour le moment</p>
           {% endif %}
           <div class="addp">
-            <form action="{{ url_for('add_participant', id_comp=competition.idComp) }}" method="post">
-              <button style="font-size: 30px;" type="submit">+</button>
-            </form>
-          </div>
+            <button style="font-size: 30px">+</button>
+            <div class="submenu" style="display: none;">
+                <input type="text" class="search" placeholder="Rechercher…">
+                <ul class="escrimeurs-list"></ul>
+            </div>
         </div>
       </section>
     </section>
