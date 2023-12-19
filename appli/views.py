@@ -336,7 +336,9 @@ def gestion_poules(id_comp):
         club_checked = 'club' in request.form
         equilibrer_checked = 'equilibrer' in request.form
         nb_poules = int(request.form.get('nb_poules'))
-        nb_tireurs_poules = int(request.form.get('nb_tireurs/poules'))
+        nb_tireurs_poules_str = request.form.get('nb_tireurs/poules')
+        if nb_tireurs_poules_str and nb_tireurs_poules_str.isdigit():
+            nb_tireurs_poules = int(nb_tireurs_poules_str)
         liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
         liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
         nb_tireurs_par_poule = nb_tireurs // nb_arbitres
@@ -350,10 +352,12 @@ def gestion_poules(id_comp):
         return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=get_nb_tireurs(id_comp), nb_arbitres=get_nb_arbitres(id_comp), liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
     liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
     liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
-    competition = Competition.query.get(id_comp)
+    competition = Competition.query.get(id_comp)    
     
     if competition is not None:
-        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=nb_tireurs, nb_arbitres=nb_arbitres, liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
+        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=nb_tireurs, nb_arbitres=nb_arbitres, 
+                               liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, 
+                               liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
 
 @app.route('/adherent/')
 def liste_adherents_def():
