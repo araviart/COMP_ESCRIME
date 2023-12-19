@@ -190,10 +190,9 @@ class ParticipantsCompetition(db.Model):
     tireur = db.relationship('Tireur', backref='PartTireur.idTireur')
     competition = db.relationship('Competition', backref='PartCompetition.idComp')
     
-    def __init__(self, tireur, competition):
-        self._tireur = tireur
-        self._competition = competition
-
+    def __init__(self, idTireur, idComp):
+        self.idTireur = idTireur
+        self.idComp = idComp
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
 class PratiquerArme(db.Model):
     __tablename__ = 'PRATIQUER_ARME'

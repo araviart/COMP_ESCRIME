@@ -365,23 +365,30 @@ logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 @app.route('/ajouter_escrimeur_competition/<int:id_comp>/', methods=['POST'])
 def add_participant(id_comp):
     if request.method == 'POST':
-        id_tireur = request.get_json().get('id_tireur')
-        logging.debug(f'id_tireur: {id_tireur}')
-
-        tireur = Tireur.query.get(id_tireur)
+        tireur = request.get_json().get('idTireur')
+        logging.debug(f'id_tireur: {tireur}')
+        
+        tireur = Tireur.query.get(tireur)
+        
         logging.debug(f'tireur: {tireur}')
 
         competition = Competition.query.get(id_comp)
         logging.debug(f'competition: {competition}')
-
+        getattr(competition, "idComp", None)
         if tireur and competition:
-            participant = ParticipantsCompetition(tireur=tireur, competition=competition)
+            participant = ParticipantsCompetition(idTireur=getattr(tireur, "idTireur", None), idComp=getattr(competition, "idComp", None))
+            logging.debug('creation participant')
             db.session.add(participant)
-            db.session.commit()
+            logging.debug('crash ?')
+            try:
+                db.session.commit()
+                logging.debug('Commit successful')
+            except Exception as e:
+                db.session.rollback()
+                logging.error(f'Error during commit: {str(e)}')
             logging.debug('Participant added successfully')
         else:
             logging.debug('Failed to add participant')
-
     return redirect(url_for('gestion_participants', id_comp=id_comp))
 
 @app.route('/get_escrimeurs')
