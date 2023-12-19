@@ -4,7 +4,7 @@ import logging
 import math
 from .ajout_bd import creer_competition
 from flask import jsonify, render_template, session, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_nb_arbitres, get_nb_tireurs, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
+from .models import Arbitre, Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_adherents_adapte_json, get_arbitres, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_nb_arbitres, get_nb_tireurs, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
@@ -436,8 +436,9 @@ def ajout_comp():
 @app.route("/gestion_participants/<int:id_comp>", methods=("GET", "POST"))
 def gestion_participants(id_comp):
     competition = Competition.query.get(id_comp)
-    participants_blois = get_participants(id_comp, club="ClubBlois")
+    participants_blois = get_participants(id_comp, club="BLOIS CE")
     participants_other = get_participants(id_comp, club="!")
+    participants_arb = get_arbitres(id_comp)
     nb_participants_blois = len(participants_blois)
     nb_participants_other = len(participants_other)
     
@@ -448,9 +449,35 @@ def gestion_participants(id_comp):
       nb_participants_blois=nb_participants_blois,
       participants_other=participants_other,
       nb_participants_other=nb_participants_other,
-      competition=competition
+      competition=competition,
+      participants_arb=participants_arb
   )
-    
+
+@app.route('/ajouter_arbitre_competition/<int:id_comp>', methods=['POST'])
+def ajouter_arbitre_competition(id_comp):
+        data = request.get_json()
+        numeroLicenceE = data.get('numeroLicenceE')
+        logging.debug(numeroLicenceE)
+        arbitre = Arbitre(numeroLicenceE)
+        db.session.add(arbitre)
+        participant = ParticipantsCompetition(numeroLicenceE, id_comp)
+        db.session.add(participant)
+
+        db.session.commit()
+        logging.debug("ça passe commit participant compet")
+
+        return jsonify({'success': True, 'message': 'Arbitre ajouté avec succès'})
+
+@app.route('/get_escrimeurs')
+def get_escrimeurs_json():
+    escrimeurs = Escrimeur.query.all()
+    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
+
+@app.route('/get_adherents')
+def get_adherents_json():
+    escrimeurs = get_adherents_adapte_json()
+    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
+
 
 @app.route('/delete_participant/<int:id_comp>/<int:id>/', methods=['POST'])
 def delete_participant(id, id_comp):
@@ -493,11 +520,6 @@ def add_participant(id_comp):
         else:
             logging.debug('Failed to add participant')
     return redirect(url_for('gestion_participants', id_comp=id_comp))
-
-@app.route('/get_escrimeurs')
-def get_escrimeurs():
-    escrimeurs = Escrimeur.query.limit(50).all()
-    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
 
 @app.route('/update_database', methods=['POST'])
 def update_database():

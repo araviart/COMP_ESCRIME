@@ -539,6 +539,15 @@ def get_adherents():
         .all()
     return res
 
+def get_adherents_adapte_json():
+    res = db.session.query(Escrimeur) \
+        .join(Tireur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
+        .join(Club, Club.idClub == Tireur.idClub) \
+        .join(Categorie, Escrimeur.idCat == Categorie.idCat) \
+        .filter(Club.nomClub == "BLOIS CE") \
+        .all()
+    return res
+
 def dernier_escrimeur_id():
     last_escrimeur = db.session.query(Escrimeur).order_by(Escrimeur.numeroLicenceE.desc()).first()
     if last_escrimeur:
@@ -550,8 +559,16 @@ def get_participants(id_comp, club=None):
     res = db.session.query(ParticipantsCompetition, Escrimeur, Categorie).join(Escrimeur, ParticipantsCompetition.numeroLicenceE == Escrimeur.numeroLicenceE).join(Categorie, Escrimeur.idCat == Categorie.idCat).join(Tireur, Tireur.numeroLicenceE == Escrimeur.numeroLicenceE).join(Club, Club.idClub == Tireur.idClub).filter(ParticipantsCompetition.idComp == id_comp)
     if club is not None:
         if club == "!":
-            res = res.filter(Club.nomClub != "ClubBlois")
+            res = res.filter(Club.nomClub != "BLOIS CE")
         else:
             res = res.filter(Club.nomClub == club)
     return res.add_columns(ParticipantsCompetition.numeroLicenceE, ParticipantsCompetition.idComp, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
 
+def get_arbitres(idcomp):
+    arbitres = db.session.query(Arbitre, Escrimeur, Categorie).join(Escrimeur, Arbitre.numeroLicenceE == Escrimeur.numeroLicenceE).join(
+        Categorie, Escrimeur.idCat == Categorie.idCat
+    ).join(
+        ParticipantsCompetition,
+        ParticipantsCompetition.numeroLicenceE == Escrimeur.numeroLicenceE
+    ).filter(ParticipantsCompetition.idComp == idcomp).all()
+    return arbitres

@@ -122,18 +122,17 @@
           <p class="nb">{{ nb_participants_other }}</p>
         </div>
         <div class="gestion-participants-list">
-          {% if participants_other %}
-            {% for participant in participants_other %}
-            <div class ="gestionp">
+          {% if participants_arb %}
+          {% for arbitre, escrimeur, categorie in participants_arb %}            <div class ="gestionp">
             <div class="participant">
-              <p>{{ participant.prenomE }}</p>
-              <p>{{ participant.nomE }}</p>
+              <p>{{ escrimeur.prenomE }}</p>
+              <p>{{ escrimeur.nomE }}</p>
               <p>|</p>
-              <p>{{ participant.Categorie.nomCategorie }}</p>
+              <p>{{ escrimeur.categorie.nomCategorie }}</p>
             </div>
             <div class="suppd">
               <form
-                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.numeroLicenceE) }}"
+                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=escrimeur.numeroLicenceE) }}"
                 method="post"
               >
                 <button style="font-size: 30px" type="submit">-</button>
