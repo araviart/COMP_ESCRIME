@@ -51,6 +51,10 @@ main {
   transition-duration: 0.5s;
 }
 
+#openModalButton{
+  background-color: var(--bouton-confirmation-validation);
+}
+
 
 .btn-annuler:hover {
   background-color: var(--hover-annuler);

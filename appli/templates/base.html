@@ -47,12 +47,12 @@
               >
             </li>
             <li>
-              <button><a href="{{ url_for('logout') }}">Logout</a></button>
+              <button class="logout-btn"><a href="{{ url_for('logout') }}">Logout</a></button>
             </li>
             {% endif %} {% if not current_user.is_authenticated %}
             <li>
               <form method="POST" role="login" action="{{ url_for('login') }}">
-                <button type="submit" href="{{ url_for('login') }}">
+                <button class="login-btn" type="submit" href="{{ url_for('login') }}">
                   Login
                 </button>
               </form>
