@@ -294,7 +294,18 @@ def home():
 
 @app.route('/arbre-competition/')
 def arbre():
-        return render_template('arbre.html')
+    matches = [
+        {"round": "Quart de finale", "player1": {"name": "Joueur 1", "score": 8}, "player2": {"name": "Joueur 5", "score": 6}},
+        {"round": "Quart de finale", "player1": {"name": "Joueur 2", "score": 8}, "player2": {"name": "Joueur 6", "score": 6}},
+        {"round": "Quart de finale", "player1": {"name": "Joueur 3", "score": 8}, "player2": {"name": "Joueur 7", "score": 6}},
+        {"round": "Quart de finale", "player1": {"name": "Joueur 4", "score": 8}, "player2": {"name": "Joueur 8", "score": 6}},
+        {"round": "Demi finale", "player1": {"name": "Joueur 1", "score": 8}, "player2": {"name": "Joueur 6", "score": 6}},
+        {"round": "Demi finale", "player1": {"name": "Joueur 3", "score": 8}, "player2": {"name": "Joueur 8", "score": 6}},
+        {"round": "Finale", "player1": {"name": "Joueur 1", "score": 8}, "player2": {"name": "Joueur 8", "score": 6}},
+        {"round": "Vainqueur", "player1": {"name": "Joueur 1", "score": 8}}
+    ]
+
+    return render_template('arbre.html', matches=matches)
 
 @app.route('/gestion_poules/<int:id_comp>', methods=["GET", "POST"])
 def gestion_poules(id_comp):
