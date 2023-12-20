@@ -67,9 +67,16 @@
                           <input class="textfield-score textfield-score-disabled" type="number" name="name" disabled />
                         </td>
                       {% else %}
+                        {%if ind > jind%}
                         <td class="td-textfield-matrice">
                           <input class="textfield-score textfield-score-ok" type="number" name="name" />
                         </td>
+                        {%else%}
+                        <td class="td-textfield-matrice">
+                          <input class="textfield-score score-gris textfield-score-ok" type="number" name="name" />
+                        </td>
+                        {% endif %}
+                        
                       {% endif %}
                     {% endfor %}
                   </tr>

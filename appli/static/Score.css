@@ -82,6 +82,12 @@ main{
     font-size: 100%;
 }
 
+.score-gris{
+    background-color: var(--couleur-background-perdant);
+    text-align: center;
+    font-size: 100%;
+}
+
 .td-textfield-matrice{
     width: 15px;
 }

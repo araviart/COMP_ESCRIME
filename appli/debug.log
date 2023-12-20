@@ -3662,3 +3662,255 @@ INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 14:51:02] "[36mGET /bootstrap/static/j
 INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 14:51:02] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 14:51:02] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 14:51:02] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 454-720-882
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:06:52] "[33mGET /afficher-score-poule/ HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:03] "[33mGET /gestion_poules/ HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "GET /gestion_score/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "GET /static/Score.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:07:20] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "GET /gestion_score/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/Score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:06] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "GET /gestion_score/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/Score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:08:07] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 454-720-882
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22202749/WinHome/SAE/COMP_ESCRIME/appli/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 454-720-882
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 454-720-882
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:06] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:06] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:06] "[36mGET /static/responsive-login.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:06] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:06] "[36mGET /static/img/escrime_connexion.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:10] "[33mGET /gestion_score/ HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "GET /gestion_score/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/Score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:13] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "GET /gestion_score/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/Score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:09:21] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22202749/WinHome/SAE/COMP_ESCRIME/appli/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 454-720-882
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "GET /gestion_score/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/Score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:33] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 454-720-882
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "GET /gestion_score/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/Score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:46] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "GET /gestion_score/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/Score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:22:47] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "GET /gestion_score/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/Score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:13] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "GET /gestion_score/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/Score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 15:24:23] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
