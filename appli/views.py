@@ -69,7 +69,6 @@ def gestion_score(id_comp):
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
         poules[i]['rows'] = len(poules[i]['tireurs'])
         poules[i]['cols'] = len(poules[i]['tireurs'])
-        poules[i]['table_data'] = [[f'input_{j}_{k}' for k in range(poules[i]['cols'])] for j in range(poules[i]['rows'])]
 
     print(poules)
     # Rendre le modèle HTML avec Flask
