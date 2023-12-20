@@ -4,7 +4,7 @@ import logging
 import math
 from .ajout_bd import creer_competition
 from flask import jsonify, render_template, session, url_for, redirect, request, flash
-from .models import Arbitre, Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_adherents_adapte_json, get_arbitres, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_nb_arbitres, get_nb_tireurs, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
+from .models import Arbitre, Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_adherents_adapte_json, get_arbitres, get_competition_by_id,  get_competition_statut, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_nb_arbitres, get_nb_tireurs, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
@@ -535,4 +535,17 @@ def update_database():
     db.session.commit()
     return 'OK'
 
-
+@app.route('/competition/<int:id_comp>')
+def actu_stat_comp(id_comp):
+    competition = Competition.query.get_or_404(id_comp)
+    state = get_competition_statut(competition)
+    if state == 'participants':
+        return redirect(url_for('gestion_participants', id_comp=id_comp))
+    elif state == 'poule':
+        return redirect(url_for('gestion_poules', id_comp=id_comp))
+    elif state == 'appel':
+        return redirect(url_for('appel', id_comp=id_comp))
+    elif state == 'score':
+        return redirect(url_for('gestion_score', id_comp=id_comp))
+    else:
+        return "les problèmes"
