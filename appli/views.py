@@ -428,7 +428,6 @@ def ajout_comp():
 
 @app.route("/gestion_participants/<int:id_comp>", methods=("GET", "POST"))
 def gestion_participants(id_comp):
-    current_status = get_competition_statut(get_competition_by_id(id_comp))
     competition = Competition.query.get(id_comp)
     participants_blois = get_participants(id_comp, club="BLOIS CE")
     participants_other = get_participants(id_comp, club="!")
@@ -446,8 +445,7 @@ def gestion_participants(id_comp):
       nb_participants_other=nb_participants_other,
       competition=competition,
       participants_arb=participants_arb,
-      nb_participants_arb=nb_participants_arb,
-      compet_statut = current_status
+      nb_participants_arb=nb_participants_arb
   )
 
 @app.route('/ajouter_arbitre_competition/<int:id_comp>', methods=['POST'])
