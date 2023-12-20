@@ -6,6 +6,17 @@ from hashlib import sha256
 import os
 import csv
 
+def replace_special_characters(prenom):
+    # Remplacer les caractères spéciaux par leur équivalent non accentué
+    replacements = {
+        'ï¿½': 'e',
+    }
+
+    for char, replacement in replacements.items():
+        prenom = prenom.replace(char, replacement)
+
+    return prenom 
+
 @app.cli.command()
 @click.argument('dirname')
 def loaddb(dirname):
@@ -32,11 +43,11 @@ def loaddb(dirname):
             print(ajouter_arme(arme))
             print(ajouter_categorie(nom_categorie))
             try:
-                with open(chemin_fichier, 'r', newline='') as csvfile:
+                with open(chemin_fichier, 'r', newline='', encoding="ISO-8859-1") as csvfile:
                     reader = csv.DictReader(csvfile, delimiter=';')
                     for row in reader:
                         nom = row['nom']
-                        prenom = row['prenom']
+                        prenom = replace_special_characters(row['prenom'])
                         date_naissance = row['date naissance']
                         num_license = row['adherent']
                         region = row['comite regional']
