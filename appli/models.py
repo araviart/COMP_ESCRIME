@@ -3,6 +3,7 @@ import datetime
 from sqlalchemy import func
 from .app import db, login_manager
 from flask_login import UserMixin
+from .ajout_bd import *
 
 # Modèle pour représenter le lieu
 class Lieu(db.Model):
@@ -441,6 +442,8 @@ def get_nb_tireurs(id_comp):
 
 def get_liste_pistes_selon_nb_arbitres(id_comp, nb_arbitres):
     return Piste.query.filter_by(idComp=id_comp).limit(nb_arbitres).all()
+    
+            
 
 def fabriquer_poules_selon_classement(tireurs, arbitres, pistes):
     if not poules_fabriquables(tireurs, arbitres):
@@ -454,7 +457,7 @@ def fabriquer_poules_selon_classement(tireurs, arbitres, pistes):
     for i in range(len(liste_triee)):
         if arbitres[i % len(arbitres)] not in arbitres_dans_poule and pistes[i % len(arbitres)] not in pistes_associees:
             escrimeur = Escrimeur.query.filter_by(numeroLicenceE=arbitres[i].numeroLicenceE).first()
-            piste = Piste.query.filter_by(idPiste=pistes[i].idPiste).first()
+            piste = pistes[i % len(arbitres)]
             nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, {piste.nomPiste}"
             liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
             arbitres_dans_poule.add(arbitres[i])
@@ -498,11 +501,11 @@ def fabriquer_poules_decalage_club(tireurs, arbitres, pistes):
     for i in range(len(liste_triee)):
         if arbitres[i % len(arbitres)] not in arbitres_dans_poule and pistes[i % len(arbitres)] not in pistes_associees:
             escrimeur = Escrimeur.query.filter_by(numeroLicenceE=arbitres[i].numeroLicenceE).first()
-            piste = Piste.query.filter_by(idPiste=pistes[i].idPiste).first()
+            piste = pistes[i % len(arbitres)]
             nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, {piste.nomPiste}"
             liste_poules[i].append((escrimeur, nom_complet))
             arbitres_dans_poule.add(arbitres[i])
-            pistes_associees.add(pistes[i])
+            pistes_associees.add(pistes[i % len(arbitres)])
         if len(liste_poules[i % len(arbitres)]) < 7:
             escrimeur = Escrimeur.query.filter_by(numeroLicenceE=liste_triee[i].numeroLicenceE).first()
             id_club_tireur = get_id_club_tireur(escrimeur.numeroLicenceE)
