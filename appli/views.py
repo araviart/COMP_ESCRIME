@@ -45,7 +45,12 @@ class EditUserForm(FlaskForm):
     confirm = PasswordField("Confirmez le nouveau mot de passe")
     username = StringField("Pseudonyme actuelle")
     password = PasswordField("Mot de passe actuelle")
-    
+
+@app.context_processor
+def inject_user_status():
+    if current_user.is_authenticated:
+        return {"user_status": current_user.statutUser}
+    return {"user_status": None}
     
 @app.route("/gestion_score/")
 def gestion_score():
@@ -110,7 +115,7 @@ def inscription():
     else:
         m = sha256()
         m.update(f.password.data.encode())
-        u = User(pseudoUser=f.pseudo.data , mdpUser=m.hexdigest(), emailUser=f.email.data)
+        u = User(pseudoUser=f.pseudo.data , mdpUser=m.hexdigest(), emailUser=f.email.data, statutUser="Utilisateur")
         db.session.add(u)
         db.session.commit()
         return redirect(url_for("home"))

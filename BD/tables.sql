@@ -6,6 +6,7 @@ CREATE OR REPLACE TABLE USER(
     pseudoUser VARCHAR(99) NOT NULL UNIQUE,
     mdpUser VARCHAR(9999) NOT NULL,
     emailUser VARCHAR(99) UNIQUE,
+    statutUser VARCHAR(99) NOT NULL,
     PRIMARY KEY(idUser)
 );
 

@@ -31,10 +31,11 @@
         <div id="left">
           <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" />
           <ul>
-            <li><a href="{{ url_for('home_default')}}">Accueil</a></li>
+            <li><a href="{{ url_for('home_default')}}">Liste compétitions</a></li>
+            {% if user_status == "Administrateur" %}
             <li><a href="{{ url_for('ajout_comp_page')}}">Ajouter un tournoi</a></li>
             <li><a href="{{ url_for('liste_adherents_def')}}">Liste adhérents</a></li>
-            <li><a href="{{ url_for('home_default')}}">Liste compétitions</a></li>
+            {% endif %}
           </ul>
         </div>
         <div id="right">
@@ -42,9 +43,11 @@
             <li><img src="{{ url_for('static', filename='img/Vector.png') }}" alt="Engrenage" /></li>
             {% if current_user.is_authenticated %}
             <li>
-              <a href="{{ url_for('edit_user', name=current_user.pseudoUser)}}"
-                >{{ current_user.pseudoUser }}</a
-              >
+              {% if user_status == "Administrateur" %}
+                <a href="{{ url_for('edit_user', name=current_user.pseudoUser)}}"> Administrateur : {{ current_user.pseudoUser }}</a>
+              {% else %}
+                <a href="{{ url_for('edit_user', name=current_user.pseudoUser)}}"> Visiteur : {{ current_user.pseudoUser }}</a>
+              {% endif %}
             </li>
             <li>
               <button class="logout-btn"><a href="{{ url_for('logout') }}">Logout</a></button>

@@ -330,7 +330,7 @@ class User(db.Model, UserMixin):
     pseudoUser = db.Column(db.String (50), unique=True, nullable=False)
     mdpUser = db.Column(db.String (64), nullable=False)
     emailUser = db.Column(db.String (50), unique=True)
-
+    statutUser = db.Column(db.String(50), nullable=False)
     def get_id(self):
         return self.idUser
 
