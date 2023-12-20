@@ -91,9 +91,15 @@
               <td>{{ competition.sexeComp }}</td>
               <td>{{ "Oui" if competition.estIndividuelle else "Non" }}</td>
               <td>
-                <a href="{{ url_for('actu_stat_comp', id_comp=competition.idComp) }}" class="consulter">
-                  Consulter
-              </a>
+                {% if user_status == "Administrateur" %}
+                  <a href="{{ url_for('actu_stat_comp', id_comp=competition.idComp) }}" class="consulter">
+                    Consulter
+                  </a>
+                {% else %}
+                  <a href="{{ url_for('actu_stat_comp', id_comp=competition.idComp) }}" class="consulter">
+                    Consulter
+                  </a>
+                {% endif %}
               </td>            
             </tr>
             <div class = "ligne"></div>

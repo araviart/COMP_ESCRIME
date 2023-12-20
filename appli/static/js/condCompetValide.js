@@ -4,14 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
     event.preventDefault();
     var nbParticipants = nbParticipantsBlois + nbParticipantsOther;
     var nbArbitres = nbParticipantsArb;
-    if (nbParticipants < 6 || nbArbitres < 1) {
-    let errorMessage = "";
-    if (nbParticipants < 6) {
-      errorMessage += "Il doit y avoir au moins 6 participants pour créer 2 poules.\n";
-    }
-    if (nbArbitres < 1) {
-      errorMessage += "Il doit y avoir au moins un arbitre associé à une poule.";
-    }
+    if ((nbParticipants / nbArbitres) < 3 || (nbParticipants / nbArbitres) > 7) {
+    let errorMessage = "Le nombre de participants ne correspond pas au nombre d'arbitres pour faire des poules de 3 à 7 tireurs";
     showError(errorMessage);
   } else {
     window.location.href = "/gestion_poules/" + competitionId;

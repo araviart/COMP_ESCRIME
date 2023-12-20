@@ -72,7 +72,7 @@ def newuser(username , password, email):
     '''Adds a new user.'''
     m = sha256()
     m.update(password.encode())
-    u = User(pseudoUser=username , mdpUser=m.hexdigest(), emailUser=email)
+    u = User(pseudoUser=username , mdpUser=m.hexdigest(), emailUser=email, statutUser="Administrateur")
     db.session.add(u)
     db.session.commit()
 
