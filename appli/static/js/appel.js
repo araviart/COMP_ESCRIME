@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Document is ready!");
-  
+    var participants_total = participants.length;
+
     $('#checkbox-valid-all').change(function() {
         var isChecked = $(this).prop('checked');
         $('.checkbox-participant').prop('checked', isChecked);
@@ -17,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     $('.checkbox-participant').change(function() {
       var row = participants[$(this).closest('tr').data('id')];
-      var participants_total = participants.length;
       if (this.checked) {
         // Ajouter les informations de la ligne à la liste
         participants_present.push(row);
@@ -31,8 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     $('.fa-solid.fa-check').click(function() {
-        var participants_absents = [];
-      
+        participants_absents = [];
         $('.checkbox-participant').each(function() {
           console.log("Bouton cliqué")
           var row = participants[$(this).closest('tr').data('id')];
@@ -44,5 +43,6 @@ document.addEventListener("DOMContentLoaded", function() {
       
         // Ici, vous pouvez faire ce que vous voulez avec la liste des participants absents
         console.log(participants_absents);
+        $('#absents-count').text(participants_absents.length + "/" + participants_total);
       });
   });
