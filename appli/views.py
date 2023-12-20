@@ -4,7 +4,7 @@ import logging
 import math
 from .ajout_bd import creer_competition
 from flask import jsonify, render_template, session, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_arbitre_escrimeur_poule, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_liste_tireurs_poule, get_nb_arbitres, get_nb_poules, get_nb_tireurs, get_participants, get_piste_poule, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
+from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_arbitre_escrimeur_poule, get_club_tireur_escrimeur, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_liste_tireurs_escrimeurs_poule, get_nb_arbitres, get_nb_poules, get_nb_tireurs, get_participants, get_piste_poule, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
@@ -61,9 +61,14 @@ def gestion_score(id_comp):
     nb_poules = get_nb_poules(id_comp)
     for i in range(1, nb_poules+1):
         poules[i] = {}
-        poules[i]['tireurs'] = get_liste_tireurs_poule(id_comp, i)
+        tireurs_club = {} # dict avec le tireur en clé et le nom du club en valeur
+        for tireur in get_liste_tireurs_escrimeurs_poule(id_comp, i):
+            tireurs_club[tireur] = get_club_tireur_escrimeur(tireur).nomClub
+        poules[i]['tireurs'] = tireurs_club
         poules[i]['piste'] = get_piste_poule(id_comp, i).nomPiste
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
+
+    
 
     rows_data = [
         {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A'},

@@ -397,8 +397,11 @@ def get_id_saison(nom_saison):
 def get_liste_participants_competitions_tireurs(id_comp):
     return ParticipantsCompetition.query.join(Tireur, ParticipantsCompetition.numeroLicenceE == Tireur.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).all()
 
-def get_liste_tireurs_poule(id_comp, id_poule):
-    return ParticipantsPoule.query.join(Tireur, ParticipantsPoule.numeroLicenceE == Tireur.numeroLicenceE).join(Poule, ParticipantsPoule.idPoule == Poule.idPoule).filter(ParticipantsPoule.idPoule == id_poule).filter(Poule.idComp == id_comp).all()
+def get_liste_tireurs_escrimeurs_poule(id_comp, id_poule):
+    return Escrimeur.query.join(Tireur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE).join(ParticipantsPoule, Tireur.numeroLicenceE == ParticipantsPoule.numeroLicenceE).join(Poule, ParticipantsPoule.idPoule == Poule.idPoule).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).all()
+
+def get_club_tireur_escrimeur(tireur):
+    return Club.query.join(Tireur, Club.idClub == Tireur.idClub).filter(Tireur.numeroLicenceE == tireur.numeroLicenceE).first()
 
 def get_arbitre_escrimeur_poule(id_comp, id_poule):
     return Escrimeur.query.join(Arbitre, Escrimeur.numeroLicenceE == Arbitre.numeroLicenceE).join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()

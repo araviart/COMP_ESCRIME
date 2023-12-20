@@ -41,11 +41,11 @@
                 </tr>
               </thead>
               <tbody>
-                {% for row in rows_data %}
+                {% for tireur in poules[i]['tireurs'] %}
                   <tr class="nom-prenom-club">
-                    <td>{{ row['Nom'] }}</td>
-                    <td>{{ row['Prenom'] }}</td>
-                    <td>{{ row['Club'] }}</td>
+                    <td>{{ tireur.nomE }}</td>
+                    <td>{{ tireur.prenomE }}</td>
+                    <td>{{ poules[i]['tireurs'][tireur] }}</td>
                   </tr>
                 {% endfor %}
               </tbody>
