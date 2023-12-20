@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
       $('#participants-count').text(participants_present.length + "/" + participants_total);
     });
 
-    $('.fa-solid.fa-check').click(function() {
+    $('button:has(.fa-solid.fa-check)').click(function() {
         participants_absents = [];
         $('.checkbox-participant').each(function() {
           console.log("Bouton cliqué")

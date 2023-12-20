@@ -46,7 +46,7 @@ class EditUserForm(FlaskForm):
     password = PasswordField("Mot de passe actuelle")
     
     
-@app.route("/")
+@app.route("/gestion_score/")
 def gestion_score():
     rows_data = [
         {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A'},
