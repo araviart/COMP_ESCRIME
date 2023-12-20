@@ -522,10 +522,10 @@ def ajouter_poule(idComp, idPiste, idArbitre, nomPoule):
             return f"La poule {idComp} pour la piste {idPiste} existe déjà."
         db.session.commit()  # Validez la transaction
         return f"La poule {idComp} pour la piste {idPiste} a été ajoutée avec succès."
-    # except IntegrityError:
-    #     # En cas d'erreur d'intégrité (numéro de licence déjà pris), annulez la transaction
-    #     db.session.rollback()
-    #     return f"La poule {idComp} pour la piste {idPiste} existe déjà."
+    except IntegrityError:
+        # En cas d'erreur d'intégrité (numéro de licence déjà pris), annulez la transaction
+        db.session.rollback()
+        return f"La poule {idComp} pour la piste {idPiste} existe déjà."
     except Exception as e:
         # En cas d'autres erreurs, annulez la transaction
         db.session.rollback()

@@ -328,7 +328,7 @@ def gestion_poules(id_comp):
     nb_tireurs = get_nb_tireurs(id_comp)
     nb_arbitres = get_nb_arbitres(id_comp)
     nb_tireurs_par_poule = nb_tireurs // nb_arbitres
-    
+
     if request.method == "POST":
         classement_checked = 'classement' in request.form
         club_checked = 'club' in request.form
@@ -350,7 +350,7 @@ def gestion_poules(id_comp):
         elif club_checked:
             if poules_fabriquables(liste_tireurs, liste_arbitres):
                 liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, liste_pistes, "Club")
-        session["liste_poules"] = [ [tireur[0].numeroLicenceE for tireur in poule] for poule in liste_poules]
+        session["liste_poules"] = [ [escrimeur[0].numeroLicenceE for escrimeur in poule] for poule in liste_poules]
         session["liste_arbitres"] = [arbitre.numeroLicenceE for arbitre in liste_arbitres]
         session["liste_pistes"] = [piste.idPiste for piste in liste_pistes]
         return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=get_nb_tireurs(id_comp), 
@@ -369,33 +369,33 @@ def gestion_poules(id_comp):
 
 @app.route("/appel/<int:id_comp>", methods=["GET", "POST"])
 def appel(id_comp):
-    rows_data = [
-        {'Nom': 'Doe', 'Prenom': 'John', 'DateNaissance': '01/01/1990', 'Telephone': '123456789', 'Sexe': 'M', 'Club': 'Club A', 'Classement': 'A'},
-        {'Nom': 'Smith', 'Prenom': 'Alice', 'DateNaissance': '02/02/1995', 'Telephone': '987654321', 'Sexe': 'F', 'Club': 'Club B', 'Classement': 'B'},
-        {'Nom': 'Johnson', 'Prenom': 'Bob', 'DateNaissance': '03/03/1992', 'Telephone': '555555555', 'Sexe': 'M', 'Club': 'Club C', 'Classement': 'C'},
-        {'Nom': 'Williams', 'Prenom': 'Emma', 'DateNaissance': '04/04/1988', 'Telephone': '111111111', 'Sexe': 'F', 'Club': 'Club D', 'Classement': 'D'}
-    ]
+    rows_data = []
     if request.method == "POST":
         pistes = session.get("liste_pistes")
         arbitres = session.get("liste_arbitres")
         liste_poules = session.get("liste_poules")
-        print(liste_poules)
+        
         try:
             for i in range(len(liste_poules)):
                 num_licence_arbitre = arbitres[i]
                 id_arbitre = get_id_arbitre_from_escrimeur(num_licence_arbitre)
                 nom_poule = f"Poule {i+1}"
                 id_piste = pistes[i]
-                print("nouveau test")
                 ajouter_poule(id_comp, id_piste, id_arbitre, nom_poule)
-                print(ajouter_poule(id_comp, id_piste, id_arbitre, nom_poule))
-            return redirect(url_for('gestion_poules', id_comp=id_comp))
+                id_poule = get_id_poule(id_comp, id_piste, id_arbitre, nom_poule)
+                for j in range(1, len(liste_poules[i])):
+                    ajouter_participant_poule(id_poule, liste_poules[i][j])
+                    informations_escrimeur = get_informations_escrimeur(liste_poules[i][j])
+                    tireur = Tireur.query.get(liste_poules[i][j])
+                    rows_data.append({'Nom': informations_escrimeur.nomE, 'Prenom': informations_escrimeur.prenomE, 'DateNaissance': informations_escrimeur.dateNaissanceE, 'Telephone': informations_escrimeur.numTelE, 'Sexe': informations_escrimeur.sexeE, 'Club': tireur.club.nomClub, 'Classement' : tireur.classement})
+            redirect(url_for('appel', id_comp=id_comp))
+            return render_template('appel.html', id_comp=id_comp, rows_data=rows_data)
         except Exception as e:
             print(e)    
-            return redirect(url_for('gestion_poules', id_comp=id_comp))
-    competition = Competition.query.get(id_comp)    
+            return redirect(url_for('appel', id_comp=id_comp))
+    competition = Competition.query.get(id_comp)  
     if competition is not None:
-        return render_template('appel', id_comp=id_comp, rows_data=rows_data)
+        return render_template('appel.html', id_comp=id_comp, rows_data=rows_data)
 
 
 

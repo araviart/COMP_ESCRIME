@@ -567,3 +567,11 @@ def get_participants(id_comp, club=None):
             res = res.filter(Club.nomClub == club)
     return res.add_columns(ParticipantsCompetition.numeroLicenceE, ParticipantsCompetition.idComp, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
 
+def get_informations_escrimeur(numero_licence):
+    return Escrimeur.query.filter_by(numeroLicenceE=numero_licence).first()
+
+def get_id_poule(id_comp, id_piste, id_arbitre, nom_poule):
+    return Poule.query.filter_by(idComp=id_comp, idPiste=id_piste, idArbitre=id_arbitre, nomPoule=nom_poule).first().idPoule
+
+def get_all_participants_competition(id_comp):
+    return ParticipantsCompetition.query.filter_by(idComp=id_comp).all()
