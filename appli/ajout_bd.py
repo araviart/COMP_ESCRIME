@@ -228,7 +228,7 @@ def creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, n
         db.session.add(competition)
         db.session.commit()
 
-        return f"La compétition {nomComp} a été créée avec succès."
+        return competition
     
     except IntegrityError:
         db.session.rollback()
