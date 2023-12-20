@@ -334,6 +334,9 @@ def load_user(username):
 def get_sample():
     return Competition.query.order_by(Competition.dateComp.desc()).all()
 
+def get_competition_by_id(id_comp):
+    return Competition.query.filter_by(idComp=id_comp).first()
+
 def get_categories():
     categories = Categorie.query.all()
     return [categorie.nomCategorie for categorie in categories]
@@ -582,3 +585,21 @@ def get_arbitres(idcomp):
         ParticipantsCompetition.numeroLicenceE == Escrimeur.numeroLicenceE
     ).filter(ParticipantsCompetition.idComp == idcomp).all()
     return arbitres
+
+def get_competition_statut(competition):
+    participants = ParticipantsCompetition.query.filter_by(idComp=competition.idComp).first()
+    if participants:
+        # verifie si les poules ont été créées pour la compétition
+        poules = Poule.query.filter_by(idComp=competition.idComp).first()
+        if poules:
+            # verifie si l’appel a été fait donc sil ya des scores entrés pour des matchs de poules)
+            match_poule = MatchPoule.query.filter_by(idComp=competition.idComp).first()
+            if match_poule and (match_poule.touchesRecuesTireur1 is not None or match_poule.touchesDonneesTireur1 is not None
+                                or match_poule.touchesRecuesTireur2 is not None or match_poule.touchesDonneesTireur2 is not None):
+                return 'score'
+            else:
+                return 'appel'
+        else:
+            return 'participants'
+    else:
+        return 'participants'

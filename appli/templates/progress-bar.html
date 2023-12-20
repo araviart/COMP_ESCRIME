@@ -1,14 +1,13 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='progress-bar.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='progress-bar.css') }}" />
 <div class="progress-bar">
-  <a class="active-url" href="url">Définir une compétition</a>
-  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a href="url">Gestion participants</a>
-  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a href="url">Créer les poules</a>
-  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a href="url">Appel</a>
-  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a href="url">Gestion score</a>
-  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  {% set current_status = current_status %}
+  <a class="{{ 'active-url' if current_status == 'participants' }}" href="{{ url_for('gestion_participants', id_comp=competition.idComp) }}">Gestion participants</a>
+  <img class="fleche-bar" src="{{ url_for('static', filename='img/fleche.png') }}" alt="fleche"/>
+  <a class="{{ 'active-url' if current_status == 'poule' }}" href="{{ url_for('gestion_poules', id_comp=competition.idComp) }}">Créer les poules</a>
+  <img class="fleche-bar" src="{{ url_for('static', filename='img/fleche.png') }}" alt="fleche"/>
+  <a class="{{ 'active-url' if current_status == 'appel' }}" href="{{ url_for('appel', id_comp=competition.idComp) }}">Appel</a>
+  <img class="fleche-bar" src="{{ url_for('static', filename='img/fleche.png') }}" alt="fleche"/>
+  <a class="{{ 'active-url' if current_status == 'score' }}" href="{{ url_for('gestion_score', id_comp=competition.idComp) }}">Gestion score</a>
+  <img class="fleche-bar" src="{{ url_for('static', filename='img/fleche.png') }}" alt="fleche" />
   <a href="url">Classement Final</a>
 </div>
