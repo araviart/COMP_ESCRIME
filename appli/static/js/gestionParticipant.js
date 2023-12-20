@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
           url = `/get_escrimeurs/${competitionGender}`; 
           console.log(url);
       } else if (addButton.closest(".escrime-arb")) {
-          url = "/get_escrimeurs";
+          url = "/get_escrimeurs/M";
       }
       
 
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
               );
               listItem.setAttribute("data-nom", escrimeur.nomE.toLowerCase());
               listItem.setAttribute("data-licence", escrimeur.numeroLicenceE);
-              listItem.textContent = `Licence : ${escrimeur.numeroLicenceE} | ${escrimeur.prenomE} ${escrimeur.nomE} ${escrimeur.numeroLicenceE}`;
+              listItem.textContent = `Licence : ${escrimeur.numeroLicenceE} | ${escrimeur.prenomE} ${escrimeur.nomE}`;
               listItem.addEventListener("click", function () {
                 ajouterEscrimeurACompetition(escrimeur.numeroLicenceE);
                 submenu.style.display = "none";

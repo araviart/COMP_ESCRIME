@@ -266,3 +266,21 @@
   margin-bottom: 0;
   border-bottom: none;
 }
+
+.search {
+  width: 100%; 
+  font-size: 16px; 
+  padding: 10px 0;
+  border: 1px solid #ddd; 
+  margin-bottom: 12px; 
+  border-radius: 4px;
+}
+
+.search:focus {
+  background-color: #f7f7f7e1;
+}
+
+.nullparticipant{
+
+  margin-left: 50px;
+}
