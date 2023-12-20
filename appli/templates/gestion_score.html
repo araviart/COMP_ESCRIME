@@ -54,16 +54,16 @@
             <table>
               <thead>
                 <tr class="titre-transparent">
-                  {% for i in range(rows) %}
+                  {% for row in poules[i]['tireurs'] %}
                     <th>?</th>
                   {% endfor %}
                 </tr>
               </thead>
               <tbody>
-                {% for i in range(rows) %}
+                {% for i in range(poules[i]['rows']) %}
                   <tr class="tr-textfield-matrice">
-                    {% for j in range(cols) %}
-                      {% set item = table_data[i][j] %} {% if i == j %}
+                    {% for j in range(poules[i]['cols']) %}
+                      {% set item = poules[i]['table_data'][i][j] %} {% if i == j %}
                         <td class="td-textfield-matrice">
                           <input class="textfield-score textfield-score-disabled" type="number" name="{{ item }}" disabled />
                         </td>
@@ -89,7 +89,7 @@
                 </tr>
               </thead>
               <tbody>
-                {% for row in rows_data %}
+                {% for row in poules[i]['tireurs'] %}
                   <tr>
                     <td>???</td>
                     <td>???</td>

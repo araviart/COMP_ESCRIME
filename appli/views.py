@@ -67,25 +67,13 @@ def gestion_score(id_comp):
         poules[i]['tireurs'] = tireurs_club
         poules[i]['piste'] = get_piste_poule(id_comp, i).nomPiste
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
+        poules[i]['rows'] = len(poules[i]['tireurs'])
+        poules[i]['cols'] = len(poules[i]['tireurs'])
+        poules[i]['table_data'] = [[f'input_{j}_{k}' for k in range(poules[i]['cols'])] for j in range(poules[i]['rows'])]
 
-    
-
-    rows_data = [
-        {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A'},
-        {'Nom': 'Smith', 'Prenom': 'Alice', 'Club': 'Club A'},
-        {'Nom': 'Johnson', 'Prenom': 'Bob', 'Club': 'Club A'},
-        {'Nom': 'Williams', 'Prenom': 'Emma', 'Club': 'Club A'}
-    ]
-
-    # Définir le nombre de lignes et de colonnes dans le tableau
-    rows = len(rows_data)
-    cols = len(rows_data)
-
-    # Générer les données pour le tableau
-    table_data = [[f'input_{i}_{j}' for j in range(cols)] for i in range(rows)]
-
+    print(poules)
     # Rendre le modèle HTML avec Flask
-    return render_template('gestion_score.html', table_data=table_data, rows_data=rows_data, rows=rows, cols=cols, poules=poules)
+    return render_template('gestion_score.html', poules=poules)
 
 
 
