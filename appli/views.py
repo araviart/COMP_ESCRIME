@@ -1,7 +1,7 @@
 from .app import app, db
 import logging
 import math
-from .ajout_bd import creer_competition
+from .ajout_bd import *
 from flask import jsonify, render_template, session, url_for, redirect, request, flash
 from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, get_lieux, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
 from flask_wtf import FlaskForm
@@ -67,17 +67,22 @@ def gestion_score():
 
 
 
-@app.route("/appel/")
-def appel():
+@app.route("/appel/<int:id_comp>/")
+def appel(id_comp):
     # Exemple de données à afficher dans chaque ligne
-    rows_data = [
-        {'Nom': 'Doe', 'Prenom': 'John', 'DateNaissance': '01/01/1990', 'Telephone': '123456789', 'Sexe': 'M', 'Club': 'Club A', 'Classement': 'A'},
-        {'Nom': 'Smith', 'Prenom': 'Alice', 'DateNaissance': '02/02/1995', 'Telephone': '987654321', 'Sexe': 'F', 'Club': 'Club B', 'Classement': 'B'},
-        {'Nom': 'Johnson', 'Prenom': 'Bob', 'DateNaissance': '03/03/1992', 'Telephone': '555555555', 'Sexe': 'M', 'Club': 'Club C', 'Classement': 'C'},
-        {'Nom': 'Williams', 'Prenom': 'Emma', 'DateNaissance': '04/04/1988', 'Telephone': '111111111', 'Sexe': 'F', 'Club': 'Club D', 'Classement': 'D'}
-    ]
-
-    return render_template('appel.html', rows_data=rows_data)
+    #rows_data = [
+    #    {'Nom': 'Doe', 'Prenom': 'John', 'DateNaissance': '01/01/1990', 'Telephone': '123456789', 'Sexe': 'M', 'Club': 'Club A', 'Classement': 'A'},
+    #    {'Nom': 'Smith', 'Prenom': 'Alice', 'DateNaissance': '02/02/1995', 'Telephone': '987654321', 'Sexe': 'F', 'Club': 'Club B', 'Classement': 'B'},
+    #    {'Nom': 'Johnson', 'Prenom': 'Bob', 'DateNaissance': '03/03/1992', 'Telephone': '555555555', 'Sexe': 'M', 'Club': 'Club C', 'Classement': 'C'},
+    #    {'Nom': 'Williams', 'Prenom': 'Emma', 'DateNaissance': '04/04/1988', 'Telephone': '111111111', 'Sexe': 'F', 'Club': 'Club D', 'Classement': 'D'}
+    #]
+    rows_data = []
+    participants_comp = get_liste_participants_competitions(id_comp)
+    for participant in participants_comp:
+        dict_tireur = participant.tireur.to_dict()
+        rows_data.append(dict_tireur)
+    participants_present = []
+    return render_template('appel.html', rows_data=rows_data, participants_present=participants_present)
 
 @app.route("/inscription-form/")
 def inscription_page():

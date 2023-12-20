@@ -1,17 +1,24 @@
 {% extends 'base.html' %} {% block content %}
   <link rel="stylesheet" href="{{ url_for('static', filename = 'progress-bar.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename = 'Appel.css') }}" />
+  <script>
+    var participants_present = {{ participants_present|tojson }};
+    console.log(participants_present);
+    var participants = {{ rows_data|tojson }};
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="{{ url_for('static', filename='js/appel.js') }}"></script>
   <div class="progress-bar">
     <a class="active-url" href="url">Définir une compétition</a>
-    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <img class="fleche-bar" src="appli\static\img\fleche.png" alt="fleche" />
     <a class="active-url" href="url">Gestion participants</a>
-    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <img class="fleche-bar" src="appli\static\img\fleche.png" alt="fleche" />
     <a class="active-url" href="url">Créer les poules</a>
-    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <img class="fleche-bar" src="appli\static\img\fleche.png" alt="fleche" />
     <a class="active-url" href="url">Appel</a>
-    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <img class="fleche-bar" src="appli\static\img\fleche.png" alt="fleche" />
     <a href="url">Gestion score</a>
-    <img class="fleche-bar" src="static/img/fleche.png" alt="fleche" />
+    <img class="fleche-bar" src="appli\static\img\fleche.png" alt="fleche" />
     <a href="url">Classement Final</a>
   </div>
 
@@ -33,9 +40,9 @@
           <h4>Présents</h4>
           <h4>Absents</h4>
         </div>
-        <div class="int-present-abs">
-          <h4>0/0</h4>
-          <h4>0/0</h4>
+        <div class="int-present-abs"> 
+          <h4 id="participants-count">{{ participants_present|length }}/{{rows_data|length}}</h4>
+          <h4>0/{{ rows_data|length }}</h4>
         </div>
       </div>
     </div>
@@ -55,17 +62,17 @@
       </thead>
       <tbody>
         {% for row in rows_data %}
-          <tr>
+          <tr data-row="{{ row|tojson|safe }}" data-id="{{ loop.index0 }}">
             <td class="checkbox-cell">
-              <input id="checkbox-1" type="checkbox" />
+              <input class="checkbox-participant" type="checkbox" />
             </td>
-            <td>{{ row['Nom'] }}</td>
-            <td>{{ row['Prenom'] }}</td>
-            <td>{{ row['DateNaissance'] }}</td>
-            <td>{{ row['Telephone'] }}</td>
-            <td>{{ row['Sexe'] }}</td>
-            <td>{{ row['Club'] }}</td>
-            <td>{{ row['Classement'] }}</td>
+            <td>{{ row['nomE'] }}</td>
+            <td>{{ row['prenomE'] }}</td>
+            <td>{{ row['dateNaissanceE'] }}</td>
+            <td>{{ row['numTelE'] }}</td>
+            <td>{{ row['sexeE'] }}</td>
+            <td>{{ row['nomClub'] }}</td>
+            <td>{{ row['classement'] }}</td>
             <td class="checkbox-cell">
               <input id="checkbox-2" type="checkbox" />
             </td>
@@ -82,5 +89,4 @@
       <button><i class="fa-solid fa-check"></i> Valider l'appel</button>
     </div>
   </main>
-  
 {% endblock %}

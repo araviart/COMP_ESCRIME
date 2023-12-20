@@ -54,9 +54,11 @@ class Club(db.Model):
     __tablename__ = 'CLUB'
     idClub = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nomClub = db.Column(db.String(50), nullable=False, unique = True)
+    regionClub = db.Column(db.String(50), nullable=False)
     
-    def __init__(self, nom_club):
+    def __init__(self, nom_club, region_club):
         self.nomClub = nom_club
+        self.regionClub = region_club
 
 
 # Modèle pour représenter la compétition
@@ -118,8 +120,7 @@ class TypeMatch(db.Model):
         self.nbTouches = nb_touches
 
 # Modèle pour représenter l'escrimeur
-class 
-(db.Model):
+class Escrimeur(db.Model):
     __tablename__ = 'ESCRIMEUR'
     numeroLicenceE = db.Column(db.Integer, nullable=False, primary_key=True)
     idCat = db.Column(db.Integer, db.ForeignKey('CATEGORIE.idCat'), nullable=False)
@@ -166,6 +167,13 @@ class Tireur(db.Model):
         self.numeroLicenceE = num_licence
         self.idClub = club
         self.classement = classement
+    
+    def to_dict(self):
+        dic_tireur = self.escrimeur.to_dict()
+        dic_tireur['idClub'] = self.idClub
+        dic_tireur['nomClub'] = self.club.nomClub
+        dic_tireur['classement'] = self.classement
+        return dic_tireur
         
 # Modèle pour représenter les arbitres
 class Arbitre(db.Model):
@@ -525,7 +533,7 @@ def get_adherents():
     .join(Escrimeur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
     .join(Club, Club.idClub == Tireur.idClub) \
     .join(Categorie, Escrimeur.idCat == Categorie.idCat) \
-    .add_columns(Tireur.idTireur, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    .add_columns(Tireur.numeroLicenceE, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
     #.filter(Club.nomClub == "Club Blois") pour filtrer seulement les tireurs du club de Blois
     return res
 
@@ -537,11 +545,13 @@ def dernier_escrimeur_id():
         return 0
 
 def get_participants(id_comp, club=None):
-    res = db.session.query(ParticipantsCompetition, Escrimeur, Categorie).join(Escrimeur, ParticipantsCompetition.idTireur == Escrimeur.idEscrimeur).join(Categorie, Escrimeur.idCat == Categorie.idCat).join(Tireur, Tireur.idTireur == Escrimeur.idEscrimeur).join(Club, Club.idClub == Tireur.idClub).filter(ParticipantsCompetition.idComp == id_comp)
+    res = db.session.query(ParticipantsCompetition, Escrimeur, Categorie).join(Escrimeur, ParticipantsCompetition.numeroLicenceE == Escrimeur.idEscrimeur).join(Categorie, Escrimeur.idCat == Categorie.idCat).join(Tireur, Tireur.numeroLicenceE == Escrimeur.idEscrimeur).join(Club, Club.idClub == Tireur.idClub).filter(ParticipantsCompetition.idComp == id_comp)
     if club is not None:
         if club == "!":
             res = res.filter(Club.nomClub != "ClubBlois")
         else:
             res = res.filter(Club.nomClub == club)
-    return res.add_columns(ParticipantsCompetition.idTireur, ParticipantsCompetition.idComp, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    return res.add_columns(ParticipantsCompetition.numeroLicenceE, ParticipantsCompetition.idComp, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
 
+def get_liste_participants_competitions(id_comp):
+    return ParticipantsCompetition.query.filter_by(idComp=id_comp).all()
