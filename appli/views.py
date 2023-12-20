@@ -114,7 +114,7 @@ def get_scores_for_competition(id_comp):
             'Classement': classement.position,
             'Prenom': escrimeur.prenomE,
             'Nom': escrimeur.nomE,
-            # 'VM': ici votre logique pour obtenir VM,
+            'VM': vm_ratio,
             'Club': club.nomClub
         })
     
@@ -124,13 +124,11 @@ def get_scores_for_competition(id_comp):
 def telecharger_pdf(id_comp):
     scores = get_scores_for_competition(id_comp)
     competition = Competition.query.get_or_404(id_comp)
-    rendered = render_template('Affichage-score.html', data=scores, competition=competition)
+    rendered = render_template('score_table_pdf.html', data=scores)
     pdf = HTML(string=rendered).write_pdf()
-
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = f'attachment; filename=tableau_scores_{competition.nomComp}.pdf'
-
     return response
 
 def inscription_page():

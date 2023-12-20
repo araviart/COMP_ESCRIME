@@ -11,29 +11,7 @@
         </div>
     </div>
 </nav>
-<table class="tabletable-striped">
-    <thead>
-        <tr>
-            <th scope="col">Rang</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">Nom</th>
-            <th scope="col">V/M</th>
-            <th scope="col">Club</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for participant in data %}
-            <tr>
-                <td>{{ participant['Classement'] }}</td>
-                <td>{{ participant['Prenom'] }}</td>
-                <td>{{ participant['Nom'] }}</td>
-                <td>{{ participant['VM'] }}</td>
-                <td>{{ participant['Club'] }}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+{% include 'score_table_pdf.html' %}
 <div class="bas-de-page">
     <button type="button" class="btn-bas-de-page">Retour</button>
     <div>

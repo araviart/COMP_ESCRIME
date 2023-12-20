@@ -79,8 +79,9 @@ thead {
     color: white;
     border-radius: 10px;
     font-size: 20px;
+    padding: 10px;
 }
 
-.tabletable-striped{
+table{
     background-color: white;
 }

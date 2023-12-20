@@ -1181,3 +1181,1387 @@ INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 672-584-208
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 672-584-208
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:13] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+DEBUG:fontTools.ttLib.ttFont:Reading 'maxp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'maxp' table
+DEBUG:fontTools.subset.timer:Took 0.001s to load 'maxp'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'maxp'
+INFO:fontTools.subset:maxp pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'cmap' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'post' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'post' table
+DEBUG:fontTools.subset.timer:Took 0.005s to load 'cmap'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'cmap'
+INFO:fontTools.subset:cmap pruned
+INFO:fontTools.subset:fpgm dropped
+INFO:fontTools.subset:prep dropped
+INFO:fontTools.subset:cvt  dropped
+INFO:fontTools.subset:kern dropped
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'post'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'post'
+INFO:fontTools.subset:post pruned
+INFO:fontTools.subset:GPOS dropped
+INFO:fontTools.subset:GSUB dropped
+DEBUG:fontTools.ttLib.ttFont:Reading 'glyf' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'loca' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'head' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'head' table
+DEBUG:fontTools.subset.timer:Took 0.004s to load 'glyf'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to close glyph list over 'cmap'
+INFO:fontTools.subset:Added gid0 to subset
+INFO:fontTools.subset:Closing glyph list over 'glyf': 18 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'C', 'M', 'N', 'P', 'R', 'V', 'a', 'b', 'eacute', 'g', 'l', 'm', 'n', 'o', 'r', 'slash', 'u']
+INFO:fontTools.subset:Glyph IDs:   [0, 18, 38, 48, 49, 51, 53, 57, 68, 69, 74, 79, 80, 81, 82, 85, 88, 171]
+INFO:fontTools.subset:Closed glyph list over 'glyf': 20 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'C', 'M', 'N', 'P', 'R', 'V', 'a', 'acute', 'b', 'e', 'eacute', 'g', 'l', 'm', 'n', 'o', 'r', 'slash', 'u']
+INFO:fontTools.subset:Glyph IDs:   [0, 18, 38, 48, 49, 51, 53, 57, 68, 69, 72, 74, 79, 80, 81, 82, 85, 88, 118, 171]
+DEBUG:fontTools.subset.timer:Took 0.001s to close glyph list over 'glyf'
+INFO:fontTools.subset:Retaining 20 glyphs
+INFO:fontTools.subset:head subsetting not needed
+INFO:fontTools.subset:hhea subsetting not needed
+INFO:fontTools.subset:maxp subsetting not needed
+INFO:fontTools.subset:OS/2 subsetting not needed
+DEBUG:fontTools.ttLib.ttFont:Reading 'hmtx' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'hhea' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hhea' table
+DEBUG:fontTools.subset.timer:Took 0.002s to subset 'hmtx'
+INFO:fontTools.subset:hmtx subsetted
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'cmap'
+INFO:fontTools.subset:cmap subsetted
+INFO:fontTools.subset:loca subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'post'
+INFO:fontTools.subset:post subsetted
+INFO:fontTools.subset:gasp subsetting not needed
+INFO:fontTools.subset:FFTM NOT subset; don't know how to subset
+DEBUG:fontTools.ttLib.ttFont:Reading 'GDEF' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'GDEF' table
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'GDEF'
+INFO:fontTools.subset:GDEF subsetted
+INFO:fontTools.subset:name subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'glyf'
+INFO:fontTools.subset:glyf subsetted
+DEBUG:fontTools.subset.timer:Took 0.000s to subset GlyphOrder
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'head'
+INFO:fontTools.subset:head pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'OS/2' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'OS/2' table
+INFO:fontTools.subset:OS/2 Unicode ranges pruned: [0, 1]
+INFO:fontTools.subset:OS/2 CodePage ranges pruned: [0]
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'GDEF'
+INFO:fontTools.subset:GDEF pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'name' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'gasp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'FFTM' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'FFTM' table
+DEBUG:fontTools.subset.timer:Took 0.001s to prune 'name'
+INFO:fontTools.subset:name pruned
+DEBUG:fontTools.ttLib.ttFont:Compiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'glyf' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'maxp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'maxp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'loca' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'head' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'head' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hmtx' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hhea' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hhea' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'OS/2' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'OS/2' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'cmap' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'name' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'post' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'post' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'gasp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'FFTM' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'FFTM' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'GDEF' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'GDEF' table to disk
+DEBUG:fontTools.ttLib.ttFont:Reading 'maxp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'maxp' table
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'maxp'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'maxp'
+INFO:fontTools.subset:maxp pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'cmap' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'post' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'post' table
+DEBUG:fontTools.subset.timer:Took 0.005s to load 'cmap'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'cmap'
+INFO:fontTools.subset:cmap pruned
+INFO:fontTools.subset:fpgm dropped
+INFO:fontTools.subset:prep dropped
+INFO:fontTools.subset:cvt  dropped
+INFO:fontTools.subset:kern dropped
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'post'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'post'
+INFO:fontTools.subset:post pruned
+INFO:fontTools.subset:GPOS dropped
+INFO:fontTools.subset:GSUB dropped
+DEBUG:fontTools.ttLib.ttFont:Reading 'glyf' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'loca' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'head' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'head' table
+DEBUG:fontTools.subset.timer:Took 0.003s to load 'glyf'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to close glyph list over 'cmap'
+INFO:fontTools.subset:Added gid0 to subset
+INFO:fontTools.subset:Closing glyph list over 'MATH': 53 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.ttLib.ttFont:Reading 'MATH' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'MATH' table
+INFO:fontTools.subset:Closed glyph list over 'MATH': 53 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.subset.timer:Took 0.003s to close glyph list over 'MATH'
+INFO:fontTools.subset:Closing glyph list over 'glyf': 53 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+INFO:fontTools.subset:Closed glyph list over 'glyf': 53 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.subset.timer:Took 0.001s to close glyph list over 'glyf'
+INFO:fontTools.subset:Retaining 53 glyphs
+INFO:fontTools.subset:head subsetting not needed
+INFO:fontTools.subset:hhea subsetting not needed
+INFO:fontTools.subset:maxp subsetting not needed
+INFO:fontTools.subset:OS/2 subsetting not needed
+DEBUG:fontTools.ttLib.ttFont:Reading 'hmtx' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'hhea' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hhea' table
+DEBUG:fontTools.subset.timer:Took 0.002s to subset 'hmtx'
+INFO:fontTools.subset:hmtx subsetted
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'cmap'
+INFO:fontTools.subset:cmap subsetted
+INFO:fontTools.subset:loca subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'post'
+INFO:fontTools.subset:post subsetted
+INFO:fontTools.subset:gasp subsetting not needed
+INFO:fontTools.subset:FFTM NOT subset; don't know how to subset
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'MATH'
+INFO:fontTools.subset:MATH subsetted
+DEBUG:fontTools.ttLib.ttFont:Reading 'GDEF' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'GDEF' table
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'GDEF'
+INFO:fontTools.subset:GDEF subsetted
+INFO:fontTools.subset:name subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.002s to subset 'glyf'
+INFO:fontTools.subset:glyf subsetted
+DEBUG:fontTools.subset.timer:Took 0.000s to subset GlyphOrder
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'head'
+INFO:fontTools.subset:head pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'OS/2' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'OS/2' table
+INFO:fontTools.subset:OS/2 Unicode ranges pruned: [0, 69]
+INFO:fontTools.subset:OS/2 CodePage ranges pruned: [0]
+DEBUG:fontTools.subset.timer:Took 0.001s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'GDEF'
+INFO:fontTools.subset:GDEF pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'name' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'gasp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'FFTM' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'FFTM' table
+DEBUG:fontTools.subset.timer:Took 0.001s to prune 'name'
+INFO:fontTools.subset:name pruned
+DEBUG:fontTools.ttLib.ttFont:Compiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'glyf' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'maxp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'maxp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'loca' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'head' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'head' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hmtx' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hhea' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hhea' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'OS/2' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'OS/2' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'cmap' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'name' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'post' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'post' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'gasp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'FFTM' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'FFTM' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'GDEF' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'GDEF' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'MATH' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'MATH' table to disk
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:10:17] "GET /telecharger-pdf/1/ HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 672-584-208
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 672-584-208
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 672-584-208
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:26] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:27] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+WARNING:weasyprint:Ignored `height: 100vh` at 7:9, invalid value.
+DEBUG:fontTools.ttLib.ttFont:Reading 'maxp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'maxp' table
+DEBUG:fontTools.subset.timer:Took 0.001s to load 'maxp'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'maxp'
+INFO:fontTools.subset:maxp pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'cmap' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'post' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'post' table
+DEBUG:fontTools.subset.timer:Took 0.005s to load 'cmap'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'cmap'
+INFO:fontTools.subset:cmap pruned
+INFO:fontTools.subset:fpgm dropped
+INFO:fontTools.subset:prep dropped
+INFO:fontTools.subset:cvt  dropped
+INFO:fontTools.subset:kern dropped
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'post'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'post'
+INFO:fontTools.subset:post pruned
+INFO:fontTools.subset:GPOS dropped
+INFO:fontTools.subset:GSUB dropped
+DEBUG:fontTools.ttLib.ttFont:Reading 'glyf' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'loca' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'head' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'head' table
+DEBUG:fontTools.subset.timer:Took 0.004s to load 'glyf'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to close glyph list over 'cmap'
+INFO:fontTools.subset:Added gid0 to subset
+INFO:fontTools.subset:Closing glyph list over 'glyf': 18 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'C', 'M', 'N', 'P', 'R', 'V', 'a', 'b', 'eacute', 'g', 'l', 'm', 'n', 'o', 'r', 'slash', 'u']
+INFO:fontTools.subset:Glyph IDs:   [0, 18, 38, 48, 49, 51, 53, 57, 68, 69, 74, 79, 80, 81, 82, 85, 88, 171]
+INFO:fontTools.subset:Closed glyph list over 'glyf': 20 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'C', 'M', 'N', 'P', 'R', 'V', 'a', 'acute', 'b', 'e', 'eacute', 'g', 'l', 'm', 'n', 'o', 'r', 'slash', 'u']
+INFO:fontTools.subset:Glyph IDs:   [0, 18, 38, 48, 49, 51, 53, 57, 68, 69, 72, 74, 79, 80, 81, 82, 85, 88, 118, 171]
+DEBUG:fontTools.subset.timer:Took 0.001s to close glyph list over 'glyf'
+INFO:fontTools.subset:Retaining 20 glyphs
+INFO:fontTools.subset:head subsetting not needed
+INFO:fontTools.subset:hhea subsetting not needed
+INFO:fontTools.subset:maxp subsetting not needed
+INFO:fontTools.subset:OS/2 subsetting not needed
+DEBUG:fontTools.ttLib.ttFont:Reading 'hmtx' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'hhea' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hhea' table
+DEBUG:fontTools.subset.timer:Took 0.002s to subset 'hmtx'
+INFO:fontTools.subset:hmtx subsetted
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'cmap'
+INFO:fontTools.subset:cmap subsetted
+INFO:fontTools.subset:loca subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'post'
+INFO:fontTools.subset:post subsetted
+INFO:fontTools.subset:gasp subsetting not needed
+INFO:fontTools.subset:FFTM NOT subset; don't know how to subset
+DEBUG:fontTools.ttLib.ttFont:Reading 'GDEF' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'GDEF' table
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'GDEF'
+INFO:fontTools.subset:GDEF subsetted
+INFO:fontTools.subset:name subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'glyf'
+INFO:fontTools.subset:glyf subsetted
+DEBUG:fontTools.subset.timer:Took 0.000s to subset GlyphOrder
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'head'
+INFO:fontTools.subset:head pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'OS/2' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'OS/2' table
+INFO:fontTools.subset:OS/2 Unicode ranges pruned: [0, 1]
+INFO:fontTools.subset:OS/2 CodePage ranges pruned: [0]
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'GDEF'
+INFO:fontTools.subset:GDEF pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'name' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'gasp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'FFTM' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'FFTM' table
+DEBUG:fontTools.subset.timer:Took 0.001s to prune 'name'
+INFO:fontTools.subset:name pruned
+DEBUG:fontTools.ttLib.ttFont:Compiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'glyf' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'maxp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'maxp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'loca' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'head' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'head' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hmtx' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hhea' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hhea' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'OS/2' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'OS/2' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'cmap' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'name' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'post' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'post' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'gasp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'FFTM' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'FFTM' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'GDEF' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'GDEF' table to disk
+DEBUG:fontTools.ttLib.ttFont:Reading 'maxp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'maxp' table
+DEBUG:fontTools.subset.timer:Took 0.001s to load 'maxp'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'maxp'
+INFO:fontTools.subset:maxp pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'cmap' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'post' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'post' table
+DEBUG:fontTools.subset.timer:Took 0.005s to load 'cmap'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'cmap'
+INFO:fontTools.subset:cmap pruned
+INFO:fontTools.subset:fpgm dropped
+INFO:fontTools.subset:prep dropped
+INFO:fontTools.subset:cvt  dropped
+INFO:fontTools.subset:kern dropped
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'post'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'post'
+INFO:fontTools.subset:post pruned
+INFO:fontTools.subset:GPOS dropped
+INFO:fontTools.subset:GSUB dropped
+DEBUG:fontTools.ttLib.ttFont:Reading 'glyf' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'loca' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'head' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'head' table
+DEBUG:fontTools.subset.timer:Took 0.002s to load 'glyf'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to close glyph list over 'cmap'
+INFO:fontTools.subset:Added gid0 to subset
+INFO:fontTools.subset:Closing glyph list over 'MATH': 53 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.ttLib.ttFont:Reading 'MATH' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'MATH' table
+INFO:fontTools.subset:Closed glyph list over 'MATH': 53 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.subset.timer:Took 0.003s to close glyph list over 'MATH'
+INFO:fontTools.subset:Closing glyph list over 'glyf': 53 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+INFO:fontTools.subset:Closed glyph list over 'glyf': 53 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.subset.timer:Took 0.001s to close glyph list over 'glyf'
+INFO:fontTools.subset:Retaining 53 glyphs
+INFO:fontTools.subset:head subsetting not needed
+INFO:fontTools.subset:hhea subsetting not needed
+INFO:fontTools.subset:maxp subsetting not needed
+INFO:fontTools.subset:OS/2 subsetting not needed
+DEBUG:fontTools.ttLib.ttFont:Reading 'hmtx' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'hhea' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hhea' table
+DEBUG:fontTools.subset.timer:Took 0.002s to subset 'hmtx'
+INFO:fontTools.subset:hmtx subsetted
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'cmap'
+INFO:fontTools.subset:cmap subsetted
+INFO:fontTools.subset:loca subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'post'
+INFO:fontTools.subset:post subsetted
+INFO:fontTools.subset:gasp subsetting not needed
+INFO:fontTools.subset:FFTM NOT subset; don't know how to subset
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'MATH'
+INFO:fontTools.subset:MATH subsetted
+DEBUG:fontTools.ttLib.ttFont:Reading 'GDEF' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'GDEF' table
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'GDEF'
+INFO:fontTools.subset:GDEF subsetted
+INFO:fontTools.subset:name subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'glyf'
+INFO:fontTools.subset:glyf subsetted
+DEBUG:fontTools.subset.timer:Took 0.000s to subset GlyphOrder
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'head'
+INFO:fontTools.subset:head pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'OS/2' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'OS/2' table
+INFO:fontTools.subset:OS/2 Unicode ranges pruned: [0, 69]
+INFO:fontTools.subset:OS/2 CodePage ranges pruned: [0]
+DEBUG:fontTools.subset.timer:Took 0.001s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'GDEF'
+INFO:fontTools.subset:GDEF pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'name' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'gasp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'FFTM' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'FFTM' table
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'name'
+INFO:fontTools.subset:name pruned
+DEBUG:fontTools.ttLib.ttFont:Compiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'glyf' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'maxp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'maxp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'loca' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'head' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'head' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hmtx' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hhea' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hhea' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'OS/2' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'OS/2' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'cmap' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'name' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'post' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'post' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'gasp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'FFTM' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'FFTM' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'GDEF' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'GDEF' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'MATH' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'MATH' table to disk
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:29] "GET /telecharger-pdf/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:45] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:47] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+WARNING:weasyprint:Ignored `height: 100vh` at 7:9, invalid value.
+DEBUG:fontTools.ttLib.ttFont:Reading 'maxp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'maxp' table
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'maxp'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'maxp'
+INFO:fontTools.subset:maxp pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'cmap' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'post' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'post' table
+DEBUG:fontTools.subset.timer:Took 0.005s to load 'cmap'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'cmap'
+INFO:fontTools.subset:cmap pruned
+INFO:fontTools.subset:fpgm dropped
+INFO:fontTools.subset:prep dropped
+INFO:fontTools.subset:cvt  dropped
+INFO:fontTools.subset:kern dropped
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'post'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'post'
+INFO:fontTools.subset:post pruned
+INFO:fontTools.subset:GPOS dropped
+INFO:fontTools.subset:GSUB dropped
+DEBUG:fontTools.ttLib.ttFont:Reading 'glyf' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'loca' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'head' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'head' table
+DEBUG:fontTools.subset.timer:Took 0.004s to load 'glyf'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to close glyph list over 'cmap'
+INFO:fontTools.subset:Added gid0 to subset
+INFO:fontTools.subset:Closing glyph list over 'glyf': 18 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'C', 'M', 'N', 'P', 'R', 'V', 'a', 'b', 'eacute', 'g', 'l', 'm', 'n', 'o', 'r', 'slash', 'u']
+INFO:fontTools.subset:Glyph IDs:   [0, 18, 38, 48, 49, 51, 53, 57, 68, 69, 74, 79, 80, 81, 82, 85, 88, 171]
+INFO:fontTools.subset:Closed glyph list over 'glyf': 20 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'C', 'M', 'N', 'P', 'R', 'V', 'a', 'acute', 'b', 'e', 'eacute', 'g', 'l', 'm', 'n', 'o', 'r', 'slash', 'u']
+INFO:fontTools.subset:Glyph IDs:   [0, 18, 38, 48, 49, 51, 53, 57, 68, 69, 72, 74, 79, 80, 81, 82, 85, 88, 118, 171]
+DEBUG:fontTools.subset.timer:Took 0.002s to close glyph list over 'glyf'
+INFO:fontTools.subset:Retaining 20 glyphs
+INFO:fontTools.subset:head subsetting not needed
+INFO:fontTools.subset:hhea subsetting not needed
+INFO:fontTools.subset:maxp subsetting not needed
+INFO:fontTools.subset:OS/2 subsetting not needed
+DEBUG:fontTools.ttLib.ttFont:Reading 'hmtx' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'hhea' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hhea' table
+DEBUG:fontTools.subset.timer:Took 0.002s to subset 'hmtx'
+INFO:fontTools.subset:hmtx subsetted
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'cmap'
+INFO:fontTools.subset:cmap subsetted
+INFO:fontTools.subset:loca subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'post'
+INFO:fontTools.subset:post subsetted
+INFO:fontTools.subset:gasp subsetting not needed
+INFO:fontTools.subset:FFTM NOT subset; don't know how to subset
+DEBUG:fontTools.ttLib.ttFont:Reading 'GDEF' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'GDEF' table
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'GDEF'
+INFO:fontTools.subset:GDEF subsetted
+INFO:fontTools.subset:name subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'glyf'
+INFO:fontTools.subset:glyf subsetted
+DEBUG:fontTools.subset.timer:Took 0.000s to subset GlyphOrder
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'head'
+INFO:fontTools.subset:head pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'OS/2' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'OS/2' table
+INFO:fontTools.subset:OS/2 Unicode ranges pruned: [0, 1]
+INFO:fontTools.subset:OS/2 CodePage ranges pruned: [0]
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'GDEF'
+INFO:fontTools.subset:GDEF pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'name' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'gasp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'FFTM' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'FFTM' table
+DEBUG:fontTools.subset.timer:Took 0.001s to prune 'name'
+INFO:fontTools.subset:name pruned
+DEBUG:fontTools.ttLib.ttFont:Compiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'glyf' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'maxp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'maxp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'loca' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'head' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'head' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hmtx' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hhea' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hhea' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'OS/2' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'OS/2' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'cmap' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'name' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'post' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'post' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'gasp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'FFTM' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'FFTM' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'GDEF' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'GDEF' table to disk
+DEBUG:fontTools.ttLib.ttFont:Reading 'maxp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'maxp' table
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'maxp'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'maxp'
+INFO:fontTools.subset:maxp pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'cmap' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'post' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'post' table
+DEBUG:fontTools.subset.timer:Took 0.005s to load 'cmap'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'cmap'
+INFO:fontTools.subset:cmap pruned
+INFO:fontTools.subset:fpgm dropped
+INFO:fontTools.subset:prep dropped
+INFO:fontTools.subset:cvt  dropped
+INFO:fontTools.subset:kern dropped
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'post'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'post'
+INFO:fontTools.subset:post pruned
+INFO:fontTools.subset:GPOS dropped
+INFO:fontTools.subset:GSUB dropped
+DEBUG:fontTools.ttLib.ttFont:Reading 'glyf' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'loca' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'head' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'head' table
+DEBUG:fontTools.subset.timer:Took 0.003s to load 'glyf'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to close glyph list over 'cmap'
+INFO:fontTools.subset:Added gid0 to subset
+INFO:fontTools.subset:Closing glyph list over 'MATH': 53 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.ttLib.ttFont:Reading 'MATH' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'MATH' table
+INFO:fontTools.subset:Closed glyph list over 'MATH': 53 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.subset.timer:Took 0.003s to close glyph list over 'MATH'
+INFO:fontTools.subset:Closing glyph list over 'glyf': 53 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+INFO:fontTools.subset:Closed glyph list over 'glyf': 53 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.subset.timer:Took 0.001s to close glyph list over 'glyf'
+INFO:fontTools.subset:Retaining 53 glyphs
+INFO:fontTools.subset:head subsetting not needed
+INFO:fontTools.subset:hhea subsetting not needed
+INFO:fontTools.subset:maxp subsetting not needed
+INFO:fontTools.subset:OS/2 subsetting not needed
+DEBUG:fontTools.ttLib.ttFont:Reading 'hmtx' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'hhea' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hhea' table
+DEBUG:fontTools.subset.timer:Took 0.002s to subset 'hmtx'
+INFO:fontTools.subset:hmtx subsetted
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'cmap'
+INFO:fontTools.subset:cmap subsetted
+INFO:fontTools.subset:loca subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'post'
+INFO:fontTools.subset:post subsetted
+INFO:fontTools.subset:gasp subsetting not needed
+INFO:fontTools.subset:FFTM NOT subset; don't know how to subset
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'MATH'
+INFO:fontTools.subset:MATH subsetted
+DEBUG:fontTools.ttLib.ttFont:Reading 'GDEF' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'GDEF' table
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'GDEF'
+INFO:fontTools.subset:GDEF subsetted
+INFO:fontTools.subset:name subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'glyf'
+INFO:fontTools.subset:glyf subsetted
+DEBUG:fontTools.subset.timer:Took 0.000s to subset GlyphOrder
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'head'
+INFO:fontTools.subset:head pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'OS/2' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'OS/2' table
+INFO:fontTools.subset:OS/2 Unicode ranges pruned: [0, 69]
+INFO:fontTools.subset:OS/2 CodePage ranges pruned: [0]
+DEBUG:fontTools.subset.timer:Took 0.001s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'GDEF'
+INFO:fontTools.subset:GDEF pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'name' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'gasp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'FFTM' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'FFTM' table
+DEBUG:fontTools.subset.timer:Took 0.002s to prune 'name'
+INFO:fontTools.subset:name pruned
+DEBUG:fontTools.ttLib.ttFont:Compiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'glyf' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'maxp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'maxp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'loca' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'head' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'head' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hmtx' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hhea' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hhea' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'OS/2' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'OS/2' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'cmap' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'name' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'post' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'post' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'gasp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'FFTM' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'FFTM' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'GDEF' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'GDEF' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'MATH' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'MATH' table to disk
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:17:48] "GET /telecharger-pdf/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:12] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:18:13] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "GET /static/Affichage-score.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:47] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "GET /static/Affichage-score.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:19:56] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:14] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:21:15] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:19] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:20] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:20] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:22:20] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "GET /home/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:56] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "GET /adherent/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "GET /static/img/search.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:23:59] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/variables.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/progress-bar.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/form-edit-user.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/adherent.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/home.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/gestion_poules.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/ajout-comp.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/ajout_adherent.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/popup_addLieu.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/popup_reset_password.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/responsive-creer-comp.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:55] "GET /static/Affichage-score.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:56] "GET /static/js/script_popup.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:56] "GET /bootstrap/static/jquery.min.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:56] "GET /bootstrap/static/umd/popper.min.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:56] "GET /bootstrap/static/js/bootstrap.min.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:56] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:56] "GET /static/img/logo.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:56] "GET /static/img/Vector.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:44:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "GET /static/Affichage-score.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:46:57] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:26] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 672-584-208
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 672-584-208
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "GET /afficher-score-poule/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/Affichage-score.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[33mGET /afficher-score-poule/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:52] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+ERROR:weasyprint:Relative URI reference without a base URI: <link href="/static/Affichage-score.css">
+DEBUG:fontTools.ttLib.ttFont:Reading 'maxp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'maxp' table
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'maxp'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'maxp'
+INFO:fontTools.subset:maxp pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'cmap' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'post' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'post' table
+DEBUG:fontTools.subset.timer:Took 0.004s to load 'cmap'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'cmap'
+INFO:fontTools.subset:cmap pruned
+INFO:fontTools.subset:fpgm dropped
+INFO:fontTools.subset:prep dropped
+INFO:fontTools.subset:cvt  dropped
+INFO:fontTools.subset:kern dropped
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'post'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'post'
+INFO:fontTools.subset:post pruned
+INFO:fontTools.subset:GPOS dropped
+INFO:fontTools.subset:GSUB dropped
+DEBUG:fontTools.ttLib.ttFont:Reading 'glyf' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'loca' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'head' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'head' table
+DEBUG:fontTools.subset.timer:Took 0.004s to load 'glyf'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to close glyph list over 'cmap'
+INFO:fontTools.subset:Added gid0 to subset
+INFO:fontTools.subset:Closing glyph list over 'glyf': 18 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'C', 'M', 'N', 'P', 'R', 'V', 'a', 'b', 'eacute', 'g', 'l', 'm', 'n', 'o', 'r', 'slash', 'u']
+INFO:fontTools.subset:Glyph IDs:   [0, 18, 38, 48, 49, 51, 53, 57, 68, 69, 74, 79, 80, 81, 82, 85, 88, 171]
+INFO:fontTools.subset:Closed glyph list over 'glyf': 20 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'C', 'M', 'N', 'P', 'R', 'V', 'a', 'acute', 'b', 'e', 'eacute', 'g', 'l', 'm', 'n', 'o', 'r', 'slash', 'u']
+INFO:fontTools.subset:Glyph IDs:   [0, 18, 38, 48, 49, 51, 53, 57, 68, 69, 72, 74, 79, 80, 81, 82, 85, 88, 118, 171]
+DEBUG:fontTools.subset.timer:Took 0.001s to close glyph list over 'glyf'
+INFO:fontTools.subset:Retaining 20 glyphs
+INFO:fontTools.subset:head subsetting not needed
+INFO:fontTools.subset:hhea subsetting not needed
+INFO:fontTools.subset:maxp subsetting not needed
+INFO:fontTools.subset:OS/2 subsetting not needed
+DEBUG:fontTools.ttLib.ttFont:Reading 'hmtx' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'hhea' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hhea' table
+DEBUG:fontTools.subset.timer:Took 0.002s to subset 'hmtx'
+INFO:fontTools.subset:hmtx subsetted
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'cmap'
+INFO:fontTools.subset:cmap subsetted
+INFO:fontTools.subset:loca subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'post'
+INFO:fontTools.subset:post subsetted
+INFO:fontTools.subset:gasp subsetting not needed
+INFO:fontTools.subset:FFTM NOT subset; don't know how to subset
+DEBUG:fontTools.ttLib.ttFont:Reading 'GDEF' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'GDEF' table
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'GDEF'
+INFO:fontTools.subset:GDEF subsetted
+INFO:fontTools.subset:name subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'glyf'
+INFO:fontTools.subset:glyf subsetted
+DEBUG:fontTools.subset.timer:Took 0.000s to subset GlyphOrder
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'head'
+INFO:fontTools.subset:head pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'OS/2' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'OS/2' table
+INFO:fontTools.subset:OS/2 Unicode ranges pruned: [0, 1]
+INFO:fontTools.subset:OS/2 CodePage ranges pruned: [0]
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'GDEF'
+INFO:fontTools.subset:GDEF pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'name' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'gasp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'FFTM' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'FFTM' table
+DEBUG:fontTools.subset.timer:Took 0.002s to prune 'name'
+INFO:fontTools.subset:name pruned
+DEBUG:fontTools.ttLib.ttFont:Compiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'glyf' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'maxp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'maxp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'loca' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'head' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'head' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hmtx' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hhea' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hhea' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'OS/2' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'OS/2' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'cmap' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'name' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'post' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'post' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'gasp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'FFTM' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'FFTM' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'GDEF' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'GDEF' table to disk
+DEBUG:fontTools.ttLib.ttFont:Reading 'maxp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'maxp' table
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'maxp'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'maxp'
+INFO:fontTools.subset:maxp pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'cmap' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'post' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'post' table
+DEBUG:fontTools.subset.timer:Took 0.005s to load 'cmap'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'cmap'
+INFO:fontTools.subset:cmap pruned
+INFO:fontTools.subset:fpgm dropped
+INFO:fontTools.subset:prep dropped
+INFO:fontTools.subset:cvt  dropped
+INFO:fontTools.subset:kern dropped
+DEBUG:fontTools.subset.timer:Took 0.000s to load 'post'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'post'
+INFO:fontTools.subset:post pruned
+INFO:fontTools.subset:GPOS dropped
+INFO:fontTools.subset:GSUB dropped
+DEBUG:fontTools.ttLib.ttFont:Reading 'glyf' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'loca' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'head' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'head' table
+DEBUG:fontTools.subset.timer:Took 0.003s to load 'glyf'
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to close glyph list over 'cmap'
+INFO:fontTools.subset:Added gid0 to subset
+INFO:fontTools.subset:Closing glyph list over 'MATH': 55 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.ttLib.ttFont:Reading 'MATH' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'MATH' table
+INFO:fontTools.subset:Closed glyph list over 'MATH': 55 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.subset.timer:Took 0.003s to close glyph list over 'MATH'
+INFO:fontTools.subset:Closing glyph list over 'glyf': 55 glyphs before
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+INFO:fontTools.subset:Closed glyph list over 'glyf': 55 glyphs after
+INFO:fontTools.subset:Glyph names: ['.notdef', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'eight', 'five', 'four', 'g', 'h', 'i', 'l', 'n', 'nine', 'o', 'one', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'uniFFFD', 'x', 'y', 'zero']
+INFO:fontTools.subset:Glyph IDs:   [0, 3, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 59, 60, 61, 68, 69, 70, 71, 72, 74, 75, 76, 79, 81, 82, 85, 86, 87, 88, 91, 92, 3341]
+DEBUG:fontTools.subset.timer:Took 0.001s to close glyph list over 'glyf'
+INFO:fontTools.subset:Retaining 55 glyphs
+INFO:fontTools.subset:head subsetting not needed
+INFO:fontTools.subset:hhea subsetting not needed
+INFO:fontTools.subset:maxp subsetting not needed
+INFO:fontTools.subset:OS/2 subsetting not needed
+DEBUG:fontTools.ttLib.ttFont:Reading 'hmtx' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'hhea' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'hhea' table
+DEBUG:fontTools.subset.timer:Took 0.002s to subset 'hmtx'
+INFO:fontTools.subset:hmtx subsetted
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'cmap'
+INFO:fontTools.subset:cmap subsetted
+INFO:fontTools.subset:loca subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'post'
+INFO:fontTools.subset:post subsetted
+INFO:fontTools.subset:gasp subsetting not needed
+INFO:fontTools.subset:FFTM NOT subset; don't know how to subset
+DEBUG:fontTools.subset.timer:Took 0.000s to subset 'MATH'
+INFO:fontTools.subset:MATH subsetted
+DEBUG:fontTools.ttLib.ttFont:Reading 'GDEF' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'GDEF' table
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'GDEF'
+INFO:fontTools.subset:GDEF subsetted
+INFO:fontTools.subset:name subsetting not needed
+DEBUG:fontTools.subset.timer:Took 0.001s to subset 'glyf'
+INFO:fontTools.subset:glyf subsetted
+DEBUG:fontTools.subset.timer:Took 0.000s to subset GlyphOrder
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'head'
+INFO:fontTools.subset:head pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'OS/2' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'OS/2' table
+INFO:fontTools.subset:OS/2 Unicode ranges pruned: [0, 69]
+INFO:fontTools.subset:OS/2 CodePage ranges pruned: [0]
+DEBUG:fontTools.subset.timer:Took 0.001s to prune 'glyf'
+INFO:fontTools.subset:glyf pruned
+DEBUG:fontTools.subset.timer:Took 0.000s to prune 'GDEF'
+INFO:fontTools.subset:GDEF pruned
+DEBUG:fontTools.ttLib.ttFont:Reading 'name' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'gasp' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Reading 'FFTM' table from disk
+DEBUG:fontTools.ttLib.ttFont:Decompiling 'FFTM' table
+DEBUG:fontTools.subset.timer:Took 0.001s to prune 'name'
+INFO:fontTools.subset:name pruned
+DEBUG:fontTools.ttLib.ttFont:Compiling 'glyf' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'glyf' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'maxp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'maxp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'loca' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'loca' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'head' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'head' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hmtx' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hmtx' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'hhea' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'hhea' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'OS/2' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'OS/2' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'cmap' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'cmap' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'name' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'name' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'post' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'post' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'gasp' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'gasp' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'FFTM' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'FFTM' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'GDEF' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'GDEF' table to disk
+DEBUG:fontTools.ttLib.ttFont:Compiling 'MATH' table
+DEBUG:fontTools.ttLib.ttFont:Writing 'MATH' table to disk
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 17:47:53] "GET /telecharger-pdf/1/ HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 672-584-208
