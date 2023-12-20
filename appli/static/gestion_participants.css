@@ -190,42 +190,7 @@
   justify-content: space-between;
 }
 
-#submenu {
-  position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-height: 300px;
-  overflow-y: auto;
-  width: 400px;
-  border-radius: 8px;
-}
-
-#escrimeurs-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#escrimeurs-list div {
-  padding: 8px;
-  cursor: pointer;
-  border-bottom: 1px solid #eee;
-  padding: 10px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-#escrimeurs-list div:hover {
-  background-color: #eee; 
-  color: #333; 
-}
-
-#escrimeurs-list div {
-  padding: 8px;
-}
-
-
+  
 #search {
   width: 100%;
   height: 50px; 
@@ -253,4 +218,69 @@
   border-radius: 5px;
   opacity: 1;
   transition: opacity 2s;
+}
+
+
+.submenu {
+  position: absolute;
+  z-index: 100; 
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto; 
+  width: 400px; 
+  border-radius: 8px;
+  display: none; 
+}
+
+.submenu div:hover {
+  background-color: #f2f2f2; 
+}
+
+.escrimeurs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.escrimeurs-list div{
+  padding: 8px;
+}
+
+.gestion-participants-list{
+  width: 400px;
+
+}
+
+.escrimeblois,
+.escrime-other,
+.escrime-arb {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc; 
+  padding-bottom: 20px;
+}
+
+.container-section-participants section:last-of-type {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.search {
+  width: 100%; 
+  font-size: 16px; 
+  padding: 10px 0;
+  border: 1px solid #ddd; 
+  margin-bottom: 12px; 
+  border-radius: 4px;
+}
+
+.search:focus {
+  background-color: #f7f7f7e1;
+}
+
+.nullparticipant{
+
+  margin-left: 50px;
 }

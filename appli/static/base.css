@@ -135,3 +135,7 @@ p {
     text-decoration: none;
   }
   
+
+  .login-btn, .logout-btn{
+    background-color: var(--bouton-confirmation-validation);
+  }

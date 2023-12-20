@@ -68,6 +68,30 @@ def gestion_score():
     # Rendre le modèle HTML avec Flask
     return render_template('Score.html', table_data=table_data, rows_data=rows_data, rows=rows, cols=cols)
 
+@app.route("/afficher-score-poule/")
+def afficher_score_poule():
+    data = [
+        {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A', 'Classement': '1', 'VM': '1.00'},
+        {'Nom': 'Smith', 'Prenom': 'Alice', 'Club': 'Club B', 'Classement': '2', 'VM': '0.75'},
+        {'Nom': 'Johnson', 'Prenom': 'Bob', 'Club': 'Club C', 'Classement': '3', 'VM': '0.50'},
+        {'Nom': 'Williams', 'Prenom': 'Emma', 'Club': 'Club D', 'Classement': '4', 'VM': '0.25'},
+        {'Nom': 'Brown', 'Prenom': 'Charlie', 'Club': 'Club E', 'Classement': '5', 'VM': '0.90'},
+        {'Nom': 'Miller', 'Prenom': 'David', 'Club': 'Club F', 'Classement': '6', 'VM': '0.60'},
+        {'Nom': 'Taylor', 'Prenom': 'Eva', 'Club': 'Club G', 'Classement': '7', 'VM': '0.85'},
+        {'Nom': 'Anderson', 'Prenom': 'Frank', 'Club': 'Club H', 'Classement': '8', 'VM': '0.70'},
+        {'Nom': 'Harris', 'Prenom': 'Grace', 'Club': 'Club I', 'Classement': '9', 'VM': '0.45'},
+        {'Nom': 'Martin', 'Prenom': 'Henry', 'Club': 'Club J', 'Classement': '10', 'VM': '0.55'},
+        {'Nom': 'Moore', 'Prenom': 'Ivy', 'Club': 'Club K', 'Classement': '11', 'VM': '0.80'},
+        {'Nom': 'White', 'Prenom': 'Jack', 'Club': 'Club L', 'Classement': '12', 'VM': '0.35'},
+        {'Nom': 'Clark', 'Prenom': 'Karen', 'Club': 'Club M', 'Classement': '13', 'VM': '0.92'},
+        {'Nom': 'Lewis', 'Prenom': 'Liam', 'Club': 'Club N', 'Classement': '14', 'VM': '0.68'},
+        {'Nom': 'Walker', 'Prenom': 'Olivia', 'Club': 'Club O', 'Classement': '15', 'VM': '0.40'},
+        {'Nom': 'Young', 'Prenom': 'Paul', 'Club': 'Club P', 'Classement': '16', 'VM': '0.78'},
+        {'Nom': 'Hall', 'Prenom': 'Quinn', 'Club': 'Club Q', 'Classement': '17', 'VM': '0.53'},
+        {'Nom': 'Adams', 'Prenom': 'Riley', 'Club': 'Club R', 'Classement': '18', 'VM': '0.65'},
+    ]
+    return render_template('Affichage-score.html', data=data)
+
 @app.route("/inscription-form/")
 def inscription_page():
     return render_template("Inscription.html", form = InscriptionForm())
@@ -431,20 +455,13 @@ def ajout_comp():
     dateComp = request.form.get('date-deroulement')
     heureComp = request.form.get('appt')
     sexeComp = request.form.get('sexe')[:1].upper()
-    estIndividuelle = request.form.get('type-comp') == 'Individuelle'
+    estIndividuelle = request.form.get('type') == 'Individuelle'
     print(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, nomOrga, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
 
-
-    # Appeler la fonction pour créer la compétition
     resultat = creer_competition(nomLieu,adresseLieu,villeLieu,cpLieu, nomSaison, nomCat, nomArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle)
-    print(resultat)
-    # Gérer le résultat (par exemple, afficher un message à l'utilisateur)
-    if 'succès' in resultat:
-        # Redirige vers une page de confirmation ou la liste des compétitions
-        return redirect(url_for('home_default'))
+    if isinstance(resultat, Competition):
+        return redirect(url_for('gestion_participants', id_comp=resultat.idComp))
     else:
-        # Gérer l'erreur (par exemple, afficher un message d'erreur sur la page actuelle)
-        flash(resultat, 'error')
         return redirect(url_for('ajout_comp_page'))
 
 # @app.route('/annuler_comp', methods=['POST'])
@@ -474,10 +491,12 @@ def ajout_comp():
 @app.route("/gestion_participants/<int:id_comp>", methods=("GET", "POST"))
 def gestion_participants(id_comp):
     competition = Competition.query.get(id_comp)
-    participants_blois = get_participants(id_comp, club="ClubBlois")
+    participants_blois = get_participants(id_comp, club="BLOIS CE")
     participants_other = get_participants(id_comp, club="!")
+    participants_arb = get_arbitres(id_comp)
     nb_participants_blois = len(participants_blois)
     nb_participants_other = len(participants_other)
+    nb_participants_arb = len(participants_arb)
     
     return render_template(
       "gestion-participants.html",
@@ -486,9 +505,44 @@ def gestion_participants(id_comp):
       nb_participants_blois=nb_participants_blois,
       participants_other=participants_other,
       nb_participants_other=nb_participants_other,
-      competition=competition
+      competition=competition,
+      participants_arb=participants_arb,
+      nb_participants_arb=nb_participants_arb
   )
-    
+
+@app.route('/ajouter_arbitre_competition/<int:id_comp>', methods=['POST'])
+def ajouter_arbitre_competition(id_comp):
+        data = request.get_json()
+        numeroLicenceE = data.get('numeroLicenceE')
+        logging.debug(numeroLicenceE)
+        arbitre = Arbitre(numeroLicenceE)
+        db.session.add(arbitre)
+        participant = ParticipantsCompetition(numeroLicenceE, id_comp)
+        db.session.add(participant)
+
+        db.session.commit()
+        logging.debug("ça passe commit participant compet")
+
+        return jsonify({'success': True, 'message': 'Arbitre ajouté avec succès'})
+
+@app.route('/get_escrimeurs/<gender>')
+def get_escrimeurs_json(gender):
+    escrimeurs = None
+    if gender == 'M': 
+        escrimeurs = Escrimeur.query.all()
+    elif gender == "H":
+        gender = "Homme"
+        escrimeurs = Escrimeur.query.filter_by(sexeE=gender).all()
+    elif gender == "F":
+        gender = "Femme"
+        escrimeurs = Escrimeur.query.filter_by(sexeE=gender).all()
+    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
+
+@app.route('/get_adherents')
+def get_adherents_json():
+    escrimeurs = get_adherents_adapte_json()
+    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
+
 
 @app.route('/delete_participant/<int:id_comp>/<int:id>/', methods=['POST'])
 def delete_participant(id, id_comp):
@@ -532,11 +586,6 @@ def add_participant(id_comp):
             logging.debug('Failed to add participant')
     return redirect(url_for('gestion_participants', id_comp=id_comp))
 
-@app.route('/get_escrimeurs')
-def get_escrimeurs():
-    escrimeurs = Escrimeur.query.limit(50).all()
-    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
-
 @app.route('/update_database', methods=['POST'])
 def update_database():
     data = request.get_json()
@@ -548,4 +597,17 @@ def update_database():
     db.session.commit()
     return 'OK'
 
-
+@app.route('/competition/<int:id_comp>')
+def actu_stat_comp(id_comp):
+    competition = Competition.query.get_or_404(id_comp)
+    state = get_competition_statut(competition)
+    if state == 'participants':
+        return redirect(url_for('gestion_participants', id_comp=id_comp))
+    elif state == 'poule':
+        return redirect(url_for('gestion_poules', id_comp=id_comp))
+    elif state == 'appel':
+        return redirect(url_for('appel', id_comp=id_comp))
+    elif state == 'score':
+        return redirect(url_for('gestion_score', id_comp=id_comp))
+    else:
+        return "les problèmes"

@@ -3,100 +3,100 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='ajout-comp.css')}}" />
 <link rel="stylesheet" href="{{ url_for ('static', filename='responsive-creer-comp.css') }}">
 {% include 'progress-bar.html' %}
-  <form method='POST'>
-    {{ form.hidden_tag() }}
-    <div class="center">
-      <div class="left-form">
-        <div class="test">
-          <div class="titre-formulaire">
-            <h2>DONNÉES TECHNIQUES</h2>
-          </div>
-          <div class="partie-input">
-            <div class="label-input">
-              <label for="title">Titre</label>
-              <input type="text" id="titre" name="titre" maxlength="12" required />
-            </div>
-            <div class="label-input">
-              <label for="title">Organisateur</label>
-              <input type="text" id="Organisateur" name="organisateur" maxlength="12" required />
-            </div>
-            <div class="combox-box comb-lieu">
-              <label for="lieu">Lieu</label>
-              <button id="openModalButton" type="button">Ajouter un Lieu</button>
-              <div class="boxLieu">
-                <span id="lieuInfo"></span> <!-- Élément pour les informations du lieu -->
-                <!-- Champs cachés pour les informations du lieu -->
-                <input type="hidden" id="hiddenNomLieu" name="nomLieu" value="">
-                <input type="hidden" id="hiddenAdresseLieu" name="adresseLieu" value="">
-                <input type="hidden" id="hiddenVilleLieu" name="villeLieu" value="">
-                <input type="hidden" id="hiddenCodePostalLieu" name="codePostalLieu" value="">
-                <i id="editLieuIcon" class="fa fa-edit" style="cursor:pointer; display:none;"></i> <!-- Icône de modification -->
-              </div>
-              {% include 'popup_addLieu.html' %}
-            <div class="label-input">
-              <label for="title">Date déroulement</label>
-              <input type="date" id="deroulement" name="date-deroulement" value="2023-11-16" min="2023-11-16" />
-            </div>
-            <div class="label-input">
-              <label for="appt">Heure début</label>
-              <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
-            </div>
-          </div>
+<form action="{{ url_for('ajout_comp') }}" method="post">
+  <div class="center">
+    <div class="left-form">
+      <div class="test">
+        <div class="titre-formulaire">
+          <h2>DONNÉES TECHNIQUES</h2>
         </div>
-        <div class="bouton-annuler">
-          <!-- <form action="{{ url_for('annuler_comp') }}" method="post">
-            <button class="btn-annuler" type="submit">ANNULER</button>
-          </form> -->
+        <div class="partie-input">
+          <div class="label-input">
+            <label for="title">Titre</label>
+            <input type="text" id="titre" name="titre" maxlength="12" required />
+          </div>
+          <div class="label-input">
+            <label for="title">Organisateur</label>
+            <input type="text" id="Organisateur" name="organisateur" maxlength="12" required />
+          </div>
+          <div class="label-input">
+            <label for="lieu">Lieu</label>
+            <button id="openModalButton" type="button">Ajouter un Lieu</button>
+            <div class="boxLieu">
+              <span id="lieuInfo"></span> <!-- Élément pour les informations du lieu -->
+              <!-- Champs cachés pour les informations du lieu -->
+              <input type="hidden" id="hiddenNomLieu" name="nomLieu" value="">
+              <input type="hidden" id="hiddenAdresseLieu" name="adresseLieu" value="">
+              <input type="hidden" id="hiddenVilleLieu" name="villeLieu" value="">
+              <input type="hidden" id="hiddenCodePostalLieu" name="codePostalLieu" value="">
+              <i id="editLieuIcon" class="fa fa-edit" style="cursor:pointer; display:none;"></i>
+              <!-- Icône de modification -->
+            </div>
+            {% include 'popup_addLieu.html' %}
+          </div>
+          <div class="label-input">
+            <label for="title">Date déroulement</label>
+            <input type="date" id="deroulement" name="date-deroulement" value="2023-11-16" min="2023-11-16" />
+          </div>
+          <div class="label-input">
+            <label for="appt">Heure début</label>
+            <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
+          </div>
         </div>
       </div>
-      <div class="right-form">
-        <div class="test">
-          <div class="titre-formulaire">
-            <h2>STANDARD</h2>
-          </div>
-          <div class="partie-input-droite">
-            <div class="combox-box comb-arme">
-              <label for="arme">Arme</label>
-              <select name="arme" id="arme">
-                {% for arme in listeArmes %}
-                  <option value="{{ arme }}">{{ arme }}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="combox-box comb-arme">
-              <label for="sexe">Sexe</label>
-              <select name="sexe" id="sexe">
-                <option value="homme">Homme</option>
-                <option value="femme">Femme</option>
-              </select>
-            </div>
-            <div class="combox-box comb-cate">
-              <label for="categorie">Catégorie</label>
-              <select name="categorie" id="sexe">
-                {% for categorie in listeCategories %}
-                  <option value="{{ categorie }}">{{ categorie }}</option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="combox-box comb-type">
-              <label for="type">Type</label>
-              <select name="type" id="type">
-                {% for typeM in listeTypeMatch %}
-                  <option value="{{ typeM }}">{{ typeM }}</option>
-                {% endfor %}
-              </select>
-            </div>
-            
-          </div>
-        </div>
-        <div class="bouton-publier">
-          <button class="btn-publier" type="submit">Publier le tournoi</button>
-        </div>
+      <div class="bouton-annuler">
+        <form action="{{ url_for('annuler_comp') }}" method="post">
+          <button class="btn-annuler" type="submit">ANNULER</button>
+        </form>
       </div>
     </div>
-  </form>
-  {% block scripts %}
-  <script src="{{ url_for('static', filename='js/popup_addLieu.js') }}"></script>
-  {% endblock scripts %}
-{% endblock %}
+    <div class="right-form">
+      <div class="test">
+        <div class="titre-formulaire">
+          <h2>STANDARD</h2>
+        </div>
+        <div class="partie-input-droite">
+          <div class="combox-box comb-arme">
+            <label for="arme">Arme</label>
+            <select name="arme" id="arme">
+              {% for arme in listeArmes %}
+              <option value="{{ arme }}">{{ arme }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="combox-box comb-sexe">
+            <label for="sexe">Sexe</label>
+            <select name="sexe" id="sexe">
+              <option value="homme">Homme</option>
+              <option value="femme">Femme</option>
+            </select>
+          </div>
+          <div class="combox-box comb-cate">
+            <label for="categorie">Catégorie</label>
+            <select name="categorie" id="sexe">
+              {% for categorie in listeCategories %}
+              <option value="{{ categorie }}">{{ categorie }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="combox-box comb-type">
+            <label for="type">Type</label>
+            <select name="type" id="type">
+              {% for typeM in listeTypeMatch %}
+              <option value="{{ typeM }}">{{ typeM }}</option>
+              {% endfor %}
+            </select>
+          </div>
 
+        </div>
+      </div>
+      <div class="bouton-publier">
+        <button class="btn-publier" type="submit">Publier le tournoi</button>
+      </div>
+    </div>
+  </div>
+</form>
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/popup_addLieu.js') }}"></script>
+{% endblock scripts %}
+{% endblock %}
