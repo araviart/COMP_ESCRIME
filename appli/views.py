@@ -66,7 +66,30 @@ def gestion_score():
     # Rendre le modèle HTML avec Flask
     return render_template('Score.html', table_data=table_data, rows_data=rows_data, rows=rows, cols=cols)
 
+@app.route("/afficher-score-poule/")
+def afficher_score_poule():
+    data = [
+        {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A', 'Classement': '1', 'VM': '1.00'},
+        {'Nom': 'Smith', 'Prenom': 'Alice', 'Club': 'Club B', 'Classement': '2', 'VM': '0.75'},
+        {'Nom': 'Johnson', 'Prenom': 'Bob', 'Club': 'Club C', 'Classement': '3', 'VM': '0.50'},
+        {'Nom': 'Williams', 'Prenom': 'Emma', 'Club': 'Club D', 'Classement': '4', 'VM': '0.25'},
+        {'Nom': 'Brown', 'Prenom': 'Charlie', 'Club': 'Club E', 'Classement': '5', 'VM': '0.90'},
+        {'Nom': 'Miller', 'Prenom': 'David', 'Club': 'Club F', 'Classement': '6', 'VM': '0.60'},
+        {'Nom': 'Taylor', 'Prenom': 'Eva', 'Club': 'Club G', 'Classement': '7', 'VM': '0.85'},
+        {'Nom': 'Anderson', 'Prenom': 'Frank', 'Club': 'Club H', 'Classement': '8', 'VM': '0.70'},
+        {'Nom': 'Harris', 'Prenom': 'Grace', 'Club': 'Club I', 'Classement': '9', 'VM': '0.45'},
+        {'Nom': 'Martin', 'Prenom': 'Henry', 'Club': 'Club J', 'Classement': '10', 'VM': '0.55'},
+        {'Nom': 'Moore', 'Prenom': 'Ivy', 'Club': 'Club K', 'Classement': '11', 'VM': '0.80'},
+        {'Nom': 'White', 'Prenom': 'Jack', 'Club': 'Club L', 'Classement': '12', 'VM': '0.35'},
+        {'Nom': 'Clark', 'Prenom': 'Karen', 'Club': 'Club M', 'Classement': '13', 'VM': '0.92'},
+        {'Nom': 'Lewis', 'Prenom': 'Liam', 'Club': 'Club N', 'Classement': '14', 'VM': '0.68'},
+        {'Nom': 'Walker', 'Prenom': 'Olivia', 'Club': 'Club O', 'Classement': '15', 'VM': '0.40'},
+        {'Nom': 'Young', 'Prenom': 'Paul', 'Club': 'Club P', 'Classement': '16', 'VM': '0.78'},
+        {'Nom': 'Hall', 'Prenom': 'Quinn', 'Club': 'Club Q', 'Classement': '17', 'VM': '0.53'},
+        {'Nom': 'Adams', 'Prenom': 'Riley', 'Club': 'Club R', 'Classement': '18', 'VM': '0.65'},
+    ]
 
+    return render_template('Affichage-score.html', data=data)
 
 @app.route("/appel/")
 def appel():
