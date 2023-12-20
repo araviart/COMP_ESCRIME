@@ -11,6 +11,8 @@ from wtforms import StringField, PasswordField
 from hashlib import sha256
 from flask_login import login_user, logout_user, current_user
 from flask_mail import Message
+from flask import make_response
+from weasyprint import HTML
 
 def send_verification_email(user_email, code):
     with app.app_context():
@@ -73,31 +75,67 @@ def gestion_score():
     # Rendre le modèle HTML avec Flask
     return render_template('Score.html', table_data=table_data, rows_data=rows_data, rows=rows, cols=cols)
 
-@app.route("/afficher-score-poule/")
-def afficher_score_poule():
-    data = [
-        {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A', 'Classement': '1', 'VM': '1.00'},
-        {'Nom': 'Smith', 'Prenom': 'Alice', 'Club': 'Club B', 'Classement': '2', 'VM': '0.75'},
-        {'Nom': 'Johnson', 'Prenom': 'Bob', 'Club': 'Club C', 'Classement': '3', 'VM': '0.50'},
-        {'Nom': 'Williams', 'Prenom': 'Emma', 'Club': 'Club D', 'Classement': '4', 'VM': '0.25'},
-        {'Nom': 'Brown', 'Prenom': 'Charlie', 'Club': 'Club E', 'Classement': '5', 'VM': '0.90'},
-        {'Nom': 'Miller', 'Prenom': 'David', 'Club': 'Club F', 'Classement': '6', 'VM': '0.60'},
-        {'Nom': 'Taylor', 'Prenom': 'Eva', 'Club': 'Club G', 'Classement': '7', 'VM': '0.85'},
-        {'Nom': 'Anderson', 'Prenom': 'Frank', 'Club': 'Club H', 'Classement': '8', 'VM': '0.70'},
-        {'Nom': 'Harris', 'Prenom': 'Grace', 'Club': 'Club I', 'Classement': '9', 'VM': '0.45'},
-        {'Nom': 'Martin', 'Prenom': 'Henry', 'Club': 'Club J', 'Classement': '10', 'VM': '0.55'},
-        {'Nom': 'Moore', 'Prenom': 'Ivy', 'Club': 'Club K', 'Classement': '11', 'VM': '0.80'},
-        {'Nom': 'White', 'Prenom': 'Jack', 'Club': 'Club L', 'Classement': '12', 'VM': '0.35'},
-        {'Nom': 'Clark', 'Prenom': 'Karen', 'Club': 'Club M', 'Classement': '13', 'VM': '0.92'},
-        {'Nom': 'Lewis', 'Prenom': 'Liam', 'Club': 'Club N', 'Classement': '14', 'VM': '0.68'},
-        {'Nom': 'Walker', 'Prenom': 'Olivia', 'Club': 'Club O', 'Classement': '15', 'VM': '0.40'},
-        {'Nom': 'Young', 'Prenom': 'Paul', 'Club': 'Club P', 'Classement': '16', 'VM': '0.78'},
-        {'Nom': 'Hall', 'Prenom': 'Quinn', 'Club': 'Club Q', 'Classement': '17', 'VM': '0.53'},
-        {'Nom': 'Adams', 'Prenom': 'Riley', 'Club': 'Club R', 'Classement': '18', 'VM': '0.65'},
-    ]
-    return render_template('Affichage-score.html', data=data)
+@app.route("/afficher-score-poule/<int:id_comp>/")
+def afficher_score_poule(id_comp):
+    competition = Competition.query.get_or_404(id_comp)
+    scores = get_scores_for_competition(id_comp)
+    return render_template('Affichage-score.html', data=scores, competition=competition)
 
-@app.route("/inscription-form/")
+def get_scores_for_competition(id_comp):
+    classements = db.session.query(ClassementFinal, Escrimeur, Club).join(
+        Tireur, ClassementFinal.numeroLicenceE == Tireur.numeroLicenceE
+    ).join(
+        Escrimeur, Tireur.numeroLicenceE == Escrimeur.numeroLicenceE
+    ).join(
+        Club, Tireur.idClub == Club.idClub
+    ).filter(
+        ClassementFinal.idComp == id_comp
+    ).order_by(
+        ClassementFinal.position
+    ).all()
+    
+    scores = []
+    for classement, escrimeur, club in classements:
+        poules = Poule.query.filter_by(idComp=id_comp).subquery()
+
+        victoires = db.session.query(MatchPoule).join(poules, MatchPoule.idPoule == poules.c.idPoule).filter(
+            db.or_(
+                db.and_(MatchPoule.numeroLicenceE1 == escrimeur.numeroLicenceE,
+                        MatchPoule.touchesDonneesTireur1 > MatchPoule.touchesRecuesTireur1),
+                db.and_(MatchPoule.numeroLicenceE2 == escrimeur.numeroLicenceE,
+                        MatchPoule.touchesDonneesTireur2 > MatchPoule.touchesRecuesTireur2)
+            )
+        ).count()
+        
+        total_matchs = db.session.query(MatchPoule).join(poules, MatchPoule.idPoule == poules.c.idPoule).filter(
+            db.or_(
+                MatchPoule.numeroLicenceE1 == escrimeur.numeroLicenceE,
+                MatchPoule.numeroLicenceE2 == escrimeur.numeroLicenceE
+            )
+        ).count()
+        print(victoires, total_matchs)
+        vm_ratio = (victoires / total_matchs) if total_matchs > 0 else "N/A"
+        scores.append({
+            'Classement': classement.position,
+            'Prenom': escrimeur.prenomE,
+            'Nom': escrimeur.nomE,
+            'VM': vm_ratio,
+            'Club': club.nomClub
+        })
+    
+    return scores
+
+@app.route("/telecharger-pdf/<int:id_comp>/")
+def telecharger_pdf(id_comp):
+    scores = get_scores_for_competition(id_comp)
+    competition = Competition.query.get_or_404(id_comp)
+    rendered = render_template('score_table_pdf.html', data=scores)
+    pdf = HTML(string=rendered).write_pdf()
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = f'attachment; filename=tableau_scores_{competition.nomComp}.pdf'
+    return response
+
 def inscription_page():
     return render_template("Inscription.html", form = InscriptionForm())
 
