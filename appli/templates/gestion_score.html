@@ -59,23 +59,22 @@
                   {% endfor %}
                 </tr>
               </thead>
-              <!-- <tbody>
-                {% for i in range(1, poules[i]['rows']) %}
+              <tbody>
+                {% for ind in range(test) %}
                   <tr class="tr-textfield-matrice">
-                    {% for j in range(1, poules[i]['cols']) %}
-                      {% set item = poules[i]['table_data'][i][j] %} {% if i == j %}
+                    {% for jind in range(test) %} {% if ind == jind %}
                         <td class="td-textfield-matrice">
-                          <input class="textfield-score textfield-score-disabled" type="number" name="{{ item }}" disabled />
+                          <input class="textfield-score textfield-score-disabled" type="number" name="name" disabled />
                         </td>
                       {% else %}
                         <td class="td-textfield-matrice">
-                          <input class="textfield-score textfield-score-ok" type="number" name="{{ item }}" />
+                          <input class="textfield-score textfield-score-ok" type="number" name="name" />
                         </td>
                       {% endif %}
                     {% endfor %}
                   </tr>
                 {% endfor %}
-              </tbody> -->
+              </tbody>
             </table>
 
             <table>
