@@ -5,7 +5,7 @@
     var participants_present = {{ participants_present|tojson }};
     console.log(participants_present);
     var participants = {{ rows_data|tojson }};
-    var participants_absents = [];
+    var participants_absents = participants;
   </script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="{{ url_for('static', filename='js/appel.js') }}"></script>
@@ -43,7 +43,7 @@
         </div>
         <div class="int-present-abs"> 
           <h4 id="participants-count">{{ participants_present|length }}/{{rows_data|length}}</h4>
-          <h4 id="absents-count">{{ participants_absents|length }}/{{ rows_data|length }}</h4>
+          <h4 id="absents-count">{{ rows_data|length }}/{{ rows_data|length }}</h4>
         </div>
       </div>
     </div>

@@ -193,7 +193,7 @@ class ParticipantsCompetition(db.Model):
     numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
 
-    escrimeur = db.relationship('Escrimeur', backref='PartEscrimeur', foreign_keys=[numeroLicenceE])
+    tireur = db.relationship('Escrimeur', backref='PartEscrimeur', foreign_keys=[numeroLicenceE])
     competition = db.relationship('Competition', backref='PartCompetition.idComp')
     
     def __init__(self, numeroLicenceE, idComp):
