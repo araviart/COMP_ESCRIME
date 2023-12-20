@@ -41,11 +41,11 @@
                 </tr>
               </thead>
               <tbody>
-                {% for tireur in poules[i]['tireurs'] %}
+                {% for tireur, club in poules[i]['tireurs'].items() %}
                   <tr class="nom-prenom-club">
                     <td>{{ tireur.nomE }}</td>
                     <td>{{ tireur.prenomE }}</td>
-                    <td>{{ poules[i]['tireurs'][tireur] }}</td>
+                    <td>{{ club }}</td>
                   </tr>
                 {% endfor %}
               </tbody>
@@ -60,23 +60,29 @@
                 </tr>
               </thead>
               <tbody>
-                {% for ind in range(poules[i]['tireurs']|length) %}
+                {% for jind in range(poules[i]['tireurs']|length) %}
+                  {% set col_index = jind + 1 %}
                   <tr class="tr-textfield-matrice">
-                    {% for jind in range(poules[i]['tireurs']|length) %} {% if ind == jind %}
+                    {% for tireur, club in poules[i]['tireurs'].items() %}
+                      {% set row_index = loop.index0 + 1 %}
+                      {% if loop.index0 == jind %}
                         <td class="td-textfield-matrice">
                           <input class="textfield-score textfield-score-disabled" type="number" name="name" disabled />
                         </td>
                       {% else %}
-                        {%if ind > jind%}
-                        <td class="td-textfield-matrice">
-                          <input class="textfield-score textfield-score-ok" type="number" name="name" />
-                        </td>
-                        {%else%}
-                        <td class="td-textfield-matrice">
-                          <input class="textfield-score score-gris textfield-score-ok" type="number" name="name" />
-                        </td>
+                        {%  opponent_tireur = poules[i]['tireurs'].items()|list %}
+                        {% set opponent_tireur = opponent_tireur[jind] %}
+                        {% set opponent_tireur = opponent_tireur[0] %}
+                        {% set tireur_license = opponent_tireur.numeroLicenceE %}
+                        {% if loop.index0 > jind %}
+                          <td class="td-textfield-matrice">
+                            <input class="textfield-score textfield-score-ok row-{{ row_index }} col-{{ col_index }}" type="number" name="name" data-license="{{ tireur_license }}" data-licence-opponent="{{ tireur.numeroLicenceE }}" />
+                          </td>
+                        {% else %}
+                          <td class="td-textfield-matrice">
+                            <input class="textfield-score score-gris textfield-score-ok row-{{ row_index }} col-{{ col_index }}" type="number" name="name" data-license="{{ tireur_license }}" data-licence-opponent="{{ tireur.numeroLicenceE }}"/>
+                          </td>
                         {% endif %}
-                        
                       {% endif %}
                     {% endfor %}
                   </tr>
@@ -117,4 +123,7 @@
       <button type="submit">Conclure</button>
     </div>
   </main>
+  {% block scripts %}
+  <script src="{{ url_for('static', filename='js/score_textfield.js') }}"></script>
+  {% endblock scripts %}
 {% endblock %}
