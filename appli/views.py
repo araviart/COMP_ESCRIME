@@ -1,9 +1,10 @@
-from .app import app, db
+import random
+from .app import app, db, mail
 import logging
 import math
 from .ajout_bd import *
 from flask import jsonify, render_template, session, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, get_lieux, get_participants, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id
+from .models import *
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
@@ -48,6 +49,8 @@ class EditUserForm(FlaskForm):
     
 @app.route("/gestion_score/")
 def gestion_score():
+    if request.method == "POST":
+        pass
     rows_data = [
         {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A'},
         {'Nom': 'Smith', 'Prenom': 'Alice', 'Club': 'Club A'},
@@ -64,19 +67,6 @@ def gestion_score():
 
     # Rendre le modèle HTML avec Flask
     return render_template('Score.html', table_data=table_data, rows_data=rows_data, rows=rows, cols=cols)
-
-
-
-@app.route("/appel/<int:id_comp>/")
-def appel(id_comp):
-    rows_data = []
-    comp = Competition.query.get(id_comp)
-    participants_comp = get_liste_participants_competitions(id_comp)
-    for participant in participants_comp:
-        dict_tireur = participant.tireur.to_dict()
-        rows_data.append(dict_tireur)
-    participants_present = []
-    return render_template('appel.html', competition = comp, rows_data=rows_data, participants_present=participants_present)
 
 @app.route("/inscription-form/")
 def inscription_page():
@@ -119,6 +109,7 @@ def logout ():
 
 @app.route('/home/<int:items>', methods=("GET","POST",))
 def home_def(items):
+    total_pages = 0
     if request.method == "POST":
         page = int(request.form.get('page', 1))
         if 'next' in request.form:
@@ -312,16 +303,22 @@ def ajouter_escrimeur():
         default_cat = 1
         
         # creez un nouvel enregistrement d'adherent
-        nouvel_adherent = Escrimeur(idEscrimeur=id, idCat=default_cat, prenomE=prenom, 
-                                nomE=nom, dateNaissanceE=date_naissance, 
-                                numeroLicenceE=numero_licence, sexeE=sexe, numTelE=num_tel)
+        nouvel_adherent = Escrimeur(categorie=default_cat, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, numero_licence_e=numero_licence, sexe_e=sexe, num_tel_e=num_tel)
         db.session.add(nouvel_adherent)
         db.session.commit()
+        id_club_blois = 169 
+        classement_tireur = 0 
+        nouveau_tireur = Tireur(num_licence=numero_licence, club=id_club_blois, classement=classement_tireur)
+        db.session.add(nouveau_tireur)
+        db.session.commit()
+
         return redirect(url_for('liste_adherents_def'))
       
 @app.route('/')
 def home():
     return render_template('Login.html')
+
+from flask import session
 
 @app.route('/gestion_poules/<int:id_comp>', methods=["GET", "POST"])
 def gestion_poules(id_comp):
@@ -329,30 +326,82 @@ def gestion_poules(id_comp):
     nb_tireurs = get_nb_tireurs(id_comp)
     nb_arbitres = get_nb_arbitres(id_comp)
     nb_tireurs_par_poule = nb_tireurs // nb_arbitres
+
     if request.method == "POST":
         classement_checked = 'classement' in request.form
         club_checked = 'club' in request.form
         equilibrer_checked = 'equilibrer' in request.form
         nb_poules = int(request.form.get('nb_poules'))
-        nb_tireurs_poules = int(request.form.get('nb_tireurs/poules'))
+        nb_tireurs_poules_str = request.form.get('nb_tireurs/poules')
+        if nb_tireurs_poules_str and nb_tireurs_poules_str.isdigit():
+            nb_tireurs_poules = int(nb_tireurs_poules_str)
         liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
         liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
+        liste_pistes = get_liste_pistes_selon_nb_arbitres(id_comp, nb_arbitres)
         nb_tireurs_par_poule = nb_tireurs // nb_arbitres
+        numero_licence_arbitre = request.form.get('numero_licence_arbitre')
+        id_arbitre = get_id_arbitre_from_escrimeur(numero_licence_arbitre)
         if classement_checked:
             liste_tireurs = classer_tireurs(liste_tireurs)
             if poules_fabriquables(liste_tireurs, liste_arbitres):
-                liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, "Classement")
+                liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, liste_pistes, "Classement")
         elif club_checked:
             if poules_fabriquables(liste_tireurs, liste_arbitres):
-                liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, "Club")
-        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=get_nb_tireurs(id_comp), nb_arbitres=get_nb_arbitres(id_comp), liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
+                liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, liste_pistes, "Club")
+        session["liste_poules"] = [ [escrimeur[0].numeroLicenceE for escrimeur in poule] for poule in liste_poules]
+        session["liste_arbitres"] = [arbitre.numeroLicenceE for arbitre in liste_arbitres]
+        session["liste_pistes"] = [piste.idPiste for piste in liste_pistes]
+        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=get_nb_tireurs(id_comp), 
+                               nb_arbitres=get_nb_arbitres(id_comp), liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, 
+                               liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule, liste_pistes=liste_pistes) 
+
     liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
     liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
-    competition = Competition.query.get(id_comp)
-    
+    liste_pistes = get_liste_pistes_selon_nb_arbitres(id_comp, nb_arbitres)
+    competition = Competition.query.get(id_comp)    
     if competition is not None:
-        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=nb_tireurs, nb_arbitres=nb_arbitres, liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule)
+        return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=nb_tireurs, nb_arbitres=nb_arbitres, 
+                               liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, 
+                               liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule, liste_pistes=liste_pistes)
+        
 
+@app.route("/appel/<int:id_comp>", methods=["GET", "POST"])
+def appel(id_comp):
+    rows_data = []
+    participants_present = []
+    if request.method == "POST":
+        pistes = session.get("liste_pistes")
+        arbitres = session.get("liste_arbitres")
+        liste_poules = session.get("liste_poules")
+        try:
+            for i in range(len(liste_poules)):
+                num_licence_arbitre = arbitres[i]
+                id_arbitre = get_id_arbitre_from_escrimeur(num_licence_arbitre)
+                nom_poule = f"Poule {i+1}"
+                id_piste = pistes[i]
+                ajouter_poule(id_comp, id_piste, id_arbitre, nom_poule)
+                id_poule = get_id_poule(id_comp, id_piste, id_arbitre, nom_poule)
+                for j in range(1, len(liste_poules[i])):
+                    ajouter_participant_poule(id_poule, liste_poules[i][j])
+                    tireur = Tireur.query.get(liste_poules[i][j])
+                    rows_data.append(tireur.to_dict())
+            redirect(url_for('appel', id_comp=id_comp))
+            competition = Competition.query.get(id_comp) 
+            return render_template('appel.html', competition = competition, rows_data=rows_data, participants_present=participants_present)
+        except Exception as e:
+            print(e)
+    competition = Competition.query.get(id_comp)  
+    if competition is not None:
+        rows_data = []
+        participants_comp = get_liste_participants_competitions(id_comp)
+        participants_comp = get_liste_participants_competitions(id_comp)
+        for participant in participants_comp:
+            dict_tireur = participant.tireur.to_dict()
+            rows_data.append(dict_tireur)
+        participants_present = []
+        print(rows_data)
+        return render_template('appel.html', competition = competition, rows_data=rows_data, participants_present=participants_present)
+    
 @app.route('/adherent/')
 def liste_adherents_def():
     return liste_adherents(5)
@@ -443,7 +492,7 @@ def gestion_participants(id_comp):
 
 @app.route('/delete_participant/<int:id_comp>/<int:id>/', methods=['POST'])
 def delete_participant(id, id_comp):
-    participant = ParticipantsCompetition.query.filter_by(idTireur=id).first()
+    participant = ParticipantsCompetition.query.filter_by(numeroLicenceE=id).first()
 
     if participant:
         db.session.delete(participant)
@@ -457,8 +506,8 @@ logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 @app.route('/ajouter_escrimeur_competition/<int:id_comp>/', methods=['POST'])
 def add_participant(id_comp):
     if request.method == 'POST':
-        tireur = request.get_json().get('idTireur')
-        logging.debug(f'id_tireur: {tireur}')
+        tireur = request.get_json().get('numeroLicenceE')
+        logging.debug(f'numerolicence_tireur: {tireur}')
         
         tireur = Tireur.query.get(tireur)
         
@@ -468,7 +517,7 @@ def add_participant(id_comp):
         logging.debug(f'competition: {competition}')
         getattr(competition, "idComp", None)
         if tireur and competition:
-            participant = ParticipantsCompetition(idTireur=getattr(tireur, "idTireur", None), idComp=getattr(competition, "idComp", None))
+            participant = ParticipantsCompetition(numeroLicenceE=getattr(tireur, "numeroLicenceE", None), idComp=getattr(competition, "idComp", None))
             logging.debug('creation participant')
             db.session.add(participant)
             logging.debug('crash ?')
@@ -485,7 +534,7 @@ def add_participant(id_comp):
 
 @app.route('/get_escrimeurs')
 def get_escrimeurs():
-    escrimeurs = Escrimeur.query.all()
+    escrimeurs = Escrimeur.query.limit(50).all()
     return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
 
 @app.route('/update_database', methods=['POST'])

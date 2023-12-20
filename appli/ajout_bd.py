@@ -518,7 +518,7 @@ def ajouter_poule(idComp, idPiste, idArbitre, nomPoule):
         poule_existe = Poule.query.filter_by(idComp=idComp, idPiste = idPiste).first()
         if not poule_existe:
             db.session.add(poule)
-        else :
+        else:
             return f"La poule {idComp} pour la piste {idPiste} existe déjà."
         db.session.commit()  # Validez la transaction
         return f"La poule {idComp} pour la piste {idPiste} a été ajoutée avec succès."
@@ -668,7 +668,7 @@ def ajouter_feuille_match(idPoule, idComp, numeroLicenceE1, numeroLicenceE2, sco
     except Exception as e:
         db.session.rollback()
         return f"Une erreur s'est produite feuille de match : {str(e)}"
-
+    
     
 def load_lieu(file_name, db):
     try:

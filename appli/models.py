@@ -1,7 +1,8 @@
 import datetime
+
+from sqlalchemy import func
 from .app import db, login_manager
 from flask_login import UserMixin
-from sqlalchemy import func
 
 # Modèle pour représenter le lieu
 class Lieu(db.Model):
@@ -60,7 +61,6 @@ class Club(db.Model):
         self.nomClub = nom_club
         self.regionClub = region_club
 
-
 # Modèle pour représenter la compétition
 class Competition(db.Model):
     __tablename__ = 'COMPETITION'
@@ -79,7 +79,7 @@ class Competition(db.Model):
     heureComp = db.Column(db.Time, nullable=False)
     sexeComp = db.Column(db.String(1), nullable=False)
     estIndividuelle = db.Column(db.Boolean, nullable=False)
-
+    
     def __init__(self, idLieu, idSaison, idCat, idArme, nomComp, descComp, dateComp, heureComp, sexeComp, estIndividuelle):
         self.idLieu = idLieu
         self.idSaison = idSaison
@@ -91,7 +91,6 @@ class Competition(db.Model):
         self.heureComp = heureComp
         self.sexeComp = sexeComp
         self.estIndividuelle = estIndividuelle
-
 
 # Modèle pour représenter la piste
 class Piste(db.Model):
@@ -135,12 +134,13 @@ class Escrimeur(db.Model):
     def __init__(self, categorie, prenom_e, nom_e, date_naissance_e, numero_licence_e, sexe_e, num_tel_e):
         self.idCat = categorie
         self.numeroLicenceE = numero_licence_e
+        self.idCat = categorie
         self.prenomE = prenom_e
         self.nomE = nom_e
         self.dateNaissanceE = date_naissance_e
         self.sexeE = sexe_e
         self.numTelE = num_tel_e
-
+        
     def to_dict(self):
         return {
             'idCat': self.idCat,
@@ -152,7 +152,7 @@ class Escrimeur(db.Model):
             'numTelE': self.numTelE
         }
 
-        
+    
 # Modèle pour représenter les tireurs
 class Tireur(db.Model):
     __tablename__ = 'TIREUR'
@@ -161,7 +161,7 @@ class Tireur(db.Model):
     classement = db.Column(db.Integer, nullable=False)
 
     club = db.relationship('Club', backref='Club.idClub')
-    escrimeur = db.relationship('Escrimeur', backref='Escrimeur.numeroLicenceE')
+    escrimeur = db.relationship('Escrimeur', backref='Escrimeur.tireur')
 
     def __init__(self, num_licence, club, classement):
         self.numeroLicenceE = num_licence
@@ -186,21 +186,22 @@ class Arbitre(db.Model):
     def __init__(self, numeroLicenceE):
         self.numeroLicenceE = numeroLicenceE
         
+
 # Modèle pour représenter les participants aux compétitions
 class ParticipantsCompetition(db.Model):
     __tablename__ = 'PARTICIPANTS_COMPETITION'
-    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), primary_key=True)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
 
-    tireur = db.relationship('Tireur', backref='PartTireur', foreign_keys=[numeroLicenceE])
+    escrimeur = db.relationship('Escrimeur', backref='PartEscrimeur', foreign_keys=[numeroLicenceE])
     competition = db.relationship('Competition', backref='PartCompetition.idComp')
     
     def __init__(self, numeroLicenceE, idComp):
         self.numeroLicenceE = numeroLicenceE
         self.idComp = idComp
+
        
 # Modèle pour représenter la relation entre les escrimeurs et les armes qu'ils pratiquent
-
 class PratiquerArme(db.Model):
     __tablename__ = 'PRATIQUER_ARME'
     numero_licence_e_fk = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
@@ -212,8 +213,6 @@ class PratiquerArme(db.Model):
     def __init__(self, numero_licence_e_fk, id_arme_fk):
         self.numero_licence_e_fk = numero_licence_e_fk
         self.id_arme_fk = id_arme_fk
-
-
 
 # Modèle pour représenter le classement final
 class ClassementFinal(db.Model):
@@ -414,6 +413,11 @@ def get_classement_tireur(num_licence):
 def get_id_club_tireur(num_licence):
     return Tireur.query.filter_by(numeroLicenceE=num_licence).first().idClub
 
+def get_id_arbitre_from_escrimeur(numero_licence):
+    arbitre = Arbitre.query.filter_by(numeroLicenceE=numero_licence).first()
+    if arbitre:
+        return arbitre.idArbitre
+    
 def get_nom_club_by_id(id_club):
     return Club.query.filter_by(idClub=id_club).first().nomClub
 
@@ -426,7 +430,16 @@ def poules_fabriquables(tireurs, arbitres):
 def nb_poules_fabriquables(arbitres):
     return [[] for _ in range(len(arbitres))]
 
-def fabriquer_poules_selon_classement(tireurs, arbitres):
+def get_nb_arbitres(id_comp):
+    return ParticipantsCompetition.query.join(Arbitre, ParticipantsCompetition.numeroLicenceE == Arbitre.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).count()
+
+def get_nb_tireurs(id_comp):
+    return ParticipantsCompetition.query.filter_by(idComp=id_comp).count() - get_nb_arbitres(id_comp)
+
+def get_liste_pistes_selon_nb_arbitres(id_comp, nb_arbitres):
+    return Piste.query.filter_by(idComp=id_comp).limit(nb_arbitres).all()
+
+def fabriquer_poules_selon_classement(tireurs, arbitres, pistes):
     if not poules_fabriquables(tireurs, arbitres):
         return "Les poules ne sont pas fabriquables"
     
@@ -434,24 +447,27 @@ def fabriquer_poules_selon_classement(tireurs, arbitres):
     liste_poules = nb_poules_fabriquables(arbitres)
     tireurs_dans_poule = set()
     arbitres_dans_poule = set()
+    pistes_associees = set()
     for i in range(len(liste_triee)):
-        if arbitres[i % len(arbitres)] not in arbitres_dans_poule:
+        if arbitres[i % len(arbitres)] not in arbitres_dans_poule and pistes[i % len(arbitres)] not in pistes_associees:
             escrimeur = Escrimeur.query.filter_by(numeroLicenceE=arbitres[i].numeroLicenceE).first()
-            nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}"
-            liste_poules[i % len(arbitres)].append(nom_complet)
+            piste = Piste.query.filter_by(idPiste=pistes[i].idPiste).first()
+            nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, {piste.nomPiste}"
+            liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
             arbitres_dans_poule.add(arbitres[i])
+            pistes_associees.add(pistes[i])
         if liste_triee[i] not in tireurs_dans_poule:
             if len(liste_poules[i % len(arbitres)]) < 7:
                 escrimeur = Escrimeur.query.filter_by(numeroLicenceE=liste_triee[i].numeroLicenceE).first()
                 nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, Classement : {get_classement_tireur(escrimeur.numeroLicenceE)}"
-                liste_poules[i % len(arbitres)].append(nom_complet)
+                liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
                 tireurs_dans_poule.add(liste_triee[i])
         
         if liste_triee[-i-1] not in tireurs_dans_poule:
             if len(liste_poules[i % len(arbitres)]) < 7:
                 escrimeur = Escrimeur.query.filter_by(numeroLicenceE=liste_triee[-i-1].numeroLicenceE).first()
                 nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, Classement : {get_classement_tireur(escrimeur.numeroLicenceE)}"
-                liste_poules[i % len(arbitres)].append(nom_complet)
+                liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
                 tireurs_dans_poule.add(liste_triee[-i-1])
     mal_trie = False
     indice_mal_trie = None
@@ -467,7 +483,7 @@ def fabriquer_poules_selon_classement(tireurs, arbitres):
                 break
     return liste_poules 
 
-def fabriquer_poules_decalage_club(tireurs, arbitres):
+def fabriquer_poules_decalage_club(tireurs, arbitres, pistes):
     if not poules_fabriquables(tireurs, arbitres):
         return "Les poules ne sont pas fabriquables"
 
@@ -475,25 +491,29 @@ def fabriquer_poules_decalage_club(tireurs, arbitres):
     liste_poules = nb_poules_fabriquables(arbitres)
     num_poule = 0
     arbitres_dans_poule = set()
+    pistes_associees = set()
     for i in range(len(liste_triee)):
-        if arbitres[i % len(arbitres)] not in arbitres_dans_poule:
+        if arbitres[i % len(arbitres)] not in arbitres_dans_poule and pistes[i % len(arbitres)] not in pistes_associees:
             escrimeur = Escrimeur.query.filter_by(numeroLicenceE=arbitres[i].numeroLicenceE).first()
-            nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}"
-            liste_poules[i % len(arbitres)].append(nom_complet)
+            piste = Piste.query.filter_by(idPiste=pistes[i].idPiste).first()
+            nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, {piste.nomPiste}"
+            liste_poules[i].append((escrimeur, nom_complet))
             arbitres_dans_poule.add(arbitres[i])
+            pistes_associees.add(pistes[i])
         if len(liste_poules[i % len(arbitres)]) < 7:
             escrimeur = Escrimeur.query.filter_by(numeroLicenceE=liste_triee[i].numeroLicenceE).first()
             id_club_tireur = get_id_club_tireur(escrimeur.numeroLicenceE)
             nom_club_tireur = get_nom_club_by_id(id_club_tireur)
-            if f"{escrimeur.prenomE} {escrimeur.nomE}, Club : {nom_club_tireur}" not in liste_poules[i % len(arbitres)]:
-                liste_poules[i % len(arbitres)].append(f"{escrimeur.prenomE} {escrimeur.nomE}, Club : {nom_club_tireur}")
+            nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, Club : {nom_club_tireur}"
+            if (escrimeur, nom_complet) not in liste_poules[i % len(arbitres)]:
+                liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
             else:
                 num_poule += 1
                 if num_poule % len(arbitres) == 0:
-                    liste_poules[i % len(arbitres)].append(f"{escrimeur.prenomE} {escrimeur.nomE}, Club : {nom_club_tireur}")
+                    liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
                     num_poule = 0
                 else:
-                    liste_poules[i % len(arbitres) + num_poule].append(f"{escrimeur.prenomE} {escrimeur.nomE}, Club : {nom_club_tireur}")
+                    liste_poules[i % len(arbitres) + num_poule].append((escrimeur, nom_complet))
     mal_trie = False
     indice_mal_trie = None
     for i in range(len(liste_poules)):
@@ -509,32 +529,33 @@ def fabriquer_poules_decalage_club(tireurs, arbitres):
     return liste_poules
 
 
-def fabriquer_poules(tireurs, arbitres, type_poule):
+def fabriquer_poules(tireurs, arbitres, pistes, type_poule):
     if not poules_fabriquables(tireurs, arbitres):
         return "Les poules ne sont pas fabriquables"
     match type_poule:
         case "Classement":
-            liste_poules = fabriquer_poules_selon_classement(tireurs, arbitres)
+            liste_poules = fabriquer_poules_selon_classement(tireurs, arbitres, pistes)
         case "Club":
-            liste_poules = fabriquer_poules_decalage_club(tireurs, arbitres)
-    for i in range(len(liste_poules)):
-        print(f"Poule {i+1}: {liste_poules[i]}")
+            liste_poules = fabriquer_poules_decalage_club(tireurs, arbitres, pistes)
     return liste_poules
 
-def get_nb_tireurs(id_comp):
-    return ParticipantsCompetition.query.filter_by(idComp=id_comp).count() - get_nb_arbitres(id_comp)
-
-def get_nb_arbitres(id_comp):
-    return db.session.query(func.count()).select_from(ParticipantsCompetition).join(Arbitre, ParticipantsCompetition.numeroLicenceE == Arbitre.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).scalar()
-
-  
 def get_adherents():
     res =  db.session.query(Tireur, Escrimeur, Categorie) \
-    .join(Escrimeur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
-    .join(Club, Club.idClub == Tireur.idClub) \
-    .join(Categorie, Escrimeur.idCat == Categorie.idCat) \
-    .add_columns(Tireur.numeroLicenceE, Tireur.idClub, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
-    #.filter(Club.nomClub == "Club Blois") pour filtrer seulement les tireurs du club de Blois
+        .join(Escrimeur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
+        .join(Club, Club.idClub == Tireur.idClub) \
+        .join(Categorie, Escrimeur.idCat == Categorie.idCat) \
+        .filter(Club.nomClub == "BLOIS CE") \
+        .add_columns(
+            Tireur.idClub,
+            Escrimeur.prenomE,
+            Escrimeur.nomE,
+            Escrimeur.dateNaissanceE,
+            Escrimeur.numeroLicenceE,
+            Escrimeur.sexeE,
+            Escrimeur.numTelE,
+            Categorie.nomCategorie
+        ) \
+        .all()
     return res
 
 def dernier_escrimeur_id():
@@ -545,7 +566,8 @@ def dernier_escrimeur_id():
         return 0
 
 def get_participants(id_comp, club=None):
-    res = db.session.query(ParticipantsCompetition, Escrimeur, Categorie).join(Escrimeur, ParticipantsCompetition.numeroLicenceE == Escrimeur.idEscrimeur).join(Categorie, Escrimeur.idCat == Categorie.idCat).join(Tireur, Tireur.numeroLicenceE == Escrimeur.idEscrimeur).join(Club, Club.idClub == Tireur.idClub).filter(ParticipantsCompetition.idComp == id_comp)
+
+    res = db.session.query(ParticipantsCompetition, Escrimeur, Categorie).join(Escrimeur, ParticipantsCompetition.numeroLicenceE == Escrimeur.numeroLicenceE).join(Categorie, Escrimeur.idCat == Categorie.idCat).join(Tireur, Tireur.numeroLicenceE == Escrimeur.numeroLicenceE).join(Club, Club.idClub == Tireur.idClub).filter(ParticipantsCompetition.idComp == id_comp)
     if club is not None:
         if club == "!":
             res = res.filter(Club.nomClub != "ClubBlois")
@@ -555,3 +577,11 @@ def get_participants(id_comp, club=None):
 
 def get_liste_participants_competitions(id_comp):
     return ParticipantsCompetition.query.filter_by(idComp=id_comp).all()
+
+def get_informations_escrimeur(numero_licence):
+    return Escrimeur.query.filter_by(numeroLicenceE=numero_licence).first()
+
+def get_id_poule(id_comp, id_piste, id_arbitre, nom_poule):
+    return Poule.query.filter_by(idComp=id_comp, idPiste=id_piste, idArbitre=id_arbitre, nomPoule=nom_poule).first().idPoule
+
+    
