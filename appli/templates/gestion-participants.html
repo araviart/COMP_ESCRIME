@@ -7,7 +7,21 @@
   var competitionId = "{{ competition.idComp }}";
 </script>
 <script src="{{ url_for('static', filename='js/gestionParticipant.js') }}"></script>
-{% include 'progress-bar.html' %}
+
+<div class="progress-bar">
+  <a class="active-url" href="{{ url_for('ajout_comp_page')}}">Définir une compétition</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a class="active-url" href="{{ url_for('gestion_participants', id_comp=1)}}">Gestion participants</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a href="{{ url_for('gestion_poules', id_comp=1)}}">Créer les poules</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a href="{{ url_for('appel')}}">Appel</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a href="{{ url_for('gestion_score', id_comp=1)}}">Gestion score</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a href="{{ url_for('arbre')}}">Classement Final</a>
+</div>
+
 <section class="content">
   <section class="section-infopr">
     <div class="infotitre">
