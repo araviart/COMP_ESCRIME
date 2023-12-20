@@ -67,11 +67,10 @@ def gestion_score(id_comp):
         poules[i]['tireurs'] = tireurs_club
         poules[i]['piste'] = get_piste_poule(id_comp, i).nomPiste
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
-        test = len(poules[i]['tireurs'])
 
     print(poules)
     # Rendre le modèle HTML avec Flask
-    return render_template('gestion_score.html', poules=poules, test = test)
+    return render_template('gestion_score.html', poules=poules)
 
 
 

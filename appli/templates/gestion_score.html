@@ -60,9 +60,9 @@
                 </tr>
               </thead>
               <tbody>
-                {% for ind in range(test) %}
+                {% for ind in range(poules[i]['tireurs']|length) %}
                   <tr class="tr-textfield-matrice">
-                    {% for jind in range(test) %} {% if ind == jind %}
+                    {% for jind in range(poules[i]['tireurs']|length) %} {% if ind == jind %}
                         <td class="td-textfield-matrice">
                           <input class="textfield-score textfield-score-disabled" type="number" name="name" disabled />
                         </td>
