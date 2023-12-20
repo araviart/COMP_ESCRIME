@@ -8,6 +8,7 @@
   var nbParticipantsOther = {{ nb_participants_other }};
   var nbParticipantsArb = {{ participants_arb|length }};
   var competitionId = {{ competition.idComp }};
+  var competitionGender = "{{ competition.sexeComp }}";   
 </script>
 <script src="{{ url_for('static', filename='js/condCompetValide.js') }}"></script>
 <script src="{{ url_for('static', filename='js/gestionParticipant.js') }}"></script>

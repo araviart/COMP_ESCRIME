@@ -463,9 +463,17 @@ def ajouter_arbitre_competition(id_comp):
 
         return jsonify({'success': True, 'message': 'Arbitre ajouté avec succès'})
 
-@app.route('/get_escrimeurs')
-def get_escrimeurs_json():
-    escrimeurs = Escrimeur.query.all()
+@app.route('/get_escrimeurs/<gender>')
+def get_escrimeurs_json(gender):
+    escrimeurs = None
+    if gender == 'M': 
+        escrimeurs = Escrimeur.query.all()
+    elif gender == "H":
+        gender = "Homme"
+        escrimeurs = Escrimeur.query.filter_by(sexeE=gender).all()
+    elif gender == "F":
+        gender = "Femme"
+        escrimeurs = Escrimeur.query.filter_by(sexeE=gender).all()
     return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
 
 @app.route('/get_adherents')

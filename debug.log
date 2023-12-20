@@ -26392,3 +26392,382 @@ INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 09:55:29] "[36mGET /static/js/script_p
 INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 09:55:29] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 09:55:29] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 09:55:29] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "GET /static/js/gestionParticipant.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:38] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:39] "GET /get_escrimeurs/undefined HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:41] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:42] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:43] "GET /get_escrimeurs/undefined HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:43] "GET /get_escrimeurs/undefined HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:10:55] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:11:01] "GET /bootstrap/static/js/bootstrap.min.js.map HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:11:01] "GET /bootstrap/static/umd/popper.min.js.map HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "GET /static/js/gestionParticipant.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:55] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:56] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:56] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:56] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:56] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:56] "[36mGET /bootstrap/static/js/bootstrap.min.js.map HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:56] "[36mGET /bootstrap/static/umd/popper.min.js.map HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:14:57] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:05] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:05] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:07] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:08] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:08] "[33mGET /get_escrimeurs HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "GET /static/js/gestionParticipant.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:50] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:15:53] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:31] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:32] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:54] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:55] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:16:56] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:08] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:09] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:26] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:17:27] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:23] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:24] "[35m[1mGET /get_escrimeurs/H HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:26] "[35m[1mGET /get_escrimeurs/H HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:27] "[35m[1mGET /get_escrimeurs/H HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:29] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:29] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:30] "[33mGET /get_escrimeurs HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:30] "[33mGET /get_escrimeurs HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:31] "[35m[1mGET /get_escrimeurs/H HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:37] "[35m[1mGET /get_escrimeurs/H HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:19:40] "[33mGET /get_escrimeurs HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:11] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:12] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:12] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:12] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:12] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:12] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:12] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:20:13] "[35m[1mGET /get_escrimeurs/H HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:17] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:18] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:28] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:30] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:31] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/iut45/Etudiants/o22205312/Bureau/COMP_ESCRIME/appli/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "GET /gestion_participants/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /bootstrap/static/jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /bootstrap/static/umd/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /bootstrap/static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:21:59] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:22:00] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:22:01] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:22:02] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:22:02] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-485-634
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:23:37] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:23:38] "GET /get_adherents HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:23:38] "GET /get_escrimeurs/H HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2023 10:23:39] "GET /get_escrimeurs/H HTTP/1.1" 200 -

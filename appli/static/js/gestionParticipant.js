@@ -15,14 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
       const escrimeursList = submenu.querySelector(".escrimeurs-list");
       const searchInput = submenu.querySelector(".search");
 
+      
       let url;
       if (addButton.closest(".escrimeblois")) {
-        url = "/get_adherents";
+          url = "/get_adherents";
       } else if (addButton.closest(".escrime-other")) {
-        url = "/get_escrimeurs";
+          url = `/get_escrimeurs/${competitionGender}`; 
+          console.log(url);
       } else if (addButton.closest(".escrime-arb")) {
-        url = "/get_escrimeurs";
+          url = "/get_escrimeurs";
       }
+      
 
       if (url) {
         fetchEscrimeurs(escrimeursList, url);
