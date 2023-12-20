@@ -1,10 +1,11 @@
+import datetime
 import random
 from .app import app, db, mail
 import logging
 import math
 from .ajout_bd import creer_competition
 from flask import jsonify, render_template, session, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_arbitre_escrimeur_poule, get_club_tireur_escrimeur, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_liste_tireurs_escrimeurs_poule, get_nb_arbitres, get_nb_poules, get_nb_tireurs, get_participants, get_piste_poule, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
+from .models import Arme, Categorie, Competition, Lieu, MatchPoule, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_arbitre_escrimeur_poule, get_club_tireur_escrimeur, get_id_arbitre_poule, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_liste_tireurs_escrimeurs_poule, get_nb_arbitres, get_nb_poules, get_nb_tireurs, get_participants, get_piste_poule, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
@@ -65,13 +66,47 @@ def gestion_score(id_comp):
         for tireur in get_liste_tireurs_escrimeurs_poule(id_comp, i):
             tireurs_club[tireur] = get_club_tireur_escrimeur(tireur).nomClub
         poules[i]['tireurs'] = tireurs_club
-        poules[i]['piste'] = get_piste_poule(id_comp, i).nomPiste
+        poules[i]['piste'] = get_piste_poule(id_comp, i)
+        poules[i]["id_arbitre"] = get_id_arbitre_poule(id_comp, i)
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
     # Rendre le modèle HTML avec Flask
-    return render_template('gestion_score.html', poules=poules)
+    return render_template('gestion_score.html', poules=poules, id_comp=id_comp)
+
+@app.route('/update_scores', methods=['POST'])
+def update_scores():
+    data = request.get_json()
+
+    license = data['license']
+    opponent_license = data['opponentLicense']
+    score = data['score']
+    id_poule = data['idPoule']
+    id_piste = data['idPiste']
+    id_comp = data['idCompetition']
+    id_arbitre = data['idArbitre']
 
 
 
+    print("license: ", license , "opponent_license: ", opponent_license, "score: ", score, "id_poule: ", id_poule, "id_piste: ", id_piste, "id_comp: ", id_comp, "id_arbitre: ", id_arbitre)
+
+    match = MatchPoule.query.filter_by(numeroLicenceE1=license, numeroLicenceE2=opponent_license).first()
+    match2 = MatchPoule.query.filter_by(numeroLicenceE1=opponent_license, numeroLicenceE2=license).first()
+
+    if match or match2:
+        print("Match trouvé")
+    else:
+        # créer le match
+        print("Création du match")
+        match = MatchPoule(type_match=1, poule=id_poule, piste=id_piste, arbitre=id_arbitre,
+                            tireur1=license, tireur2=opponent_license,
+                            date_match=datetime.date.today(), heure_match=datetime.datetime.now().time().strftime("%H:%M:%S"),
+                            touches_recues_tireur1=0, touches_donnees_tireur1=score,
+                            touches_recues_tireur2=score, touches_donnees_tireur2=0)
+        db.session.add(match)
+        db.session.commit()
+        print("Match créé")
+
+    return 'OK'
+    
 @app.route("/appel/")
 def appel():
     # Exemple de données à afficher dans chaque ligne

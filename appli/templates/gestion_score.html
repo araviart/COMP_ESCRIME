@@ -28,7 +28,7 @@
         <!-- pour chaque poule créer un tableau -->
         {% for i in range(1, poules|length +1) %}
           <div class="haut-tableau">
-            <p>Poule n°{{ i }} - “heure_poule” - {{ poules[i]['piste'] }} - Arbitre : {{ poules[i]['arbitre'] }}</p>
+            <p>Poule n°{{ i }} - “heure_poule” - {{ poules[i]['piste'].nomPiste }} - Arbitre : {{ poules[i]['arbitre'] }}</p>
           </div>
 
           <div class="liste-table">
@@ -70,17 +70,31 @@
                           <input class="textfield-score textfield-score-disabled" type="number" name="name" disabled />
                         </td>
                       {% else %}
-                        {%  opponent_tireur = poules[i]['tireurs'].items()|list %}
+                        {% set opponent_tireur = poules[i]['tireurs'].items()|list %}
                         {% set opponent_tireur = opponent_tireur[jind] %}
                         {% set opponent_tireur = opponent_tireur[0] %}
                         {% set tireur_license = opponent_tireur.numeroLicenceE %}
                         {% if loop.index0 > jind %}
                           <td class="td-textfield-matrice">
-                            <input class="textfield-score textfield-score-ok row-{{ row_index }} col-{{ col_index }}" type="number" name="name" data-license="{{ tireur_license }}" data-licence-opponent="{{ tireur.numeroLicenceE }}" />
+                            <input class="textfield-score textfield-score-ok row-{{ row_index }} col-{{ col_index }}" type="number" name="name" 
+                            data-license="{{ tireur_license }}" 
+                            data-licence-opponent="{{ tireur.numeroLicenceE }}" 
+                            data-id-competition="{{ id_comp }}" 
+                            data-id-poule="{{ i }}"
+                            data-id-piste="{{ poules[i]['piste'].idPiste }}"
+                            data-id-arbitre="{{ poules[i]['id_arbitre'] }}"
+                            />
                           </td>
                         {% else %}
                           <td class="td-textfield-matrice">
-                            <input class="textfield-score score-gris textfield-score-ok row-{{ row_index }} col-{{ col_index }}" type="number" name="name" data-license="{{ tireur_license }}" data-licence-opponent="{{ tireur.numeroLicenceE }}"/>
+                            <input class="textfield-score score-gris textfield-score-ok row-{{ row_index }} col-{{ col_index }}" type="number" name="name"
+                            data-license="{{ tireur_license }}" 
+                            data-licence-opponent="{{ tireur.numeroLicenceE }}" 
+                            data-id-competition="{{ id_comp }}" 
+                            data-id-poule="{{ i }}"
+                            data-id-piste="{{ poules[i]['piste'].idPiste }}"
+                            data-id-arbitre="{{ poules[i]['id_arbitre'] }}"
+                            />
                           </td>
                         {% endif %}
                       {% endif %}

@@ -406,6 +406,9 @@ def get_club_tireur_escrimeur(tireur):
 def get_arbitre_escrimeur_poule(id_comp, id_poule):
     return Escrimeur.query.join(Arbitre, Escrimeur.numeroLicenceE == Arbitre.numeroLicenceE).join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
 
+def get_id_arbitre_poule(id_comp, id_poule):
+    return Arbitre.query.join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first().idArbitre
+
 def get_piste_poule(id_comp, id_poule):
     # retourne la piste de la poule de cette compétition
     return Piste.query.join(Poule, Poule.idPiste == Piste.idPiste).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()

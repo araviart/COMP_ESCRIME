@@ -1,31 +1,53 @@
-document.addEventListener('input', function(event) {
-  if (event.target.classList.contains('textfield-score-ok')) {
-    var classes = event.target.classList;
+var isDOMLoaded = false;
 
-    var rowClass, colClass, licenseOpponent;
-    for (var i = 0; i < classes.length; i++) {
-      var cls = classes[i];
-      if (cls.startsWith('row-')) {
-        rowClass = cls;
-      } else if (cls.startsWith('col-')) {
-        colClass = cls;
-      }
-    }
-
-    if (rowClass && colClass) {
-      var row = parseInt(rowClass.split('-')[1]);
-      var col = parseInt(colClass.split('-')[1]);
-
-      // Obtenez la nouvelle valeur du textfield
-      var newValue = event.target.value;
-
-      // Récupérez le numéro de licence à partir de l'attribut data-license
-      licenseOpponent = event.target.getAttribute('data-licence-opponent');
-      license = event.target.getAttribute('data-license');
-
-
-      // Affichez les valeurs dans la console
-      console.log('Row:', row, 'Column:', col, 'licenseOpponent:', licenseOpponent, 'license:', license, 'New Value:', newValue);
-    }
+document.addEventListener("DOMContentLoaded", function () {
+  if (isDOMLoaded) {
+    return;
   }
+
+  isDOMLoaded = true;
+  // Sélectionnez tous les champs de texte avec la classe "textfield-score-ok"
+  var textfields = document.querySelectorAll('.textfield-score-ok');
+
+  // Ajoutez un écouteur d'événement à chaque champ de texte
+  textfields.forEach(function (textfield) {
+    textfield.addEventListener('change', function () {
+      // Récupérez les données nécessaires pour la requête AJAX
+      var license = textfield.getAttribute('data-license');
+      var opponentLicense = textfield.getAttribute('data-licence-opponent');
+      var score = textfield.value;
+      var idPoule = textfield.getAttribute('data-id-poule');
+      var idCompetition = textfield.getAttribute('data-id-competition');
+      var idPiste = textfield.getAttribute('data-id-piste');
+      var idArbitre = textfield.getAttribute('data-id-arbitre');
+
+      // Construisez les données à envoyer dans la requête AJAX
+      var data = {
+        'license': license,
+        'opponentLicense': opponentLicense,
+        'score': score,
+        'idPoule': idPoule,
+        'idCompetition': idCompetition,
+        'idPiste': idPiste,
+        'idArbitre': idArbitre,
+
+      };
+
+      // Envoyez une requête POST AJAX au serveur Flask pour mettre à jour la base de données
+      fetch('/update_scores', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(response => response.text())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    });
+  });
 });
