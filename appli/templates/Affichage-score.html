@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% include 'progress-bar.html' %}
 <link rel="stylesheet" href="{{ url_for('static', filename='Affichage-score.css') }}" />
-
 <nav class="nav-table">
     <a href="">Page des scores de poule</a>
     <div class="affichage-table">
@@ -11,12 +10,8 @@
             <button type="button" class="btn-primary">25</button>
         </div>
     </div>
-    <div class="statut">
-        <p>Statut :</p>
-        <p>test</p>
-    </div>
 </nav>
-<table class="table table-striped">
+<table class="tabletable-striped">
     <thead>
         <tr>
             <th scope="col">Rang</th>
@@ -42,7 +37,7 @@
 <div class="bas-de-page">
     <button type="button" class="btn-bas-de-page">Retour</button>
     <div>
-        <button type="button" class="btn-bas-de-page">Télécharger en PDF</button>
+        <a href="{{ url_for("telecharger_pdf", id_comp=competition.idComp) }}" class="btn-bas-de-page">Télécharger en PDF</a>
         <button type="button" class="btn-bas-de-page">Valider</button>
     </div>
 </div>
