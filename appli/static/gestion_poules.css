@@ -145,3 +145,7 @@ label {
     bottom: -10px;
     font-size: 23px;
 }
+
+p {
+    color: black;
+}

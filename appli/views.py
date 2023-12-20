@@ -2,7 +2,7 @@ import random
 from .app import app, db, mail
 import logging
 import math
-from .ajout_bd import creer_competition
+from .ajout_bd import *
 from flask import jsonify, render_template, session, url_for, redirect, request, flash
 from .models import *
 from flask_wtf import FlaskForm
@@ -49,6 +49,8 @@ class EditUserForm(FlaskForm):
     
 @app.route("/")
 def gestion_score():
+    if request.method == "POST":
+        pass
     rows_data = [
         {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A'},
         {'Nom': 'Smith', 'Prenom': 'Alice', 'Club': 'Club A'},
@@ -67,18 +69,6 @@ def gestion_score():
     return render_template('Score.html', table_data=table_data, rows_data=rows_data, rows=rows, cols=cols)
 
 
-
-@app.route("/appel/")
-def appel():
-    # Exemple de données à afficher dans chaque ligne
-    rows_data = [
-        {'Nom': 'Doe', 'Prenom': 'John', 'DateNaissance': '01/01/1990', 'Telephone': '123456789', 'Sexe': 'M', 'Club': 'Club A', 'Classement': 'A'},
-        {'Nom': 'Smith', 'Prenom': 'Alice', 'DateNaissance': '02/02/1995', 'Telephone': '987654321', 'Sexe': 'F', 'Club': 'Club B', 'Classement': 'B'},
-        {'Nom': 'Johnson', 'Prenom': 'Bob', 'DateNaissance': '03/03/1992', 'Telephone': '555555555', 'Sexe': 'M', 'Club': 'Club C', 'Classement': 'C'},
-        {'Nom': 'Williams', 'Prenom': 'Emma', 'DateNaissance': '04/04/1988', 'Telephone': '111111111', 'Sexe': 'F', 'Club': 'Club D', 'Classement': 'D'}
-    ]
-
-    return render_template('appel.html', rows_data=rows_data)
 
 @app.route("/inscription-form/")
 def inscription_page():
@@ -330,12 +320,15 @@ def ajouter_escrimeur():
 def home():
     return render_template('Login.html')
 
+from flask import session
+
 @app.route('/gestion_poules/<int:id_comp>', methods=["GET", "POST"])
 def gestion_poules(id_comp):
     liste_poules = []
     nb_tireurs = get_nb_tireurs(id_comp)
     nb_arbitres = get_nb_arbitres(id_comp)
     nb_tireurs_par_poule = nb_tireurs // nb_arbitres
+    
     if request.method == "POST":
         classement_checked = 'classement' in request.form
         club_checked = 'club' in request.form
@@ -348,6 +341,8 @@ def gestion_poules(id_comp):
         liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
         liste_pistes = get_liste_pistes_selon_nb_arbitres(id_comp, nb_arbitres)
         nb_tireurs_par_poule = nb_tireurs // nb_arbitres
+        numero_licence_arbitre = request.form.get('numero_licence_arbitre')
+        id_arbitre = get_id_arbitre_from_escrimeur(numero_licence_arbitre)
         if classement_checked:
             liste_tireurs = classer_tireurs(liste_tireurs)
             if poules_fabriquables(liste_tireurs, liste_arbitres):
@@ -355,9 +350,13 @@ def gestion_poules(id_comp):
         elif club_checked:
             if poules_fabriquables(liste_tireurs, liste_arbitres):
                 liste_poules = fabriquer_poules(liste_tireurs, liste_arbitres, liste_pistes, "Club")
+        session["liste_poules"] = [ [tireur[0].numeroLicenceE for tireur in poule] for poule in liste_poules]
+        session["liste_arbitres"] = [arbitre.numeroLicenceE for arbitre in liste_arbitres]
+        session["liste_pistes"] = [piste.idPiste for piste in liste_pistes]
         return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=get_nb_tireurs(id_comp), 
                                nb_arbitres=get_nb_arbitres(id_comp), liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, 
-                               liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule, liste_pistes=liste_pistes)
+                               liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule, liste_pistes=liste_pistes) 
+
     liste_tireurs = get_liste_participants_competitions_tireurs(id_comp)
     liste_arbitres = get_liste_participants_competitions_arbitres(id_comp)
     liste_pistes = get_liste_pistes_selon_nb_arbitres(id_comp, nb_arbitres)
@@ -366,6 +365,39 @@ def gestion_poules(id_comp):
         return render_template('gestion_poules.html', id_comp=id_comp, nb_tireurs=nb_tireurs, nb_arbitres=nb_arbitres, 
                                liste_tireurs=liste_tireurs, liste_arbitres=liste_arbitres, 
                                liste_poules=liste_poules, nb_tireurs_par_poule=nb_tireurs_par_poule, liste_pistes=liste_pistes)
+        
+
+@app.route("/appel/<int:id_comp>", methods=["GET", "POST"])
+def appel(id_comp):
+    rows_data = [
+        {'Nom': 'Doe', 'Prenom': 'John', 'DateNaissance': '01/01/1990', 'Telephone': '123456789', 'Sexe': 'M', 'Club': 'Club A', 'Classement': 'A'},
+        {'Nom': 'Smith', 'Prenom': 'Alice', 'DateNaissance': '02/02/1995', 'Telephone': '987654321', 'Sexe': 'F', 'Club': 'Club B', 'Classement': 'B'},
+        {'Nom': 'Johnson', 'Prenom': 'Bob', 'DateNaissance': '03/03/1992', 'Telephone': '555555555', 'Sexe': 'M', 'Club': 'Club C', 'Classement': 'C'},
+        {'Nom': 'Williams', 'Prenom': 'Emma', 'DateNaissance': '04/04/1988', 'Telephone': '111111111', 'Sexe': 'F', 'Club': 'Club D', 'Classement': 'D'}
+    ]
+    if request.method == "POST":
+        pistes = session.get("liste_pistes")
+        arbitres = session.get("liste_arbitres")
+        liste_poules = session.get("liste_poules")
+        print(liste_poules)
+        try:
+            for i in range(len(liste_poules)):
+                num_licence_arbitre = arbitres[i]
+                id_arbitre = get_id_arbitre_from_escrimeur(num_licence_arbitre)
+                nom_poule = f"Poule {i+1}"
+                id_piste = pistes[i]
+                print("nouveau test")
+                ajouter_poule(id_comp, id_piste, id_arbitre, nom_poule)
+                print(ajouter_poule(id_comp, id_piste, id_arbitre, nom_poule))
+            return redirect(url_for('gestion_poules', id_comp=id_comp))
+        except Exception as e:
+            print(e)    
+            return redirect(url_for('gestion_poules', id_comp=id_comp))
+    competition = Competition.query.get(id_comp)    
+    if competition is not None:
+        return render_template('appel', id_comp=id_comp, rows_data=rows_data)
+
+
 
 @app.route('/adherent/')
 def liste_adherents_def():

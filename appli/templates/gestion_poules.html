@@ -65,7 +65,7 @@
                 </section> 
                 <form method="POST" action="{{ url_for('gestion_poules', id_comp=id_comp)}}">
                     <input type="submit" value="Générer" class="btn-generer" />
-                </form>              
+                </form>   
             </div>
         </section>
         <section class="section-proposition">
@@ -76,14 +76,14 @@
                 <table id="table">
                     {% for poule in liste_poules %}
                         <tr>
-                            <th>Poule {{ loop.index }}</th>
+                            <th>Poule {{ loop.index }} </th>
                         </tr>
                         {% for escrimeur in poule %}
                             <tr>
                                 {% if loop.first %}
-                                    <td draggable="true">Arbitre : {{ escrimeur }}</td>
+                                    <td draggable="true">Arbitre : {{ escrimeur[1] }} </td>
                                 {% else %}
-                                    <td draggable="true">Tireur : {{ escrimeur }}</td>
+                                    <td draggable="true">Tireur : {{ escrimeur[1] }} </td>
                                 {% endif %}
                             </tr>
                         {% endfor %}
@@ -92,7 +92,13 @@
             </div>
         </section>
         <div class="div-btn-valider-poule">
-            <a href="{{url_for('appel')}}" class="btn-valider-poule">Valider</a>
+            <form method="POST" action="{{ url_for('appel', id_comp=id_comp)}}">
+                <input type="hidden" name="id_comp" value="{{ id_comp }}" />
+                <input type="hidden" name="liste_pistes" value="{{ liste_pistes }}" />
+                <input type="hidden" name="liste_arbitres" value="{{ liste_arbitres }}" />
+                <input type="hidden" name="liste_poules" value="{{ liste_poules }}" />
+                <input type="submit" value="Valider" class="btn-valider-poule" />
+            </form>  
         </div>
     </div>
 </form>
