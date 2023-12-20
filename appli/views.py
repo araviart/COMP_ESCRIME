@@ -473,7 +473,7 @@ def get_adherents_json():
 
 @app.route('/delete_participant/<int:id_comp>/<int:id>/', methods=['POST'])
 def delete_participant(id, id_comp):
-    participant = ParticipantsCompetition.query.filter_by(idTireur=id).first()
+    participant = ParticipantsCompetition.query.filter_by(numeroLicenceE=id).first()
 
     if participant:
         db.session.delete(participant)
