@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %} {% include 'progress-bar.html' %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Affichage-score.css') }}" />
+
+<nav class="nav-table">
+    <a href="">Page des scores de poule</a>
+    <div class="affichage-table">
+        <p>Affichage</p>
+        <div class="bouton">
+            <button type="button" class="btn-primary">5</button>
+            <button type="button" class="btn-primary">10</button>
+            <button type="button" class="btn-primary">25</button>
+        </div>
+    </div>
+    <div class="statut">
+        <p>Statut :</p>
+        <p>test</p>
+    </div>
+</nav>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Rang</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">V/M</th>
+            <th scope="col">Club</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for participant in data %}
+            <tr>
+                <td>{{ participant['Classement'] }}</td>
+                <td>{{ participant['Prenom'] }}</td>
+                <td>{{ participant['Nom'] }}</td>
+                <td>{{ participant['VM'] }}</td>
+                <td>{{ participant['Club'] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="bas-de-page">
+    <button type="button" class="btn-bas-de-page">Retour</button>
+    <div>
+        <button type="button" class="btn-bas-de-page">Télécharger en PDF</button>
+        <button type="button" class="btn-bas-de-page">Valider</button>
+    </div>
+</div>
+
+{% endblock %}

@@ -4,9 +4,15 @@
   href="{{ url_for('static', filename='gestion_participants.css') }}"
 />
 <script>
-  var competitionId = "{{ competition.idComp }}";
+  var nbParticipantsBlois = {{ nb_participants_blois }};
+  var nbParticipantsOther = {{ nb_participants_other }};
+  var nbParticipantsArb = {{ participants_arb|length }};
+  var competitionId = {{ competition.idComp }};
+  var competitionGender = "{{ competition.sexeComp }}";   
 </script>
+<script src="{{ url_for('static', filename='js/condCompetValide.js') }}"></script>
 <script src="{{ url_for('static', filename='js/gestionParticipant.js') }}"></script>
+<script src="{{ url_for('static', filename='js/editField.js') }}"></script>
 {% include 'progress-bar.html' %}
 <section class="content">
   <section class="section-infopr">
@@ -48,20 +54,17 @@
           <p class="nb">{{ nb_participants_blois }}</p>
         </div>
         <div class="gestion-participants-list">
-          {% if participants_blois %} {% for participant in participants_blois
-          %}
+          {% if participants_blois %} 
+          {% for participant in participants_blois %}
           <div class="gestionp">
             <div class="participant">
-              <p>{{ participant.prenomE }}</p>
-              <p>{{ participant.nomE }}</p>
+              <p>{{ participant.Escrimeur.prenomE }}</p>
+              <p>{{ participant.Escrimeur.nomE }}</p>
               <p>|</p>
               <p>{{ participant.Categorie.nomCategorie }}</p>
             </div>
             <div class="suppd">
-              <form
-                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.numeroLicenceE) }}"
-                method="post"
-              >
+              <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.Escrimeur.numeroLicenceE) }}" method="post">
                 <button style="font-size: 30px" type="submit">-</button>
               </form>
             </div>
@@ -71,10 +74,10 @@
           {% endif %}
           <div class="addp">
             <button style="font-size: 30px">+</button>
-          <div id="submenu" style="display: none;">
-            <input type="text" id="search" placeholder="Rechercher...">
-            <ul id="escrimeurs-list"></ul>
-    </div>
+            <div class="submenu" style="display: none;">
+                <input type="text" class="search" placeholder="Rechercher…">
+                <ul class="escrimeurs-list"></ul>
+            </div>
             </div>
           </div>
         </div>
@@ -86,55 +89,49 @@
           <p class="nb">{{ nb_participants_other }}</p>
         </div>
         <div class="gestion-participants-list">
-          {% if participants_other %} {% for participant in participants_other
-          %}
+          {% if participants_other %} 
+          {% for participant in participants_other %}
           <div class="gestionp">
             <div class="participant">
-              <p>{{ participant.prenomE }}</p>
-              <p>{{ participant.nomE }}</p>
+              <p>{{ participant.Escrimeur.prenomE }}</p>
+              <p>{{ participant.Escrimeur.nomE }}</p>
               <p>|</p>
               <p>{{ participant.Categorie.nomCategorie }}</p>
             </div>
             <div class="suppd">
-              <form
-                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.numeroLicenceE) }}"
-                method="post"
-              >
+              <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.Escrimeur.numeroLicenceE) }}" method="post">
                 <button style="font-size: 30px" type="submit">-</button>
               </form>
             </div>
           </div>
-          {% endfor %} {% else %}
+          {% endfor %}{% else %}
           <p class="nullparticipant">Aucun participant d'autres clubs</p>
           {% endif %}
           <div class="addp">
-            <form
-              action="{{ url_for('add_participant', id_comp=competition.idComp) }}"
-              method="post"
-            >
-              <button style="font-size: 30px" type="submit">+</button>
-            </form>
-          </div>
+            <button style="font-size: 30px">+</button>
+            <div class="submenu" style="display: none;">
+                <input type="text" class="search" placeholder="Rechercher…">
+                <ul class="escrimeurs-list"></ul>
+            </div>
         </div>
       </section>
       <section class="escrime-arb">
         <div class="subtitreparticipant">
           <h3>Arbitres</h3>
-          <p class="nb">{{ nb_participants_other }}</p>
+          <p class="nb">{{ nb_participants_arb }}</p>
         </div>
         <div class="gestion-participants-list">
-          {% if participants_other %}
-            {% for participant in participants_other %}
-            <div class ="gestionp">
+          {% if participants_arb %}
+          {% for arbitre, escrimeur, categorie in participants_arb %}            <div class ="gestionp">
             <div class="participant">
-              <p>{{ participant.prenomE }}</p>
-              <p>{{ participant.nomE }}</p>
+              <p>{{ escrimeur.prenomE }}</p>
+              <p>{{ escrimeur.nomE }}</p>
               <p>|</p>
-              <p>{{ participant.Categorie.nomCategorie }}</p>
+              <p>{{ escrimeur.categorie.nomCategorie }}</p>
             </div>
             <div class="suppd">
               <form
-                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.numeroLicenceE) }}"
+                action="{{ url_for('delete_participant', id_comp = competition.idComp,id=escrimeur.numeroLicenceE) }}"
                 method="post"
               >
                 <button style="font-size: 30px" type="submit">-</button>
@@ -146,10 +143,11 @@
             <p class = "nullparticipant">Aucun arbitres pour le moment</p>
           {% endif %}
           <div class="addp">
-            <form action="{{ url_for('add_participant', id_comp=competition.idComp) }}" method="post">
-              <button style="font-size: 30px;" type="submit">+</button>
-            </form>
-          </div>
+            <button style="font-size: 30px">+</button>
+            <div class="submenu" style="display: none;">
+                <input type="text" class="search" placeholder="Rechercher…">
+                <ul class="escrimeurs-list"></ul>
+            </div>
         </div>
       </section>
     </section>
@@ -157,7 +155,7 @@
   <div class="center">
     <div class="btndiv">
       <a href="{{ url_for('home_default') }}" class="btn-annuler">ANNULER</a>
-      <a href="{{ url_for('home_default') }}" class="btn-publier"
+      <a href="{{ url_for('gestion_poules', id_comp = competition.idComp) }}" class="btn-publier"
         >CREER LES POULES</a
       >
     </div>

@@ -1,0 +1,176 @@
+main {
+  margin: 0 5%;
+  margin-bottom: 5%;
+}
+
+.joueur > p {
+  color: black;
+  font-size: 15px;
+}
+
+.joueur {
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-joueur {
+  background-color: var(--couleur-background-gagnant);
+  padding: 1% 3%;
+}
+
+.table-troiseme-pos {
+  margin-left: 50%;
+  width: 50%;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin-bottom: 10rem;
+  margin-top: 5rem;
+}
+
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.div2 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+.div3 {
+  grid-area: 1 / 5 / 2 / 6;
+}
+.div4 {
+  grid-area: 1 / 7 / 2 / 8;
+}
+.div5 {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.div6 {
+  grid-area: 4 / 1 / 5 / 2;
+}
+.div7 {
+  grid-area: 7 / 1 / 8 / 2;
+}
+.div8 {
+  grid-area: 9 / 1 / 10 / 2;
+}
+.div9 {
+  grid-area: 2 / 2 / 5 / 3;
+}
+.div10 {
+  grid-area: 7 / 2 / 10 / 3;
+}
+.div11 {
+  grid-area: 8 / 3 / 9 / 4;
+}
+.div12 {
+  grid-area: 3 / 3 / 4 / 4;
+}
+.div13 {
+  grid-area: 3 / 4 / 9 / 5;
+}
+.div14 {
+  grid-area: 5 / 5 / 6 / 6;
+}
+.div15 {
+  grid-area: 5 / 6 / 6 / 7;
+}
+.div16 {
+  grid-area: 5 / 7 / 6 / 8;
+}
+
+.titre-table {
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.div9,
+.div10,
+.div13,
+.div15,
+.div-4 {
+  padding: 5% 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barre {
+  width: 5px;
+  height: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: black;
+}
+
+.petites-bars {
+  width: 100%;
+  height: 5px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  background-color: black;
+}
+
+.partie-gauche {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.partie-gauche .petites-bars:first-child {
+  align-self: flex-start; /* Aligner la première petites-bars en haut */
+}
+
+.partie-gauche .petites-bars:last-child {
+  align-self: flex-end; /* Aligner la dernière petites-bars en bas */
+}
+
+.partie-droite {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.petite-bar-droite {
+  width: 100%;
+  height: 5px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: black;
+}
+
+.parent-2{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.div-1 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+.div-2 {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.div-3 {
+  grid-area: 4 / 1 / 5 / 2;
+}
+.div-4 {
+  grid-area: 2 / 2 / 5 / 3;
+}
+.div-5 {
+  grid-area: 3 / 3 / 4 / 4;
+}

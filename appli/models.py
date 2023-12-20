@@ -64,7 +64,7 @@ class Club(db.Model):
 # Modèle pour représenter la compétition
 class Competition(db.Model):
     __tablename__ = 'COMPETITION'
-    idComp = db.Column(db.Integer, primary_key=True)
+    idComp = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idLieu = db.Column(db.Integer, db.ForeignKey('LIEU.idLieu'), nullable=False)
     lieu = db.relationship('Lieu', backref='Lieu.idLieu')
     idSaison = db.Column(db.Integer, db.ForeignKey('SAISON.idSaison'), nullable=False)
@@ -341,6 +341,9 @@ def load_user(username):
 def get_sample():
     return Competition.query.order_by(Competition.dateComp.desc()).all()
 
+def get_competition_by_id(id_comp):
+    return Competition.query.filter_by(idComp=id_comp).first()
+
 def get_categories():
     categories = Categorie.query.all()
     return [categorie.nomCategorie for categorie in categories]
@@ -558,6 +561,15 @@ def get_adherents():
         .all()
     return res
 
+def get_adherents_adapte_json():
+    res = db.session.query(Escrimeur) \
+        .join(Tireur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
+        .join(Club, Club.idClub == Tireur.idClub) \
+        .join(Categorie, Escrimeur.idCat == Categorie.idCat) \
+        .filter(Club.nomClub == "BLOIS CE") \
+        .all()
+    return res
+
 def dernier_escrimeur_id():
     last_escrimeur = db.session.query(Escrimeur).order_by(Escrimeur.numeroLicenceE.desc()).first()
     if last_escrimeur:
@@ -566,14 +578,22 @@ def dernier_escrimeur_id():
         return 0
 
 def get_participants(id_comp, club=None):
-
-    res = db.session.query(ParticipantsCompetition, Escrimeur, Categorie).join(Escrimeur, ParticipantsCompetition.numeroLicenceE == Escrimeur.numeroLicenceE).join(Categorie, Escrimeur.idCat == Categorie.idCat).join(Tireur, Tireur.numeroLicenceE == Escrimeur.numeroLicenceE).join(Club, Club.idClub == Tireur.idClub).filter(ParticipantsCompetition.idComp == id_comp)
+    res = (
+        db.session.query(ParticipantsCompetition, Escrimeur, Categorie)
+        .join(Escrimeur, ParticipantsCompetition.numeroLicenceE == Escrimeur.numeroLicenceE)
+        .join(Categorie, Escrimeur.idCat == Categorie.idCat)
+        .join(Tireur, Tireur.numeroLicenceE == Escrimeur.numeroLicenceE)
+        .join(Club, Club.idClub == Tireur.idClub)
+        .outerjoin(Arbitre, Arbitre.numeroLicenceE == Escrimeur.numeroLicenceE)
+        .filter(ParticipantsCompetition.idComp == id_comp)
+        .filter(Arbitre.idArbitre == None)
+    )
     if club is not None:
         if club == "!":
-            res = res.filter(Club.nomClub != "ClubBlois")
+            res = res.filter(Club.nomClub != "BLOIS CE")
         else:
             res = res.filter(Club.nomClub == club)
-    return res.add_columns(ParticipantsCompetition.numeroLicenceE, ParticipantsCompetition.idComp, Escrimeur.prenomE, Escrimeur.nomE, Escrimeur.dateNaissanceE, Escrimeur.numeroLicenceE, Escrimeur.sexeE, Escrimeur.numTelE, Categorie.nomCategorie).all()
+    return res.add_columns(Escrimeur.prenomE, Escrimeur.nomE, Categorie.nomCategorie).all()
 
 def get_liste_participants_competitions(id_comp):
     return ParticipantsCompetition.query.filter_by(idComp=id_comp).all()
@@ -584,4 +604,29 @@ def get_informations_escrimeur(numero_licence):
 def get_id_poule(id_comp, id_piste, id_arbitre, nom_poule):
     return Poule.query.filter_by(idComp=id_comp, idPiste=id_piste, idArbitre=id_arbitre, nomPoule=nom_poule).first().idPoule
 
-    
+def get_arbitres(idcomp):
+    arbitres = db.session.query(Arbitre, Escrimeur, Categorie).join(Escrimeur, Arbitre.numeroLicenceE == Escrimeur.numeroLicenceE).join(
+        Categorie, Escrimeur.idCat == Categorie.idCat
+    ).join(
+        ParticipantsCompetition,
+        ParticipantsCompetition.numeroLicenceE == Escrimeur.numeroLicenceE
+    ).filter(ParticipantsCompetition.idComp == idcomp).all()
+    return arbitres
+
+def get_competition_statut(competition):
+    participants = ParticipantsCompetition.query.filter_by(idComp=competition.idComp).first()
+    if participants:
+        # verifie si les poules ont été créées pour la compétition
+        poules = Poule.query.filter_by(idComp=competition.idComp).first()
+        if poules:
+            # verifie si l’appel a été fait donc sil ya des scores entrés pour des matchs de poules)
+            match_poule = MatchPoule.query.filter_by(idComp=competition.idComp).first()
+            if match_poule and (match_poule.touchesRecuesTireur1 is not None or match_poule.touchesDonneesTireur1 is not None
+                                or match_poule.touchesRecuesTireur2 is not None or match_poule.touchesDonneesTireur2 is not None):
+                return 'score'
+            else:
+                return 'appel'
+        else:
+            return 'participants'
+    else:
+        return 'participants'
