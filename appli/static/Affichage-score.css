@@ -5,7 +5,7 @@ th {
 }
 
 .nav-table{
-    margin: 1% 25%;
+    margin: 1% 10%;
     justify-content: space-between;
 }
 
@@ -73,20 +73,8 @@ thead {
     margin-bottom: 5%;
 }
 
-.btn-retour{
-    padding: 0.5% 2%;
-    background-color: var(--couleur-lien);
-    text-decoration: none;
-    color: white;
-    border-radius: 10px;
-    font-size: 20px;
-}
 
-.btn-retour:hover{
-    background-color: var(--hover-publier);
-}
-
-.bas-de-page > div > button{
+.btn-bas-de-page{
     background-color: var(--couleur-lien);
     text-decoration: none;
     color: white;
