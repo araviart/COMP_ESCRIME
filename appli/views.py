@@ -682,10 +682,15 @@ def get_escrimeurs_json(gender, id_comp):
     escrimeurs_to_display = [e for e in escrimeurs if e.numeroLicenceE not in registered_licence_numbers]
     return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs_to_display])
 
-@app.route('/get_adherents')
-def get_adherents_json():
-    escrimeurs = get_adherents_adapte_json()
-    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
+@app.route('/get_adherents/<gender>/<int:id_comp>')
+def get_adherents_json(gender,id_comp):
+    registered_licence_numbers = set()
+    participants = get_liste_participants_competitions(id_comp)
+    escrimeurs = get_adherents_adapte_json(gender)
+    for participant in participants:
+        registered_licence_numbers.add(participant.tireur.numeroLicenceE)
+    escrimeurs_to_display = [e for e in escrimeurs if e.numeroLicenceE not in registered_licence_numbers]
+    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs_to_display])
 
 
 @app.route('/delete_participant/<int:id_comp>/<int:id>/', methods=['POST'])
