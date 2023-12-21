@@ -35,34 +35,6 @@
                         <input class="checkbox" type="checkbox" name="club" id="club"/>
                     </div>
                 </section>
-                <section class="manuel">
-                    <h6>Répartition manuelle</h6>
-                    <div class="type-reglage-manuel">
-                        <div>
-                            <label for="equilibrer">Equilibrer les tireurs :</label>
-                            <input class="checkbox" type="checkbox" name="equilibrer" id="equilibrer"/>
-                        </div>
-                        
-                        <div>
-                            <label for="nb_poules">Nombre de poules :</label>
-                            <div class="select">
-                                <select name="nb_poules" id="nb_poules">
-                                    {% for i in range(1, nb_arbitres+1) %}
-                                        <option value="{{ i }}">{{ i }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <label for="nb_tireurs/poules"> Nb tireurs/poules :</label>
-                            <div class="select">
-                                <select name="nb_tireurs/poules" id="nb_tireurs/poules">
-                                    {% for i in range(1, nb_tireurs_par_poule+1) %}
-                                        <option value="{{ i }}">{{ i }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </section> 
                 <form method="POST" action="{{ url_for('gestion_poules', id_comp=id_comp)}}">
                     <input type="submit" value="Générer" class="btn-generer" />
                 </form>   
