@@ -557,7 +557,7 @@ def get_adherents():
             Escrimeur.numeroLicenceE,
             Escrimeur.sexeE,
             Escrimeur.numTelE,
-            Categorie.nomCategorie
+            Categorie.nomCategoriea
         ) \
         .all()
     return res
@@ -612,6 +612,7 @@ def get_arbitres(idcomp):
         ParticipantsCompetition,
         ParticipantsCompetition.numeroLicenceE == Escrimeur.numeroLicenceE
     ).filter(ParticipantsCompetition.idComp == idcomp).all()
+    print(arbitres)
     return arbitres
 
 def get_competition_statut(competition):
@@ -621,7 +622,10 @@ def get_competition_statut(competition):
         poules = Poule.query.filter_by(idComp=competition.idComp).first()
         if poules:
             # verifie si l’appel a été fait donc sil ya des scores entrés pour des matchs de poules)
-            match_poule = MatchPoule.query.filter_by(idComp=competition.idComp).first()
+            try:
+                match_poule = MatchPoule.query.filter_by(idComp=competition.idComp).first()
+            except:
+                match_poule = None
             if match_poule and (match_poule.touchesRecuesTireur1 is not None or match_poule.touchesDonneesTireur1 is not None
                                 or match_poule.touchesRecuesTireur2 is not None or match_poule.touchesDonneesTireur2 is not None):
                 return 'score'

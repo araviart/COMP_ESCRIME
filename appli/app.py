@@ -7,7 +7,7 @@ from flask_mail import Mail
 
 # username = 'root'
 # password = 'root'
-# hote = '127.0.0.1:3306'
+# hote = '127.0.0.1:3306'   
 # dataBase = 'COMP_ESCRIME'
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:irvyn@localhost/coupe_escrime'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://raviart:raviart@servinfo-maria/DBraviart'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/coupe_escrime2'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/coupe_escrime'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/coupe_escrime'
 db = SQLAlchemy(app)
 
 # Configuration de l'application Flask
