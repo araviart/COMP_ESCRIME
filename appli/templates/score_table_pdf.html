@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='Affichage-score.css') }}" />
+
+<table class=“tabletable-striped”>
+    <thead>
+        <tr>
+            <th scope=“col”>Rang</th>
+            <th scope=“col”>Prénom</th>
+            <th scope=“col”>Nom</th>
+            <th scope=“col”>V/M</th>
+            <th scope=“col”>Club</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for participant in data %}
+            <tr>
+                <td>{{ participant['Classement'] }}</td>
+                <td>{{ participant['Prenom'] }}</td>
+                <td>{{ participant['Nom'] }}</td>
+                <td>{{ participant['VM'] }}</td>
+                <td>{{ participant['Club'] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
