@@ -22,6 +22,12 @@ def send_verification_email(user_email, code):
         msg.body = f"Votre code de vérification est : {code}"
         mail.send(msg)
 
+def send_bienvenue_email(user_email, user_pseudo):
+    with app.app_context():
+        msg = Message("Bienvenue sur COMPETITION ESCRIME", recipients=[user_email])
+        msg.body = f"Bonjour {user_pseudo},\n\nBienvenue sur COMPETITION ESCRIME !\n\nNous vous souhaitons une bonne navigation sur notre site.\n\nL'équipe COMPETITION ESCRIME"
+        mail.send(msg)
+
 logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 class LoginForm(FlaskForm):
     email_username = StringField('email_username', validators=[DataRequired()])
@@ -219,6 +225,7 @@ def inscription():
         u = User(pseudoUser=f.pseudo.data , mdpUser=m.hexdigest(), emailUser=f.email.data, statutUser="Utilisateur")
         db.session.add(u)
         db.session.commit()
+        send_bienvenue_email(f.email.data, f.pseudo.data)
         return redirect(url_for("home"))
 
 @app.route("/login/", methods=["GET", "POST"])
