@@ -71,8 +71,12 @@ def gestion_score(id_comp):
         poules[i]["stats"] = get_poule_stats(i)
         poules[i]["matchs"] = get_matchs_poules(i)
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
-    # Rendre le modèle HTML avec Flask
-    return render_template('gestion_score.html', poules=poules, id_comp=id_comp)
+   
+    list_absents = []
+    list_absents.append(get_liste_tireurs_escrimeurs_poule(id_comp, 1)[0])
+    list_absents.append(get_liste_tireurs_escrimeurs_poule(id_comp, 1)[1])
+
+    return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=list_absents)
 
 @app.route('/update_scores', methods=['POST'])
 def update_scores():
