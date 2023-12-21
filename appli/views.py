@@ -204,6 +204,10 @@ def get_scores_for_competition(id_comp):
 #     response.headers['Content-Disposition'] = f'attachment; filename=tableau_scores_{competition.nomComp}.pdf'
 #     return response
 
+@app.route("/arbre-competition")
+def arbre():
+    return render_template("arbre.html")
+
 @app.route("/inscription-form/")
 def inscription_page():
     return render_template("Inscription.html", form = InscriptionForm())
