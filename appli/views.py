@@ -472,7 +472,7 @@ def gestion_poules(id_comp):
         classement_checked = 'classement' in request.form
         club_checked = 'club' in request.form
         equilibrer_checked = 'equilibrer' in request.form
-        nb_poules = int(request.form.get('nb_poules'))
+        nb_poules = request.form.get('nb_poules')
         nb_tireurs_poules_str = request.form.get('nb_tireurs/poules')
         if nb_tireurs_poules_str and nb_tireurs_poules_str.isdigit():
             nb_tireurs_poules = int(nb_tireurs_poules_str)
