@@ -11,6 +11,8 @@ from wtforms import StringField, PasswordField
 from hashlib import sha256
 from flask_login import login_user, logout_user, current_user
 from flask_mail import Message
+import datetime
+
 
 def send_verification_email(user_email, code):
     with app.app_context():
@@ -355,6 +357,7 @@ def gestion_poules(id_comp):
     nb_tireurs = get_nb_tireurs(id_comp)
     nb_arbitres = get_nb_arbitres(id_comp)
     nb_tireurs_par_poule = nb_tireurs // nb_arbitres
+    liste_matchs = []
     if request.method == "POST":
         classement_checked = 'classement' in request.form
         club_checked = 'club' in request.form
@@ -418,6 +421,21 @@ def appel(id_comp):
                     ajouter_participant_poule(id_poule, liste_poules[i][j])
                     tireur = Tireur.query.get(liste_poules[i][j])
                     rows_data.append(tireur.to_dict())
+            id_type_match = 1
+            date_match = datetime.date.today()
+            date_match_str = date_match.strftime("%Y-%m-%d")
+            heure_match = datetime.datetime.now().time().strftime("%H:%M:%S")
+            
+            for i in range(len(liste_poules)):
+                poule = liste_poules[i]
+                id_piste = pistes[i]
+                id_arbitre = get_id_arbitre_from_escrimeur(arbitres[i])
+                
+                for j in range(len(poule)):
+                    for k in range(j+1, len(poule)):
+                        numero_licence_e1 = poule[j]
+                        numero_licence_e2 = poule[k]
+                        ajouter_match_poule(id_type_match, id_poule, id_piste, id_arbitre, numero_licence_e1, numero_licence_e2, date_match_str, heure_match, 0, 0, 0, 0)       
             redirect(url_for('appel', id_comp=id_comp))
             competition = Competition.query.get(id_comp) 
             return render_template('appel.html', competition = competition, rows_data=rows_data, participants_present=participants_present)
