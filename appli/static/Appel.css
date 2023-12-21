@@ -10,8 +10,8 @@ main{
 
 .nom-heure{
     display: flex;
-    flex-basis: 25%;
     justify-content: space-between;
+    flex-direction: column;
 }
 
 .nom{

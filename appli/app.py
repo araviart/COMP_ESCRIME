@@ -7,7 +7,7 @@ from flask_mail import Mail
 
 # username = 'root'
 # password = 'root'
-# hote = '127.0.0.1:3306'
+# hote = '127.0.0.1:3306'   
 # dataBase = 'COMP_ESCRIME'
 
 app = Flask(__name__)

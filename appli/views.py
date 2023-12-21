@@ -136,6 +136,7 @@ def telecharger_pdf(id_comp):
     response.headers['Content-Disposition'] = f'attachment; filename=tableau_scores_{competition.nomComp}.pdf'
     return response
 
+@app.route("/inscription-form/")
 def inscription_page():
     return render_template("Inscription.html", form = InscriptionForm())
 
@@ -568,8 +569,9 @@ def ajouter_arbitre_competition(id_comp):
 
         return jsonify({'success': True, 'message': 'Arbitre ajouté avec succès'})
 
-@app.route('/get_escrimeurs/<gender>')
-def get_escrimeurs_json(gender):
+@app.route('/get_escrimeurs/<gender>/<int:id_comp>')
+def get_escrimeurs_json(gender, id_comp):
+    escrimeurs_to_display = []
     escrimeurs = None
     if gender == 'M': 
         escrimeurs = Escrimeur.query.all()
@@ -579,7 +581,13 @@ def get_escrimeurs_json(gender):
     elif gender == "F":
         gender = "Femme"
         escrimeurs = Escrimeur.query.filter_by(sexeE=gender).all()
-    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs])
+
+    registered_licence_numbers = set() 
+    participants = get_liste_participants_competitions(id_comp)
+    for participant in participants:
+        registered_licence_numbers.add(participant.tireur.numeroLicenceE)
+    escrimeurs_to_display = [e for e in escrimeurs if e.numeroLicenceE not in registered_licence_numbers]
+    return jsonify([escrimeur.to_dict() for escrimeur in escrimeurs_to_display])
 
 @app.route('/get_adherents')
 def get_adherents_json():
@@ -595,10 +603,6 @@ def delete_participant(id, id_comp):
         db.session.delete(participant)
         db.session.commit()
     return redirect(url_for('gestion_participants', id_comp=id_comp))
-
-import logging
-
-logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 
 @app.route('/ajouter_escrimeur_competition/<int:id_comp>/', methods=['POST'])
 def add_participant(id_comp):
@@ -628,6 +632,20 @@ def add_participant(id_comp):
         else:
             logging.debug('Failed to add participant')
     return redirect(url_for('gestion_participants', id_comp=id_comp))
+
+@app.route("/delete_arbitre/<int:id_comp>/<int:id_arbitre>/", methods=["POST"])
+def delete_arbitre(id_comp, id_arbitre):
+    arbitre = Arbitre.query.filter_by(idArbitre=id_arbitre).first()
+    if arbitre:
+        participant = ParticipantsCompetition.query.filter_by(
+            numeroLicenceE=arbitre.numeroLicenceE, idComp=id_comp
+        ).first()
+        if participant:
+            db.session.delete(participant)
+        
+        db.session.delete(arbitre)
+        db.session.commit()
+    return redirect(url_for("gestion_participants", id_comp=id_comp))
 
 @app.route('/update_database', methods=['POST'])
 def update_database():

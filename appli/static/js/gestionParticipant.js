@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (addButton.closest(".escrimeblois")) {
           url = "/get_adherents";
       } else if (addButton.closest(".escrime-other")) {
-          url = `/get_escrimeurs/${competitionGender}`; 
+          url = `/get_escrimeurs/${competitionGender}/${competitionId}`; 
           console.log(url);
       } else if (addButton.closest(".escrime-arb")) {
-          url = "/get_escrimeurs/M";
+          url = `/get_escrimeurs/M/${competitionId}`;
       }
       
 
