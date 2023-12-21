@@ -5,7 +5,7 @@ import logging
 import math
 from .ajout_bd import creer_competition
 from flask import jsonify, render_template, session, url_for, redirect, request, flash
-from .models import Arme, Categorie, Competition, Lieu, MatchPoule, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_arbitre_escrimeur_poule, get_club_tireur_escrimeur, get_id_arbitre_poule, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_liste_tireurs_escrimeurs_poule, get_nb_arbitres, get_nb_poules, get_nb_tireurs, get_participants, get_piste_poule, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
+from .models import Arme, Categorie, Competition, Lieu, MatchPoule, ParticipantsCompetition, Saison, Tireur, User, classer_tireurs, fabriquer_poules, get_arbitre_escrimeur_poule, get_club_tireur_escrimeur, get_id_arbitre_poule, get_lieux, get_liste_participants_competitions_arbitres, get_liste_participants_competitions_tireurs, get_liste_tireurs_escrimeurs_poule, get_matchs_poules, get_nb_arbitres, get_nb_poules, get_nb_tireurs, get_participants, get_piste_poule, get_poule_stats, get_sample, get_categories, get_armes, get_nb_participants,filtrer_competitions, get_adherents, filtrer_adherent, Escrimeur, dernier_escrimeur_id, poules_fabriquables
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from wtforms import StringField, PasswordField
@@ -68,6 +68,8 @@ def gestion_score(id_comp):
         poules[i]['tireurs'] = tireurs_club
         poules[i]['piste'] = get_piste_poule(id_comp, i)
         poules[i]["id_arbitre"] = get_id_arbitre_poule(id_comp, i)
+        poules[i]["stats"] = get_poule_stats(i)
+        poules[i]["matchs"] = get_matchs_poules(i)
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
     # Rendre le modèle HTML avec Flask
     return render_template('gestion_score.html', poules=poules, id_comp=id_comp)
@@ -88,11 +90,33 @@ def update_scores():
 
     print("license: ", license , "opponent_license: ", opponent_license, "score: ", score, "id_poule: ", id_poule, "id_piste: ", id_piste, "id_comp: ", id_comp, "id_arbitre: ", id_arbitre)
 
-    match = MatchPoule.query.filter_by(numeroLicenceE1=license, numeroLicenceE2=opponent_license).first()
+    match1 = MatchPoule.query.filter_by(numeroLicenceE1=license, numeroLicenceE2=opponent_license).first()
     match2 = MatchPoule.query.filter_by(numeroLicenceE1=opponent_license, numeroLicenceE2=license).first()
 
-    if match or match2:
-        print("Match trouvé")
+    # si score est pas un nombre, on ne fait rien
+    try:
+        score = int(score)
+    except ValueError:
+        return 'OK'
+
+    if match1:
+        # mettre à jour le match
+        print("Mise à jour du match")
+        print("Avant: ", match1.touchesRecuesTireur1, match1.touchesDonneesTireur1, match1.touchesRecuesTireur2, match1.touchesDonneesTireur2)
+        match1.touchesDonneesTireur1 = score
+        match1.touchesRecuesTireur2 = score
+        db.session.commit()
+        print("Après: ", match1.touchesRecuesTireur1, match1.touchesDonneesTireur1, match1.touchesRecuesTireur2, match1.touchesDonneesTireur2)
+        print("Match mis à jour")
+    elif match2:
+        # mettre à jour le match
+        print("Mise à jour du match")
+        print("Avant: ", match2.touchesRecuesTireur1, match2.touchesDonneesTireur1, match2.touchesRecuesTireur2, match2.touchesDonneesTireur2)
+        match2.touchesDonneesTireur2 = score
+        match2.touchesRecuesTireur1 = score
+        db.session.commit()
+        print("Après: ", match2.touchesRecuesTireur1, match2.touchesDonneesTireur1, match2.touchesRecuesTireur2, match2.touchesDonneesTireur2)
+        print("Match mis à jour")
     else:
         # créer le match
         print("Création du match")

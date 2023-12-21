@@ -74,9 +74,22 @@
                         {% set opponent_tireur = opponent_tireur[jind] %}
                         {% set opponent_tireur = opponent_tireur[0] %}
                         {% set tireur_license = opponent_tireur.numeroLicenceE %}
+
+                        {% set score_value = 0 %}
+                        {% for match in poules[i]['matchs'] %}
+                          {% if match.numeroLicenceE1 == tireur.numeroLicenceE and match.numeroLicenceE2 == tireur_license %}
+                            {% set score_value = match.touchesDonneesTireur1 %}
+                          {% elif match.numeroLicenceE1 == tireur_license and match.numeroLicenceE2 == tireur.numeroLicenceE %}
+                            {% set score_value = match.touchesDonneesTireur2 %}
+                          {% endif %}
+                        {% endfor %}
+
+                        <p style="color: black;">{{ score_value }}</p>
+
                         {% if loop.index0 > jind %}
                           <td class="td-textfield-matrice">
                             <input class="textfield-score textfield-score-ok row-{{ row_index }} col-{{ col_index }}" type="number" name="name" 
+                            value="{{ score_value }}"
                             data-license="{{ tireur_license }}" 
                             data-licence-opponent="{{ tireur.numeroLicenceE }}" 
                             data-id-competition="{{ id_comp }}" 
@@ -88,6 +101,7 @@
                         {% else %}
                           <td class="td-textfield-matrice">
                             <input class="textfield-score score-gris textfield-score-ok row-{{ row_index }} col-{{ col_index }}" type="number" name="name"
+                            value="{{ score_value }}"
                             data-license="{{ tireur_license }}" 
                             data-licence-opponent="{{ tireur.numeroLicenceE }}" 
                             data-id-competition="{{ id_comp }}" 
@@ -115,12 +129,12 @@
                 </tr>
               </thead>
               <tbody>
-                {% for row in poules[i]['tireurs'] %}
+                {% for tireur, club in poules[i]['tireurs'].items() %}
                   <tr>
-                    <td>???</td>
-                    <td>???</td>
-                    <td>???</td>
-                    <td>???</td>
+                    <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['V'] }}</td>
+                    <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TD'] }}</td>
+                    <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TR'] }}</td>
+                    <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TD-TR'] }}</td>
                     <td>
                       <input id="checkbox-2" type="checkbox" />
                     </td>
