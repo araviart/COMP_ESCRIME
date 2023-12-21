@@ -533,7 +533,6 @@ def fabriquer_poules_decalage_club(tireurs, arbitres, pistes):
                 break
     return liste_poules
 
-
 def fabriquer_poules(tireurs, arbitres, pistes, type_poule):
     if not poules_fabriquables(tireurs, arbitres):
         return "Les poules ne sont pas fabriquables"

@@ -12,8 +12,8 @@ from hashlib import sha256
 from flask_login import login_user, logout_user, current_user
 from flask_mail import Message
 import datetime
-from flask import make_response
-from weasyprint import HTML
+# from flask import make_response
+# from weasyprint import HTML
 
 def send_verification_email(user_email, code):
     with app.app_context():
