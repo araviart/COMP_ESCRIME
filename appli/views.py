@@ -1,3 +1,4 @@
+import datetime
 import random
 from .app import app, db, mail
 import logging
@@ -55,26 +56,86 @@ def inject_user_status():
         return {"user_status": current_user.statutUser}
     return {"user_status": None}
     
-@app.route("/gestion_score/")
-def gestion_score():
-    if request.method == "POST":
-        pass
-    rows_data = [
-        {'Nom': 'Doe', 'Prenom': 'John', 'Club': 'Club A'},
-        {'Nom': 'Smith', 'Prenom': 'Alice', 'Club': 'Club A'},
-        {'Nom': 'Johnson', 'Prenom': 'Bob', 'Club': 'Club A'},
-        {'Nom': 'Williams', 'Prenom': 'Emma', 'Club': 'Club A'}
-    ]
+@app.route("/gestion_score/<int:id_comp>")
+def gestion_score(id_comp):
 
-    # Définir le nombre de lignes et de colonnes dans le tableau
-    rows = len(rows_data)
-    cols = len(rows_data)
+    # récuperer les infos des poules dans un dict avec le numéro de poule en clé et la liste des tireurs,le nom de la piste, le nom de l'arbitre en valeur
+    poules = {}
+    nb_poules = get_nb_poules(id_comp)
+    for i in range(1, nb_poules+1):
+        poules[i] = {}
+        tireurs_club = {} # dict avec le tireur en clé et le nom du club en valeur
+        for tireur in get_liste_tireurs_escrimeurs_poule(id_comp, i):
+            tireurs_club[tireur] = get_club_tireur_escrimeur(tireur).nomClub
+        poules[i]['tireurs'] = tireurs_club
+        poules[i]['piste'] = get_piste_poule(id_comp, i)
+        poules[i]["id_arbitre"] = get_id_arbitre_poule(id_comp, i)
+        poules[i]["stats"] = get_poule_stats(i)
+        poules[i]["matchs"] = get_matchs_poules(i)
+        poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
+   
+    list_absents = []
+    list_absents.append(get_liste_tireurs_escrimeurs_poule(id_comp, 1)[0])
+    list_absents.append(get_liste_tireurs_escrimeurs_poule(id_comp, 1)[1])
 
-    # Générer les données pour le tableau
-    table_data = [[f'input_{i}_{j}' for j in range(cols)] for i in range(rows)]
+    return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=list_absents)
 
-    # Rendre le modèle HTML avec Flask
-    return render_template('Score.html', table_data=table_data, rows_data=rows_data, rows=rows, cols=cols)
+@app.route('/update_scores', methods=['POST'])
+def update_scores():
+    data = request.get_json()
+
+    license = data['license']
+    opponent_license = data['opponentLicense']
+    score = data['score']
+    id_poule = data['idPoule']
+    id_piste = data['idPiste']
+    id_comp = data['idCompetition']
+    id_arbitre = data['idArbitre']
+
+
+
+    print("license: ", license , "opponent_license: ", opponent_license, "score: ", score, "id_poule: ", id_poule, "id_piste: ", id_piste, "id_comp: ", id_comp, "id_arbitre: ", id_arbitre)
+
+    match1 = MatchPoule.query.filter_by(numeroLicenceE1=license, numeroLicenceE2=opponent_license).first()
+    match2 = MatchPoule.query.filter_by(numeroLicenceE1=opponent_license, numeroLicenceE2=license).first()
+
+    # si score est pas un nombre, on ne fait rien
+    try:
+        score = int(score)
+    except ValueError:
+        return 'OK'
+
+    if match1:
+        # mettre à jour le match
+        print("Mise à jour du match")
+        print("Avant: ", match1.touchesRecuesTireur1, match1.touchesDonneesTireur1, match1.touchesRecuesTireur2, match1.touchesDonneesTireur2)
+        match1.touchesDonneesTireur1 = score
+        match1.touchesRecuesTireur2 = score
+        db.session.commit()
+        print("Après: ", match1.touchesRecuesTireur1, match1.touchesDonneesTireur1, match1.touchesRecuesTireur2, match1.touchesDonneesTireur2)
+        print("Match mis à jour")
+    elif match2:
+        # mettre à jour le match
+        print("Mise à jour du match")
+        print("Avant: ", match2.touchesRecuesTireur1, match2.touchesDonneesTireur1, match2.touchesRecuesTireur2, match2.touchesDonneesTireur2)
+        match2.touchesDonneesTireur2 = score
+        match2.touchesRecuesTireur1 = score
+        db.session.commit()
+        print("Après: ", match2.touchesRecuesTireur1, match2.touchesDonneesTireur1, match2.touchesRecuesTireur2, match2.touchesDonneesTireur2)
+        print("Match mis à jour")
+    else:
+        # créer le match
+        print("Création du match")
+        match = MatchPoule(type_match=1, poule=id_poule, piste=id_piste, arbitre=id_arbitre,
+                            tireur1=license, tireur2=opponent_license,
+                            date_match=datetime.date.today(), heure_match=datetime.datetime.now().time().strftime("%H:%M:%S"),
+                            touches_recues_tireur1=0, touches_donnees_tireur1=score,
+                            touches_recues_tireur2=score, touches_donnees_tireur2=0)
+        db.session.add(match)
+        db.session.commit()
+        print("Match créé")
+
+    return 'OK'
 
 @app.route("/afficher-score-poule/<int:id_comp>/")
 def afficher_score_poule(id_comp):
@@ -126,16 +187,16 @@ def get_scores_for_competition(id_comp):
     
     return scores
 
-@app.route("/telecharger-pdf/<int:id_comp>/")
-def telecharger_pdf(id_comp):
-    scores = get_scores_for_competition(id_comp)
-    competition = Competition.query.get_or_404(id_comp)
-    rendered = render_template('score_table_pdf.html', data=scores)
-    pdf = HTML(string=rendered).write_pdf()
-    response = make_response(pdf)
-    response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = f'attachment; filename=tableau_scores_{competition.nomComp}.pdf'
-    return response
+# @app.route("/telecharger-pdf/<int:id_comp>/")
+# def telecharger_pdf(id_comp):
+#     scores = get_scores_for_competition(id_comp)
+#     competition = Competition.query.get_or_404(id_comp)
+#     rendered = render_template('score_table_pdf.html', data=scores)
+#     pdf = HTML(string=rendered).write_pdf()
+#     response = make_response(pdf)
+#     response.headers['Content-Type'] = 'application/pdf'
+#     response.headers['Content-Disposition'] = f'attachment; filename=tableau_scores_{competition.nomComp}.pdf'
+#     return response
 
 @app.route("/inscription-form/")
 def inscription_page():

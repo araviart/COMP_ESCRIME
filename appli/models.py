@@ -407,6 +407,22 @@ def get_id_saison(nom_saison):
 def get_liste_participants_competitions_tireurs(id_comp):
     return ParticipantsCompetition.query.join(Tireur, ParticipantsCompetition.numeroLicenceE == Tireur.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).all()
 
+def get_liste_tireurs_escrimeurs_poule(id_comp, id_poule):
+    return Escrimeur.query.join(Tireur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE).join(ParticipantsPoule, Tireur.numeroLicenceE == ParticipantsPoule.numeroLicenceE).join(Poule, ParticipantsPoule.idPoule == Poule.idPoule).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).all()
+
+def get_club_tireur_escrimeur(tireur):
+    return Club.query.join(Tireur, Club.idClub == Tireur.idClub).filter(Tireur.numeroLicenceE == tireur.numeroLicenceE).first()
+
+def get_arbitre_escrimeur_poule(id_comp, id_poule):
+    return Escrimeur.query.join(Arbitre, Escrimeur.numeroLicenceE == Arbitre.numeroLicenceE).join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
+
+def get_id_arbitre_poule(id_comp, id_poule):
+    return Arbitre.query.join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first().idArbitre
+
+def get_piste_poule(id_comp, id_poule):
+    # retourne la piste de la poule de cette compétition
+    return Piste.query.join(Poule, Poule.idPiste == Piste.idPiste).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
+
 def get_liste_participants_competitions_arbitres(id_comp):
     return ParticipantsCompetition.query.join(Arbitre, ParticipantsCompetition.numeroLicenceE == Arbitre.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).all()
 
@@ -543,6 +559,16 @@ def fabriquer_poules(tireurs, arbitres, pistes, type_poule):
             liste_poules = fabriquer_poules_decalage_club(tireurs, arbitres, pistes)
     return liste_poules
 
+
+def get_nb_arbitres(id_comp):
+    return ParticipantsCompetition.query.join(Arbitre, ParticipantsCompetition.numeroLicenceE == Arbitre.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).count()
+
+def get_nb_tireurs(id_comp):
+    return ParticipantsCompetition.query.filter_by(idComp=id_comp).count() - get_nb_arbitres(id_comp)
+
+def get_nb_poules(id_comp):
+    return Poule.query.filter_by(idComp=id_comp).count()
+
 def get_adherents():
     res =  db.session.query(Tireur, Escrimeur, Categorie) \
         .join(Escrimeur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
@@ -635,3 +661,36 @@ def get_competition_statut(competition):
             return 'participants'
     else:
         return 'participants'
+def get_tireurs_from_poule(poule_id):
+    return Tireur.query.join(ParticipantsPoule, Tireur.numeroLicenceE == ParticipantsPoule.numeroLicenceE).filter(ParticipantsPoule.idPoule == poule_id).all()
+
+def count_victoires_for_tireur(tireur_num_licence):
+    return MatchPoule.query.filter(MatchPoule.numeroLicenceE1 == tireur_num_licence, MatchPoule.touchesDonneesTireur1 > MatchPoule.touchesDonneesTireur2).count() + MatchPoule.query.filter(MatchPoule.numeroLicenceE2 == tireur_num_licence, MatchPoule.touchesDonneesTireur2 > MatchPoule.touchesDonneesTireur1).count()
+
+def sum_touches_donnees_for_tireur(tireur_num_licence):
+    sum1 = MatchPoule.query.filter(MatchPoule.numeroLicenceE1 == tireur_num_licence).with_entities(func.sum(MatchPoule.touchesDonneesTireur1)).scalar()
+    sum2 = MatchPoule.query.filter(MatchPoule.numeroLicenceE2 == tireur_num_licence).with_entities(func.sum(MatchPoule.touchesDonneesTireur2)).scalar()
+    return (sum1 if sum1 is not None else 0) + (sum2 if sum2 is not None else 0)
+
+def sum_touches_recues_for_tireur(tireur_num_licence):
+    sum1 = MatchPoule.query.filter(MatchPoule.numeroLicenceE1 == tireur_num_licence).with_entities(func.sum(MatchPoule.touchesRecuesTireur1)).scalar() or 0
+    sum2 = MatchPoule.query.filter(MatchPoule.numeroLicenceE2 == tireur_num_licence).with_entities(func.sum(MatchPoule.touchesRecuesTireur2)).scalar() or 0
+    return sum1 + sum2
+
+def get_poule_stats(poule_id):
+    poule_stats = {}
+    tireurs = get_tireurs_from_poule(poule_id)
+    for tireur in tireurs:
+        victoires = count_victoires_for_tireur(tireur.numeroLicenceE)
+        touches_donnees = sum_touches_donnees_for_tireur(tireur.numeroLicenceE)
+        touches_recues = sum_touches_recues_for_tireur(tireur.numeroLicenceE)
+        poule_stats[tireur.numeroLicenceE] = {
+            'V': victoires,
+            'TD': touches_donnees,
+            'TR': touches_recues,
+            'TD-TR': touches_donnees - touches_recues
+        }
+    return poule_stats
+
+def get_matchs_poules(poule_id):
+    return MatchPoule.query.filter_by(idPoule=poule_id).all()
