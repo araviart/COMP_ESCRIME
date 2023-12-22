@@ -44,7 +44,8 @@ main{
 .tableau-appel{
     text-align: center;
     line-height: 40px;
-    border-collapse: separate;
+    border-collapse: collapse;
+    border-radius: 1em;
     border-spacing: 0;
     width: 100%;
     margin: 50px auto;
