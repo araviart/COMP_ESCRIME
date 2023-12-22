@@ -149,7 +149,8 @@ class Escrimeur(db.Model):
             'dateNaissanceE': self.dateNaissanceE.isoformat() if self.dateNaissanceE else None,
             'numeroLicenceE': self.numeroLicenceE,
             'sexeE': self.sexeE,
-            'numTelE': self.numTelE
+            'numTelE': self.numTelE,
+            'categorie': self.categorie.nomCategorie
         }
 
     
@@ -588,14 +589,16 @@ def get_adherents():
         .all()
     return res
 
-def get_adherents_adapte_json():
-    res = db.session.query(Escrimeur) \
-        .join(Tireur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE) \
-        .join(Club, Club.idClub == Tireur.idClub) \
-        .join(Categorie, Escrimeur.idCat == Categorie.idCat) \
-        .filter(Club.nomClub == "BLOIS CE") \
-        .all()
-    return res
+def get_adherents_adapte_json(gender=None):
+    gender_filter = None
+    if gender == 'H': 
+        gender_filter = "Homme"
+    elif gender == "F":
+        gender_filter = "Femme"
+    query = db.session.query(Escrimeur).join(Tireur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE).join(Club, Club.idClub == Tireur.idClub).join(Categorie, Escrimeur.idCat == Categorie.idCat).filter(Club.nomClub == "BLOIS CE")
+    if gender_filter is not None:
+        query = query.filter(Escrimeur.sexeE == gender_filter)
+    return query.all()
 
 def dernier_escrimeur_id():
     last_escrimeur = db.session.query(Escrimeur).order_by(Escrimeur.numeroLicenceE.desc()).first()

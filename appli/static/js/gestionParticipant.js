@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
       let url;
       if (addButton.closest(".escrimeblois")) {
-          url = "/get_adherents";
+          url = `/get_adherents/${competitionGender}/${competitionId}`;
       } else if (addButton.closest(".escrime-other")) {
           url = `/get_escrimeurs/${competitionGender}/${competitionId}`; 
           console.log(url);
@@ -55,9 +55,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 "data-prenom",
                 escrimeur.prenomE.toLowerCase()
               );
+              listItem.setAttribute("data-categorie", escrimeur.categorie);
               listItem.setAttribute("data-nom", escrimeur.nomE.toLowerCase());
               listItem.setAttribute("data-licence", escrimeur.numeroLicenceE);
-              listItem.textContent = `Licence : ${escrimeur.numeroLicenceE} | ${escrimeur.prenomE} ${escrimeur.nomE}`;
+              listItem.textContent = `Licence : ${escrimeur.numeroLicenceE} | ${escrimeur.prenomE} ${escrimeur.nomE} | ${escrimeur.categorie}`;
               listItem.addEventListener("click", function () {
                 ajouterEscrimeurACompetition(escrimeur.numeroLicenceE);
                 submenu.style.display = "none";
