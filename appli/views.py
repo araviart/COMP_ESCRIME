@@ -63,7 +63,7 @@ def inject_user_status():
     return {"user_status": None}
     
 @app.route("/gestion_score/<int:id_comp>")
-def gestion_score(id_comp):
+def gestion_score(id_comp, liste_absents=[]):
 
     # récuperer les infos des poules dans un dict avec le numéro de poule en clé et la liste des tireurs,le nom de la piste, le nom de l'arbitre en valeur
     poules = {}
@@ -80,11 +80,13 @@ def gestion_score(id_comp):
         poules[i]["matchs"] = get_matchs_poules(i)
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
    
-    list_absents = []
-    list_absents.append(get_liste_tireurs_escrimeurs_poule(id_comp, 1)[0])
-    list_absents.append(get_liste_tireurs_escrimeurs_poule(id_comp, 1)[1])
+    if liste_absents != []:
+        for dict_tireur in liste_absents:
+            tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
+            if tireur is not None:
+                liste_absents.append(tireur)
 
-    return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=list_absents)
+    return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=liste_absents)
 
 @app.route('/update_scores', methods=['POST'])
 def update_scores():
@@ -560,7 +562,6 @@ def appel(id_comp):
             dict_tireur = participant.tireur.to_dict()
             rows_data.append(dict_tireur)
         participants_present = []
-        print(rows_data)
         return render_template('appel.html', competition = competition, rows_data=rows_data, participants_present=participants_present)
     
 @app.route('/adherent/')
@@ -771,10 +772,9 @@ def actu_stat_comp(id_comp):
     else:
         return "les problèmes"
 
-@app.route('/classement_provisoire/<int:id_comp>')
+@app.route('/arbre/<int:id_comp>')
 def classement_provisioire(id_comp):
-    #if not est_terminer_phase_poule(id_comp):
-    #    return redirect(url_for('afficher_score_poule', id_comp=id_comp))
+    #
     #else :
     competition = Competition.query.get_or_404(id_comp)
     poules = Poule.query.filter_by(idComp=id_comp).all()
