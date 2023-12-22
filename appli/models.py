@@ -453,7 +453,7 @@ def get_nb_arbitres(id_comp):
     return ParticipantsCompetition.query.join(Arbitre, ParticipantsCompetition.numeroLicenceE == Arbitre.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).count()
 
 def get_nb_tireurs(id_comp):
-    return ParticipantsCompetition.query.filter_by(idComp=id_comp).count() - get_nb_arbitres(id_comp)
+    return ParticipantsCompetition.query.join(Tireur, ParticipantsCompetition.numeroLicenceE == Tireur.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).count()
 
 def get_liste_pistes_selon_nb_arbitres(id_comp, nb_arbitres):
     return Piste.query.filter_by(idComp=id_comp).limit(nb_arbitres).all()
@@ -477,19 +477,27 @@ def fabriquer_poules_selon_classement(tireurs, arbitres, pistes):
             liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
             arbitres_dans_poule.add(arbitres[i])
             pistes_associees.add(pistes[i])
-        if liste_triee[i] not in tireurs_dans_poule:
-            if len(liste_poules[i % len(arbitres)]) < 7:
+        if liste_triee[i] not in tireurs_dans_poule and liste_triee[i] not in arbitres_dans_poule:
+            if len(liste_poules[i % len(arbitres)]) < 8:
                 escrimeur = Escrimeur.query.filter_by(numeroLicenceE=liste_triee[i].numeroLicenceE).first()
                 nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, Classement : {get_classement_tireur(escrimeur.numeroLicenceE)}"
                 liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
                 tireurs_dans_poule.add(liste_triee[i])
         
-        if liste_triee[-i-1] not in tireurs_dans_poule:
-            if len(liste_poules[i % len(arbitres)]) < 7:
+        if liste_triee[-i-1] not in tireurs_dans_poule and liste_triee[-i-1] not in arbitres_dans_poule:
+            if len(liste_poules[i % len(arbitres)]) < 8:
                 escrimeur = Escrimeur.query.filter_by(numeroLicenceE=liste_triee[-i-1].numeroLicenceE).first()
                 nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, Classement : {get_classement_tireur(escrimeur.numeroLicenceE)}"
                 liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
                 tireurs_dans_poule.add(liste_triee[-i-1])
+    for i in range(len(liste_poules)):
+        if liste_poules[i].count(liste_poules[i][0]) > 1:
+             for j in range(len(listes_poules[i])):
+                    if liste_poules[i][j] == liste_poules[i][0]:
+                        liste_poules[i][j] = liste_poules[i].pop()
+                        break   
+    
+
     mal_trie = False
     indice_mal_trie = None
     for i in range(len(liste_poules)):
@@ -513,6 +521,7 @@ def fabriquer_poules_decalage_club(tireurs, arbitres, pistes):
     num_poule = 0
     arbitres_dans_poule = set()
     pistes_associees = set()
+    tireurs_dans_poule = set()
     for i in range(len(liste_triee)):
         if arbitres[i % len(arbitres)] not in arbitres_dans_poule and pistes[i % len(arbitres)] not in pistes_associees:
             escrimeur = Escrimeur.query.filter_by(numeroLicenceE=arbitres[i].numeroLicenceE).first()
@@ -521,20 +530,21 @@ def fabriquer_poules_decalage_club(tireurs, arbitres, pistes):
             liste_poules[i].append((escrimeur, nom_complet))
             arbitres_dans_poule.add(arbitres[i])
             pistes_associees.add(pistes[i % len(arbitres)])
-        if len(liste_poules[i % len(arbitres)]) < 7:
-            escrimeur = Escrimeur.query.filter_by(numeroLicenceE=liste_triee[i].numeroLicenceE).first()
-            id_club_tireur = get_id_club_tireur(escrimeur.numeroLicenceE)
-            nom_club_tireur = get_nom_club_by_id(id_club_tireur)
-            nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, Club : {nom_club_tireur}"
-            if (escrimeur, nom_complet) not in liste_poules[i % len(arbitres)]:
-                liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
-            else:
-                num_poule += 1
-                if num_poule % len(arbitres) == 0:
+        if liste_triee[i] not in tireurs_dans_poule and liste_triee[i] not in arbitres_dans_poule:
+            if len(liste_poules[i % len(arbitres)]) < 8:
+                escrimeur = Escrimeur.query.filter_by(numeroLicenceE=liste_triee[i].numeroLicenceE).first()
+                id_club_tireur = get_id_club_tireur(escrimeur.numeroLicenceE)
+                nom_club_tireur = get_nom_club_by_id(id_club_tireur)
+                nom_complet = f"{escrimeur.prenomE} {escrimeur.nomE}, Club : {nom_club_tireur}"
+                if (escrimeur, nom_complet) not in liste_poules[i % len(arbitres)]:
                     liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
-                    num_poule = 0
                 else:
-                    liste_poules[i % len(arbitres) + num_poule].append((escrimeur, nom_complet))
+                    num_poule += 1
+                    if num_poule % len(arbitres) == 0:
+                        liste_poules[i % len(arbitres)].append((escrimeur, nom_complet))
+                        num_poule = 0
+                    else:
+                        liste_poules[i % len(arbitres) + num_poule].append((escrimeur, nom_complet))
     mal_trie = False
     indice_mal_trie = None
     for i in range(len(liste_poules)):
@@ -547,6 +557,10 @@ def fabriquer_poules_decalage_club(tireurs, arbitres, pistes):
             if len(liste_poules[i]) - 1 > 3:
                 liste_poules[indice_mal_trie].append(liste_poules[i].pop())
                 break
+    for i in range(len(liste_poules)):
+        for j in range(len(liste_poules[i])):
+            if liste_poules[i][j][0] in tireurs_dans_poule:
+                tireurs_dans_poule.remove(liste_poules[i][j][0])
     return liste_poules
 
 def fabriquer_poules(tireurs, arbitres, pistes, type_poule):
