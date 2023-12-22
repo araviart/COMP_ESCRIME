@@ -13,10 +13,10 @@ from flask_mail import Mail
 app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://coursimault:coursimault@servinfo-maria/DBcoursimault'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@127.0.0.1:3306/test'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:irvyn@localhost/coupe_escrime'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:irvyn@localhost/coupe_escrime'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://raviart:raviart@servinfo-maria/DBraviart'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/coupe_escrime2'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/coupe_escrime'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/coupe_escrime'
 db = SQLAlchemy(app)
 
 # Configuration de l'application Flask
@@ -37,3 +37,4 @@ login_manager = LoginManager(app)
 app.config["SECRET_KEY"] = "2219f8a3-ca94-4312-a411-cb3d051a1238"
 # migrate = Migrate(app, db)
 
+print("Application running on http://127.0.0.1:5000/")
