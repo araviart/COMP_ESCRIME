@@ -193,7 +193,7 @@ class ParticipantsCompetition(db.Model):
     numeroLicenceE = db.Column(db.Integer, db.ForeignKey('ESCRIMEUR.numeroLicenceE'), primary_key=True)
     idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
 
-    escrimeur = db.relationship('Escrimeur', backref='PartEscrimeur', foreign_keys=[numeroLicenceE])
+    tireur = db.relationship('Escrimeur', backref='PartEscrimeur', foreign_keys=[numeroLicenceE])
     competition = db.relationship('Competition', backref='PartCompetition.idComp')
     
     def __init__(self, numeroLicenceE, idComp):
@@ -299,6 +299,22 @@ class MatchPoule(db.Model):
         self.touchesDonneesTireur1 = touches_donnees_tireur1
         self.touchesRecuesTireur2 = touches_recues_tireur2
         self.touchesDonneesTireur2 = touches_donnees_tireur2
+        
+    def to_dict(self):
+        return {
+            'idTypeMatch': self.idTypeMatch,
+            'idPoule': self.idPoule,
+            'idPiste': self.idPiste,
+            'idArbitre': self.idArbitre,
+            'tireur1': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE1).first(),
+            'tireur2': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE2).first(),
+            'dateMatch': self.dateMatch.isoformat() if self.dateMatch else None,
+            'heureMatch': self.heureMatch.isoformat() if self.heureMatch else None,
+            'touchesRecuesTireur1': self.touchesRecuesTireur1,
+            'touchesDonneesTireur1': self.touchesDonneesTireur1,
+            'touchesRecuesTireur2': self.touchesRecuesTireur2,
+            'touchesDonneesTireur2': self.touchesDonneesTireur2
+        }
 
 # Modèle pour représenter les feuilles de match
 class FeuilleMatch(db.Model):
@@ -630,3 +646,25 @@ def get_competition_statut(competition):
             return 'participants'
     else:
         return 'participants'
+    
+def est_terminer_match(idMatch):
+    match_poule = MatchPoule.query.filter_by(idMatch=idMatch).first()
+    return match_poule.touchesDonneesTireur1 >= match_poule.type_match.nbnbTouches or match_poule.touchesDonneesTireur2 >= match_poule.type_match.nbnbTouches
+    
+def est_terminer_poule(idPoule):
+    match_poules = MatchPoule.query.filter_by(idPoule=idPoule).all()
+    for match_poule in match_poules:
+        if not est_terminer_match(match_poule.idMatch):
+            return False
+    return True
+
+def est_terminer_phase_poule(idComp):
+    poules = Poule.query.filter_by(idComp=idComp).all()
+    for poule in poules:
+        if not est_terminer_poule(poule.idPoule):
+            return False
+    return True
+
+def est_terminer_phase(idComp):
+    competition = Competition.query.filter_by(idComp=idComp).first()
+    
