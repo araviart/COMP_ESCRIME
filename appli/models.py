@@ -493,7 +493,7 @@ def fabriquer_poules_selon_classement(tireurs, arbitres, pistes):
                 tireurs_dans_poule.add(liste_triee[-i-1])
     for i in range(len(liste_poules)):
         if liste_poules[i].count(liste_poules[i][0]) > 1:
-             for j in range(len(listes_poules[i])):
+             for j in range(len(liste_poules[i])):
                     if liste_poules[i][j] == liste_poules[i][0]:
                         liste_poules[i][j] = liste_poules[i].pop()
                         break   
