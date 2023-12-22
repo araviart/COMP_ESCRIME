@@ -30,6 +30,7 @@ Les membres impliqués dans ce projet sont :
 
 ## Chargement de la BD
 
+Avant de charger les tables, veuillez verifier de rentrer les informations de votre base de données dans le fichier app.py.
 Pour charger la base de données, si l'environnement flask est dans le dossier COMP_ESCRIME, il suffit de taper la commande : 
 
 ```bash
