@@ -28,3 +28,18 @@ Les membres impliqués dans ce projet sont :
 
 
 
+## Chargement de la BD
+
+Pour charger la base de données, si l'environnement flask est dans le dossier COMP_ESCRIME, il suffit de taper la commande : 
+
+```bash
+flask laoddb appli/data
+```
+
+Ensuite, pour créer un compte administrateur, il faut taper la commande :
+
+```bash
+flask newuser username password mail
+```
+
+Faites attention à respecter la condition pour le mot de passe présente dans la page de connexion.
