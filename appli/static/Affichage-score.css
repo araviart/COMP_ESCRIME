@@ -1,0 +1,87 @@
+td,
+th {
+    text-align: center;
+}
+
+.nav-table{
+    margin: 1% 10%;
+    justify-content: space-between;
+}
+
+.nav-table p{
+    color: #000;
+}
+
+.nav-table a{
+    color: var(--couleur-lien);
+    border-bottom: thin solid var(--couleur-lien);
+    border-radius: 0px;
+}
+.btn-primary{
+    color: black;
+    min-width: 40px;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--cadre-affichage);
+}
+
+.statut{
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 10%;
+}
+
+.affichage-table{
+    color: black !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 20%;
+}
+
+table {
+    width: 70%;
+    margin: auto;
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+tr:not(:last-child) {
+    border-bottom: thin solid black;
+}
+
+td {
+    padding: 1% 0%;
+}
+
+
+thead {
+    background-color: var(--blue-escrime);
+    color: white;
+}
+
+.bas-de-page{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0% 20%;
+    margin-bottom: 5%;
+}
+
+
+.btn-bas-de-page{
+    background-color: var(--couleur-lien);
+    text-decoration: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+table{
+    background-color: white;
+}

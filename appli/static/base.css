@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+html{
+    background-color: var(--bg);
+}
+
+header {
+    background-color: var(--couleur-header);
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#left {
+    display: flex;
+    align-items: center;
+}
+
+#left img {
+    max-height: 100%;
+}
+
+#left ul {
+    display: flex;
+    align-items: center;
+}
+
+#right ul {
+    display: flex;
+    align-items: center;
+}
+
+.annuler-ajouter{
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 20px;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+li {
+    list-style-type: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+p {
+    color: white;
+    font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    p {
+        font-size: 24px;
+    }
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+.btn-annuler {
+  background-color: var(--bouton-annuler);
+  padding: 14px 7px;
+  border: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 120%;
+  border-radius: 10px;
+  transition-duration: 0.5s;
+}
+
+.btn-annuler:hover {
+    background-color: var(--hover-annuler);
+  }
+  
+  .btn-publier:hover {
+    background-color: var(--hover-publier);
+  }
+  
+  .btn-publier {
+    background-color: #01437c;
+    padding: 14px 7px;
+    border: none;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 120%;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+    text-decoration: none;
+  }
+  
+
+  .login-btn, .logout-btn{
+    background-color: var(--bouton-confirmation-validation);
+  }

@@ -1,0 +1,102 @@
+main{
+    margin: 0 5%;
+}
+
+.titre{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+
+.nom-heure{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.nom{
+    display: flex;
+}
+
+.heure{
+    display: flex;
+}
+
+.heure-tournoi, .nom-tournoi, .int-present-abs{
+    color: black;
+}
+
+.nom-tournoi{
+    margin-left: 5px;
+}
+
+.heure-tournoi{
+    margin-left: 5px;
+}
+
+
+.present-absent{
+    display: flex;
+    flex-basis: 10%;
+    justify-content: space-between;
+}
+
+.tableau-appel{
+    text-align: center;
+    line-height: 40px;
+    border-collapse: collapse;
+    border-radius: 1em;
+    border-spacing: 0;
+    width: 100%;
+    margin: 50px auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.13);
+    background-color: white;
+}
+
+
+thead > tr th{
+    background-color: #01357E;
+    color: white;
+}
+
+
+tbody td{
+    border: none;
+}
+
+thead th{
+    border: none;
+}
+
+td{
+    padding: 20px 0 20px 0;
+}
+
+.div-boutons{
+    display: flex;
+    color: black;
+    justify-content: space-between;
+}
+
+.tout-cocher{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 10%;
+    color: black;
+}
+
+.tout-cocher > p{
+    color: black;
+}
+
+.div-boutons button{
+    padding: .5% 2%;
+    cursor: pointer;
+    background-color: #01357E;
+    color: white;
+}
+
+.tout-cocher > p, .div-boutons button{
+    font-size: 24px;
+}   

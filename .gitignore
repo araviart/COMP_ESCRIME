@@ -1,0 +1,5 @@
+appli/__pycache__/
+venv/
+migrations/
+appli/app.py
+appli/debug.log

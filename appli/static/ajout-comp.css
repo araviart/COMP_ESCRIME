@@ -1,0 +1,189 @@
+/* Path: appli/static/img/ajout-comp.css */
+html {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--couleur-background);
+}
+
+main {
+  min-height: 100vh;
+}
+
+
+.center {
+  display: flex;
+  flex-wrap: wrap;
+  height: 60vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.left-form {
+  height: 100%;
+  border-radius: 10px;
+  flex-basis: 30%;
+}
+
+.right-form {
+  height: 100%;
+  flex-basis: 30%;
+}
+
+.buttons {
+  padding: 0 12% 0 12%;
+  background-color: cornflowerblue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons button {
+  padding: 1% 2% 1% 2%;
+  color: white;
+}
+
+.btn-annuler {
+  background-color: var(--bouton-annuler);
+  padding: 2% 7%;
+  border: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 120%;
+  border-radius: 10px;
+  transition-duration: 0.5s;
+}
+
+#openModalButton{
+  background-color: var(--bouton-confirmation-validation);
+}
+
+
+.btn-annuler:hover {
+  background-color: var(--hover-annuler);
+  cursor: pointer;
+}
+
+.btn-publier:hover {
+  background-color: var(--hover-publier);
+  cursor: pointer;
+}
+
+.btn-publier {
+  background-color: #01437c;
+  padding: 2% 7%;
+  border: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 120%;
+  border-radius: 10px;
+  transition-duration: 0.5s;
+}
+
+
+.bouton-annuler {
+  text-align: start;
+  margin-top: 1rem;
+}
+
+.bouton-publier {
+  text-align: end;
+  margin-top: 1rem;
+}
+
+.titre-formulaire {
+  text-align: center;
+  font-weight: 125%;
+  background-color: var(--bouton-confirmation-validation);
+  color: #fff;
+  padding: 2% 0 2% 0;
+}
+
+.partie-input {
+  padding: 3%;
+}
+
+.label-input {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.label-input input {
+  border: none;
+  background: none;
+  outline: none;
+  border-bottom: thin solid #000;
+  padding: 0;
+  width: 60%;
+}
+
+.test {
+  background-color: white;
+  height: 100%;
+}
+
+.partie-input-droite {
+  padding: 5% 20%;
+}
+
+.combox-box {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15%;
+  margin-bottom: 15%;
+}
+
+.comb-cate > label {
+  flex-grow: 1;
+}
+
+select {
+  min-width: 50%;
+  padding: 1% 2%;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  background-color: #fff;
+  border: none;
+  border-bottom: #000 thin solid;
+  border-radius: 0;
+}
+
+.double-combo-box > select {
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.double-combo-box {
+  flex-basis: 50%;
+}
+
+.boxLieu{
+  display: inline-flex;
+  overflow: hidden;
+}
+
+/* Partie responsive */
+@media (max-width: 1450px) {
+  .progress-bar {
+    flex-wrap: wrap;
+  }
+
+  .progress-bar > a {
+    min-width: 20%;
+    margin: 2%;
+  }
+
+  .center {
+    display: block;
+    height: 100%;
+  }
+  .left-form,
+  .right-form {
+    margin: 10% 25%;
+  }
+
+  .bouton-publier,
+  .bouton-annuler {
+    text-align: center;
+  }
+}

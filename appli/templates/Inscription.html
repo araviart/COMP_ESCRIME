@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/Inscription.css" />
+    <link rel="stylesheet" href="../static/variables.css" />
+    <link rel="stylesheet" href="../static/responsive-inscription.css" />
+  </head>
+  <body>
+    <form action="/inscription/" method="POST">
+      <div class="div-image-inscription">
+        <img
+          class="image-inscription"
+          src="../static/img/escrime_inscription.jpg"
+          alt="Image d'un tireur en competion"
+        />
+      </div>
+      <div class="partie-inscription">
+        <h1>Créez un compte pour votre club</h1>
+        <div class="partie-textfield">
+          <div class="numero-licence textfield-position">
+            <label for="email">Pseudonyme</label>
+            {% if not form.pseudo.data %}
+              <input
+                type="text"
+                id="pseudoUt"
+                name="pseudo"
+                required
+                value=""
+                placeholder="Cliquez ici pour inscrire votre pseudonyme"
+              />
+            {% else %}
+              <input
+                type="text"
+                id="pseudoUt"
+                name="pseudo"
+                required
+                value="{{ form.pseudo.data }}"
+                placeholder="Cliquez ici pour inscrire votre pseudonyme"
+              />
+            {% endif %}
+
+          </div>
+          <div class="email textfield-position">
+            <label for="email">Email</label>
+            {% if not form.email.data %}
+              <input
+                type="text"
+                id="mail"
+                name="email"
+                required
+                minlength="4"
+                size="10"
+                value=""
+                placeholder="Ex : notreclub@gmail.com"
+              />
+            {% else %}
+              <input
+                type="text"
+                id="mail"
+                name="email"
+                required
+                minlength="4"
+                size="10"
+                value="{{ form.email.data }}"
+                placeholder="Ex : notreclub@gmail.com"
+              />
+            {% endif %}
+          </div>
+          <div class="password textfield-position">
+            <label for="password">Mot de passe</label>
+            {% if not form.password.data %}
+              <input
+                type="password"
+                id="pass"
+                name="password"
+                minlength="8"
+                required
+                value=""
+                placeholder="Cliquez pour entrer votre mot de passe"
+              />
+            {% else %}
+              <input
+                type="password"
+                id="pass"
+                name="password"
+                minlength="8"
+                required
+                value="{{ form.password.data }}"
+                placeholder="Cliquez pour entrer votre mot de passe"
+              />
+            {% endif %}
+          </div>
+          <div class="password textfield-position">
+            <label for="password">Confirmer mot de passe</label>
+            {% if not form.comfirm_password.data %}
+              <input
+                type="password"
+                id="pass"
+                name="comfirm_password"
+                minlength="8"
+                required
+                value=""
+                placeholder="Cliquez pour entrer votre mot de passe"
+              />
+            {% else %}
+              <input
+                type="password"
+                id="pass"
+                name="comfirm_password"
+                minlength="8"
+                required
+                value="{{ form.comfirm_password.data }}"
+                placeholder="Cliquez pour entrer votre mot de passe"
+              />
+            {% endif %}
+          </div>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <ul>
+                {% for category, message in messages %}
+                  <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+        </div>
+        <div class="bouton-inscription">
+          <button id="bonton-inscrire" type="submit" name="submit">S'inscrire</button>
+        </div>
+        <div class="switch-to-inscription">
+          <p>
+            Déjà un compte ?
+            <a class="lien-switch-login-inscription" href="{{ url_for('home') }}"
+              >Connectez-vous</a
+            >
+          </p>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

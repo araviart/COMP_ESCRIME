@@ -1,0 +1,286 @@
+.container-section-participants, .escrime_other{
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.container-section-participants{
+  padding: 40px 0 40px 0;
+}
+
+
+.section-infopr p, h2{
+  color: black;
+  font-size: 20px;
+}
+
+.escrimeblois p, .escrimeblois p, .section-infopr p, .escrime-other p, .escrime-arb p, h3{
+  color: black;
+  font-size: 16px;
+}
+
+.escrime-other .nb{
+  background-color: #ffab01;
+
+}
+
+.container-section-participants p{
+  color: black;}
+
+.subtitreparticipant{
+  display: flex;
+  align-items: center;
+}
+
+.escrime-other, .escrime-arb{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.escrime-arb .nb{
+  background-color: #5F5F5F;
+}
+
+.nb{
+  padding: 0 8px;
+  background-color: var(--blue-escrime);
+  border-radius: 8px;
+  color: white;
+}
+
+
+
+.escrimeblois{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.infopr{
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+
+
+
+.infotitre{
+    background-color: var(--couleur-header);
+    border-radius: 8px 8px 0 0;
+    color: whitesmoke;
+    text-align: center; 
+    text-align: left;
+    padding: 10px;
+}
+
+.infotitre h2{
+  color: whitesmoke;
+}
+
+.section-infopr , .gestion-participants{
+  background-color: white; 
+  border-radius: 12px; 
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+
+}
+
+.section-infopr{
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+  border-radius: 12px;
+}
+
+
+
+.actionsp{
+  display: flex;
+  flex-direction: column;
+}
+
+.labelp p, .valeurp p, .actionsp img {
+  margin: 8px 0; 
+}
+
+.participant{
+  display: flex;
+  background-color: #F3F3F3;
+  padding: 10px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--grey, #9A9A9A);
+  width: 350px;
+}
+
+.participant p {
+  margin: 0 7px; 
+}
+
+.gestionp{
+  display: flex;
+  align-items: center;
+}
+
+.suppd button{
+  margin-top: 10px;
+  padding: 0 12px;
+  background-color: #FF4015;
+}
+
+.suppd{
+  margin-left: 20px;
+}
+
+
+.addp, .addother{
+  text-align: center;
+  margin: 10px 30px 0 0;
+}
+
+.escrimeblois .addp button{
+  background-color: var(--blue-escrime);
+  margin-top: 10px;
+  padding: 0 12px;
+  
+}
+
+.escrime-arb .addp button{
+  background-color: #5F5F5F;
+  margin-top: 10px;
+  padding: 0 12px;
+
+}
+.escrime-other .addp button{
+  background-color: #ffab01;
+  margin-top: 10px;
+  padding: 0 12px;
+}
+
+
+
+.subtitreparticipant .nb{
+  color: white;
+}
+
+/* .subtitreparticipant{
+  margin: 0 150px;
+} 
+
+.gestion-participants{
+  margin-right: 150px;
+} */
+
+
+.addother button{
+  background-color: #ffab01;
+}
+
+
+.center{
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.btndiv{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+  
+#search {
+  width: 100%;
+  height: 50px; 
+}
+
+.confirmation {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+.error {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+
+.submenu {
+  position: absolute;
+  z-index: 100; 
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto; 
+  width: 400px; 
+  border-radius: 8px;
+  display: none; 
+}
+
+.submenu div:hover {
+  background-color: #f2f2f2; 
+}
+
+.escrimeurs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.escrimeurs-list div{
+  padding: 8px;
+}
+
+.gestion-participants-list{
+  width: 400px;
+
+}
+
+.escrimeblois,
+.escrime-other,
+.escrime-arb {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc; 
+  padding-bottom: 20px;
+}
+
+.container-section-participants section:last-of-type {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.search {
+  width: 100%; 
+  font-size: 16px; 
+  padding: 10px 0;
+  border: 1px solid #ddd; 
+  margin-bottom: 12px; 
+  border-radius: 4px;
+}
+
+.search:focus {
+  background-color: #f7f7f7e1;
+}
+
+.nullparticipant{
+
+  margin-left: 50px;
+}

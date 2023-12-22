@@ -1,0 +1,178 @@
+{% extends 'base.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='gestion_participants.css') }}"
+/>
+<script>
+  var nbParticipantsBlois = {{ nb_participants_blois }};
+  var nbParticipantsOther = {{ nb_participants_other }};
+  var nbParticipantsArb = {{ participants_arb|length }};
+  var competitionId = {{ competition.idComp }};
+  var competitionGender = "{{ competition.sexeComp }}";   
+</script>
+<script src="{{ url_for('static', filename='js/condCompetValide.js') }}"></script>
+<script src="{{ url_for('static', filename='js/gestionParticipant.js') }}"></script>
+<script src="{{ url_for('static', filename='js/editField.js') }}"></script>
+<div class="progress-bar">
+  <a class="active-url" href="{{ url_for('ajout_comp_page')}}">Définir une compétition</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a class="active-url" href="{{ url_for('gestion_participants', id_comp=competition.idComp)}}">Gestion participants</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a href="{{ url_for('gestion_poules', id_comp=competition.idComp)}}">Créer les poules</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a href="{{ url_for('appel', id_comp=competition.idComp)}}">Appel</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a href="{{ url_for('gestion_score', id_comp=competition.idComp)}}">Gestion score</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a href="{{ url_for('afficher_score_poule', id_comp=competition.idComp)}}">Classement Final</a>
+</div>
+
+<section class="content">
+  <section class="section-infopr">
+    <div class="infotitre">
+      <h2>INFORMATIONS PRINCIPALE</h2>
+    </div>
+    <section class="infopr">
+      <div class="labelp">
+        <p>Titre :</p>
+        <p>Organisateur :</p>
+        <p>Lieu :</p>
+        <p>Date :</p>
+        <p>Heure :</p> 
+      </div>
+      <div class="valeurp">
+        <p id="nomComp">{{ competition.nomComp }}</p>
+        <p id="descComp">{{ competition.descComp }}</p>
+        <p id="lieu">{{ competition.lieu.nomLieu }}</p>
+        <p id="dateComp">{{ competition.dateComp }}</p>
+        <p id="heureComp">{{ competition.heureComp }}</p> <!-- Nouvelle ligne pour l'heure -->
+      </div>
+      <div class="actionsp">
+        <img src="{{ url_for('static', filename='../static/img/edit.png') }}" onclick="editField('nomComp')" />
+        <img src="{{ url_for('static', filename='../static/img/edit.png') }}" onclick="editField('descComp')" />
+        <img src="{{ url_for('static', filename='../static/img/edit.png') }}" onclick="editField('lieu')" />
+        <img src="{{ url_for('static', filename='../static/img/edit.png') }}" onclick="editField('dateComp')" />
+        <img src="{{ url_for('static', filename='../static/img/edit.png') }}" onclick="editField('heureComp')" /> <!-- Nouvelle ligne pour l'heure -->
+      </div>
+    </section>
+  </section>
+  <section class="gestion-participants">
+    <div class="infotitre">
+      <h2>GESTION PARTICIPANTS</h2>
+    </div>
+    <section class="container-section-participants">
+      <section class="escrimeblois">
+        <div class="subtitreparticipant">
+          <h3>Tireurs du Club de l’Escrime de Blois</h3>
+          <p class="nb">{{ nb_participants_blois }}</p>
+        </div>
+        <div class="gestion-participants-list">
+          {% if participants_blois %} 
+          {% for participant in participants_blois %}
+          <div class="gestionp">
+            <div class="participant">
+              <p>{{ participant.Escrimeur.prenomE }}</p>
+              <p>{{ participant.Escrimeur.nomE }}</p>
+              <p>|</p>
+              <p>{{ participant.Categorie.nomCategorie }}</p>
+            </div>
+            <div class="suppd">
+              <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.Escrimeur.numeroLicenceE) }}" method="post">
+                <button style="font-size: 30px" type="submit">-</button>
+              </form>
+            </div>
+          </div>
+          {% endfor %} {% else %}
+          <p class="nullparticipant">Aucun participant de l'escrime de Blois</p>
+          {% endif %}
+          <div class="addp">
+            <button style="font-size: 30px">+</button>
+            <div class="submenu" style="display: none;">
+                <input type="text" class="search" placeholder="Rechercher…">
+                <ul class="escrimeurs-list"></ul>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="escrime-other">
+        <div class="subtitreparticipant">
+          <h3>Tireurs d’autres club</h3>
+          <p class="nb">{{ nb_participants_other }}</p>
+        </div>
+        <div class="gestion-participants-list">
+          {% if participants_other %} 
+          {% for participant in participants_other %}
+          <div class="gestionp">
+            <div class="participant">
+              <p>{{ participant.Escrimeur.prenomE }}</p>
+              <p>{{ participant.Escrimeur.nomE }}</p>
+              <p>|</p>
+              <p>{{ participant.Categorie.nomCategorie }}</p>
+            </div>
+            <div class="suppd">
+              <form action="{{ url_for('delete_participant', id_comp = competition.idComp,id=participant.Escrimeur.numeroLicenceE) }}" method="post">
+                <button style="font-size: 30px" type="submit">-</button>
+              </form>
+            </div>
+          </div>
+          {% endfor %}{% else %}
+          <p class="nullparticipant">Aucun participant d'autres clubs</p>
+          {% endif %}
+          <div class="addp">
+            <button style="font-size: 30px">+</button>
+            <div class="submenu" style="display: none;">
+                <input type="text" class="search" placeholder="Rechercher…">
+                <ul class="escrimeurs-list"></ul>
+            </div>
+        </div>
+      </section>
+      <section class="escrime-arb">
+        <div class="subtitreparticipant">
+          <h3>Arbitres</h3>
+          <p class="nb">{{ nb_participants_arb }}</p>
+        </div>
+        <div class="gestion-participants-list">
+          {% if participants_arb %}
+          {% for arbitre, escrimeur, categorie in participants_arb %}            <div class ="gestionp">
+            <div class="participant">
+              <p>{{ escrimeur.prenomE }}</p>
+              <p>{{ escrimeur.nomE }}</p>
+              <p>|</p>
+              <p>{{ escrimeur.categorie.nomCategorie }}</p>
+            </div>
+            <div class="suppd">
+              <form
+                action="{{ url_for('delete_arbitre', id_comp = competition.idComp,id_arbitre=arbitre.idArbitre) }}"
+                method="post"
+              >
+                <button style="font-size: 30px" type="submit">-</button>
+              </form>
+            </div>
+            </div>
+            {% endfor %}
+          {% else %}
+            <p class = "nullparticipant">Aucun arbitres pour le moment</p>
+          {% endif %}
+          <div class="addp">
+            <button style="font-size: 30px">+</button>
+            <div class="submenu" style="display: none;">
+                <input type="text" class="search" placeholder="Rechercher…">
+                <ul class="escrimeurs-list"></ul>
+            </div>
+        </div>
+      </section>
+    </section>
+  </section>
+  <div class="center">
+    <div class="btndiv">
+      <a href="{{ url_for('home_default') }}" class="btn-annuler">ANNULER</a>
+      <a href="{{ url_for('gestion_poules', id_comp = competition.idComp) }}" class="btn-publier"
+        >CREER LES POULES</a
+      >
+    </div>
+  </div>
+
+  {% endblock %}
+</section>

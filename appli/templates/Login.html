@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ESCRIME</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='Login.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='variables.css') }}"
+    />
+    <link rel="stylesheet" href="../static/Login.css" />
+    <link rel="stylesheet" href="../static/variables.css" />
+    <link rel="stylesheet" href="../static/responsive-login.css" />
+    
+    <script>
+      function Func() {
+        var x = document.getElementById("password-field");
+        var y = document.getElementById("eye");
+        if (x.type == "password") {
+          x.type = "text";
+          y.classList.add('fa-eye-slash');
+          y.classList.remove('fa-eye');
+        } else {
+          x.type = "password";
+          y.classList.add('fa-eye');
+          y.classList.remove('fa-eye-slash');
+        }
+      } 
+    </script>
+  </head>
+  <body>
+    <form action="/login/" method="POST">
+      <div class="div-image-connexion">
+        <img
+          class="image-connexion"
+          src="../static/img/escrime_connexion.jpg"
+          alt="Image d'un tireur en competion"
+        />
+      </div>
+      <div class="partie-connexion">
+        <h1>Connectez-vous à votre compte</h1>
+        <div class="div-textfield">
+          <div class="email textfield-position">
+            <label for="email_username">Email ou Pseudonyme</label>
+            <input
+              type="text"
+              id="email_username"
+              name="email_username"
+              required
+              minlength="4"
+              size="10"
+              placeholder="Ex : notreclub@gmail.com"
+            />
+          </div>
+          <div class="password textfield-position">
+            <label for="password">Mot de passe</label>
+            <div class="pwd-eyes">
+              <input
+                type="password"
+                id="password-field"
+                name="password"
+                minlength="8"
+                required
+                placeholder="Cliquez pour entrer votre mot de passe"
+              />
+              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" id="eye" onclick="Func()"></span>
+            </div>
+          </div>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <ul>
+                {% for category, message in messages %}
+                  <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+        </div>
+        <div class="rester-forget-mdp">
+          <div class="rester-connecter">
+            <input
+              type="checkbox"
+              id="stay-connect"
+              name="stay-connect"
+            />
+            <label for="stay-connect">Rester connecté</label>
+          </div>
+          <a class="forget-password" href="page-mdp-oublie"
+            >Mot de passe oublié ?</a
+          >
+        </div>
+        <div class="bouton-connexion">
+          <button id="bonton-se-connecter" type="submit" name="submit">
+            Se connecter
+          </button>
+        </div>
+        <div class="switch-to-inscription">
+          <p>
+            Toujours pas de compte ?
+            <a class="lien-switch-login-inscription" href="{{ url_for('inscription_page') }}"
+              >Inscrivez-vous</a
+            >
+          </p>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

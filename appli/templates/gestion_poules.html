@@ -1,0 +1,105 @@
+{% extends 'base.html' %} {% block styles %} {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='gestion_poules.css') }}" />
+{% endblock %}
+{% block content %}
+<div class="progress-bar">
+    <a class="active-url" href="{{ url_for('ajout_comp_page')}}">Définir une compétition</a>
+    <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    <a class="active-url" href="{{ url_for('gestion_participants', id_comp=id_comp)}}">Gestion participants</a>
+    <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    <a class="active-url" href="{{ url_for('gestion_poules', id_comp=id_comp)}}">Créer les poules</a>
+    <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    <a href="{{ url_for('appel', id_comp=1)}}">Appel</a>
+    <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    <a href="{{ url_for('gestion_score', id_comp=id_comp)}}">Gestion score</a>
+    <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    <a href="{{ url_for('afficher_score_poule',id_comp=id_comp)}}">Classement Final</a>
+  </div>
+<form method="POST" action="{{ url_for('gestion_poules', id_comp=id_comp)}}">
+    <div class="content">
+        <div class="labels">
+            <label for="nb_tireurs">Nombre de tireurs : {{ nb_tireurs }} </label>
+            <label for="nb_arbitres">Nombre d'arbitres : {{ nb_arbitres }} </label>
+        </div>
+        <section class="section-param">
+            <div class="titre-param">
+                <h2>Paramètres poules</h2>
+            </div>
+            <div class="div-param">
+                <section class="auto">
+                    <h6>Répartition automatique</h6>
+                    <div class="type-reglage-auto">
+                        <label for="check">Classement</label>
+                        <input class="checkbox" type="checkbox" name="classement" id="classement"/>
+                        <label for="check">Club</label>
+                        <input class="checkbox" type="checkbox" name="club" id="club"/>
+                    </div>
+                </section>
+                <form method="POST" action="{{ url_for('gestion_poules', id_comp=id_comp)}}">
+                    <input type="submit" value="Générer" class="btn-generer" />
+                </form>   
+            </div>
+        </section>
+        <section class="section-proposition">
+            <div class="titre-proposition">
+                <h2>Proposition</h2>
+            </div>
+            <div class="tableau">
+                <table id="table">
+                    {% for poule in liste_poules %}
+                        <tr>
+                            <th>Poule {{ loop.index }} </th>
+                        </tr>
+                        {% for escrimeur in poule %}
+                            <tr>
+                                {% if loop.first %}
+                                    <td draggable="true">Arbitre : {{ escrimeur[1] }} </td>
+                                {% else %}
+                                    <td draggable="true">Tireur : {{ escrimeur[1] }} </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </table>
+            </div>
+        </section>
+        <div class="div-btn-valider-poule">
+            <form method="POST" action="{{ url_for('appel', id_comp=id_comp)}}">
+                <input type="hidden" name="id_comp" value="{{ id_comp }}" />
+                <input type="hidden" name="liste_pistes" value="{{ liste_pistes }}" />
+                <input type="hidden" name="liste_arbitres" value="{{ liste_arbitres }}" />
+                <input type="hidden" name="liste_poules" value="{{ liste_poules }}" />
+                <input type="submit" value="Valider" class="btn-valider-poule" />
+            </form>  
+        </div>
+    </div>
+</form>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const classementCheckbox = document.getElementById('classement');
+        const clubCheckbox = document.getElementById('club');
+        const equilibrerCheckbox = document.getElementById('equilibrer');
+
+        classementCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                clubCheckbox.checked = false;
+                equilibrerCheckbox.checked = false;
+            }
+        });
+
+        clubCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                classementCheckbox.checked = false;
+                equilibrerCheckbox.checked = false;
+            }
+        });
+
+        equilibrerCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                classementCheckbox.checked = false;
+                clubCheckbox.checked = false;
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for ('static', filename='formulaire-edit-user.css') }}">
+<div class="formulaire-center">
+    <img src="../static/img/image_5-removebg-preview.png" alt="">
+    <form class="form-horizontal" role="form" method="POST"
+    action="{{ url_for('edit_user', name=current_user.pseudoUser) }}">
+    {{ form.hidden_tag() }}
+    {% if form.username.errors %}
+    <div class="form-group has-error">
+        {% else %}
+        <div class="form-group">
+            {% endif %}
+            {% if form.username.errors %}
+            <ul class="list-group">
+                {% for error in form.username.errors %}
+                <li class="list-group-item list-group-item-danger">
+                    {{ error }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <label for="username" class="col-sm-2 control-label">{{ form.username.label }}</label>
+            <div class="col-sm-10">
+                {{ form.username(size=50, class_="form-control",readonly="readonly", placeholder="Pseudonyme",
+                value=current_user.pseudoUser) }}
+            </div>
+        </div>
+
+        {% if form.password.errors %}
+        <div class="form-group has-error">
+            {% else %}
+            <div class="form-group">
+                {% endif %}
+                {% if form.password.errors %}
+                <ul class="list-group">
+                    {% for error in form.password.errors %}
+                    <li class="list-group-item list-group-item-danger">
+                        {{ error }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <label for="password" class="col-sm-2 control-label">{{ form.password.label }}</label>
+                <div class="col-sm-10">
+                    {{ form.password(size=50, class_="form-control", placeholder="Mot de passe actuelle") }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="newpsswd" class="col-sm-2 control-label">{{ form.newpsswd.label }}</label>
+                <div class="col-sm-10">
+                    {{ form.newpsswd(size=50, class_="form-control", placeholder="Nouveau mot de passe") }}
+                </div>
+            </div>
+
+            {% if form.confirm.errors %}
+            <div class="form-group has-error">
+                {% else %}
+                <div class="form-group">
+                    {% endif %}
+                    {% if form.confirm.errors %}
+                    <ul class="list-group">
+                        {% for error in form.confirm.errors %}
+                        <li class="list-group-item list-group-item-danger">
+                            {{ error }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <label for="confirm" class="col-sm-2 control-label">{{ form.confirm.label }}</label>
+                    <div class="col-sm-10">
+                        {{ form.confirm(size=50, class_="form-control", placeholder="Confirmez le nouveau mot de passe")
+                        }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn-valider-changements">Sauvegardez les changements</button>
+                    </div>
+                </div>
+</form>
+</div>
+
+{% include 'popup_code_mail.html' %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script_popup_reset.js') }}"></script>
+{% endblock scripts %}
+{% endblock %}
