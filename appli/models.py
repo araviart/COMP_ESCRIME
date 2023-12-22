@@ -614,7 +614,7 @@ def get_adherents():
             Escrimeur.numeroLicenceE,
             Escrimeur.sexeE,
             Escrimeur.numTelE,
-            Categorie.nomCategoriea
+            Categorie.nomCategorie
         ) \
         .all()
     return res

@@ -437,23 +437,25 @@ def ajouter_escrimeur():
         numero_licence = int(numero_licence)
         print(numero_licence)
 
-        # sexe = request.form['sexe_e']
-        sexe = 'H'
+        sexe = 'Homme'
         print(sexe)
-        # num_tel = request.form['num_tel_e']
-        num_tel = '0648572519'
+        num_tel = '0648572513'
+        num_tel = int(num_tel)
         print(num_tel)
         default_cat = 1
         
         # creez un nouvel enregistrement d'adherent
-        nouvel_adherent = Escrimeur(categorie=default_cat, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, numero_licence_e=numero_licence, sexe_e=sexe, num_tel_e=num_tel)
+        nouvel_adherent = Escrimeur(numero_licence_e=numero_licence, categorie=default_cat, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, sexe_e=sexe, num_tel_e=num_tel)
         db.session.add(nouvel_adherent)
         db.session.commit()
-        id_club_blois = 169 
+        print("escrimeur ajouté")
+        id_club_blois = Club.query.filter_by(nomClub="BLOIS CE").first().idClub
+        print(id_club_blois)
         classement_tireur = 0 
         nouveau_tireur = Tireur(num_licence=numero_licence, club=id_club_blois, classement=classement_tireur)
         db.session.add(nouveau_tireur)
         db.session.commit()
+        print("tireur ajouté")
 
         return redirect(url_for('liste_adherents_def'))
       
