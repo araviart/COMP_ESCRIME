@@ -1,20 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='arbre.css') }}" />
-
 <div class="progress-bar">
-  <a class="active-url" href="{{ url_for('ajout_comp_page')}}">Définir une compétition</a>
-  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="{{ url_for('gestion_participants', id_comp=1)}}">Gestion participants</a>
-  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="{{ url_for('gestion_poules', id_comp=1)}}">Créer les poules</a>
-  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="{{ url_for('appel', id_comp=1)}}">Appel</a>
-  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="{{ url_for('gestion_score', id_comp=1)}}">Gestion score</a>
-  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="{{ url_for('arbre')}}">Classement Final</a>
+  <a class="active-url" href="url">Définir une compétition</a>
+  <img class="fleche-bar" src="{{ url_for('static', filename='img/fleche.png')}}" alt="fleche" />
+  <a class="active-url" href="url">Gestion participants</a>
+  <img class="fleche-bar" src="{{ url_for('static', filename='img/fleche.png')}}" alt="fleche" />
+  <a class="active-url" href="url">Créer les poules</a>
+  <img class="fleche-bar" src="{{ url_for('static', filename='img/fleche.png')}}" alt="fleche" />
+  <a class="active-url" href="url">Appel</a>
+  <img class="fleche-bar" src="{{ url_for('static', filename='img/fleche.png')}}" alt="fleche" />
+  <a class="active-url" href="url">Gestion score</a>
+  <img class="fleche-bar" src="{{ url_for('static', filename='img/fleche.png')}}" alt="fleche" />
+  <a href="url">Classement Final</a>
 </div>
-
 <main>
   <div class="classement-provisoire-match">
     <a href="">Voir classement provisoire du tournoi</a>
@@ -26,54 +24,114 @@
     <div class="div2 titre-table">Demi finale</div>
     <div class="div3 titre-table">Finale</div>
     <div class="div4 titre-table">Vainqueur</div>
-    <div class="div5">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
-        </div>
-        <div class="joueur joueur2">
-          <p>Joueur 2</p>
-          <p class="score-joueur score-joueur-perdu">6</p>
-        </div>
-      </div>
-    </div>
-    <div class="div6">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
-        </div>
-        <div class="joueur joueur2">
-          <p>Joueur 2</p>
-          <p class="score-joueur score-joueur-perdu">6</p>
+    {% if quarts|length >= 1 %}
+      <div class="div5">
+        <div>
+          <div class="joueur joueur1">
+            <p>{{quarts[0]['tireur1'].escrimeur.nomE}}, {{quarts[0]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{quarts[0]['touchesDonneesTireur1']}}</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>{{quarts[0]['tireur2'].escrimeur.nomE}}, {{quarts[0]['tireur2'].escrimeur.prenomE}}</p>
+            <p class="score-joueur score-joueur-perdu">{{quarts[0]['touchesDonneesTireur2']}}</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="div7">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
-        </div>
-        <div class="joueur joueur2">
-          <p>Joueur 2</p>
-          <p class="score-joueur score-joueur-perdu">6</p>
-        </div>
-      </div>
-    </div>
-    <div class="div8">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
-        </div>
-        <div class="joueur joueur2">
-          <p>Joueur 2</p>
-          <p class="score-joueur score-joueur-perdu">6</p>
+    {% else %}
+      <div class="div5">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>Non determiné</p>
+            <p class="score-joueur score-joueur-perdu">0</p>
+          </div>
         </div>
       </div>
-    </div>
+    {% endif %}
+    {% if quarts|length >= 2 %}
+      <div class="div6">
+        <div>
+          <div class="joueur joueur1">
+            <p>{{quarts[1]['tireur1'].escrimeur.nomE}}, {{quarts[1]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{quarts[1]['touchesDonneesTireur1']}}</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>{{quarts[1]['tireur2'].escrimeur.nomE}}, {{quarts[1]['tireur2'].escrimeur.prenomE}}</p>
+            <p class="score-joueur score-joueur-perdu">{{quarts[1]['touchesDonneesTireur2']}}</p>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="div6">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>Non determiné</p>
+            <p class="score-joueur score-joueur-perdu">0</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    {% if quarts|length >= 3  %}
+      <div class="div7">
+        <div>
+          <div class="joueur joueur1">
+            <p>{{quarts[2]['tireur1'].escrimeur.nomE}}, {{quarts[2]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{quarts[2]['touchesDonneesTireur1']}}</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>{{quarts[2]['tireur2'].escrimeur.nomE}}, {{quarts[2]['tireur2'].escrimeur.prenomE}}</p>
+            <p class="score-joueur score-joueur-perdu">{{quarts[2]['touchesDonneesTireur2']}}</p>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="div7">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>Non determiné</p>
+            <p class="score-joueur score-joueur-perdu">0</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    {% if quarts|length >= 4 %}
+      <div class="div8">
+        <div>
+          <div class="joueur joueur1">
+            <p>{{quarts[3]['tireur1'].escrimeur.nomE}}, {{quarts[3]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{quarts[3]['touchesDonneesTireur1']}}</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>{{quarts[3]['tireur2'].escrimeur.nomE}}, {{quarts[3]['tireur2'].escrimeur.prenomE}}</p>
+            <p class="score-joueur score-joueur-perdu">{{quarts[3]['touchesDonneesTireur2']}}</p>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="div8">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>Non determiné</p>
+            <p class="score-joueur score-joueur-perdu">0</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
     <div class="div9 div-barre">
       <div class="partie-gauche">
         <div class="petites-bars"></div>
@@ -94,30 +152,60 @@
         <div class="petite-bar-droite"></div>
       </div>
     </div>
-    <div class="div11">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
-        </div>
-        <div class="joueur joueur2">
-          <p>Joueur 2</p>
-          <p class="score-joueur score-joueur-perdu">6</p>
-        </div>
-      </div>
-    </div>
-    <div class="div12">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
-        </div>
-        <div class="joueur joueur2">
-          <p>Joueur 2</p>
-          <p class="score-joueur score-joueur-perdu">6</p>
+    {% if demis|length >= 1 %}
+      <div class="div11">
+        <div>
+          <div class="joueur joueur1">
+            <p>{{demis[1]['tireur1'].escrimeur.nomE}}, {{demis[1]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{demis[1]['touchesDonneesTireur1']}}</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>{{demis[1]['tireur2'].escrimeur.nomE}}, {{demis[1]['tireur2'].escrimeur.prenomE}}</p>
+            <p class="score-joueur score-joueur-perdu">{{demis[1]['touchesDonneesTireur2']}}</p>
+          </div>
         </div>
       </div>
-    </div>
+    {% else %}
+      <div class="div11">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>Non determiné</p>
+            <p class="score-joueur score-joueur-perdu">0</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    {% if demis|length >= 2 %}
+      <div class="div12">
+        <div>
+          <div class="joueur joueur1">
+            <p>{{demis[0]['tireur1'].escrimeur.nomE}}, {{demis[0]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{demis[0]['touchesDonneesTireur1']}}</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>{{demis[0]['tireur2'].escrimeur.nomE}}, {{demis[0]['tireur2'].escrimeur.prenomE}}</p>
+            <p class="score-joueur score-joueur-perdu">{{demis[0]['touchesDonneesTireur2']}}</p>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="div12">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>Non determiné</p>
+            <p class="score-joueur score-joueur-perdu">0</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
     <div class="div13">
       <div class="partie-gauche">
         <div class="petites-bars"></div>
@@ -128,63 +216,184 @@
         <div class="petite-bar-droite"></div>
       </div>
     </div>
-    <div class="div14">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
-        </div>
-        <div class="joueur joueur2">
-          <p>Joueur 2</p>
-          <p class="score-joueur score-joueur-perdu">6</p>
-        </div>
-      </div>
-    </div>
-    <div class="div15">
-      <div class="partie-gauche">
-        <div class="petites-bars"></div>
-        <div class="petites-bars"></div>
-      </div>
-      <div class="barre"></div>
-      <div class="partie-droite">
-        <div class="petite-bar-droite"></div>
-      </div>
-    </div>
-    <div class="div16">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
+    {% if finale|length >= 1 %}
+      <div class="div14">
+        <div>
+          <div class="joueur joueur1">
+            <p>{{finale[0]['tireur1'].escrimeur.nomE}}, {{finale[0]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{finale[0]['touchesDonneesTireur1']}}</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>{{finale[0]['tireur2'].escrimeur.nomE}}, {{finale[0]['tireur2'].escrimeur.prenomE}}</p>
+            <p class="score-joueur score-joueur-perdu">{{finale[0]['touchesDonneesTireur2']}}</p>
+          </div>
         </div>
       </div>
-    </div>
+      {% if finale[0]['touchesDonneesTireur1'] and finale[0]['touchesDonneesTireur1'] >= 15 %}
+        <div class="div15">
+          <div class="partie-gauche">
+            <div class="petites-bars"></div>
+            <div class="petites-bars"></div>
+          </div>
+          <div class="barre"></div>
+          <div class="partie-droite">
+            <div class="petite-bar-droite"></div>
+          </div>
+        </div>
+        <div class="div16">
+          <div>
+            <div class="joueur joueur1">
+              <p>{{finale[0]['tireur1'].escrimeur.nomE}}, {{finale[0]['tireur1'].escrimeur.prenomE}}</p>
+              <p class="score-joueur">{{finale[0]['touchesDonneesTireur1']}}</p>
+            </div>
+          </div>
+        </div>
+      {% elif finale[0]['touchesDonneesTireur2'] and finale[0]['touchesDonneesTireur2'] >= 15 %}
+        <div class="div15">
+          <div class="partie-gauche">
+            <div class="petites-bars"></div>
+            <div class="petites-bars"></div>
+          </div>
+          <div class="barre"></div>
+          <div class="partie-droite">
+            <div class="petite-bar-droite"></div>
+          </div>
+        </div>
+        <div class="div16">
+          <div>
+            <div class="joueur joueur1">
+              <p>{{finale[0]['tireur2'].escrimeur.nomE}}, {{finale[0]['tireur2'].escrimeur.prenomE}}</p>
+              <p class="score-joueur score-joueur-perdu">{{finale[0]['touchesDonneesTireur2']}}</p>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="div15">
+          <div class="partie-gauche">
+            <div class="petites-bars"></div>
+            <div class="petites-bars"></div>
+          </div>
+          <div class="barre"></div>
+          <div class="partie-droite">
+            <div class="petite-bar-droite"></div>
+          </div>
+        </div>
+        <div class="div16">
+          <div>
+            <div class="joueur joueur1">
+              <p>Non determiné</p>
+              <p class="score-joueur">0</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="div14">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+          <div class="joueur joueur2">
+            <p>Non determiné</p>
+            <p class="score-joueur score-joueur-perdu">0</p>
+          </div>
+        </div>
+      </div>
+      <div class="div15">
+        <div class="partie-gauche">
+          <div class="petites-bars"></div>
+          <div class="petites-bars"></div>
+        </div>
+        <div class="barre"></div>
+        <div class="partie-droite">
+          <div class="petite-bar-droite"></div>
+        </div>
+      </div>
+      <div class="div16">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
   </div>
   <div class="parent-2">
-    <div class="div-1 titre-table">Troisième place</div>
-    <div class="div-2">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
-        </div>
-        <div class="joueur joueur2">
-          <p>Joueur 2</p>
-          <p class="score-joueur score-joueur-perdu">6</p>
+    {% if troisieme|length >= 1 %}
+      <div class="div-1 titre-table">Troisième place</div>
+      <div class="div-2">
+        <div>
+          <div class="joueur joueur1">
+            <p>{{troisieme[0]['tireur1'].escrimeur.nomE}}, {{troisieme[0]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{troisieme[0]['touchesDonneesTireur1']}}</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="div-3">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
-        </div>
-        <div class="joueur joueur2">
-          <p>Joueur 2</p>
-          <p class="score-joueur score-joueur-perdu">6</p>
+      <div class="div-3">
+        <div>
+          <div class="joueur joueur2">
+            <p>{{troisieme[0]['tireur2'].escrimeur.nomE}}, {{troisieme[0]['tireur2'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{troisieme[0]['touchesDonneesTireur2']}}</p>
+          </div>
         </div>
       </div>
-    </div>
+    {% if troisieme[0]['touchesDonneesTireur1'] and troisieme[0]['touchesDonneesTireur1'] >= 15 %}
+      <div class="div-5">
+        <div>
+          <div class="joueur joueur1">
+            <p>{{troisieme[0]['tireur1'].escrimeur.nomE}}, {{troisieme[0]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{troisieme[0]['touchesDonneesTireur1']}}</p>
+          </div>
+        </div>
+      </div>
+    {% elif troisieme[0]['touchesDonneesTireur2'] and troisieme[0]['touchesDonneesTireur2'] >= 15 %}
+      <div class="div-5">
+        <div>
+          <div class="joueur joueur1">
+            <p>{{troisieme[0]['tireur2'].escrimeur.nomE}}, {{troisieme[0]['tireur2'].escrimeur.prenomE}}</p>
+              <p class="score-joueur">{{troisieme[0]['touchesDonneesTireur2']}}</p>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="div-5">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    {% else %}
+      <div class="div-1 titre-table">Troisième place</div>
+      <div class="div-2">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+        </div>
+      </div>
+      <div class="div-3">
+        <div>
+          <div class="joueur joueur2">
+            <p>Non determiné</p>
+            <p class="score-joueur score-joueur-perdu">0</p>
+          </div>
+        </div>
+      </div>
+      <div class="div-5">
+        <div>
+          <div class="joueur joueur1">
+            <p>Non determiné</p>
+            <p class="score-joueur">0</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
     <div class="div-4">
       <div class="partie-gauche">
         <div class="petites-bars"></div>
@@ -193,14 +402,6 @@
       <div class="barre"></div>
       <div class="partie-droite">
         <div class="petite-bar-droite"></div>
-      </div>
-    </div>
-    <div class="div-5">
-      <div>
-        <div class="joueur joueur1">
-          <p>Joueur 1</p>
-          <p class="score-joueur">8</p>
-        </div>
       </div>
     </div>
   </div>

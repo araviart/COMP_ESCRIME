@@ -300,6 +300,22 @@ class MatchPoule(db.Model):
         self.touchesDonneesTireur1 = touches_donnees_tireur1
         self.touchesRecuesTireur2 = touches_recues_tireur2
         self.touchesDonneesTireur2 = touches_donnees_tireur2
+        
+    def to_dict(self):
+        return {
+            'idTypeMatch': self.idTypeMatch,
+            'idPoule': self.idPoule,
+            'idPiste': self.idPiste,
+            'idArbitre': self.idArbitre,
+            'tireur1': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE1).first(),
+            'tireur2': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE2).first(),
+            'dateMatch': self.dateMatch.isoformat() if self.dateMatch else None,
+            'heureMatch': self.heureMatch.isoformat() if self.heureMatch else None,
+            'touchesRecuesTireur1': self.touchesRecuesTireur1,
+            'touchesDonneesTireur1': self.touchesDonneesTireur1,
+            'touchesRecuesTireur2': self.touchesRecuesTireur2,
+            'touchesDonneesTireur2': self.touchesDonneesTireur2
+        }
 
 # Modèle pour représenter les feuilles de match
 class FeuilleMatch(db.Model):
@@ -493,7 +509,7 @@ def fabriquer_poules_selon_classement(tireurs, arbitres, pistes):
                 tireurs_dans_poule.add(liste_triee[-i-1])
     for i in range(len(liste_poules)):
         if liste_poules[i].count(liste_poules[i][0]) > 1:
-             for j in range(len(listes_poules[i])):
+             for j in range(len(liste_poules[i])):
                     if liste_poules[i][j] == liste_poules[i][0]:
                         liste_poules[i][j] = liste_poules[i].pop()
                         break   
@@ -678,6 +694,7 @@ def get_competition_statut(competition):
             return 'participants'
     else:
         return 'participants'
+
 def get_tireurs_from_poule(poule_id):
     return Tireur.query.join(ParticipantsPoule, Tireur.numeroLicenceE == ParticipantsPoule.numeroLicenceE).filter(ParticipantsPoule.idPoule == poule_id).all()
 
@@ -711,3 +728,21 @@ def get_poule_stats(poule_id):
 
 def get_matchs_poules(poule_id):
     return MatchPoule.query.filter_by(idPoule=poule_id).all()
+    
+def est_terminer_match(idMatch):
+    match_poule = MatchPoule.query.filter_by(idMatch=idMatch).first()
+    return match_poule.touchesDonneesTireur1 >= match_poule.type_match.nbnbTouches or match_poule.touchesDonneesTireur2 >= match_poule.type_match.nbnbTouches
+    
+def est_terminer_poule(idPoule):
+    match_poules = MatchPoule.query.filter_by(idPoule=idPoule).all()
+    for match_poule in match_poules:
+        if not est_terminer_match(match_poule.idMatch):
+            return False
+    return True
+
+def est_terminer_phase_poule(idComp):
+    poules = Poule.query.filter_by(idComp=idComp).all()
+    for poule in poules:
+        if not est_terminer_poule(poule.idPoule):
+            return False
+    return True

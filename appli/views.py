@@ -770,3 +770,27 @@ def actu_stat_comp(id_comp):
         return redirect(url_for('gestion_score', id_comp=id_comp))
     else:
         return "les problèmes"
+
+@app.route('/classement_provisoire/<int:id_comp>')
+def classement_provisioire(id_comp):
+    #if not est_terminer_phase_poule(id_comp):
+    #    return redirect(url_for('afficher_score_poule', id_comp=id_comp))
+    #else :
+    competition = Competition.query.get_or_404(id_comp)
+    poules = Poule.query.filter_by(idComp=id_comp).all()
+    quarts = []
+    demis = []
+    finale = []
+    troisieme =[]
+    for poule in poules:
+        matchs = MatchPoule.query.filter_by(idPoule=poule.idPoule).all()
+        for match in matchs:
+            if match.idTypeMatch == 2 :
+                quarts.append(match.to_dict())
+            elif match.idTypeMatch == 3 :
+                demis.append(match.to_dict())
+            elif match.idTypeMatch == 4 :
+                finale.append(match.to_dict())
+            elif match.idTypeMatch == 5 :
+                troisieme.append(match.to_dict())
+    return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, troisieme = troisieme)
