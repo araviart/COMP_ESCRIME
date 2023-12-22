@@ -13,15 +13,15 @@
   <div class="progress-bar">
     <a class="active-url" href="{{ url_for('ajout_comp_page')}}">Définir une compétition</a>
     <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a class="active-url" href="{{ url_for('gestion_participants', id_comp=1)}}">Gestion participants</a>
+    <a class="active-url" href="{{ url_for('gestion_participants', id_comp=competition.idComp)}}">Gestion participants</a>
     <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a class="active-url" href="{{ url_for('gestion_poules', id_comp=1)}}">Créer les poules</a>
+    <a class="active-url" href="{{ url_for('gestion_poules', id_comp=competition.idComp)}}">Créer les poules</a>
     <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a class="active-url" href="{{ url_for('appel', id_comp=1)}}">Appel</a>
+    <a class="active-url" href="{{ url_for('appel', id_comp=competition.idComp)}}">Appel</a>
     <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a href="{{ url_for('gestion_score', id_comp=1)}}">Gestion score</a>
+    <a href="{{ url_for('gestion_score', id_comp=competition.idComp)}}">Gestion score</a>
     <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a href="{{ url_for('arbre')}}">Classement Final</a>
+    <a href="{{ url_for('afficher_score_poule', id_comp=competition.idComp)}}">Classement Final</a>
   </div>
 
   <main>
@@ -81,12 +81,12 @@
       </tbody>
     </table>
     <div class="div-boutons">
-      <button><i class="fa-solid fa-arrow-left"></i> RETOUR</button>
+      <button><i class="fa-solid fa-arrow-left"></i><a style="color: white;" href="{{ url_for('gestion_poules', id_comp=competition.idComp)}}" > RETOUR</button>
       <div class="tout-cocher">
         <p>TOUT COCHER</p>
         <input id="checkbox-valid-all" type="checkbox" />
       </div>
-      <button><i class="fa-solid fa-check"></i> Valider l'appel</button>
+      <button><i class="fa-solid fa-check"></i><a style="color: white;" href = "{{ url_for('gestion_score', id_comp=competition.idComp, liste_absents = participants_absents)}}" >Valider l'appel</button>
     </div>
   </main>
 {% endblock %}
