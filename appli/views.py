@@ -796,3 +796,15 @@ def classement_provisioire(id_comp):
             elif match.idTypeMatch == 5 :
                 troisieme.append(match.to_dict())
     return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, troisieme = troisieme)
+
+@app.route("/inscription_escrimeur/<int:id_comp>/" , methods=["GET", "POST"])
+def inscription_escrimeur(id_comp):
+    liste_club = get_all_club()
+    if request.method == "POST":
+        nom = request.form["nom"]
+        prenom = request.form["prenom"]
+        sexe = request.form["sexe"]
+        numero_licence = request.form["numero_licence"]
+        date_naissance = request.form["date_naissance"]
+        telephone = request.form["telephone"]
+    return render_template('inscription_escrimeur.html', id_comp=id_comp, liste_club=liste_club)

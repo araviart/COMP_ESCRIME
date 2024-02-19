@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% block styles %} {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='inscription_escrimeur.css') }}" />
+{% endblock %}
+
+{% block content %}
+    <h1>S'inscrire<h1>
+    <form method="POST" action="{{ url_for('inscription_escrimeur', id_comp=id_comp) }}">
+        <div id="content">
+            <div id="textfields">
+                <div class="label-input">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                <div class="label-input">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+                <div class="label-select">
+                    <label for="sexe">Sexe</label>
+                    <select name="sexes" id="sexe">
+                        <option value="Homme"></option>
+                        <option value="Femme"></option>
+                    </select>
+                </div>
+                <div class="label-input">
+                    <label for="numero_licence">Numéro de licence</label>
+                    <input type="text" id="numero_licence" name="numero_licence" required>
+                </div>
+                <div class="label-input">
+                    <label for="date_naissance">Date de naissance :</label>
+                    <input type="date" id="date_naissance" name="date_naissance" required>
+                </div>
+                <div class="label-input">
+                    <label for="telephone">Téléphone</label>
+                    <input type="text" id="telephone" name="telephone" required>
+                </div>
+                <div class="label-radios">
+                    <div id="tireur-content" class="radios">
+                        <label for="radio-tireur">Tireur</label>
+                        <input type="radio" id="radio-tireur" name="role" value="tireur" required>
+                    </div>
+                    <div id="arbitre-content" class="radios">
+                        <label for="radio-arbitre">Arbitre</label>
+                        <input type="radio" id="radio-arbitre" name="role" value="arbitre" required>
+                    </div>
+                </div>
+                <div class="option_tireur">
+                    <label for="nom_club">Nom du club</label>
+                    <input list="clubs" id="nom_club" name="nom_club">
+                    <datalist id="clubs">
+                        {% for club in liste_club %}
+                            <option value="{{ club.nomClub }}">
+                        {% endfor %}
+                    </datalist>
+                </div>
+                <div class="buttons">
+                    <a href="">Annuler</a>
+                    <button type="submit">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+    </form> 
+    <script>
+        let radioTireur = document.querySelector("#radio-tireur");
+        let radioArbitre = document.querySelector("#radio-arbitre");
+        let optionTireur = document.querySelector(".option_tireur");
+        radioTireur.addEventListener("click", () => {
+            optionTireur.style.display = "block";
+        });
+
+        radioArbitre.addEventListener("click", () => {
+            optionTireur.style.display = "none";
+        });
+    </script>
+{% endblock %}

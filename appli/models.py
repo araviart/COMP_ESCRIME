@@ -746,3 +746,6 @@ def est_terminer_phase_poule(idComp):
         if not est_terminer_poule(poule.idPoule):
             return False
     return True
+
+def get_all_club():
+    return Club.query.all()
