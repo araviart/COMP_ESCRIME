@@ -216,15 +216,14 @@ class PratiquerArme(db.Model):
         self.id_arme_fk = id_arme_fk
 
 # Modèle pour représenter le classement final
-class ClassementFinal(db.Model):
-    __tablename__ = 'CLASSEMENT_FINAL'
-    idClassementFinal = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), nullable=False)
-    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), nullable=False)
+class Classement(db.Model):
+    __tablename__ = 'CLASSEMENT'    
+    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True, nullable=False)
+    numeroLicenceE = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), primary_key=True, nullable=False)
     position = db.Column(db.Integer, nullable=False)
-
     competition = db.relationship('Competition', backref='competition')
     tireur = db.relationship('Tireur', backref='Tireur.numeroLicenceE')
+    
     
     def __init__(self, comp, tireur, position):
         self.idComp = comp
@@ -264,10 +263,11 @@ class ParticipantsPoule(db.Model):
         self.numeroLicenceE = tireur
 
 # Modèle pour représenter les matchs de poule
-class MatchPoule(db.Model):
-    __tablename__ = 'MATCH_POULE'
+class Match(db.Model):
+    __tablename__ = 'MATCH'
     idMatch = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idTypeMatch = db.Column(db.Integer, db.ForeignKey('TYPE_MATCH.idTypeMatch'), nullable=False)
+    gagnant = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), nullable=True)
     idPoule = db.Column(db.Integer, db.ForeignKey('POULE.idPoule'), nullable=False)
     idPiste = db.Column(db.Integer, db.ForeignKey('PISTE.idPiste'), nullable=False)
     idArbitre = db.Column(db.Integer, db.ForeignKey('ARBITRE.idArbitre'), nullable=False)
@@ -281,7 +281,6 @@ class MatchPoule(db.Model):
     touchesDonneesTireur2 = db.Column(db.Integer)
 
     type_match = db.relationship('TypeMatch', backref='TypeMatch.idTypeMatch')
-    poule = db.relationship('Poule', backref='matches')
     piste = db.relationship('Piste', backref='matches')
     arbitre = db.relationship('Arbitre', backref='matches')
     tireur1 = db.relationship('Tireur', foreign_keys=[numeroLicenceE1], backref='Tireur.numeroLicenceE1')
@@ -317,30 +316,6 @@ class MatchPoule(db.Model):
             'touchesDonneesTireur2': self.touchesDonneesTireur2
         }
 
-# Modèle pour représenter les feuilles de match
-class FeuilleMatch(db.Model):
-    __tablename__ = 'FEUILLE_MATCH'
-    idFeuille = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    idPoule = db.Column(db.Integer, db.ForeignKey('POULE.idPoule'), nullable=False)
-    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), nullable=False)
-    numeroLicenceE1 = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), nullable=False)
-    numeroLicenceE2 = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), nullable=False)
-    scoreTireur1 = db.Column(db.Integer)
-    scoreTireur2 = db.Column(db.Integer)
-    
-    poule = db.relationship('Poule', backref='feuille_matches')
-    competition = db.relationship('Competition', backref='feuille_matches')
-    tireur1 = db.relationship('Tireur', foreign_keys=[numeroLicenceE1], backref='matches_as_tireur1')
-    tireur2 = db.relationship('Tireur', foreign_keys=[numeroLicenceE2], backref='matches_as_tireur2')
-
-    def __init__(self, poule, competition, tireur1, tireur2, score_tireur1, score_tireur2):
-        self.idPoule = poule
-        self.idComp = competition
-        self.numeroLicenceE1 = tireur1
-        self.numeroLicenceE2 = tireur2
-        self.scoreTireur1 = score_tireur1
-        self.scoreTireur2 = score_tireur2
-        
 class User(db.Model, UserMixin):
     __tablename__ = 'USER'
     idUser = db.Column(db.Integer, primary_key=True)
@@ -682,7 +657,7 @@ def get_competition_statut(competition):
         if poules:
             # verifie si l’appel a été fait donc sil ya des scores entrés pour des matchs de poules)
             try:
-                match_poule = MatchPoule.query.filter_by(idComp=competition.idComp).first()
+                match_poule = Match.query.filter_by(idComp=competition.idComp).first()
             except:
                 match_poule = None
             if match_poule and (match_poule.touchesRecuesTireur1 is not None or match_poule.touchesDonneesTireur1 is not None
@@ -699,16 +674,16 @@ def get_tireurs_from_poule(poule_id):
     return Tireur.query.join(ParticipantsPoule, Tireur.numeroLicenceE == ParticipantsPoule.numeroLicenceE).filter(ParticipantsPoule.idPoule == poule_id).all()
 
 def count_victoires_for_tireur(tireur_num_licence):
-    return MatchPoule.query.filter(MatchPoule.numeroLicenceE1 == tireur_num_licence, MatchPoule.touchesDonneesTireur1 > MatchPoule.touchesDonneesTireur2).count() + MatchPoule.query.filter(MatchPoule.numeroLicenceE2 == tireur_num_licence, MatchPoule.touchesDonneesTireur2 > MatchPoule.touchesDonneesTireur1).count()
+    return Match.query.filter(Match.numeroLicenceE1 == tireur_num_licence, Match.touchesDonneesTireur1 > Match.touchesDonneesTireur2).count() + Match.query.filter(Match.numeroLicenceE2 == tireur_num_licence, Match.touchesDonneesTireur2 > Match.touchesDonneesTireur1).count()
 
 def sum_touches_donnees_for_tireur(tireur_num_licence):
-    sum1 = MatchPoule.query.filter(MatchPoule.numeroLicenceE1 == tireur_num_licence).with_entities(func.sum(MatchPoule.touchesDonneesTireur1)).scalar()
-    sum2 = MatchPoule.query.filter(MatchPoule.numeroLicenceE2 == tireur_num_licence).with_entities(func.sum(MatchPoule.touchesDonneesTireur2)).scalar()
+    sum1 = Match.query.filter(Match.numeroLicenceE1 == tireur_num_licence).with_entities(func.sum(Match.touchesDonneesTireur1)).scalar()
+    sum2 = Match.query.filter(Match.numeroLicenceE2 == tireur_num_licence).with_entities(func.sum(Match.touchesDonneesTireur2)).scalar()
     return (sum1 if sum1 is not None else 0) + (sum2 if sum2 is not None else 0)
 
 def sum_touches_recues_for_tireur(tireur_num_licence):
-    sum1 = MatchPoule.query.filter(MatchPoule.numeroLicenceE1 == tireur_num_licence).with_entities(func.sum(MatchPoule.touchesRecuesTireur1)).scalar() or 0
-    sum2 = MatchPoule.query.filter(MatchPoule.numeroLicenceE2 == tireur_num_licence).with_entities(func.sum(MatchPoule.touchesRecuesTireur2)).scalar() or 0
+    sum1 = Match.query.filter(Match.numeroLicenceE1 == tireur_num_licence).with_entities(func.sum(Match.touchesRecuesTireur1)).scalar() or 0
+    sum2 = Match.query.filter(Match.numeroLicenceE2 == tireur_num_licence).with_entities(func.sum(Match.touchesRecuesTireur2)).scalar() or 0
     return sum1 + sum2
 
 def get_poule_stats(poule_id):
@@ -727,14 +702,14 @@ def get_poule_stats(poule_id):
     return poule_stats
 
 def get_matchs_poules(poule_id):
-    return MatchPoule.query.filter_by(idPoule=poule_id).all()
+    return Match.query.filter_by(idPoule=poule_id).all()
     
 def est_terminer_match(idMatch):
-    match_poule = MatchPoule.query.filter_by(idMatch=idMatch).first()
+    match_poule = Match.query.filter_by(idMatch=idMatch).first()
     return match_poule.touchesDonneesTireur1 >= match_poule.type_match.nbnbTouches or match_poule.touchesDonneesTireur2 >= match_poule.type_match.nbnbTouches
     
 def est_terminer_poule(idPoule):
-    match_poules = MatchPoule.query.filter_by(idPoule=idPoule).all()
+    match_poules = Match.query.filter_by(idPoule=idPoule).all()
     for match_poule in match_poules:
         if not est_terminer_match(match_poule.idMatch):
             return False

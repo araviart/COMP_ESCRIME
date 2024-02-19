@@ -126,14 +126,13 @@ CREATE OR REPLACE TABLE PARTICIPANTS_COMPETITION(
 --    FOREIGN KEY (idArme) REFERENCES ARME(idArme)
 --);
 
-CREATE OR REPLACE TABLE CLASSEMENT_FINAL(
-    idClassementFinal INT NOT NULL AUTO_INCREMENT,
+CREATE OR REPLACE TABLE CLASSEMENT(
     idComp INT NOT NULL,
     idTireur INT NOT NULL,
-    position INT NOT NULL,
-    PRIMARY KEY(idClassementFinal),
+    position INT,
+    PRIMARY KEY(idComp, numeroLicenceE),
     FOREIGN KEY (idComp) REFERENCES COMPETITION(idComp),
-    FOREIGN KEY (idTireur) REFERENCES TIREUR(idTireur)
+    FOREIGN KEY (numeroLicenceE) REFERENCES TIREUR(numeroLicenceE)
 );
 
 CREATE OR REPLACE TABLE POULE(
@@ -165,20 +164,15 @@ CREATE OR REPLACE TABLE PARTICIPANTS_POULE(
 );
 
 
-CREATE OR REPLACE TABLE MATCH_POULE(
+CREATE OR REPLACE TABLE MATCH(
     idMatch INT NOT NULL AUTO_INCREMENT,
     idTypeMatch INT NOT NULL,
     idPoule INT NOT NULL,
     idPiste INT NOT NULL,
     idArbitre INT NOT NULL,
-
-    -- First Tireur Information
+    GAGNANT INT,
     idTireur1 INT NOT NULL,
-    FOREIGN KEY (idTireur1) REFERENCES TIREUR(idTireur),
-    -- Second Tireur Information
     idTireur2 INT NOT NULL,
-    FOREIGN KEY (idTireur2) REFERENCES TIREUR(idTireur),
-
     dateMatch DATE NOT NULL,
     heureMatch TIME NOT NULL,
     touchesRecuesTireur1 INT,
@@ -186,23 +180,19 @@ CREATE OR REPLACE TABLE MATCH_POULE(
     touchesRecuesTireur2 INT,
     touchesDonneesTireur2 INT,
     PRIMARY KEY(idMatch),
-    FOREIGN KEY (idPoule) REFERENCES POULE(idPoule),
+    FOREIGN KEY (idTireur1) REFERENCES TIREUR(numeroLicenceE),
+    FOREIGN KEY (idTireur2) REFERENCES TIREUR(numeroLicenceE),
+    FOREIGN KEY(gagnant) REFERENCES TIREUR(numeroLicenceE),
     FOREIGN KEY (idPiste) REFERENCES PISTE(idPiste),
     FOREIGN KEY (idTypeMatch) REFERENCES TYPE_MATCH(idTypeMatch),
     FOREIGN KEY (idArbitre) REFERENCES POULE(idArbitre)
 );
 
-CREATE OR REPLACE TABLE FEUILLE_MATCH(
-    idFeuille INT NOT NULL AUTO_INCREMENT,
+
+CREATE OR REPLACE TABLE CONTENIR(
+    idMatch INT NOT NULL,
     idPoule INT NOT NULL,
-    idComp INT NOT NULL,
-    idTireur1 INT NOT NULL,
-    idTireur2 INT NOT NULL,
-    scoreTireur1 INT,
-    scoreTireur2 INT,
-    PRIMARY KEY(idFeuille),
-    FOREIGN KEY (idPoule) REFERENCES POULE(idPoule),
-    FOREIGN KEY (idComp) REFERENCES COMPETITION(idComp),
-    FOREIGN KEY (idTireur1) REFERENCES TIREUR(idTireur),
-    FOREIGN KEY (idTireur2) REFERENCES TIREUR(idTireur)
+    PRIMARY KEY(idMatch, idPoule),
+    FOREIGN KEY (idMatch) REFERENCES MATCH(idMatch),
+    FOREIGN KEY (idPoule) REFERENCES POULE(idPoule)
 );
