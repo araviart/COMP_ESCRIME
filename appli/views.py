@@ -77,10 +77,10 @@ def gestion_score(id_comp, liste_absents=[]):
         poules[i]['piste'] = get_piste_poule(id_comp, i)
         poules[i]["id_arbitre"] = get_id_arbitre_poule(id_comp, i)
         poules[i]["stats"] = get_poule_stats(i)
-        poules[i]["matchs"] = get_matchs_poules(i)
+        poules[i]["matchs"] = get_matchs_poules(i, id_comp)
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
     for num_poule in range(1, nb_poules + 1):
-        matches = get_matchs_poules(num_poule)
+        matches = get_matchs_poules(num_poule, id_comp)
         scores = {}
         for match in matches:
             # Utilisation de la fonction get_match mise à jour
@@ -106,62 +106,38 @@ def gestion_score(id_comp, liste_absents=[]):
     
     return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=liste_absents_dico)
 
-@app.route('/update_scores', methods=['POST'])
+@app.route('/update_scores', methods = ['POST'])
 def update_scores():
     data = request.get_json()
-
-    license = data['license']
-    opponent_license = data['opponentLicense']
+    licence = data['license']
+    openent_licence = data['opponentLicense']
     score = data['score']
     id_poule = data['idPoule']
-    id_piste = data['idPiste']
     id_comp = data['idCompetition']
-    id_arbitre = data['idArbitre']
-
-
-
-    print("license: ", license , "opponent_license: ", opponent_license, "score: ", score, "id_poule: ", id_poule, "id_piste: ", id_piste, "id_comp: ", id_comp, "id_arbitre: ", id_arbitre)
-
-    match1 = Match.query.filter_by(numeroLicenceE1=license, numeroLicenceE2=opponent_license).first()
-    match2 = Match.query.filter_by(numeroLicenceE1=opponent_license, numeroLicenceE2=license).first()
-
-    # si score est pas un nombre, on ne fait rien
     try:
+        print(score)
         score = int(score)
     except ValueError:
-        return 'OK'
-
-    if match1:
-        # mettre à jour le match
-        print("Mise à jour du match")
-        print("Avant: ", match1.touchesRecuesTireur1, match1.touchesDonneesTireur1, match1.touchesRecuesTireur2, match1.touchesDonneesTireur2)
-        match1.touchesDonneesTireur1 = score
-        match1.touchesRecuesTireur2 = score
+        return jsonify({'error': 'Le score doit être un nombre entier'})
+    match = get_match(licence, openent_licence, id_poule, id_comp)
+    print(match)
+    
+    if match:
+        if match.numeroLicenceE1 == licence:
+            match.touchesDonneesTireur1 = score
+            match.touchesRecuesTireur2 = score  
+        else: 
+            match.toucheDonneesTireur2 = score
+            match.touchesRecuesTireur1 = score
+            
+        if score == 5:
+            match.gagnant = license
         db.session.commit()
-        print("Après: ", match1.touchesRecuesTireur1, match1.touchesDonneesTireur1, match1.touchesRecuesTireur2, match1.touchesDonneesTireur2)
-        print("Match mis à jour")
-    elif match2:
-        # mettre à jour le match
-        print("Mise à jour du match")
-        print("Avant: ", match2.touchesRecuesTireur1, match2.touchesDonneesTireur1, match2.touchesRecuesTireur2, match2.touchesDonneesTireur2)
-        match2.touchesDonneesTireur2 = score
-        match2.touchesRecuesTireur1 = score
-        db.session.commit()
-        print("Après: ", match2.touchesRecuesTireur1, match2.touchesDonneesTireur1, match2.touchesRecuesTireur2, match2.touchesDonneesTireur2)
-        print("Match mis à jour")
+        return jsonify({'success': 'Score mis à jour avec succès'})
     else:
-        # créer le match
-        print("Création du match")
-        match = Match(type_match=1, poule=id_poule, piste=id_piste, arbitre=id_arbitre,
-                            tireur1=license, tireur2=opponent_license,
-                            date_match=datetime.date.today(), heure_match=datetime.datetime.now().time().strftime("%H:%M:%S"),
-                            touches_recues_tireur1=0, touches_donnees_tireur1=score,
-                            touches_recues_tireur2=score, touches_donnees_tireur2=0)
-        db.session.add(match)
-        db.session.commit()
-        print("Match créé")
+        print("match non trouvé")
+        return jsonify({'error': 'Match non trouvé'})
 
-    return 'OK'
 
 @app.route("/afficher-score-poule/<int:id_comp>/")
 def afficher_score_poule(id_comp):
@@ -268,8 +244,12 @@ def logout ():
     logout_user ()
     return redirect(url_for("home"))
 
+@app.route('/home/')
+def home_default():
+    return home_def(5)
+
 @app.route('/home/<int:items>', methods=("GET","POST",))
-def home_def(items):
+def home_def(items, opt= None):
     total_pages = 0
     if request.method == "POST":
         page = int(request.form.get('page', 1))
@@ -360,10 +340,6 @@ def liste_adherents(items):
         items=items,
         page=page,
         total_pages=total_pages)
-
-@app.route('/home/')
-def home_default():
-    return home_def(5)
 
     
 @app.route('/annuler_comp', methods=['POST'])
@@ -550,7 +526,7 @@ def appel(id_comp):
                 ajouter_poule(id_comp, id_piste, id_arbitre, nom_poule)
                 id_poule = get_id_poule(id_comp, id_piste, id_arbitre, nom_poule)
                 for j in range(1, len(liste_poules[i])):
-                    ajouter_participant_poule(id_poule, liste_poules[i][j])
+                    ajouter_participant_poule(id_poule, liste_poules[i][j], id_comp)
                     tireur = Tireur.query.get(liste_poules[i][j])
                     rows_data.append(tireur.to_dict())
             id_type_match = 1

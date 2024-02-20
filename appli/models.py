@@ -1,6 +1,6 @@
 import datetime
 
-from sqlalchemy import func
+from sqlalchemy import and_, func
 from .app import db, login_manager
 from flask_login import UserMixin
 from sqlalchemy import or_
@@ -260,14 +260,16 @@ class Poule(db.Model):
 class ParticipantsPoule(db.Model):
     __tablename__ = 'PARTICIPANTS_POULE'
     idPoule = db.Column(db.Integer, db.ForeignKey('POULE.idPoule'), primary_key=True)
+    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True, nullable=False)
     numeroLicenceE = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), primary_key=True)
 
     poule = db.relationship('Poule', backref='Poule.idPoule')
     tireur = db.relationship('Tireur', backref='poule_participants')
     
-    def __init__(self, poule, tireur):
+    def __init__(self, poule, tireur, idComp):
         self.idPoule = poule
         self.numeroLicenceE = tireur
+        self.idComp = idComp
 
 # Modèle pour représenter les matchs de poule
 class Match(db.Model):
@@ -275,7 +277,6 @@ class Match(db.Model):
     idMatch = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idTypeMatch = db.Column(db.Integer, db.ForeignKey('TYPE_MATCH.idTypeMatch'), nullable=False)
     gagnant = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), nullable=True)
-    idPoule = db.Column(db.Integer, db.ForeignKey('POULE.idPoule'), nullable=False)
     idPiste = db.Column(db.Integer, db.ForeignKey('PISTE.idPiste'), nullable=False)
     idArbitre = db.Column(db.Integer, db.ForeignKey('ARBITRE.idArbitre'), nullable=False)
     numeroLicenceE1 = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), nullable=False)
@@ -293,9 +294,8 @@ class Match(db.Model):
     tireur1 = db.relationship('Tireur', foreign_keys=[numeroLicenceE1], backref='Tireur.numeroLicenceE1')
     tireur2 = db.relationship('Tireur', foreign_keys=[numeroLicenceE2], backref='Tireur.numeroLicenceE2')
     
-    def __init__(self, type_match, poule, piste, arbitre, tireur1, tireur2, date_match, heure_match, touches_recues_tireur1, touches_donnees_tireur1, touches_recues_tireur2, touches_donnees_tireur2):
+    def __init__(self, type_match, piste, arbitre, tireur1, tireur2, date_match, heure_match, touches_recues_tireur1, touches_donnees_tireur1, touches_recues_tireur2, touches_donnees_tireur2):
         self.idTypeMatch = type_match
-        self.idPoule = poule
         self.idPiste = piste
         self.idArbitre = arbitre
         self.numeroLicenceE1 = tireur1
@@ -310,7 +310,6 @@ class Match(db.Model):
     def to_dict(self):
         return {
             'idTypeMatch': self.idTypeMatch,
-            'idPoule': self.idPoule,
             'idPiste': self.idPiste,
             'idArbitre': self.idArbitre,
             'tireur1': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE1).first(),
@@ -322,6 +321,18 @@ class Match(db.Model):
             'touchesRecuesTireur2': self.touchesRecuesTireur2,
             'touchesDonneesTireur2': self.touchesDonneesTireur2
         }
+
+
+class Contenir(db.Model):
+    __tablename__ = 'CONTENIR'
+    idPoule = db.Column(db.Integer, db.ForeignKey('POULE.idPoule'), primary_key=True)
+    idMatch = db.Column(db.Integer, db.ForeignKey('MATCH.idMatch'), primary_key=True)
+    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
+    
+    def init(self, poule, match, idComp):
+        self.idPoule = poule
+        self.idMatch = match
+        self.idComp = idComp
 
 class User(db.Model, UserMixin):
     __tablename__ = 'USER'
@@ -407,8 +418,16 @@ def get_liste_participants_competitions_tireurs(id_comp):
     return ParticipantsCompetition.query.join(Tireur, ParticipantsCompetition.numeroLicenceE == Tireur.numeroLicenceE).filter(ParticipantsCompetition.idComp == id_comp).all()
 
 def get_liste_tireurs_escrimeurs_poule(id_comp, id_poule):
-    return Escrimeur.query.join(Tireur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE).join(ParticipantsPoule, Tireur.numeroLicenceE == ParticipantsPoule.numeroLicenceE).join(Poule, ParticipantsPoule.idPoule == Poule.idPoule).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).all()
-
+    return Escrimeur.query.join(
+        Tireur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE
+    ).join(
+        ParticipantsPoule, Tireur.numeroLicenceE == ParticipantsPoule.numeroLicenceE
+    ).join(
+        Contenir, ParticipantsPoule.idPoule == Contenir.idPoule
+    ).filter(
+        Contenir.idComp == id_comp, Contenir.idPoule == id_poule
+    ).all()
+    
 def get_club_tireur_escrimeur(tireur):
     return Club.query.join(Tireur, Club.idClub == Tireur.idClub).filter(Tireur.numeroLicenceE == tireur.numeroLicenceE).first()
 
@@ -708,9 +727,15 @@ def get_poule_stats(poule_id):
         }
     return poule_stats
 
-def get_matchs_poules(poule_id):
-    return Match.query.filter_by(idPoule=poule_id).all()
-    
+def get_matchs_poules(poule_id, id_comp):
+    return db.session.query(Match).join(
+        Contenir, 
+        Match.idMatch == Contenir.idMatch
+    ).filter(
+        Contenir.idPoule == poule_id,
+        Contenir.idComp == id_comp
+    ).all()
+
 def est_terminer_match(idMatch):
     match_poule = Match.query.filter_by(idMatch=idMatch).first()
     return match_poule.touchesDonneesTireur1 >= match_poule.type_match.nbnbTouches or match_poule.touchesDonneesTireur2 >= match_poule.type_match.nbnbTouches
