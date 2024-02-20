@@ -233,8 +233,8 @@ class Classement(db.Model):
 # Modèle pour représenter les poules
 class Poule(db.Model):
     __tablename__ = 'POULE'
-    idPoule = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), nullable=False)
+    idPoule = db.Column(db.Integer, primary_key=True)
+    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True, nullable=False)
     idPiste = db.Column(db.Integer, db.ForeignKey('PISTE.idPiste'), nullable=False)
     idArbitre = db.Column(db.Integer, db.ForeignKey('ARBITRE.idArbitre'), nullable=False)
     nomPoule = db.Column(db.String(50), nullable=False)
@@ -248,6 +248,12 @@ class Poule(db.Model):
         self.idPiste = piste
         self.idArbitre = arbitre
         self.nomPoule = nom_poule
+        self.idPoule = self.get_next_idPoule(competition)
+
+    @staticmethod
+    def get_next_idPoule(competition):
+        last_poule = Poule.query.filter_by(idComp=competition).order_by(Poule.idPoule.desc()).first()
+        return 1 if not last_poule else last_poule.idPoule + 1
 
 # Modèle pour représenter les participants aux poules
 class ParticipantsPoule(db.Model):
@@ -406,11 +412,18 @@ def get_club_tireur_escrimeur(tireur):
     return Club.query.join(Tireur, Club.idClub == Tireur.idClub).filter(Tireur.numeroLicenceE == tireur.numeroLicenceE).first()
 
 def get_arbitre_escrimeur_poule(id_comp, id_poule):
-    return Escrimeur.query.join(Arbitre, Escrimeur.numeroLicenceE == Arbitre.numeroLicenceE).join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
+    escrimeur = Escrimeur.query.join(Arbitre, Escrimeur.numeroLicenceE == Arbitre.numeroLicenceE).join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
+    if escrimeur is not None:
+        return escrimeur
+    else:
+        return None
 
 def get_id_arbitre_poule(id_comp, id_poule):
-    return Arbitre.query.join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first().idArbitre
-
+    arbitre_poule = Arbitre.query.join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
+    if arbitre_poule is not None:
+        return arbitre_poule.idArbitre
+    else:
+        return None
 def get_piste_poule(id_comp, id_poule):
     # retourne la piste de la poule de cette compétition
     return Piste.query.join(Poule, Poule.idPiste == Piste.idPiste).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
