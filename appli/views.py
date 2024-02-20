@@ -421,7 +421,7 @@ def verify_code(name):
     return render_template("edit-user.html", name=name, form=EditUserForm(), show_verification_popup=True)
 
 @app.route('/ajouter_escrimeur/', methods=['GET', 'POST'])
-def ajouter_escrimeur():
+def ajouter_un_escrimeur():
     if request.method == 'POST':
         id = dernier_escrimeur_id() + 1
         print(id)
@@ -799,17 +799,43 @@ def classement_provisioire(id_comp):
 
 @app.route("/inscription_escrimeur/<int:id_comp>/" , methods=["GET", "POST"])
 def inscription_escrimeur(id_comp):
+    print("---------------------")
     liste_club = get_all_club()
     liste_categories = get_all_categories()
     if request.method == "POST":
-        categorie = request.form["categorie"]
-        nom = request.form["nom"]
-        prenom = request.form["prenom"]
-        sexe = request.form["sexe"]
-        numero_licence = request.form["numero_licence"]
-        date_naissance = request.form["date_naissance"]
-        telephone = request.form["telephone"]
-        escrimeur = ajouter_escrimeur(categorie, prenom, nom, date_naissance, numero_licence, sexe, telephone)
-        radio_selectionnee = request.form["radio"]
-        
+        categorie = request.form.get("categorie")
+        print(f"categorie : {categorie}")
+        nom = request.form.get("nom")
+        print(f"nom : {nom}")
+        prenom = request.form.get("prenom")
+        print(f"prenom : {prenom}")
+        sexe = request.form.get("sexes")
+        if sexe == "Femme":
+            sexe = "Dames"
+        print(f"sexe : {sexe}")
+        numero_licence = request.form.get("numero_licence")
+        print(f"numero : {numero_licence}")
+        date_naissance = request.form.get("date_naissance")
+        print(f"date : {date_naissance}")
+        telephone = request.form.get("telephone")
+        telephone_sans_espace = telephone.replace(" ", "")
+        telephone_int = int(telephone_sans_espace)
+        print(f"tel : {telephone}")
+        ajouter_escrimeur(categorie, prenom, nom, date_naissance, numero_licence, sexe, telephone_int)
+        print(ajouter_escrimeur(categorie, prenom, nom, date_naissance, numero_licence, sexe, telephone_int))
+        radio_selectionnee = request.form.get("role")
+        print(f"role : {radio_selectionnee}")
+        match radio_selectionnee:
+            case "tireur":
+                club = request.form.get("nom_club")
+                print(f"club : {club}")
+                classement = request.form.get("classement")
+                print(f"classement : {classement}")
+                ajouter_tireur_via_str(numero_licence, club, classement)
+                print(ajouter_tireur_via_str(numero_licence, club, classement))
+            case "arbitre":
+                ajouter_arbitre(numero_licence)
+                print(ajouter_arbitre(numero_licence))
+        ajouter_participant(numero_licence, id_comp)
+        print(ajouter_participant(numero_licence, id_comp))
     return render_template('inscription_escrimeur.html', id_comp=id_comp, liste_club=liste_club, liste_categories=liste_categories)

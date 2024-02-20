@@ -3,10 +3,12 @@
 {% endblock %}
 
 {% block content %}
-    <h1>S'inscrire<h1>
     <form method="POST" action="{{ url_for('inscription_escrimeur', id_comp=id_comp) }}">
         <div id="content">
             <div id="textfields">
+                <div id="title">
+                    <h1>S'INSCRIRE</h1>
+                </div>
                 <div class="label-input">
                     <label for="nom">Nom</label>
                     <input type="text" id="nom" name="nom" required>
@@ -19,7 +21,7 @@
                     <label for="sexe">Sexe</label>
                     <select name="sexes" id="sexe">
                         <option value="Homme">Homme</option>
-                        <option value="Femme">Femme</option>
+                        <option value="Dames">Femme</option>
                     </select>
                 </div>
                 <div class="label-input">
@@ -28,7 +30,7 @@
                 </div>
                 <div class="label-input">
                     <label for="date_naissance">Date de naissance :</label>
-                    <input type="date" id="date_naissance" name="date_naissance" required>
+                    <input type="text" id="date_naissance" name="date_naissance" placeholder="jj/mm/yyyyy" required>
                 </div>
                 <div class="label-input">
                     <label for="telephone">Téléphone</label>
@@ -48,7 +50,7 @@
                     <label for="nom_club">Nom du club</label>
                     <input list="clubs" id="nom_club" name="nom_club">
                     <div id="club">
-                        <datalist id="clubs">
+                        <datalist name="clubs" id="clubs">
                             {% for club in liste_club %}
                                 <option value="{{ club.nomClub }}"></option>
                             {% endfor %}
@@ -58,15 +60,19 @@
                         <label for="categorie">Catégorie</label>
                         <select id="select-cat" name="categorie" id="categorie_id">
                             {% for cat in liste_categories %}
-                                <option value="{{ cat.idCat }}">
+                                <option value="{{ cat.nomCategorie }}">
                                     {{ cat.nomCategorie }}
                                 </option>
                             {% endfor %}
                         </select>
                     </div>
+                    <div id="classement-tireur">
+                        <label for="classement">Classement</label>
+                        <input type="text" name="classement" id="classement" required>
+                    </div>
                 </div>
                 <div class="buttons">
-                    <a href="">Annuler</a>
+                    <button> Annuler </button>
                     <button type="submit">S'inscrire</button>
                 </div>
             </div>
@@ -78,10 +84,12 @@
         let optionTireur = document.querySelector(".option_tireur");
         radioTireur.addEventListener("click", () => {
             optionTireur.style.display = "block";
+            document.getElementById("classement").required = true;
         });
 
         radioArbitre.addEventListener("click", () => {
             optionTireur.style.display = "none";
+            document.getElementById("classement").required = false;
         });
     </script>
 {% endblock %}
