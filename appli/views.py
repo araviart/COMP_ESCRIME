@@ -800,11 +800,16 @@ def classement_provisioire(id_comp):
 @app.route("/inscription_escrimeur/<int:id_comp>/" , methods=["GET", "POST"])
 def inscription_escrimeur(id_comp):
     liste_club = get_all_club()
+    liste_categories = get_all_categories()
     if request.method == "POST":
+        categorie = request.form["categorie"]
         nom = request.form["nom"]
         prenom = request.form["prenom"]
         sexe = request.form["sexe"]
         numero_licence = request.form["numero_licence"]
         date_naissance = request.form["date_naissance"]
         telephone = request.form["telephone"]
-    return render_template('inscription_escrimeur.html', id_comp=id_comp, liste_club=liste_club)
+        escrimeur = ajouter_escrimeur(categorie, prenom, nom, date_naissance, numero_licence, sexe, telephone)
+        radio_selectionnee = request.form["radio"]
+        
+    return render_template('inscription_escrimeur.html', id_comp=id_comp, liste_club=liste_club, liste_categories=liste_categories)

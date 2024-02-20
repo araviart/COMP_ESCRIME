@@ -44,5 +44,13 @@
 
 .option_tireur {
     display: none;
-    
+}
+
+#club {
+    display: flex;
+}
+
+#categories {
+    display: flex;
+    justify-content: space-between;
 }

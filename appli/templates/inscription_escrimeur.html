@@ -18,8 +18,8 @@
                 <div class="label-select">
                     <label for="sexe">Sexe</label>
                     <select name="sexes" id="sexe">
-                        <option value="Homme"></option>
-                        <option value="Femme"></option>
+                        <option value="Homme">Homme</option>
+                        <option value="Femme">Femme</option>
                     </select>
                 </div>
                 <div class="label-input">
@@ -47,11 +47,23 @@
                 <div class="option_tireur">
                     <label for="nom_club">Nom du club</label>
                     <input list="clubs" id="nom_club" name="nom_club">
-                    <datalist id="clubs">
-                        {% for club in liste_club %}
-                            <option value="{{ club.nomClub }}">
-                        {% endfor %}
-                    </datalist>
+                    <div id="club">
+                        <datalist id="clubs">
+                            {% for club in liste_club %}
+                                <option value="{{ club.nomClub }}"></option>
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div id="categories">
+                        <label for="categorie">Catégorie</label>
+                        <select id="select-cat" name="categorie" id="categorie_id">
+                            {% for cat in liste_categories %}
+                                <option value="{{ cat.idCat }}">
+                                    {{ cat.nomCategorie }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
                 <div class="buttons">
                     <a href="">Annuler</a>

@@ -749,3 +749,6 @@ def est_terminer_phase_poule(idComp):
 
 def get_all_club():
     return Club.query.all()
+
+def get_all_categories():
+    return Categorie.query.all()
