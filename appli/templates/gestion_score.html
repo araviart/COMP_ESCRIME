@@ -1,154 +1,187 @@
 {% extends 'base.html' %} {% block content %}
-  <link rel="stylesheet" href="{{ url_for('static', filename = 'progress-bar.css') }}" />
-  <link rel="stylesheet" href="{{ url_for('static', filename = 'progress-bar.css') }}" />
-  <link rel="stylesheet" href="{{ url_for('static', filename = 'Score.css') }}" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename = 'progress-bar.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename = 'progress-bar.css') }}"
+/>
+<link rel="stylesheet" href="{{ url_for('static', filename = 'Score.css') }}" />
 
-  <div class="progress-bar">
-    <a class="active-url" href="{{ url_for('ajout_comp_page')}}">Définir une compétition</a>
-    <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a class="active-url" href="{{ url_for('gestion_participants', id_comp=id_comp)}}">Gestion participants</a>
-    <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a class="active-url" href="{{ url_for('gestion_poules', id_comp=id_comp)}}">Créer les poules</a>
-    <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a class="active-url" href="{{ url_for('appel', id_comp=id_comp)}}">Appel</a>
-    <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a class="active-url" href="{{ url_for('gestion_score', id_comp=id_comp)}}">Gestion score</a>
-    <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a href="{{ url_for('afficher_score_poule', id_comp=id_comp)}}">Classement Final</a>
+<div class="progress-bar">
+  <a class="active-url" href="{{ url_for('ajout_comp_page')}}"
+    >Définir une compétition</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a
+    class="active-url"
+    href="{{ url_for('gestion_participants', id_comp=id_comp)}}"
+    >Gestion participants</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a class="active-url" href="{{ url_for('gestion_poules', id_comp=id_comp)}}"
+    >Créer les poules</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a class="active-url" href="{{ url_for('appel', id_comp=id_comp)}}">Appel</a>
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a class="active-url" href="{{ url_for('gestion_score', id_comp=id_comp)}}"
+    >Gestion score</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a href="{{ url_for('afficher_score_poule', id_comp=id_comp)}}"
+    >Classement Final</a
+  >
+</div>
+
+<main>
+  <div class="classement-provisoire-match">
+    <a href="{{ url_for('arbre', id_comp=id_comp)}}"
+      >Voir classement provisoire du tournoi</a
+    >
+    <a href="">Voir ordre des matchs</a>
   </div>
 
-  <main>
-    <div class="classement-provisoire-match">
-      <a href="{{ url_for('arbre', id_comp=id_comp)}}">Voir classement provisoire du tournoi</a>
-      <a href="">Voir ordre des matchs</a>
-    </div>
-
-    <div class="tableau-score">
-      <form action="">
-        <!-- pour chaque poule créer un tableau -->
-        {% for i in range(1, poules|length +1) %}
-          <div class="haut-tableau">
-            <p>Poule n°{{ i }} - “heure_poule” - {{ poules[i]['piste'].nomPiste }} - Arbitre : {{ poules[i]['arbitre'] }}</p>
-          </div>
-
-          <div class="liste-table">
-            <table class="nom-prenom-club">
-              <thead>
-                <tr>
-                  <th>Nom</th>
-                  <th>Prénom</th>
-                  <th>Club</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for tireur, club in poules[i]['tireurs'].items() %}
-                  <tr class="nom-prenom-club">
-                    {% if tireur in list_absents %}
-                    <td style="color: red;">(ABS){{ tireur.nomE }}</td>
-                    <td style="color: red;">{{ tireur.prenomE }}</td>
-                    <td style="color: red;">{{ club }}</td>
-                    {% else %}
-                      <td>{{ tireur.nomE }}</td>
-                      <td>{{ tireur.prenomE }}</td>
-                      <td>{{ club }}</td>
-                    {% endif %}
-                    
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-
-            <table>
-              <thead>
-                <tr class="titre-transparent">
-                  {% for row in poules[i]['tireurs'] %}
-                    <th>?</th>
-                  {% endfor %}
-                </tr>
-              </thead>
-              <tbody>
-                {% for jind in range(poules[i]['tireurs']|length) %}
-                  {% set col_index = jind + 1 %}
-                  <tr class="tr-textfield-matrice">
-                    {% for tireur, club in poules[i]['tireurs'].items() %}
-                      {% set row_index = loop.index0 + 1 %}
-                      {% if loop.index0 == jind %}
-                        <td class="td-textfield-matrice">
-                          <input class="textfield-score textfield-score-disabled" type="number" name="name" disabled />
-                        </td>
-                      {% else %}
-                        {% set opponent_tireur = poules[i]['tireurs'].items()|list %}
-                        {% set opponent_tireur = opponent_tireur[jind] %}
-                        {% set opponent_tireur = opponent_tireur[0] %}
-                        {% set tireur_license = opponent_tireur.numeroLicenceE %}
-
-                        {% if loop.index0 > jind %}
-                          <td class="td-textfield-matrice">
-                            <input class="textfield-score textfield-score-ok row-{{ row_index }} col-{{ col_index }}" type="number" name="name" 
-                            min="0" max="5"
-                            data-license="{{ tireur_license }}" 
-                            data-licence-opponent="{{ tireur.numeroLicenceE }}" 
-                            data-id-competition="{{ id_comp }}" 
-                            data-id-poule="{{ i }}"
-                            data-id-piste="{{ poules[i]['piste'].idPiste }}"
-                            data-id-arbitre="{{ poules[i]['id_arbitre'] }}"
-                            />
-                          </td>
-                        {% else %}
-                          <td class="td-textfield-matrice">
-                            <input class="textfield-score score-gris textfield-score-ok row-{{ row_index }} col-{{ col_index }}" type="number" name="name"
-                            min="0" max="5"
-                            value="{{ score_value }}"
-                            data-license="{{ tireur_license }}" 
-                            data-licence-opponent="{{ tireur.numeroLicenceE }}" 
-                            data-id-competition="{{ id_comp }}" 
-                            data-id-poule="{{ i }}"
-                            data-id-piste="{{ poules[i]['piste'].idPiste }}"
-                            data-id-arbitre="{{ poules[i]['id_arbitre'] }}"
-                            />
-                          </td>
-                        {% endif %}
-                      {% endif %}
-                    {% endfor %}
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>V</th>
-                  <th>TD</th>
-                  <th>TR</th>
-                  <th>TD-TR</th>
-                  <th>Place</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for tireur, club in poules[i]['tireurs'].items() %}
-                  <tr>
-                    <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['V'] }}</td>
-                    <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TD'] }}</td>
-                    <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TR'] }}</td>
-                    <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TD-TR'] }}</td>
-                    <td>
-                      <input id="checkbox-2" type="checkbox" />
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-        {% endfor %}
-        </form>
+  <div class="tableau-score">
+    <form action="">
+      <!-- pour chaque poule créer un tableau -->
+      {% for i in range(1, poules|length +1) %}
+      <div class="haut-tableau">
+        <p>
+          Poule n°{{ i }} - “heure_poule” - {{ poules[i]['piste'].nomPiste }} -
+          Arbitre : {{ poules[i]['arbitre'] }}
+        </p>
       </div>
 
-    <div class="div-btn-conclure">
-      <button type="submit">Conclure</button>
-    </div>
-  </main>
-  {% block scripts %}
-  <script src="{{ url_for('static', filename='js/score_textfield.js') }}"></script>
-  {% endblock scripts %}
-{% endblock %}
+      <div class="liste-table">
+        <table class="nom-prenom-club">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Club</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for tireur, club in poules[i]['tireurs'].items() %}
+            <tr class="nom-prenom-club">
+              {% if tireur in list_absents %}
+              <td style="color: red">(ABS){{ tireur.nomE }}</td>
+              <td style="color: red">{{ tireur.prenomE }}</td>
+              <td style="color: red">{{ club }}</td>
+              {% else %}
+              <td>{{ tireur.nomE }}</td>
+              <td>{{ tireur.prenomE }}</td>
+              <td>{{ club }}</td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <table>
+          <thead>
+            <tr class="titre-transparent">
+              {% for row in poules[i]['tireurs'] %}
+              <th>?</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for jind in range(poules[i]['tireurs']|length) %} {% set
+            col_index = jind + 1 %}
+            <tr class="tr-textfield-matrice">
+              {% for tireur, club in poules[i]['tireurs'].items() %} {% set
+              row_index = loop.index0 + 1 %} {% if loop.index0 == jind %}
+              <td class="td-textfield-matrice">
+                <input
+                  class="textfield-score textfield-score-disabled"
+                  type="number"
+                  name="name"
+                  disabled
+                />
+              </td>
+              {% else %} {% set opponent_tireur =
+              poules[i]['tireurs'].items()|list %} {% set opponent_tireur =
+              opponent_tireur[jind] %} {% set opponent_tireur =
+              opponent_tireur[0] %} {% set tireur_license =
+              opponent_tireur.numeroLicenceE %} {% set match_score =
+              poules[i]['scores'].get((tireur.numeroLicenceE,
+              opponent_tireur.numeroLicenceE), None) %} {{ match_score }} {% if
+              loop.index0 > jind %}
+              <td class="td-textfield-matrice">
+                <input
+                  class="textfield-score textfield-score-ok row-{{ row_index }} col-{{ col_index }}"
+                  type="number"
+                  name="name"
+                  min="0"
+                  max="5"
+                  value="{{ match_score.touchesDonneesTireur1 if match_score else '' }}"
+                  data-license="{{ tireur_license }}"
+                  data-licence-opponent="{{ tireur.numeroLicenceE }}"
+                  data-id-competition="{{ id_comp }}"
+                  data-id-poule="{{ i }}"
+                  data-id-piste="{{ poules[i]['piste'].idPiste }}"
+                  data-id-arbitre="{{ poules[i]['id_arbitre'] }}"
+                />
+              </td>
+              {% else %}
+              <td class="td-textfield-matrice">
+                <input
+                  class="textfield-score score-gris textfield-score-ok row-{{ row_index }} col-{{ col_index }}"
+                  type="number"
+                  name="name"
+                  min="0"
+                  max="5"
+                  value="{{ match_score.touchesDonneesTireur2 if match_score else '' }}"
+                  data-license="{{ tireur_license }}"
+                  data-licence-opponent="{{ tireur.numeroLicenceE }}"
+                  data-id-competition="{{ id_comp }}"
+                  data-id-poule="{{ i }}"
+                  data-id-piste="{{ poules[i]['piste'].idPiste }}"
+                  data-id-arbitre="{{ poules[i]['id_arbitre'] }}"
+                />
+              </td>
+              {% endif %} {% endif %} {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <table>
+          <thead>
+            <tr>
+              <th>V</th>
+              <th>TD</th>
+              <th>TR</th>
+              <th>TD-TR</th>
+              <th>Place</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for tireur, club in poules[i]['tireurs'].items() %}
+            <tr>
+              <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['V'] }}</td>
+              <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TD'] }}</td>
+              <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TR'] }}</td>
+              <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TD-TR'] }}</td>
+              <td>
+                <input id="checkbox-2" type="checkbox" />
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endfor %}
+    </form>
+  </div>
+
+  <div class="div-btn-conclure">
+    <button type="submit">Conclure</button>
+  </div>
+</main>
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/score_textfield.js') }}"></script>
+{% endblock scripts %} {% endblock %}

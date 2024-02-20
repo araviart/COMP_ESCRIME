@@ -79,14 +79,32 @@ def gestion_score(id_comp, liste_absents=[]):
         poules[i]["stats"] = get_poule_stats(i)
         poules[i]["matchs"] = get_matchs_poules(i)
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
+    for num_poule in range(1, nb_poules + 1):
+        matches = get_matchs_poules(num_poule)
+        scores = {}
+        for match in matches:
+            # Utilisation de la fonction get_match mise à jour
+            match_found = get_match(match.numeroLicenceE1, match.numeroLicenceE2, num_poule, id_comp)
+            if match_found:
+                scores[(match_found.numeroLicenceE1, match_found.numeroLicenceE2)] = {
+                    'touchesDonneesTireur1': match_found.touchesDonneesTireur1,
+                    'touchesRecuesTireur2': match_found.touchesRecuesTireur2
+                }
+                scores[(match_found.numeroLicenceE2, match_found.numeroLicenceE1)] = {
+                    'touchesDonneesTireur2': match_found.touchesDonneesTireur2,
+                    'touchesRecuesTireur1': match_found.touchesRecuesTireur1
+                }
+        poules[num_poule]['scores'] = scores
    
+    liste_absents_dico = []
     if liste_absents != []:
         for dict_tireur in liste_absents:
             tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
             if tireur is not None:
-                liste_absents.append(tireur)
-
-    return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=liste_absents)
+                tireur.append(tireur)
+                liste_absents_dico.append(tireur)
+    
+    return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=liste_absents_dico)
 
 @app.route('/update_scores', methods=['POST'])
 def update_scores():

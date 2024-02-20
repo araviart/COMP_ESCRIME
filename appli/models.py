@@ -3,6 +3,7 @@ import datetime
 from sqlalchemy import func
 from .app import db, login_manager
 from flask_login import UserMixin
+from sqlalchemy import or_
 
 # Modèle pour représenter le lieu
 class Lieu(db.Model):
@@ -233,8 +234,8 @@ class Classement(db.Model):
 # Modèle pour représenter les poules
 class Poule(db.Model):
     __tablename__ = 'POULE'
-    idPoule = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), nullable=False)
+    idPoule = db.Column(db.Integer, primary_key=True)
+    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True, nullable=False)
     idPiste = db.Column(db.Integer, db.ForeignKey('PISTE.idPiste'), nullable=False)
     idArbitre = db.Column(db.Integer, db.ForeignKey('ARBITRE.idArbitre'), nullable=False)
     nomPoule = db.Column(db.String(50), nullable=False)
@@ -248,6 +249,12 @@ class Poule(db.Model):
         self.idPiste = piste
         self.idArbitre = arbitre
         self.nomPoule = nom_poule
+        self.idPoule = self.get_next_idPoule(competition)
+
+    @staticmethod
+    def get_next_idPoule(competition):
+        last_poule = Poule.query.filter_by(idComp=competition).order_by(Poule.idPoule.desc()).first()
+        return 1 if not last_poule else last_poule.idPoule + 1
 
 # Modèle pour représenter les participants aux poules
 class ParticipantsPoule(db.Model):
@@ -721,3 +728,18 @@ def est_terminer_phase_poule(idComp):
         if not est_terminer_poule(poule.idPoule):
             return False
     return True
+
+def get_match(tireur1, tireur2, id_poule, id_comp):
+    """tourne l’instance de match pour deux tireurs donnés dans une poule et compétition spécifiques."""    # Trouver l’instance de Poule qui correspond à id_poule et id_comp
+    poule = Poule.query.filter_by(idPoule=id_poule, idComp=id_comp).first()
+    if poule:
+        match = Match.query.filter(
+            or_(
+                (Match.numeroLicenceE1 == tireur1) & (Match.numeroLicenceE2 == tireur2),
+                (Match.numeroLicenceE1 == tireur2) & (Match.numeroLicenceE2 == tireur1)
+            ),
+            Match.idPoule == poule.idPoule
+        ).first()
+        return match
+    else:
+        return None
