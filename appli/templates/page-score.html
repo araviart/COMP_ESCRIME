@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename = 'progress-bar.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename = 'progress-bar.css') }}"
+/>
+<link rel="stylesheet" href="{{ url_for('static', filename = 'page-score.css') }}" />
+
+<div class="progress-bar">
+  <a class="active-url" href="{{ url_for('ajout_comp_page')}}"
+    >Définir une compétition</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a
+    class="active-url"
+    >Gestion participants</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    >Créer les poules</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    >Gestion score</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    >Classement Final</a
+  >
+</div>
+
+<main>
+  <div class="classement-provisoire-match">
+    <a href="{{ url_for('arbre', id_comp=id_comp)}}"
+      >Voir classement provisoire du tournoi</a >
+    <a href="">Voir ordre des matchs</a>
+  </div>
+
+  <div class="chrono__escrimeur">
+    <div class="chrono">
+      <div class="time">3 : 00</div>
+    </div>
+    <div class="btn__chrono">
+      <button class="btn__start">Reset</button>
+      <button class="btn__reset">Start</button>
+    </div>
+    <div class="escrimeurs">
+      <div class="escrimeur1">
+        <div class="nom__score">
+          <div class="nom__escrimeur1">
+            <h2>Nom escrimeur 1</h2>
+            <h3>Club de l'escrimeur1</h3>
+          </div>
+          <div class="score__escrimeur1">0</div>
+        </div>
+        <div class="btn__ajt__suppr">
+          <button class="btn__ajt">+</button>
+          <button class="btn__suppr">-</button>
+        </div>
+      </div>
+      <div class="escrimeur2">
+        <div class="nom__score">
+          <div class="nom__escrimeur1">
+            <h2>Nom escrimeur 2</h2>
+            <h3>Club de l'escrimeur2</h3>
+          </div>
+          <div class="score__escrimeur1">0</div>
+        </div>
+        <div class="btn__ajt__suppr btn__ajt__suppr2">
+          <button class="btn__ajt">+</button>
+          <button class="btn__suppr">-</button>
+        </div>
+      </div>
+    </div>
+    <div class="valider__scores">
+      <button class="btn__valider">Valider</button>
+    </div>
+  </div>
+</main>
+{% endblock %}

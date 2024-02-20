@@ -61,6 +61,10 @@ def inject_user_status():
     if current_user.is_authenticated:
         return {"user_status": current_user.statutUser}
     return {"user_status": None}
+
+@app.route("/gestions_scores/")
+def gestion_scores():
+    return render_template("page-score.html")
     
 @app.route("/gestion_score/<int:id_comp>")
 def gestion_score(id_comp, liste_absents=[]):
