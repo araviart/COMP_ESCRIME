@@ -26,7 +26,7 @@
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
   <a class="active-url" href="{{ url_for('appel', id_comp=id_comp)}}">Appel</a>
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="{{ url_for('gestion_score', id_comp=id_comp)}}"
+  <a class="active-url" href="{{ url_for('gestion_score', id_comp=id_comp, id_type_match=id_type_match)}}"
     >Gestion score</a
   >
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
@@ -83,8 +83,8 @@
         <table>
           <thead>
             <tr class="titre-transparent">
-              {% for row in poules[i]['tireurs'] %}
-              <th>?</th>
+              {% for tireur, club in poules[i]['tireurs'].items() %}
+              <th>{{ tireur.nomE[0] }}. {{ tireur.prenomE[0] }}</th>
               {% endfor %}
             </tr>
           </thead>

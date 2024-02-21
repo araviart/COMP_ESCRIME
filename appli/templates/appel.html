@@ -19,7 +19,7 @@
     <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
     <a class="active-url" href="{{ url_for('appel', id_comp=competition.idComp)}}">Appel</a>
     <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    <a href="{{ url_for('gestion_score', id_comp=competition.idComp)}}">Gestion score</a>
+    <a href="{{ url_for('gestion_score', id_comp=competition.idComp, id_type_match=1)}}">Gestion score</a>
     <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
     <a href="{{ url_for('afficher_score_poule', id_comp=competition.idComp)}}">Classement Final</a>
   </div>
@@ -86,7 +86,7 @@
         <p>TOUT COCHER</p>
         <input id="checkbox-valid-all" type="checkbox" />
       </div>
-      <button><i class="fa-solid fa-check"></i><a style="color: white;" href = "{{ url_for('gestion_score', id_comp=competition.idComp, liste_absents = participants_absents)}}" >Valider l'appel</button>
+      <button><i class="fa-solid fa-check"></i><a style="color: white;" href = "{{ url_for('gestion_score', id_comp=competition.idComp, liste_absents = participants_absents, id_type_match=1)}}" >Valider l'appel</button>
     </div>
   </main>
 {% endblock %}

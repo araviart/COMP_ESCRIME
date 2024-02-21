@@ -737,6 +737,7 @@ def get_matchs_poules(poule_id, id_comp):
         Contenir.idComp == id_comp
     ).all()
 
+
 def est_terminer_match(idMatch):
     match_poule = Match.query.filter_by(idMatch=idMatch).first()
     return match_poule.touchesDonneesTireur1 >= match_poule.type_match.nbnbTouches or match_poule.touchesDonneesTireur2 >= match_poule.type_match.nbnbTouches
@@ -756,7 +757,8 @@ def est_terminer_phase_poule(idComp):
     return True
 
 def get_match(tireur1, tireur2, id_poule, id_comp):
-    """Return the match instance for two given tireurs within a specific poule and competition."""
+    """Retourne le match d'une poule pour 2 tireurs et une compétition
+    """
     match = db.session.query(Match).join(
         Contenir,
         Match.idMatch == Contenir.idMatch
@@ -769,3 +771,12 @@ def get_match(tireur1, tireur2, id_poule, id_comp):
         )
     ).first()
     return match
+
+def get_match_phase_elim(id_comp, id_type_match):
+    return Match.query.filter_by(idComp=id_comp, idTypeMatch=id_type_match).all()
+
+#sql utile débug
+# select idMatch, idPoule, idComp, numeroLicenceE1, numeroLicenceE2 from CONTENIR natural join `MATCH` where idComp = 24;
+# select numeroLicenceE1, numeroLicenceE2, touchesRecuesTireur1,touchesDonneesTireur1,  touchesDonneesTireur2, touchesRecuesTireur2 from `MATCH`;
+# select count(numeroLicenceE1), idPoule, idComp, numeroLicenceE1, numeroLicenceE2 from CONTENIR natural join `MATCH` where idComp = 24 group by numeroLicenceE1;
+# select count(numeroLicenceE1), idPoule, idComp, numeroLicencre idComp = 24 group by numeroLicenceE1;
