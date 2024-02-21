@@ -20,16 +20,20 @@ document.addEventListener("DOMContentLoaded", function () {
       var idCompetition = textfield.getAttribute('data-id-competition');
       var idPiste = textfield.getAttribute('data-id-piste');
       var idArbitre = textfield.getAttribute('data-id-arbitre');
+      var idTypeMatch = document.getElementById('id-type-match').value;
+
 
       // Construisez les données à envoyer dans la requête AJAX
       var data = {
         'license': license,
+        'idTypeMatch': idTypeMatch,
         'opponentLicense': opponentLicense,
         'score': score,
         'idPoule': idPoule,
         'idCompetition': idCompetition,
         'idPiste': idPiste,
         'idArbitre': idArbitre,
+        'idTypeMatch': idTypeMatch
 
       };
 
