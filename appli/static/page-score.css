@@ -117,3 +117,9 @@ h3{
     cursor: pointer;
     color: #000;
 }
+
+.btn__retour{
+    margin-left: 10%;
+    color: black !important;
+    text-decoration: none;
+}

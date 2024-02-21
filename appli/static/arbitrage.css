@@ -43,7 +43,11 @@ tr td{
     background-color: var(--couleur-background-gagnant);
 }
 
-
+.btn__retour{
+    margin-left: 10%;
+    color: black !important;
+    text-decoration: none;
+}
 
 .btn__conclure{
     display: flex;
