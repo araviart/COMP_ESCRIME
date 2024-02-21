@@ -797,8 +797,8 @@ def classement_provisioire(id_comp):
                 troisieme.append(match.to_dict())
     return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, troisieme = troisieme)
 
-@app.route("/inscription_escrimeur/<int:id_comp>/" , methods=["GET", "POST"])
-def inscription_escrimeur(id_comp):
+@app.route("/inscription_escrimeur/", methods=["GET", "POST"])
+def inscription_escrimeur():
     print("---------------------")
     liste_club = get_all_club()
     liste_categories = get_all_categories()
@@ -823,19 +823,33 @@ def inscription_escrimeur(id_comp):
         print(f"tel : {telephone}")
         ajouter_escrimeur(categorie, prenom, nom, date_naissance, numero_licence, sexe, telephone_int)
         print(ajouter_escrimeur(categorie, prenom, nom, date_naissance, numero_licence, sexe, telephone_int))
-        radio_selectionnee = request.form.get("role")
-        print(f"role : {radio_selectionnee}")
-        match radio_selectionnee:
-            case "tireur":
-                club = request.form.get("nom_club")
-                print(f"club : {club}")
-                classement = request.form.get("classement")
-                print(f"classement : {classement}")
-                ajouter_tireur_via_str(numero_licence, club, classement)
-                print(ajouter_tireur_via_str(numero_licence, club, classement))
-            case "arbitre":
-                ajouter_arbitre(numero_licence)
-                print(ajouter_arbitre(numero_licence))
-        ajouter_participant(numero_licence, id_comp)
-        print(ajouter_participant(numero_licence, id_comp))
-    return render_template('inscription_escrimeur.html', id_comp=id_comp, liste_club=liste_club, liste_categories=liste_categories)
+        session["escrimeur"] = {
+            "nom": nom,
+            "prenom": prenom,
+            "date_naissance": date_naissance,
+            "numero_licence": numero_licence,
+            "sexe": sexe,
+            "telephone": telephone_int
+        }
+        # radio_selectionnee = request.form.get("role")
+        # print(f"role : {radio_selectionnee}")
+        # match radio_selectionnee:
+        #     case "tireur":
+        #         club = request.form.get("nom_club")
+        #         print(f"club : {club}")
+        #         classement = request.form.get("classement")
+        #         print(f"classement : {classement}")
+        #         ajouter_tireur_via_str(numero_licence, club, classement)
+        #         print(ajouter_tireur_via_str(numero_licence, club, classement))
+        #     case "arbitre":
+        #         ajouter_arbitre(numero_licence)
+        #         print(ajouter_arbitre(numero_licence))
+        # ajouter_participant_competition(numero_licence, id_comp)
+        # print(ajouter_participant_competition(numero_licence, id_comp))
+        return redirect(url_for('home_def', items=5))
+    return render_template('inscription_escrimeur.html', liste_club=liste_club, liste_categories=liste_categories)
+
+@app.context_processor
+def inject_escrimeur_inscrit():
+    escrimeur_inscrit = session.get('escrimeur_inscrit', None)
+    return dict(escrimeur_inscrit=escrimeur_inscrit)

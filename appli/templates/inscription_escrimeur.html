@@ -3,7 +3,7 @@
 {% endblock %}
 
 {% block content %}
-    <form method="POST" action="{{ url_for('inscription_escrimeur', id_comp=id_comp) }}">
+    <form method="POST" action="{{ url_for('inscription_escrimeur') }}">
         <div id="content">
             <div id="textfields">
                 <div id="title">
@@ -36,60 +36,23 @@
                     <label for="telephone">Téléphone</label>
                     <input type="text" id="telephone" name="telephone" required>
                 </div>
-                <div class="label-radios">
-                    <div id="tireur-content" class="radios">
-                        <label for="radio-tireur">Tireur</label>
-                        <input type="radio" id="radio-tireur" name="role" value="tireur" required>
-                    </div>
-                    <div id="arbitre-content" class="radios">
-                        <label for="radio-arbitre">Arbitre</label>
-                        <input type="radio" id="radio-arbitre" name="role" value="arbitre" required>
-                    </div>
-                </div>
-                <div class="option_tireur">
-                    <label for="nom_club">Nom du club</label>
-                    <input list="clubs" id="nom_club" name="nom_club">
-                    <div id="club">
-                        <datalist name="clubs" id="clubs">
-                            {% for club in liste_club %}
-                                <option value="{{ club.nomClub }}"></option>
-                            {% endfor %}
-                        </datalist>
-                    </div>
-                    <div id="categories">
-                        <label for="categorie">Catégorie</label>
-                        <select id="select-cat" name="categorie" id="categorie_id">
-                            {% for cat in liste_categories %}
-                                <option value="{{ cat.nomCategorie }}">
-                                    {{ cat.nomCategorie }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div id="classement-tireur">
-                        <label for="classement">Classement</label>
-                        <input type="text" name="classement" id="classement" required>
-                    </div>
+                
+                <div id="categories">
+                    <label for="categorie">Catégorie</label>
+                    <select id="select-cat" name="categorie" id="categorie_id">
+                        {% for cat in liste_categories %}
+                            <option value="{{ cat.nomCategorie }}">
+                                {{ cat.nomCategorie }}
+                            </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="buttons">
-                    <button> Annuler </button>
+                    <button onclick="location.href='{{ url_for('home_def', items=5) }}';"> Annuler </button>
                     <button type="submit">S'inscrire</button>
                 </div>
             </div>
         </div>
     </form> 
-    <script>
-        let radioTireur = document.querySelector("#radio-tireur");
-        let radioArbitre = document.querySelector("#radio-arbitre");
-        let optionTireur = document.querySelector(".option_tireur");
-        radioTireur.addEventListener("click", () => {
-            optionTireur.style.display = "block";
-            document.getElementById("classement").required = true;
-        });
-
-        radioArbitre.addEventListener("click", () => {
-            optionTireur.style.display = "none";
-            document.getElementById("classement").required = false;
-        });
-    </script>
+    
 {% endblock %}
