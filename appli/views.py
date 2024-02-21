@@ -65,6 +65,10 @@ def inject_user_status():
 @app.route("/gestions_scores/")
 def gestion_scores():
     return render_template("page-score.html")
+
+@app.route("/arbitrage/")
+def arbitrage():
+    return render_template("arbitrage.html")
     
 @app.route("/gestion_score/<int:id_comp>/<int:id_type_match>/")
 def gestion_score(id_comp, id_type_match=1, liste_absents=[]): # par défaut renvoie à la phase des poules il faut vérifier ça
