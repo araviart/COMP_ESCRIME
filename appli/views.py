@@ -62,9 +62,10 @@ def inject_user_status():
         return {"user_status": current_user.statutUser}
     return {"user_status": None}
     
-@app.route("/gestion_score/<int:id_comp>")
-def gestion_score(id_comp, liste_absents=[]):
-
+@app.route("/gestion_score/<int:id_comp>" , methods=["GET", "POST"])
+def gestion_score(id_comp):
+    if request.method == "POST":
+        absent = request.form.get('liste_absents', '')
     # récuperer les infos des poules dans un dict avec le numéro de poule en clé et la liste des tireurs,le nom de la piste, le nom de l'arbitre en valeur
     poules = {}
     nb_poules = get_nb_poules(id_comp)
@@ -80,11 +81,14 @@ def gestion_score(id_comp, liste_absents=[]):
         poules[i]["matchs"] = get_matchs_poules(i)
         poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
    
-    if liste_absents != []:
-        for dict_tireur in liste_absents:
-            tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
-            if tireur is not None:
-                liste_absents.append(tireur)
+    liste_absents = []
+    numsAbsent = absent.split(',')
+    print("Liste absents: ", numsAbsent)
+    for licence in numsAbsent:
+        int_licence = int(licence)
+        tireur = get_tireur_by_licence(int_licence)
+        liste_absents.append(tireur.to_dict())
+    print(liste_absents)
 
     return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=liste_absents)
 
@@ -796,3 +800,9 @@ def classement_provisioire(id_comp):
             elif match.idTypeMatch == 5 :
                 troisieme.append(match.to_dict())
     return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, troisieme = troisieme)
+
+@app.route('/update_absents', methods=['POST'])
+def update_absents():
+    participants_absents = request.json['participants_absents']
+    session['participants_absents'] = participants_absents
+    return jsonify(success=True)

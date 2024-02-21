@@ -6,6 +6,7 @@
     console.log(participants_present);
     var participants = {{ rows_data|tojson }};
     var participants_absents = participants;
+    var listeLicenceStockee = "";
   </script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="{{ url_for('static', filename='js/appel.js') }}"></script>
@@ -34,7 +35,7 @@
         <div class="separation"></div>
         <div class="heure">
           <h3>Heure début</h3>
-          <h3 class="heure-tournoi">{{ competition.heureComp}}</h3>
+          <h3 class="heure-tournoi">{{ competition.heureComp }}</h3>
         </div>
       </div>
       <div class="present-absent">
@@ -86,7 +87,10 @@
         <p>TOUT COCHER</p>
         <input id="checkbox-valid-all" type="checkbox" />
       </div>
-      <button><i class="fa-solid fa-check"></i><a style="color: white;" href = "{{ url_for('gestion_score', id_comp=competition.idComp, liste_absents = participants_absents)}}" >Valider l'appel</button>
+      <form id="validationForm" method="POST" action="{{ url_for('gestion_score', id_comp=competition.idComp) }}">
+        <button type="submit" id="bouton_valid"><i class="fa-solid fa-check"></i> Valider l'appel</button>
+        <input type="hidden" name="liste_absents" id="listeAbsentsInput" value="">
+      </form>
     </div>
   </main>
 {% endblock %}

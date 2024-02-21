@@ -274,7 +274,7 @@ class Match(db.Model):
     idMatch = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idTypeMatch = db.Column(db.Integer, db.ForeignKey('TYPE_MATCH.idTypeMatch'), nullable=False)
     gagnant = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), nullable=True)
-    idPoule = db.Column(db.Integer, db.ForeignKey('POULE.idPoule'), nullable=False)
+    idPoule = db.Column(db.Integer, db.ForeignKey('POULE.idPoule'), nullable=False, default=1)
     idPiste = db.Column(db.Integer, db.ForeignKey('PISTE.idPiste'), nullable=False)
     idArbitre = db.Column(db.Integer, db.ForeignKey('ARBITRE.idArbitre'), nullable=False)
     numeroLicenceE1 = db.Column(db.Integer, db.ForeignKey('TIREUR.numeroLicenceE'), nullable=False)
@@ -292,9 +292,8 @@ class Match(db.Model):
     tireur1 = db.relationship('Tireur', foreign_keys=[numeroLicenceE1], backref='Tireur.numeroLicenceE1')
     tireur2 = db.relationship('Tireur', foreign_keys=[numeroLicenceE2], backref='Tireur.numeroLicenceE2')
     
-    def __init__(self, type_match, poule, piste, arbitre, tireur1, tireur2, date_match, heure_match, touches_recues_tireur1, touches_donnees_tireur1, touches_recues_tireur2, touches_donnees_tireur2):
+    def __init__(self, type_match, piste, arbitre, tireur1, tireur2, date_match, heure_match, touches_recues_tireur1, touches_donnees_tireur1, touches_recues_tireur2, touches_donnees_tireur2):
         self.idTypeMatch = type_match
-        self.idPoule = poule
         self.idPiste = piste
         self.idArbitre = arbitre
         self.numeroLicenceE1 = tireur1
@@ -305,13 +304,14 @@ class Match(db.Model):
         self.touchesDonneesTireur1 = touches_donnees_tireur1
         self.touchesRecuesTireur2 = touches_recues_tireur2
         self.touchesDonneesTireur2 = touches_donnees_tireur2
+        self.idPoule = 1
         
     def to_dict(self):
         return {
             'idTypeMatch': self.idTypeMatch,
-            'idPoule': self.idPoule,
             'idPiste': self.idPiste,
             'idArbitre': self.idArbitre,
+            'idPoule': self.idPoule,
             'tireur1': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE1).first(),
             'tireur2': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE2).first(),
             'dateMatch': self.dateMatch.isoformat() if self.dateMatch else None,
@@ -734,3 +734,6 @@ def est_terminer_phase_poule(idComp):
         if not est_terminer_poule(poule.idPoule):
             return False
     return True
+
+def get_tireur_by_licence(licence):
+    return Tireur.query.filter_by(numeroLicenceE=licence).first()
