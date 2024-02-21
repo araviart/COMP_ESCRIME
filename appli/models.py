@@ -422,11 +422,12 @@ def get_liste_tireurs_escrimeurs_poule(id_comp, id_poule):
         Tireur, Escrimeur.numeroLicenceE == Tireur.numeroLicenceE
     ).join(
         ParticipantsPoule, Tireur.numeroLicenceE == ParticipantsPoule.numeroLicenceE
-    ).join(
-        Contenir, ParticipantsPoule.idPoule == Contenir.idPoule
     ).filter(
-        Contenir.idComp == id_comp, Contenir.idPoule == id_poule
+        ParticipantsPoule.idComp == id_comp,
+        ParticipantsPoule.idPoule == id_poule
     ).all()
+
+    
     
 def get_club_tireur_escrimeur(tireur):
     return Club.query.join(Tireur, Club.idClub == Tireur.idClub).filter(Tireur.numeroLicenceE == tireur.numeroLicenceE).first()
@@ -755,16 +756,16 @@ def est_terminer_phase_poule(idComp):
     return True
 
 def get_match(tireur1, tireur2, id_poule, id_comp):
-    """tourne l’instance de match pour deux tireurs donnés dans une poule et compétition spécifiques."""    # Trouver l’instance de Poule qui correspond à id_poule et id_comp
-    poule = Poule.query.filter_by(idPoule=id_poule, idComp=id_comp).first()
-    if poule:
-        match = Match.query.filter(
-            or_(
-                (Match.numeroLicenceE1 == tireur1) & (Match.numeroLicenceE2 == tireur2),
-                (Match.numeroLicenceE1 == tireur2) & (Match.numeroLicenceE2 == tireur1)
-            ),
-            Match.idPoule == poule.idPoule
-        ).first()
-        return match
-    else:
-        return None
+    """Return the match instance for two given tireurs within a specific poule and competition."""
+    match = db.session.query(Match).join(
+        Contenir,
+        Match.idMatch == Contenir.idMatch
+    ).filter(
+        Contenir.idPoule == id_poule,
+        Contenir.idComp == id_comp,
+        or_(
+            (Match.numeroLicenceE1 == tireur1) & (Match.numeroLicenceE2 == tireur2),
+            (Match.numeroLicenceE1 == tireur2) & (Match.numeroLicenceE2 == tireur1)
+        )
+    ).first()
+    return match

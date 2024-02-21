@@ -602,8 +602,11 @@ def ajouter_match(idTypeMatch, idPiste, idArbitre, numeroLicenceE1, numeroLicenc
                 touches_donnees_tireur2=toucheDonnerTireur2
             )
             db.session.add(match)
+            db.session.flush() 
+            match_id = match.idMatch  
             db.session.commit()
-            return f"Le match poule {idTypeMatch} a été ajouté avec succès."
+            print("Le match poule {idTypeMatch} a été ajouté avec succès.")
+            return match_id
         else:
             return f"Le match poule {idTypeMatch} existe déjà."
     except ValueError:

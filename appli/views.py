@@ -543,7 +543,11 @@ def appel(id_comp):
                     for k in range(j+1, len(poule)):
                         numero_licence_e1 = poule[j]
                         numero_licence_e2 = poule[k]
-                        ajouter_match(id_type_match, id_piste, id_arbitre, numero_licence_e1, numero_licence_e2, date_match_str, heure_match, 0, 0, 0, 0)       
+                        match_id = ajouter_match(id_type_match, id_piste, id_arbitre, numero_licence_e1, numero_licence_e2, date_match_str, heure_match, 0, 0, 0, 0)
+                        if match_id is not None:
+                            contenir = Contenir(idPoule=id_poule, idComp=id_comp, idMatch=match_id)  
+                            db.session.add(contenir)     
+                db.session().commit()
             redirect(url_for('appel', id_comp=id_comp))
             competition = Competition.query.get(id_comp) 
             return render_template('appel.html', competition = competition, rows_data=rows_data, participants_present=participants_present)
