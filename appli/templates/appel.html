@@ -87,10 +87,10 @@
         <p>TOUT COCHER</p>
         <input id="checkbox-valid-all" type="checkbox" />
       </div>
-      <form id="validationForm" method="POST" action="{{ url_for('gestion_score', id_comp=competition.idComp) }}">
-        <button type="submit" id="bouton_valid"><i class="fa-solid fa-check"></i> Valider l'appel</button>
-        <input type="hidden" name="liste_absents" id="listeAbsentsInput" value="">
-      </form>
+<form id="validationForm" method="POST" action="{{ url_for('arbitrage', id_comp=competition.idComp, id_type_match=1) }}">
+    <button type="submit" id="bouton_valid"><i class="fa-solid fa-check"></i> Valider l'appel</button>
+    <input type="hidden" name="liste_absents" id="listeAbsentsInput" value="">
+</form>
     </div>
   </main>
 {% endblock %}

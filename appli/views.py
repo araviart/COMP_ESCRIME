@@ -66,12 +66,12 @@ def inject_user_status():
 def gestion_scores():
     return render_template("page-score.html")
 
-@app.route("/arbitrage/")
-def arbitrage():
+@app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
+def arbitrage(id_comp, id_type_match=1):
     return render_template("arbitrage.html")
     
 @app.route("/gestion_score/<int:id_comp>/<int:id_type_match>/")
-def gestion_score(id_comp, id_type_match=1, liste_absents=[]): # par défaut renvoie à la phase des poules il faut vérifier ça
+def gestion_score(id_comp, id_type_match=1): # par défaut renvoie à la phase des poules il faut vérifier ça
     # récuperer les infos des poules dans un dict avec le numéro de poule en clé et la liste des tireurs,le nom de la piste, le nom de l'arbitre en valeur
     if request.method == "POST":
         absent = request.form.get('liste_absents', '')
@@ -115,8 +115,7 @@ def gestion_score(id_comp, id_type_match=1, liste_absents=[]): # par défaut ren
         int_licence = int(licence)
         tireur = get_tireur_by_licence(int_licence)
         liste_absents.append(tireur.to_dict())
-    print(liste_absents)
-    
+        print(liste_absents)
         liste_absents_dico = []
         if liste_absents != []:
             for dict_tireur in liste_absents:
@@ -125,7 +124,7 @@ def gestion_score(id_comp, id_type_match=1, liste_absents=[]): # par défaut ren
                     tireur.append(tireur)
                     liste_absents_dico.append(tireur)
     
-        return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=liste_absents_dico, id_type_match=1, list_absents=liste_absents)
+        return render_template('gestion_score.html', poules=poules, id_comp=id_comp, id_type_match=1, list_absents=liste_absents)
     else:
         print("autre phases")
 
