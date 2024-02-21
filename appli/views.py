@@ -276,6 +276,7 @@ def home_def(items):
     nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
     # filtre pour les compet
     compet_filtre = filtrer_competitions(competitions, session.get('categorie'), session.get('arme'), session.get('sexe'), session.get('statut'))
+    compet_filtre_a_venir = filtrer_competitions(competitions, session.get('categorie'), session.get('arme'), session.get('sexe'), 'A venir')
     if len(compet_filtre) !=0:
         total_pages = math.ceil(len(compet_filtre) / items)
         competitions = compet_filtre[(page - 1) * items:page * items]
@@ -295,8 +296,13 @@ def home_def(items):
         selec_statut=session.get('statut'),
         page=page,
         compet_filtre = compet_filtre,
-        total_pages=total_pages
+        total_pages=total_pages,
+        compet_filtre_a_venir=compet_filtre_a_venir
     )
+    
+@app.route('/home/')
+def home_default():
+    return home_def(5)
     
 @app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
 def liste_adherents(items):
@@ -343,9 +349,7 @@ def liste_adherents(items):
         page=page,
         total_pages=total_pages)
 
-@app.route('/home/')
-def home_default():
-    return home_def(5)
+
 
     
 @app.route('/annuler_comp', methods=['POST'])

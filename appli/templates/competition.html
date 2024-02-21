@@ -96,9 +96,15 @@
                     Consulter
                   </a>
                 {% else %}
+                {% if competition in compet_filtre_a_venir %}
+                  <button id="inscription-comp">S'inscrire</button>
+                {% else %}
+                  <a href="{{ url_for('actu_stat_comp', id_comp=competition.idComp) }}" class="consulter">
+                    Consulter
+                  </a>
+                {% endif %}
                   {% if "A venir" == selec_statut %}
                     <button id="inscription-comp">S'inscrire</button>
-                    <!-- Pop up inscription -->
                     <div id="popup-inscription">
                       <div id="content-popup">
                         <h3>Choisissez votre rôle</h3>
