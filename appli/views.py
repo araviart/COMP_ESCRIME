@@ -73,6 +73,8 @@ def arbitrage():
 @app.route("/gestion_score/<int:id_comp>/<int:id_type_match>/")
 def gestion_score(id_comp, id_type_match=1, liste_absents=[]): # par défaut renvoie à la phase des poules il faut vérifier ça
     # récuperer les infos des poules dans un dict avec le numéro de poule en clé et la liste des tireurs,le nom de la piste, le nom de l'arbitre en valeur
+    if request.method == "POST":
+        absent = request.form.get('liste_absents', '')
     if id_type_match == 1:
         poules = {}
         nb_poules = get_nb_poules(id_comp)
@@ -105,6 +107,15 @@ def gestion_score(id_comp, id_type_match=1, liste_absents=[]): # par défaut ren
                     }
             print(scores)
             poules[num_poule]['scores'] = scores
+           
+    liste_absents = []
+    numsAbsent = absent.split(',')
+    print("Liste absents: ", numsAbsent)
+    for licence in numsAbsent:
+        int_licence = int(licence)
+        tireur = get_tireur_by_licence(int_licence)
+        liste_absents.append(tireur.to_dict())
+    print(liste_absents)
     
         liste_absents_dico = []
         if liste_absents != []:
@@ -114,10 +125,9 @@ def gestion_score(id_comp, id_type_match=1, liste_absents=[]): # par défaut ren
                     tireur.append(tireur)
                     liste_absents_dico.append(tireur)
     
-        return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=liste_absents_dico, id_type_match=1)
+        return render_template('gestion_score.html', poules=poules, id_comp=id_comp, list_absents=liste_absents_dico, id_type_match=1, list_absents=liste_absents)
     else:
         print("autre phases")
-
 
 @app.route('/update_scores', methods=['POST'])
 def update_scores():
@@ -862,3 +872,9 @@ def classement_provisioire(id_comp):
             elif match.idTypeMatch == 5 :
                 troisieme.append(match.to_dict())
     return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, troisieme = troisieme)
+
+@app.route('/update_absents', methods=['POST'])
+def update_absents():
+    participants_absents = request.json['participants_absents']
+    session['participants_absents'] = participants_absents
+    return jsonify(success=True)

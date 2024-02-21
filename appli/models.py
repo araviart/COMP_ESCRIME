@@ -306,12 +306,14 @@ class Match(db.Model):
         self.touchesDonneesTireur1 = touches_donnees_tireur1
         self.touchesRecuesTireur2 = touches_recues_tireur2
         self.touchesDonneesTireur2 = touches_donnees_tireur2
+        self.idPoule = 1
         
     def to_dict(self):
         return {
             'idTypeMatch': self.idTypeMatch,
             'idPiste': self.idPiste,
             'idArbitre': self.idArbitre,
+            'idPoule': self.idPoule,
             'tireur1': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE1).first(),
             'tireur2': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE2).first(),
             'dateMatch': self.dateMatch.isoformat() if self.dateMatch else None,
@@ -433,11 +435,18 @@ def get_club_tireur_escrimeur(tireur):
     return Club.query.join(Tireur, Club.idClub == Tireur.idClub).filter(Tireur.numeroLicenceE == tireur.numeroLicenceE).first()
 
 def get_arbitre_escrimeur_poule(id_comp, id_poule):
-    return Escrimeur.query.join(Arbitre, Escrimeur.numeroLicenceE == Arbitre.numeroLicenceE).join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
+    escrimeur = Escrimeur.query.join(Arbitre, Escrimeur.numeroLicenceE == Arbitre.numeroLicenceE).join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
+    if escrimeur is not None:
+        return escrimeur
+    else:
+        return None
 
 def get_id_arbitre_poule(id_comp, id_poule):
-    return Arbitre.query.join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first().idArbitre
-
+    arbitre_poule = Arbitre.query.join(Poule, Arbitre.idArbitre == Poule.idArbitre).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
+    if arbitre_poule is not None:
+        return arbitre_poule.idArbitre
+    else:
+        return None
 def get_piste_poule(id_comp, id_poule):
     # retourne la piste de la poule de cette compétition
     return Piste.query.join(Poule, Poule.idPiste == Piste.idPiste).filter(Poule.idComp == id_comp).filter(Poule.idPoule == id_poule).first()
@@ -755,6 +764,10 @@ def est_terminer_phase_poule(idComp):
         if not est_terminer_poule(poule.idPoule):
             return False
     return True
+
+
+def get_tireur_by_licence(licence):
+    return Tireur.query.filter_by(numeroLicenceE=licence).first()
 
 def get_match(tireur1, tireur2, id_poule, id_comp):
     """Retourne le match d'une poule pour 2 tireurs et une compétition
