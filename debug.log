@@ -24537,3 +24537,1883 @@ INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 00:46:51] "[33mGET /gestion_score/33/s
 INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 00:46:51] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 00:46:51] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 00:46:51] "[36mGET /static/js/score_textfield.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:44] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:44] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:44] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:44] "[36mGET /static/responsive-login.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:44] "[36mGET /static/img/escrime_connexion.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:54] "[35m[1mPOST /login/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:54] "[36mGET /login/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:54] "[36mGET /login/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:54] "GET /login/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:45:54] "[36mGET /login/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:46:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:46:24] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:46:24] "GET /static/img/escrime_connexion.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:46:24] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:46:24] "[36mGET /static/responsive-login.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:46:27] "[35m[1mGET /home/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:46:27] "GET /home/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:46:27] "GET /home/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:46:27] "GET /home/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:34] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:34] "[36mGET /static/responsive-login.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:34] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:34] "[36mGET /static/Login.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:34] "[36mGET /static/img/escrime_connexion.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "[32mPOST /login/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /home/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/home.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/adherent.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/progress-bar.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/ajout_adherent.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/popup_addLieu.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/gestion_poules.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/popup_reset_password.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/responsive-creer-comp.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/js/script_popup.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/img/Vector.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:40] "GET /static/img/logo.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "GET /ajout-comp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "GET /static/variables.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "GET /static/form-edit-user.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "GET /static/home.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/js/popup_addLieu.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "GET /static/img/logo.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:43] "GET /static/img/Vector.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:53] "[32mPOST /ajout-comp/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:53] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "GET /static/img/edit.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:54] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "GET /get_adherents/H/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[32mPOST /ajouter_escrimeur_competition/36 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 49866
+DEBUG:root:tireur: <Tireur 49866>
+DEBUG:root:competition: <Competition 36>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[32mPOST /ajouter_escrimeur_competition/36/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:55] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:56] "GET /get_adherents/H/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:56] "[32mPOST /ajouter_escrimeur_competition/36 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 232027
+DEBUG:root:tireur: <Tireur 232027>
+DEBUG:root:competition: <Competition 36>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:56] "[32mPOST /ajouter_escrimeur_competition/36/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:56] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:57] "GET /get_adherents/H/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[32mPOST /ajouter_escrimeur_competition/36 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 260863
+DEBUG:root:tireur: <Tireur 260863>
+DEBUG:root:competition: <Competition 36>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[32mPOST /ajouter_escrimeur_competition/36/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:58] "GET /get_escrimeurs/H/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[32mPOST /ajouter_escrimeur_competition/36 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 2038
+DEBUG:root:tireur: <Tireur 2038>
+DEBUG:root:competition: <Competition 36>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[32mPOST /ajouter_escrimeur_competition/36/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:47:59] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:00] "GET /get_escrimeurs/H/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[32mPOST /ajouter_escrimeur_competition/36 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 112824
+DEBUG:root:tireur: <Tireur 112824>
+DEBUG:root:competition: <Competition 36>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[32mPOST /ajouter_escrimeur_competition/36/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:01] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:02] "GET /get_escrimeurs/H/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[32mPOST /ajouter_escrimeur_competition/36 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 189471
+DEBUG:root:tireur: <Tireur 189471>
+DEBUG:root:competition: <Competition 36>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[32mPOST /ajouter_escrimeur_competition/36/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:03] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:04] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:04] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:05] "GET /get_escrimeurs/H/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[32mPOST /ajouter_escrimeur_competition/36 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 229793
+DEBUG:root:tireur: <Tireur 229793>
+DEBUG:root:competition: <Competition 36>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[32mPOST /ajouter_escrimeur_competition/36/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:06] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:07] "GET /get_escrimeurs/M/36 HTTP/1.1" 200 -
+DEBUG:root:64
+DEBUG:root:ça passe commit participant compet
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:07] "POST /ajouter_arbitre_competition/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:07] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:07] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:08] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:09] "GET /get_escrimeurs/M/36 HTTP/1.1" 200 -
+DEBUG:root:560
+DEBUG:root:ça passe commit participant compet
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "POST /ajouter_arbitre_competition/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "GET /gestion_participants/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:10] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "GET /gestion_poules/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:11] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "POST /gestion_poules/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:13] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "POST /appel/36 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/Appel.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "GET /static/js/appel.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:15] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "POST /arbitrage/36/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "GET /static/arbitrage.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "GET /static/variables.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "GET /static/form-edit-user.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "[33mGET /arbitrage/36/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "GET /static/img/Vector.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 09:48:16] "GET /static/img/logo.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:27:24] "[35m[1mPOST /arbitrage/36/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:27:24] "GET /arbitrage/36/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:27:24] "GET /arbitrage/36/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:27:24] "GET /arbitrage/36/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:27:24] "[36mGET /arbitrage/36/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:27:45] "[35m[1mPOST /arbitrage/36/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:27:45] "[36mGET /arbitrage/36/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:27:45] "[36mGET /arbitrage/36/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:27:45] "[36mGET /arbitrage/36/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "POST /arbitrage/36/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:01] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:02] "[33mGET /arbitrage/36/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:02] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:02] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "GET /home/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "GET /static/variables.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "GET /static/form-edit-user.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "GET /static/img/logo.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:15] "GET /static/img/Vector.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "GET /ajout-comp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/js/popup_addLieu.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "GET /static/ajout-comp.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:17] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[32mPOST /ajout-comp/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:32] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "GET /get_adherents/H/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[32mPOST /ajouter_escrimeur_competition/37 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 49866
+DEBUG:root:tireur: <Tireur 49866>
+DEBUG:root:competition: <Competition 37>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[32mPOST /ajouter_escrimeur_competition/37/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:33] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:34] "GET /get_escrimeurs/H/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[32mPOST /ajouter_escrimeur_competition/37 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 1188
+DEBUG:root:tireur: <Tireur 1188>
+DEBUG:root:competition: <Competition 37>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[32mPOST /ajouter_escrimeur_competition/37/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:35] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:36] "GET /get_adherents/H/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[32mPOST /ajouter_escrimeur_competition/37 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 201224
+DEBUG:root:tireur: <Tireur 201224>
+DEBUG:root:competition: <Competition 37>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[32mPOST /ajouter_escrimeur_competition/37/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:38] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:39] "GET /get_escrimeurs/H/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[32mPOST /ajouter_escrimeur_competition/37 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 92664
+DEBUG:root:tireur: <Tireur 92664>
+DEBUG:root:competition: <Competition 37>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[32mPOST /ajouter_escrimeur_competition/37/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:40] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:41] "GET /get_escrimeurs/M/37 HTTP/1.1" 200 -
+DEBUG:root:154157
+DEBUG:root:ça passe commit participant compet
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:42] "POST /ajouter_arbitre_competition/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:42] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:43] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:46] "GET /get_escrimeurs/H/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[32mPOST /ajouter_escrimeur_competition/37 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 130289
+DEBUG:root:tireur: <Tireur 130289>
+DEBUG:root:competition: <Competition 37>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[32mPOST /ajouter_escrimeur_competition/37/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:47] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:48] "GET /get_adherents/H/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[32mPOST /ajouter_escrimeur_competition/37 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 195269
+DEBUG:root:tireur: <Tireur 195269>
+DEBUG:root:competition: <Competition 37>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[32mPOST /ajouter_escrimeur_competition/37/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:49] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:50] "GET /get_escrimeurs/M/37 HTTP/1.1" 200 -
+DEBUG:root:1027
+DEBUG:root:ça passe commit participant compet
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "POST /ajouter_arbitre_competition/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "GET /gestion_participants/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:51] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:52] "GET /gestion_poules/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:53] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "POST /gestion_poules/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:54] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "POST /appel/37 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/Appel.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/js/appel.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:56] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "POST /arbitrage/37/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:57] "[33mGET /arbitrage/37/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:58] "[33mGET /arbitrage/37/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:58] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:32:58] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:13] "[35m[1mPOST /arbitrage/37/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:13] "GET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:13] "GET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:13] "GET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:13] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "POST /arbitrage/37/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "GET /static/variables.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[33mGET /arbitrage/37/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "GET /static/img/Vector.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "GET /static/img/logo.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:35:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:36:28] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:36:29] "GET /static/Login.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:36:29] "GET /static/variables.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:36:29] "GET /static/responsive-login.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:36:29] "GET /static/img/escrime_connexion.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "POST /arbitrage/37/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "[33mGET /arbitrage/37/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "GET /static/img/Vector.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:40] "GET /static/img/logo.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "POST /arbitrage/37/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:57] "[33mGET /arbitrage/37/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:58] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:39:58] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "POST /arbitrage/37/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[33mGET /arbitrage/37/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:40:34] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "POST /arbitrage/37/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[33mGET /arbitrage/37/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:08] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "POST /arbitrage/37/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[33mGET /arbitrage/37/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:41:22] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:44:28] "[35m[1mPOST /arbitrage/37/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:44:28] "GET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:44:28] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:44:28] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:56:21] "[35m[1mPOST /arbitrage/37/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:56:21] "GET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:56:21] "GET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:56:21] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:56:36] "[35m[1mPOST /arbitrage/37/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:56:36] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:56:36] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:56:36] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:59:01] "[35m[1mPOST /arbitrage/37/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:59:01] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:59:01] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 10:59:01] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "POST /arbitrage/37/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "GET /static/variables.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[33mGET /arbitrage/37/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:07:23] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:08:02] "[35m[1mGET /arbitrage/37/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "POST /arbitrage/37/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "[33mGET /arbitrage/37/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "GET /static/img/logo.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:18:40] "GET /static/img/Vector.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:21:02] "[35m[1mPOST /arbitrage/37/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:21:02] "GET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:21:02] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 11:21:02] "[36mGET /arbitrage/37/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:35] "GET /static/Login.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:35] "GET /static/variables.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:35] "GET /static/responsive-login.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:35] "GET /static/img/escrime_connexion.jpg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[32mPOST /login/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "GET /home/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:41] "GET /static/img/Vector.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "GET /ajout-comp HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/ajout-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/js/popup_addLieu.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:43] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[32mPOST /ajout-comp/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:52] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:53] "GET /get_adherents/H/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[32mPOST /ajouter_escrimeur_competition/38 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 201224
+DEBUG:root:tireur: <Tireur 201224>
+DEBUG:root:competition: <Competition 38>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[32mPOST /ajouter_escrimeur_competition/38/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:54] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:55] "GET /get_escrimeurs/H/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[32mPOST /ajouter_escrimeur_competition/38 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 2473
+DEBUG:root:tireur: <Tireur 2473>
+DEBUG:root:competition: <Competition 38>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[32mPOST /ajouter_escrimeur_competition/38/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:56] "GET /get_escrimeurs/H/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[32mPOST /ajouter_escrimeur_competition/38 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 167321
+DEBUG:root:tireur: <Tireur 167321>
+DEBUG:root:competition: <Competition 38>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[32mPOST /ajouter_escrimeur_competition/38/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:58] "GET /get_adherents/H/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[32mPOST /ajouter_escrimeur_competition/38 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 192891
+DEBUG:root:tireur: <Tireur 192891>
+DEBUG:root:competition: <Competition 38>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[32mPOST /ajouter_escrimeur_competition/38/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:00:59] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:00] "GET /get_escrimeurs/H/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[32mPOST /ajouter_escrimeur_competition/38 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 137396
+DEBUG:root:tireur: <Tireur 137396>
+DEBUG:root:competition: <Competition 38>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[32mPOST /ajouter_escrimeur_competition/38/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:01] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:02] "GET /get_adherents/H/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[32mPOST /ajouter_escrimeur_competition/38 HTTP/1.1[0m" 308 -
+DEBUG:root:numerolicence_tireur: 73096
+DEBUG:root:tireur: <Tireur 73096>
+DEBUG:root:competition: <Competition 38>
+DEBUG:root:creation participant
+DEBUG:root:crash ?
+DEBUG:root:Commit successful
+DEBUG:root:Participant added successfully
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[32mPOST /ajouter_escrimeur_competition/38/ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:03] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:04] "GET /get_escrimeurs/M/38 HTTP/1.1" 200 -
+DEBUG:root:18
+DEBUG:root:ça passe commit participant compet
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "POST /ajouter_arbitre_competition/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:05] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:06] "GET /get_escrimeurs/M/38 HTTP/1.1" 200 -
+DEBUG:root:120163
+DEBUG:root:ça passe commit participant compet
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "POST /ajouter_arbitre_competition/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "GET /gestion_participants/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/gestion_participants.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/js/condCompetValide.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/js/gestionParticipant.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:07] "[36mGET /static/js/editField.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:08] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:08] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:08] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:08] "[36mGET /static/img/edit.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "GET /gestion_poules/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:09] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "POST /gestion_poules/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:11] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "POST /appel/38 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/Appel.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/js/appel.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:12] "[36mGET /static/img/fleche.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:13] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:14] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:26] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:45] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:01:57] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:02:14] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:11:23] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:18:55] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:19:12] "[35m[1mGET /arbitrage/38/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:20:22] "[35m[1mPOST /arbitrage/38/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:20:22] "GET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:20:22] "GET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:20:22] "GET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\alexa\\Desktop\\COMP_ESCRIME\\appli\\views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:10] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:21:48] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:10] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:27] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:28] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:22:28] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:00] "[35m[1mPOST /arbitrage/38/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:00] "GET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:00] "GET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:00] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:26] "[35m[1mPOST /arbitrage/38/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:26] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:26] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:26] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:39] "[35m[1mPOST /arbitrage/38/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:39] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:39] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:23:39] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 136-514-953
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:26:12] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:38] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:27:57] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:36] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:37] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:37] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:30:37] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:35] "[35m[1mPOST /arbitrage/38/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:35] "GET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:35] "GET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:35] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "GET /static/base.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "GET /static/variables.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "GET /static/form-edit-user.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "GET /static/img/logo.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "GET /static/img/Vector.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:45:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:18] "[35m[1mPOST /arbitrage/38/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:18] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:18] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:18] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:35] "[35m[1mPOST /arbitrage/38/1/ HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:35] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:35] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:35] "[36mGET /arbitrage/38/1/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:51] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:52] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:52] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:55:52] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:56:46] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:57:09] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:19] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:34] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "POST /arbitrage/38/1/ HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/base.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/variables.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/home.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/form-edit-user.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/progress-bar.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/gestion_poules.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/ajout_adherent.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/popup_addLieu.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/popup_reset_password.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/responsive-creer-comp.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/js/script_popup.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/arbitrage.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[33mGET /arbitrage/38/static/img/fleche.png HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [22/Feb/2024 14:58:46] "[36mGET /static/img/Vector.png HTTP/1.1[0m" 304 -

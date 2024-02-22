@@ -34,10 +34,13 @@
     <div class="classement-provisoire-match">
         <a class="btn__retour" href=""><i class="fa-solid fa-arrow-left"></i> Retour</a>
     </div>
-
-  <div class="table__arbitrage">
+    <div class="table__arbitrage">
+    {% for i in range(1, poules|length +1) %}
+    <p>
+        Poule n°{{ i }} - “heure_poule” - {{ poules[i]['piste'].nomPiste }} -
+        Arbitre : {{ poules[i]['arbitre'] }}
+      </p>      
     <div class="head__arbitrage">
-        <p>Poule n°1 - “nom_piste” - Arbitre : “nom_arbitre”</p>
     </div>
     <div class="content__arbitrage">
         <table class="noms__tireurs">
@@ -49,30 +52,14 @@
                 </tr>
             </thead>
             <tbody>
+                {% for match in poules[i]["matchs"] %}
                 <tr>
-                    <td>Nom </td>
-                    <td>Prenom </td>
-                    <td>Club </td>
-                    <td>Score </td>
+                    <td>{{  match.tireur1.escrimeur.nomE }}</td>
+                    <td>{{ match.tireur1.escrimeur.prenomE }}</td>
+                    <td>{{ match.tireur1.club.nomClub }}</td>
+                    <td>{{ match.touchesDonneesTireur1 }}</td> }}
                 </tr>
-                <tr>
-                    <td>Nom </td>
-                    <td>Prenom </td>
-                    <td>Club </td>
-                    <td>Score </td>
-                </tr>
-                <tr>
-                    <td>Nom </td>
-                    <td>Prenom </td>
-                    <td>Club </td>
-                    <td>Score </td>
-                </tr>
-                <tr>
-                    <td>Nom </td>
-                    <td>Prenom </td>
-                    <td>Club </td>
-                    <td>Score </td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
         <table class="score__btn__arbitrer">
@@ -84,26 +71,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="btn__score"><input type="text"></td>
-                    <td class="btn__arbitrer"><button>Arbitrer</button></td>
-                    <td class="btn__score"><input type="text"></td>
-                </tr>
-                <tr>
-                    <td class="btn__score"><input type="text"></td>
-                    <td class="btn__arbitrer"><button>Arbitrer</button></td>
-                    <td class="btn__score"><input type="text"></td>
-                </tr>
-                <tr>
-                    <td class="btn__score"><input type="text"></td>
-                    <td class="btn__arbitrer"><button>Arbitrer</button></td>
-                    <td class="btn__score"><input type="text"></td>
-                </tr>
-                <tr>
-                    <td class="btn__score"><input type="text"></td>
-                    <td class="btn__arbitrer"><button>Arbitrer</button></td>
-                    <td class="btn__score"><input type="text"></td>
-                </tr>
+                {% for match in poules[i]["matchs"] %}
+        <tr>
+            <td class="btn__score"><input type="text"></td>
+            <td class="btn__arbitrer"><button>Arbitrer</button></td>
+            <td class="btn__score"><input type="text"></td>
+        </tr>
+        {% endfor %}
             </tbody>
         </table>
         <table class="noms__tireurs">
@@ -115,33 +89,18 @@
                 </tr>
             </thead>
             <tbody>
+                 {% for match in poules[i]["matchs"] %}
                 <tr>
-                    <td>Nom </td>
-                    <td>Prenom </td>
-                    <td>Club </td>
-                    <td>Score </td>
+                    <td>{{ match.tireur2.escrimeur.nomE }}</td>
+                    <td>{{ match.tireur2.escrimeur.prenomE }}</td>
+                    <td>{{ match.tireur2.club.nomClub }}</td>
+                    <td>{{ match.touchesDonneesTireur2 }}</td>
                 </tr>
-                <tr>
-                    <td>Nom </td>
-                    <td>Prenom </td>
-                    <td>Club </td>
-                    <td>Score </td>
-                </tr>
-                <tr>
-                    <td>Nom </td>
-                    <td>Prenom </td>
-                    <td>Club </td>
-                    <td>Score </td>
-                </tr>
-                <tr>
-                    <td>Nom </td>
-                    <td>Prenom </td>
-                    <td>Club </td>
-                    <td>Score </td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
+    {% endfor %}
     <div class="btn__conclure">
         <button>Conclure</button>
     </div>

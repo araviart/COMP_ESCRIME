@@ -68,7 +68,54 @@ def gestion_scores():
 
 @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
 def arbitrage(id_comp, id_type_match=1):
-    return render_template("arbitrage.html")
+    if request.method == "POST":
+        absent = request.form.get('liste_absents', '')
+    if id_type_match == 1:
+        poules = {}
+        nb_poules = get_nb_poules(id_comp)
+        for i in range(1, nb_poules+1):
+            poules[i] = {}
+            tireurs_club = {} # dict avec le tireur en clé et le nom du club en valeur
+            for tireur in get_liste_tireurs_escrimeurs_poule(id_comp, i):
+                tireurs_club[tireur] = get_club_tireur_escrimeur(tireur).nomClub
+            poules[i]['tireurs'] = tireurs_club
+            poules[i]['piste'] = get_piste_poule(id_comp, i)
+            poules[i]["id_arbitre"] = get_id_arbitre_poule(id_comp, i)
+            poules[i]["stats"] = get_poule_stats(i)
+            poules[i]["matchs"] = get_matchs_poules(i, id_comp)
+            poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
+        for num_poule in range(1, nb_poules + 1):
+            matches = get_matchs_poules(num_poule, id_comp)
+            scores = {}
+            print("avant")
+            for match in matches:
+                match_found = get_match(match.numeroLicenceE1, match.numeroLicenceE2, num_poule, id_comp)
+                if match_found:
+                    scores[(match_found.numeroLicenceE1, match_found.numeroLicenceE2)] = {
+                        'touchesDonneesTireur1': match_found.touchesDonneesTireur1,                    
+                        'touchesRecuesTireur2': match_found.touchesRecuesTireur2
+                    }
+                    scores[(match_found.numeroLicenceE2, match_found.numeroLicenceE1)] = {
+                        'touchesDonneesTireur2': match_found.touchesDonneesTireur2,
+                        'touchesRecuesTireur1': match_found.touchesRecuesTireur1
+                    }
+            poules[num_poule]['scores'] = scores
+        liste_absents = []
+        numsAbsent = absent.split(',')
+        print("Liste absents: ", numsAbsent)
+        for licence in numsAbsent:
+            int_licence = int(licence)
+            tireur = get_tireur_by_licence(int_licence)
+            liste_absents.append(tireur.to_dict())
+            print(liste_absents)
+            liste_absents_dico = []
+            if liste_absents != []:
+                for dict_tireur in liste_absents:
+                    tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
+                    if tireur is not None:
+                        liste_absents_dico.append(tireur)          
+    return render_template("arbitrage.html", poules=poules, id_comp=id_comp, id_type_match=id_type_match, list_absents=liste_absents)
+
     
 @app.route("/gestion_score/<int:id_comp>/<int:id_type_match>/")
 def gestion_score(id_comp, id_type_match=1): # par défaut renvoie à la phase des poules il faut vérifier ça
@@ -86,7 +133,7 @@ def gestion_score(id_comp, id_type_match=1): # par défaut renvoie à la phase d
             poules[i]['tireurs'] = tireurs_club
             poules[i]['piste'] = get_piste_poule(id_comp, i)
             poules[i]["id_arbitre"] = get_id_arbitre_poule(id_comp, i)
-            poules[i]["stats"] = get_poule_stats(i)
+            # poules[i]["stats"] = get_poule_stats(i)
             poules[i]["matchs"] = get_matchs_poules(i, id_comp)
             poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
         for num_poule in range(1, nb_poules + 1):
