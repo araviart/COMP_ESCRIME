@@ -324,6 +324,7 @@ def home_def(items):
                 ajouter_arbitre(numero_licence)
                 session["arbitre"] = numero_licence
                 print(ajouter_arbitre(numero_licence))
+                escrimeur_inscrit["liste_competitions"].append(int(id_comp))
     else:
         page = request.args.get('page', 1, type=int)
         session['categorie'] = request.args.get('categorie', session.get('categorie'))
@@ -362,7 +363,7 @@ def home_def(items):
         compet_filtre_a_venir=compet_filtre_a_venir,
         liste_club=liste_club,
         erreur_categorie=erreur_categorie,
-        erreur_sexe=erreur_sexe
+        erreur_sexe=erreur_sexe,
     )
     
 @app.route('/home/')
