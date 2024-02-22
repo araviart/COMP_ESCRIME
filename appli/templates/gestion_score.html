@@ -34,7 +34,7 @@
     >Classement Final</a
   >
 </div>
-
+<input type="hidden" id="id-type-match" name="idTypeMatch" value="{{ id_type_match }}"">
 <main>
   <div class="classement-provisoire-match">
     <a href="{{ url_for('arbre', id_comp=id_comp)}}"
@@ -89,11 +89,11 @@
             </tr>
           </thead>
           <tbody>
-            {% for jind in range(poules[i]['tireurs']|length) %} {% set
-            col_index = jind + 1 %}
+            {% for jind in range(poules[i]['tireurs']|length) %} 
+            {% set col_index = jind + 1 %}
             <tr class="tr-textfield-matrice">
-              {% for tireur, club in poules[i]['tireurs'].items() %} {% set
-              row_index = loop.index0 + 1 %} {% if loop.index0 == jind %}
+              {% for tireur, club in poules[i]['tireurs'].items() %} 
+              {% set row_index = loop.index0 + 1 %} {% if loop.index0 == jind %}
               <td class="td-textfield-matrice">
                 <input
                   class="textfield-score textfield-score-disabled"
@@ -102,14 +102,14 @@
                   disabled
                 />
               </td>
-              {% else %} {% set opponent_tireur =
-              poules[i]['tireurs'].items()|list %} {% set opponent_tireur =
-              opponent_tireur[jind] %} {% set opponent_tireur =
-              opponent_tireur[0] %} {% set tireur_license =
-              opponent_tireur.numeroLicenceE %} {% set match_score =
-              poules[i]['scores'].get((tireur.numeroLicenceE,
-              opponent_tireur.numeroLicenceE), None) %} {% if
-              loop.index0 > jind %}
+              {% else %} 
+              {% set opponent_tireur = poules[i]['tireurs'].items()|list %} 
+              {% set opponent_tireur =opponent_tireur[jind] %} 
+              {% set opponent_tireur =opponent_tireur[0] %} 
+              {% set tireur_license =opponent_tireur.numeroLicenceE %} 
+              {% set match_score = poules[i]['scores'].get((tireur.numeroLicenceE,opponent_tireur.numeroLicenceE), None) %} 
+              {{ match_score }}
+              {% if loop.index0 > jind %}
               <td class="td-textfield-matrice">
                 <input
                   class="textfield-score textfield-score-ok row-{{ row_index }} col-{{ col_index }}"
@@ -127,6 +127,7 @@
                 />
               </td>
               {% else %}
+              {{ match_score.touchesDonneesTireur1}}
               <td class="td-textfield-matrice">
                 <input
                   class="textfield-score score-gris textfield-score-ok row-{{ row_index }} col-{{ col_index }}"
@@ -156,7 +157,6 @@
               <th>TD</th>
               <th>TR</th>
               <th>TD-TR</th>
-              <th>Place</th>
             </tr>
           </thead>
           <tbody>
@@ -166,9 +166,6 @@
               <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TD'] }}</td>
               <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TR'] }}</td>
               <td>{{ poules[i]["stats"][tireur.numeroLicenceE]['TD-TR'] }}</td>
-              <td>
-                <input id="checkbox-2" type="checkbox" />
-              </td>
             </tr>
             {% endfor %}
           </tbody>

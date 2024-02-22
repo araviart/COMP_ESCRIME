@@ -673,7 +673,11 @@ def get_informations_escrimeur(numero_licence):
     return Escrimeur.query.filter_by(numeroLicenceE=numero_licence).first()
 
 def get_id_poule(id_comp, id_piste, id_arbitre, nom_poule):
-    return Poule.query.filter_by(idComp=id_comp, idPiste=id_piste, idArbitre=id_arbitre, nomPoule=nom_poule).first().idPoule
+                poule = Poule.query.filter_by(idComp=id_comp, idPiste=id_piste, idArbitre=id_arbitre, nomPoule=nom_poule).first()
+                if poule:
+                    return poule.idPoule
+                else:
+                    return None
 
 def get_arbitres(idcomp):
     arbitres = db.session.query(Arbitre, Escrimeur, Categorie).join(Escrimeur, Arbitre.numeroLicenceE == Escrimeur.numeroLicenceE).join(
@@ -682,7 +686,6 @@ def get_arbitres(idcomp):
         ParticipantsCompetition,
         ParticipantsCompetition.numeroLicenceE == Escrimeur.numeroLicenceE
     ).filter(ParticipantsCompetition.idComp == idcomp).all()
-    print(arbitres)
     return arbitres
 
 def get_competition_statut(competition):
