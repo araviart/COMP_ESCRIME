@@ -315,8 +315,9 @@ def home_def(items):
                         }
                     print(ajouter_tireur(numero_licence, club, classement))
                     ajouter_participant(numero_licence, id_comp)
-                    session['participant'] = numero_licence
                     print(ajouter_participant(numero_licence, id_comp))
+                    escrimeur_inscrit["liste_competitions"].append(int(id_comp))
+                    print(escrimeur_inscrit["liste_competitions"])
                 else:
                     print("On ne peut pas ajouter à la compétition")
             case "arbitre":
@@ -897,11 +898,12 @@ def inscription_escrimeur():
             "date_naissance": date_naissance,
             "numero_licence": numero_licence,
             "sexe": sexe,
-            "telephone": telephone_int
+            "telephone": telephone_int,
+            "liste_competitions": []
         }
-        if session["tireur"]:
+        if session.get("tireur"):
             session["tireur"] = None
-        if session["arbitre"]:
+        if session.get("arbitre"):
             session["arbitre"] = None
         print(f"escrimeur inscrit : {session['escrimeur_inscrit']}")
         return redirect(url_for('home_def', items=5))
@@ -921,8 +923,3 @@ def inject_tireur():
 def inject_arbitre():
     arbitre = session.get('arbitre', None)
     return dict(arbitre=arbitre)
-
-@app.context_processor
-def inject_participant():
-    participant = session.get('participant', None)
-    return dict(participant=participant)
