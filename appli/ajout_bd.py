@@ -449,7 +449,7 @@ def ajouter_participant(numeroLicenceE, idComp):
     except ValueError:
         return "L'identifiant du tireur doit être un nombre."
     try:
-        idComp = int(idComp)
+        idComp = int(idComp) if isinstance(idComp, str) else idComp
     except ValueError:
         return "L'identifiant de la compétition doit être un nombre."
     try:

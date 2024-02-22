@@ -174,7 +174,7 @@ text-align: center;
   cursor: pointer;
 }
 
-#popup-inscription {
+.popup-inscription {
     display: none;
     position: fixed;
     z-index: 1;
@@ -207,14 +207,14 @@ text-align: center;
     height: 25%;
     background-color: #EBEBEB;
     border-radius: 0.5rem;
-    padding: 1rem;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .label-radios div {
-  margin: 1rem;
+  margin: 0.5rem;
 }
 
 .option-tireur {
@@ -224,7 +224,7 @@ text-align: center;
 .label-radios {
   display: flex;
   justify-content: space-between;
-  width: 200px; 
+  max-width: 10rem;
 }
 
 #tireur-content, #arbitre-content {
@@ -254,6 +254,31 @@ input[type="text"], #nom_club {
     background-color: #F5F5F5;
     border-radius: 1rem;
     width: 13rem;
-    height: 3rem;
+    height: 2rem;
     border: none;
 }
+
+#bouton-valider {
+  position: relative;
+}
+
+.validation-form {
+  margin-top: 0.5rem;
+  background-color: #01437C;
+  width: 5rem;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.option_arbitre {
+  display: none;
+  position: relative;
+}
+
+

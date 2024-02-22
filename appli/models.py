@@ -752,3 +752,6 @@ def get_all_club():
 
 def get_all_categories():
     return Categorie.query.all()
+
+def get_nom_club_by_id(idClub):
+    return Club.query.filter_by(idClub=idClub).first().nomClub
