@@ -922,29 +922,6 @@ def actu_stat_comp(id_comp):
     else:
         return "les problèmes"
 
-@app.route('/arbre/<int:id_comp>')
-def classement_provisioire(id_comp):
-    #
-    #else :
-    competition = Competition.query.get_or_404(id_comp)
-    poules = Poule.query.filter_by(idComp=id_comp).all()
-    quarts = []
-    demis = []
-    finale = []
-    troisieme =[]
-    for poule in poules:
-        matchs = Match.query.filter_by(idPoule=poule.idPoule).all()
-        for match in matchs:
-            if match.idTypeMatch == 2 :
-                quarts.append(match.to_dict())
-            elif match.idTypeMatch == 3 :
-                demis.append(match.to_dict())
-            elif match.idTypeMatch == 4 :
-                finale.append(match.to_dict())
-            elif match.idTypeMatch == 5 :
-                troisieme.append(match.to_dict())
-    return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, troisieme = troisieme)
-
 @app.route('/update_absents', methods=['POST'])
 def update_absents():
     participants_absents = request.json['participants_absents']

@@ -170,7 +170,7 @@
       {% endfor %}
     </form>
   </div>
-  <form id="conclureForm" method="POST" action="{{ url_for('classement_provisioire', id_comp=competition.idComp) }}">
+  <form id="conclureForm" method="POST" action="{{ url_for('classement_provisioire', id_comp=id_comp, id_type_match=1) }}">
     <div class="div-btn-conclure">
       <button type="submit">Conclure</button>
     </div>
