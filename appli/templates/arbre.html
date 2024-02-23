@@ -9,7 +9,7 @@
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
   <a class="active-url" href="{{ url_for('appel', id_comp=1)}}">Appel</a>
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-  <a class="active-url" href="{{ url_for('gestion_score', id_comp=1)}}">Gestion score</a>
+  <a class="active-url" href="{{ url_for('gestion_score', id_comp=1, id_type_match = 1)}}">Gestion score</a>
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
   <a class="active-url" href="{{ url_for('arbre', id_comp=1)}}">Classement Final</a>
 </div>
@@ -321,39 +321,39 @@
     {% endif %}
   </div>
   <div class="parent-2">
-    {% if troisieme|length >= 1 %}
-      <div class="div-1 titre-table">Troisième place</div>
+    {% if huitiemes|length >= 8 %}
+      <div class="div-1 titre-table">Huitième de finale</div>
       <div class="div-2">
         <div>
           <div class="joueur joueur1">
-            <p>{{troisieme[0]['tireur1'].escrimeur.nomE}}, {{troisieme[0]['tireur1'].escrimeur.prenomE}}</p>
-            <p class="score-joueur">{{troisieme[0]['touchesDonneesTireur1']}}</p>
+            <p>{{huitiemes[0]['tireur1'].escrimeur.nomE}}, {{huitiemes[0]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{huitiemes[0]['touchesDonneesTireur1']}}</p>
           </div>
         </div>
       </div>
       <div class="div-3">
         <div>
           <div class="joueur joueur2">
-            <p>{{troisieme[0]['tireur2'].escrimeur.nomE}}, {{troisieme[0]['tireur2'].escrimeur.prenomE}}</p>
-            <p class="score-joueur">{{troisieme[0]['touchesDonneesTireur2']}}</p>
+            <p>{{huitiemes[0]['tireur2'].escrimeur.nomE}}, {{huitiemes[0]['tireur2'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{huitiemes[0]['touchesDonneesTireur2']}}</p>
           </div>
         </div>
       </div>
-    {% if troisieme[0]['touchesDonneesTireur1'] and troisieme[0]['touchesDonneesTireur1'] >= 15 %}
+    {% if huitiemes[0]['touchesDonneesTireur1'] and huitiemes[0]['touchesDonneesTireur1'] >= 15 %}
       <div class="div-5">
         <div>
           <div class="joueur joueur1">
-            <p>{{troisieme[0]['tireur1'].escrimeur.nomE}}, {{troisieme[0]['tireur1'].escrimeur.prenomE}}</p>
-            <p class="score-joueur">{{troisieme[0]['touchesDonneesTireur1']}}</p>
+            <p>{{huitiemes[0]['tireur1'].escrimeur.nomE}}, {{huitiemes[0]['tireur1'].escrimeur.prenomE}}</p>
+            <p class="score-joueur">{{huitiemes[0]['touchesDonneesTireur1']}}</p>
           </div>
         </div>
       </div>
-    {% elif troisieme[0]['touchesDonneesTireur2'] and troisieme[0]['touchesDonneesTireur2'] >= 15 %}
+    {% elif huitiemes[0]['touchesDonneesTireur2'] and huitiemes[0]['touchesDonneesTireur2'] >= 15 %}
       <div class="div-5">
         <div>
           <div class="joueur joueur1">
-            <p>{{troisieme[0]['tireur2'].escrimeur.nomE}}, {{troisieme[0]['tireur2'].escrimeur.prenomE}}</p>
-              <p class="score-joueur">{{troisieme[0]['touchesDonneesTireur2']}}</p>
+            <p>{{huitiemes[0]['tireur2'].escrimeur.nomE}}, {{huitiemes[0]['tireur2'].escrimeur.prenomE}}</p>
+              <p class="score-joueur">{{huitiemes[0]['touchesDonneesTireur2']}}</p>
           </div>
         </div>
       </div>
@@ -368,7 +368,7 @@
       </div>
     {% endif %}
     {% else %}
-      <div class="div-1 titre-table">Troisième place</div>
+      <div class="div-1 titre-table">Huitième de finale</div>
       <div class="div-2">
         <div>
           <div class="joueur joueur1">
