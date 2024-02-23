@@ -336,6 +336,19 @@ class Contenir(db.Model):
         self.idMatch = match
         self.idComp = idComp
 
+class MatchCompetition(db.Model):
+    __tablename__ = 'MATCH_COMPETITION'
+    idMatch = db.Column(db.Integer, db.ForeignKey('MATCH.idMatch'), primary_key=True)
+    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
+    
+    match = db.relationship('Match', backref='match_competition')
+    competition = db.relationship('Competition', backref='match_competition')
+    
+    def __init__(self, match, competition):
+        self.match = match
+        self.competition = competition
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'USER'
     idUser = db.Column(db.Integer, primary_key=True)
@@ -790,6 +803,15 @@ def get_match(tireur1, tireur2, id_poule, id_comp):
         )
     ).first()
     return match
+
+def get_phase_name(id_type_match):
+    phase_names = {
+        2: "Huitièmes de finale",
+        3: "Quarts de finale",
+        4: "Demi-finale",
+        5: "Finale"
+    }
+    return phase_names.get(id_type_match, "Autre phase")
 
 def get_match_phase_elim(id_comp, id_type_match):
     return Match.query.filter_by(idComp=id_comp, idTypeMatch=id_type_match).all()
