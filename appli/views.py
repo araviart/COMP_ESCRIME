@@ -62,10 +62,10 @@ def inject_user_status():
         return {"user_status": current_user.statutUser}
     return {"user_status": None}
 
-@app.route("/gestions_scores/<int:id_comp>/<int:id_match>/", methods=["GET", "POST"])
-def gestion_score_match(id_comp, id_match):
+@app.route("/gestions_scores/<int:id_comp>/<int:id_match>/<int:id_type_match>", methods=["GET", "POST"])
+def gestion_score_match(id_comp, id_match, id_type_match):
     match_actu = get_match_by_id(id_match)
-    return render_template("page-score.html", id_comp=id_comp, id_match=id_match, match_actu=match_actu)
+    return render_template("page-score.html", id_comp=id_comp, id_match=id_match, match_actu=match_actu, id_type_match=id_type_match)
 
 @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
 
@@ -316,6 +316,7 @@ def update_score_match():
     match_id = data.get('matchId')
     score = data.get('score')
     tireur_number = data.get('tireurNumber')
+    id_type_match = data.get('idTypeMatch')
     match = Match.query.get(match_id)
     print("match_id:", match_id)
     print("score:", score)
@@ -325,15 +326,19 @@ def update_score_match():
         if tireur_number == 1:
             match.touchesDonneesTireur1 = score
             match.touchesRecuesTireur2 = score
-            if score == 5:
+            if score == 5 and id_type_match==1:
                 match.gagnant = match.numeroLicenceE1;
-
+            else:
+                if score == 15:
+                    match.gagnant = match.numeroLicenceE1;
         elif tireur_number == 2:
             match.touchesDonneesTireur2 = score
             match.touchesRecuesTireur1 = score
-            if score == 5:
+            if score == 5 and id_type_match==1:
                 match.gagnant = match.numeroLicenceE2;
-        
+            else:
+                if score == 15:
+                    match.gagnant = match.numeroLicenceE2;
         db.session.commit()
         
         return jsonify({'success': True, 'message': 'Score mis à jour.'})
@@ -379,7 +384,7 @@ def get_scores_for_competition(id_comp):
             )
         ).count()
         print(victoires, total_matchs)
-        vm_ratio = (victoires / total_matchs) if tgestionotal_matchs > 0 else "N/A"
+        vm_ratio = (victoires / total_matchs) if total_matchs > 0 else "N/A"
         scores.append({
             'Classement': classement.position,
             'Prenom': escrimeur.prenomE,

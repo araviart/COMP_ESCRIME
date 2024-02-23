@@ -6,9 +6,10 @@
 <script src="{{ url_for('static', filename='js/score_btn_gestion.js') }}" defer></script>
 <script src="{{ url_for('static', filename='js/chrono.js') }}"></script>
 <link
-  rel="stylesheet"
-  href="{{ url_for('static', filename = 'progress-bar.css') }}"
+rel="stylesheet"
+href="{{ url_for('static', filename = 'progress-bar.css') }}"
 />
+<input type="hidden" id="idTypeMatch" value="{{ id_type_match }}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'page-score.css') }}" />
 
 <div class="progress-bar">
