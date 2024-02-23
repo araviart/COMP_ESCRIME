@@ -122,8 +122,12 @@ def arbitrage(id_comp, id_type_match=1):
 @app.route("/gestion_score/<int:id_comp>/<int:id_type_match>/")
 def gestion_score(id_comp, id_type_match=1): # par défaut renvoie à la phase des poules il faut vérifier ça
     # récuperer les infos des poules dans un dict avec le numéro de poule en clé et la liste des tireurs,le nom de la piste, le nom de l'arbitre en valeur
+    liste_absents = []
+    numsAbsent = []
     if request.method == "POST":
         absent = request.form.get('liste_absents', '')
+        numsAbsent = absent.split(',')
+        print("Liste absents: ", numsAbsent)
     if id_type_match == 1:
         poules = {}
         nb_poules = get_nb_poules(id_comp)
@@ -154,22 +158,19 @@ def gestion_score(id_comp, id_type_match=1): # par défaut renvoie à la phase d
                         'touchesRecuesTireur1': match_found.touchesRecuesTireur1
                     }
             poules[num_poule]['scores'] = scores
-    liste_absents = []
-    numsAbsent = absent.split(',')
-    print("Liste absents: ", numsAbsent)
-    for licence in numsAbsent:
-        int_licence = int(licence)
-        tireur = get_tireur_by_licence(int_licence)
-        liste_absents.append(tireur.to_dict())
-        print(liste_absents)
-        liste_absents_dico = []
-        if liste_absents != []:
-            for dict_tireur in liste_absents:
-                tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
-                if tireur is not None:
-                    tireur.append(tireur)
-                    liste_absents_dico.append(tireur)
-    
+        if numsAbsent != ['']:
+            for licence in numsAbsent:
+                int_licence = int(licence)
+                tireur = get_tireur_by_licence(int_licence)
+                liste_absents.append(tireur.to_dict())
+                print(liste_absents)
+                liste_absents_dico = []
+                if liste_absents != []:
+                    for dict_tireur in liste_absents:
+                        tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
+                        if tireur is not None:
+                            tireur.append(tireur)
+                            liste_absents_dico.append(tireur)
         return render_template('gestion_score.html', poules=poules, id_comp=id_comp, id_type_match=1, list_absents=liste_absents)
     else:
         print("autre phases")
