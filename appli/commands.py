@@ -76,6 +76,18 @@ def loaddb(dirname):
                 # else:
                 #     a= 1
                     print(f"Aucune fonction définie pour le fichier {nom_fichier}")
+    print(ajouter_type_match("Huitieme de finale", 15))
+    print(ajouter_type_match("Quarts de finale", 15))
+    print(ajouter_type_match("Demis finale", 15))
+    print(ajouter_type_match("Finale", 15))
+    username = "admin1"
+    password = "admin123"
+    email = "admin@admin"
+    m = sha256()
+    m.update(password.encode())
+    u = User(pseudoUser=username , mdpUser=m.hexdigest(), emailUser=email, statutUser="Administrateur")
+    db.session.add(u)
+    db.session.commit()
 
 @app.cli.command ()
 @click.argument("username")

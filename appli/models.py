@@ -313,7 +313,6 @@ class Match(db.Model):
             'idTypeMatch': self.idTypeMatch,
             'idPiste': self.idPiste,
             'idArbitre': self.idArbitre,
-            'idPoule': self.idPoule,
             'tireur1': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE1).first(),
             'tireur2': Tireur.query.filter_by(numeroLicenceE = self.numeroLicenceE2).first(),
             'dateMatch': self.dateMatch.isoformat() if self.dateMatch else None,
@@ -680,7 +679,12 @@ def get_participants(id_comp, club=None):
     return res.add_columns(Escrimeur.prenomE, Escrimeur.nomE, Categorie.nomCategorie).all()
 
 def get_liste_participants_competitions(id_comp):
-    return ParticipantsCompetition.query.filter_by(idComp=id_comp).all()
+    participants = ParticipantsCompetition.query.filter_by(idComp=id_comp).all()
+    for part in participants:
+        arbitre = Arbitre.query.filter_by(numeroLicenceE=part.numeroLicenceE).first()
+        if arbitre:
+            participants.remove(part)
+    return participants
 
 def get_informations_escrimeur(numero_licence):
     return Escrimeur.query.filter_by(numeroLicenceE=numero_licence).first()
@@ -943,22 +947,28 @@ def est_cree_finale(id_comp):
 
 def est_termine_phase_huitieme(id_comp):
     matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    if (matchs_comp == []):
+        return False
     for match in matchs_comp:
-        if match.match.idTypeMatch == 2 and match.gagnant is None:
+        if match.match.idTypeMatch == 2 and match.gagnant == None:
             return False
     return True
 
 def est_termine_phase_quart(id_comp):
     matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    if (matchs_comp == []):
+        return False
     for match in matchs_comp:
-        if match.match.idTypeMatch == 3 and match.gagnant is None:
+        if match.match.idTypeMatch == 3 and match.gagnant == None:
             return False
     return True
 
 def est_termine_phase_demi(id_comp):
     matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    if (matchs_comp == []):
+        return False
     for match in matchs_comp:
-        if match.match.idTypeMatch == 4 and match.gagnant is None:
+        if match.match.idTypeMatch == 4 and match.gagnant == None:
             return False
     return True
 
