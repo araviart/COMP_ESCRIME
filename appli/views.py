@@ -145,7 +145,12 @@ def arbitrage(id_comp, id_type_match=1):
                     for dict_tireur in liste_absents:
                         tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
                         if tireur is not None:
-                            liste_absents_dico.append(tireur)          
+                            liste_absents_dico.append(tireur)
+                            matches = Match.query.filter_by(numeroLicenceE1=tireur.numeroLicenceE).all()
+                            for match in matches:
+                                match.touchesDonneesTireur1 = 5
+                                match.touchesRecuesTireur2 = 5
+                                db.session.commit()
         return render_template("arbitrage-poule.html", poules=poules, id_comp=id_comp, id_type_match=id_type_match, list_absents=liste_absents)
 
 # @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
@@ -174,7 +179,7 @@ def arbitrage(id_comp, id_type_match=1):
 #                 match_found = get_match(match.numeroLicenceE1, match.numeroLicenceE2, num_poule, id_comp)
 #                 if match_found:
 #                     scores[(match_found.numeroLicenceE1, match_found.numeroLicenceE2)] = {
-#                         'touchesDonneesTireur1': match_found.touchesDonneesTireur1,                    
+#            page-score             'touchesDonneesTireur1': match_found.touchesDonneesTireur1,                    
 #                         'touchesRecuesTireur2': match_found.touchesRecuesTireur2
 #                     }
 #                     scores[(match_found.numeroLicenceE2, match_found.numeroLicenceE1)] = {
@@ -280,7 +285,7 @@ def update_scores():
         match1.touchesDonneesTireur1 = score
         match1.touchesRecuesTireur2 = score
         if score == 5:
-            match1.gagnant = license;
+            match1.gagnant = license
         db.session.commit()
         print("Après: ", match1.touchesRecuesTireur1, match1.touchesDonneesTireur1, match1.touchesRecuesTireur2, match1.touchesDonneesTireur2)
         print("Match mis à jour")
@@ -326,13 +331,13 @@ def update_score_match():
             match.touchesDonneesTireur1 = score
             match.touchesRecuesTireur2 = score
             if score == 5:
-                match.gagnant = match.numeroLicenceE1;
+                match.gagnant = match.numeroLicenceE1
 
         elif tireur_number == 2:
             match.touchesDonneesTireur2 = score
             match.touchesRecuesTireur1 = score
             if score == 5:
-                match.gagnant = match.numeroLicenceE2;
+                match.gagnant = match.numeroLicenceE2
         
         db.session.commit()
         
@@ -379,7 +384,7 @@ def get_scores_for_competition(id_comp):
             )
         ).count()
         print(victoires, total_matchs)
-        vm_ratio = (victoires / total_matchs) if tgestionotal_matchs > 0 else "N/A"
+        vm_ratio = (victoires / total_matchs) if total_matchs > 0 else "N/A"
         scores.append({
             'Classement': classement.position,
             'Prenom': escrimeur.prenomE,

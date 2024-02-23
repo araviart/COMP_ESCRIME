@@ -34,7 +34,7 @@
 
 <main>
   <div class="classement-provisoire-match">
-    <a class="btn__retour" href="{{ url_for('arbitrage', id_comp=id_comp, id_type_match=1) }}"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+      <a class="btn__retour" href="{{ url_for('arbitrage', id_comp=id_comp, id_type_match=match_actu.idTypeMatch) }}"><i class="fa-solid fa-arrow-left"></i> Retour</a>
   </div>
 
 
@@ -76,7 +76,7 @@
       </div>
     </div>
     <div class="valider__scores">
-      <a class="btn__valider" href="{{ url_for('arbitrage', id_comp=id_comp, id_type_match=1) }}">Valider</a>
+      <a class="btn__valider" href="{{ url_for('arbitrage', id_comp=id_comp, id_type_match=match_actu.idTypeMatch) }}">Valider</a>
     </div>
   </div>
 </main>
