@@ -96,7 +96,11 @@ href="{{ url_for('static', filename = 'progress-bar.css') }}"
         </table>
     </div>
     <div class="btn__conclure">
-      <a href="{{ url_for('classement_provisioire', id_comp=id_comp )}}"><button>Conclure</button></a>
+      {% if id_type_match == 5 %}
+        <a href="{{ url_for('afficher_score_poule', id_comp=id_comp )}}"><button>Voir les résultats</button></a>
+      {% else %}
+        <a href="{{ url_for('classement_provisioire', id_comp=id_comp )}}"><button>Conclure</button></a>
+      {% endif %}
   </div>
   </div>
 
