@@ -381,6 +381,8 @@ def filtrer_adherent(adherents, categorie, sexeE):
     if categorie:
         adherents_filtrer = [adherent for adherent in adherents_filtrer if adherent.Categorie.nomCategorie == categorie]
     if sexeE:
+        if sexeE == "M":
+            sexeE = "Homme"
         adherents_filtrer = [adherent for adherent in adherents_filtrer if adherent.Escrimeur.sexeE == sexeE]
     return adherents_filtrer
 
