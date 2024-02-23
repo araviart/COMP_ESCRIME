@@ -374,6 +374,7 @@ def home_default():
 @app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
 def liste_adherents(items):
     total_pages = 0
+    dernier_id = dernier_escrimeur_id() + 1
     if request.method == "POST":
         page = int(request.form.get('page', 1))
         if 'next' in request.form:
@@ -383,10 +384,12 @@ def liste_adherents(items):
     else:
         page = request.args.get('page', 1, type=int)
     adherents = get_adherents()
-    categories = get_all_categories()
+    categories = get_categories()
+    les_categories = get_all_categories()
     role = request.form.get('statut', session.get('statuta', ''))
     categorie = request.form.get('categorie', session.get('categoriea', ''))
     sexe = request.form.get('sexe', session.get('sexea', ''))
+    print(sexe)
     
     adherents = filtrer_adherent(adherents, categorie, sexe)
     if request.method == "POST":
@@ -408,13 +411,15 @@ def liste_adherents(items):
         "liste-adherents.html",
         title="Compétitions ESCRIME",
         categories=categories,
+        les_categories=les_categories,
         selec_categorie=categorie,
         selec_sexe=sexe,
         selec_statut=role,
         adherents=adherents,
         items=items,
         page=page,
-        total_pages=total_pages)
+        total_pages=total_pages,
+        dernier_id=dernier_id)
 
 
 
@@ -519,7 +524,7 @@ def ajouter_un_escrimeur():
         print(categorie)
         liste_noms_categories = [categorie.nomCategorie for categorie in get_all_categories()]
         print(f"toutes les catégiories : {liste_noms_categories}")
-        ind_categorie = liste_noms_categories.index(categorie)
+        ind_categorie = liste_noms_categories.index(categorie) + 1
         
         # creez un nouvel enregistrement d'adherent 
         nouvel_adherent = Escrimeur(numero_licence_e=numero_licence, categorie=ind_categorie, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, sexe_e=sexe, num_tel_e=num_tel)

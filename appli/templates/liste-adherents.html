@@ -28,7 +28,7 @@
                   </div>
                   <div id="numlicence"> 
                     <label class="label-liste-adherent" for="numero_licence">Numéro de licence</label>
-                    <input type="text" class="input-liste-adherent numero_licence" name="numero_licence_e" required placeholder="Numéro de licence">
+                    <input type="text" class="input-liste-adherent numero_licence" name="numero_licence_e" required placeholder="Numéro de licence" value="{{ dernier_id }}">
                   </div>
                   <div id="sexe">
                     <label class="label-liste-adherent" for="categorieSexe">Sexe</label>
@@ -44,7 +44,7 @@
                   <div id="categorie">
                     <label class="label-liste-adherent" for="categorie">Catégorie</label>
                     <select id="select-cat" name="categorie_e" id="categorie_id">
-                      {% for cat in categories %}
+                      {% for cat in les_categories %}
                           <option value="{{ cat.nomCategorie }}">
                               {{ cat.nomCategorie }}
                           </option>
