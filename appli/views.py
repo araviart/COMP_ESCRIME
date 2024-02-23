@@ -815,6 +815,16 @@ def classement_provisioire(id_comp):
     #
     #else :
     competition = Competition.query.get_or_404(id_comp)
+    id_phase_en_cours = 1
+    if est_terminer_phase_poule(id_comp):
+        id_phase_en_cours = 2
+        if est_termine_phase_huitieme(id_comp):
+            id_phase_en_cours = 3
+            if est_termine_phase_quart(id_comp):
+                id_phase_en_cours = 4
+                if est_termine_phase_demi(id_comp):
+                    id_phase_en_cours = 5
+    print(id_phase_en_cours)
     poules = Poule.query.filter_by(idComp=id_comp).all()
     nb_participants = get_nb_participants(id_comp)
     huitiemes = []
@@ -849,7 +859,7 @@ def classement_provisioire(id_comp):
             demis.append(match.to_dict())
         if i <= 1:
             finale.append(match.to_dict())
-    return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, huitiemes = huitiemes)
+    return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, huitiemes = huitiemes, type_match = id_phase_en_cours)
 
 @app.route('/update_absents', methods=['POST'])
 def update_absents():

@@ -934,22 +934,28 @@ def est_cree_finale(id_comp):
 
 def est_termine_phase_huitieme(id_comp):
     matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    if (matchs_comp == []):
+        return False
     for match in matchs_comp:
-        if match.match.idTypeMatch == 2 and match.gagnant is None:
+        if match.match.idTypeMatch == 2 and match.gagnant == None:
             return False
     return True
 
 def est_termine_phase_quart(id_comp):
     matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    if (matchs_comp == []):
+        return False
     for match in matchs_comp:
-        if match.match.idTypeMatch == 3 and match.gagnant is None:
+        if match.match.idTypeMatch == 3 and match.gagnant == None:
             return False
     return True
 
 def est_termine_phase_demi(id_comp):
     matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    if (matchs_comp == []):
+        return False
     for match in matchs_comp:
-        if match.match.idTypeMatch == 4 and match.gagnant is None:
+        if match.match.idTypeMatch == 4 and match.gagnant == None:
             return False
     return True
 

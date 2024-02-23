@@ -623,5 +623,7 @@
       </div>
     </div>
   </div>
+  <form id="validationForm" method="POST" action="{{ url_for('arbitrage', id_comp=competition.idComp, id_type_match = type_match) }}">
+  <button type="submit" id="bouton_valid"><i class="fa-solid fa-check"></i><a "{{ url_for('arbitrage', id_comp=competition.idComp, id_type_match = type_match) }}">Arbitrer la phase en cours</a></button>
 </main>
 {% endblock %}
