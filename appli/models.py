@@ -740,6 +740,9 @@ def get_poule_stats(poule_id):
         }
     return poule_stats
 
+def get_match_by_id(id):
+    return Match.query.filter_by(idMatch=id).first()
+
 def get_matchs_poules(poule_id, id_comp):
     return db.session.query(Match).join(
         Contenir, 

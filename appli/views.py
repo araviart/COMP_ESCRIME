@@ -62,9 +62,10 @@ def inject_user_status():
         return {"user_status": current_user.statutUser}
     return {"user_status": None}
 
-@app.route("/gestions_scores/")
-def gestion_scores():
-    return render_template("page-score.html")
+@app.route("/gestions_scores/<int:id_match>/", methods=["GET", "POST"])
+def gestion_scores(id_match):
+    match_actu = get_match_by_id(id_match)
+    return render_template("page-score.html", id_match=id_match, match_actu=match_actu)
 
 @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
 def arbitrage(id_comp, id_type_match=1):
@@ -221,6 +222,32 @@ def update_scores():
         print("Match créé")
 
     return 'OK'
+
+@app.route('/update_score_match', methods=['POST'])
+def update_score_match():
+    data = request.get_json()
+    match_id = data.get('matchId')
+    score = data.get('score')
+    tireur_number = data.get('tireurNumber')
+    match = Match.query.get(match_id)
+    print("match_id:", match_id)
+    print("score:", score)
+    print("tireur_number:", tireur_number)
+    print("match:", match)
+    if match:
+        if tireur_number == 1:
+            match.touchesDonneesTireur1 = score
+            match.touchesRecuesTireur2 = score
+        elif tireur_number == 2:
+            match.touchesDonneesTireur2 = score
+            match.touchesRecuesTireur1 = score
+        
+        db.session.commit()
+        
+        return jsonify({'success': True, 'message': 'Score mis à jour.'})
+    else:
+        return jsonify({'success': False, 'message': 'Match non trouvé.'}), 404
+
 
 @app.route("/afficher-score-poule/<int:id_comp>/")
 def afficher_score_poule(id_comp):

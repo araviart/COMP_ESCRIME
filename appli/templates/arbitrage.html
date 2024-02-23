@@ -3,6 +3,7 @@
   rel="stylesheet"
   href="{{ url_for('static', filename = 'progress-bar.css') }}"
 />
+<script src="{{ url_for('static', filename='js/gestionParticipant.js') }}"></script>
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename = 'progress-bar.css') }}"
@@ -71,13 +72,13 @@
                 </tr>
             </thead>
             <tbody>
-                {% for match in poules[i]["matchs"] %}
-        <tr>
-            <td class="btn__score"><input type="text"></td>
-            <td class="btn__arbitrer"><button>Arbitrer</button></td>
-            <td class="btn__score"><input type="text"></td>
-        </tr>
-        {% endfor %}
+              {% for match in poules[i]["matchs"] %}
+              <tr>
+                  <td class="btn__score"><input type="text"></td>
+                  <td class="btn__arbitrer"><a href="{{ url_for('gestion_scores', id_match=match.idMatch) }}"><button>Arbitrer</button></a></td>
+                  <td class="btn__score"><input type="text"></td>
+              </tr>
+              {% endfor %}
             </tbody>
         </table>
         <table class="noms__tireurs">
