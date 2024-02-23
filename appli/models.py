@@ -899,33 +899,39 @@ def creer_huitiemes(id_comp):
     dict_classement = get_dict_classement(id_comp)
     if dict_classement == {}:
         return
+    competition = Competition.query.get(id_comp)  # Fetch the Competition instance
     for i in range(1, 9):
         tireur1 = dict_classement[i]
         tireur2 = dict_classement[17 - i]
-        match = Match(2, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
-        match_comp = MatchCompetition(match.idMatch, id_comp)
+        match = Match(2, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), 0, 0, 0, 0)
+        match_comp = MatchCompetition(match, competition)
         db.session.add(match)
         db.session.add(match_comp)
     db.session.commit()
     
 def creer_quarts(id_comp):
     dict_classement = get_dict_classement(id_comp)
+    if dict_classement == {}:
+        return
+    competition = Competition.query.get(id_comp)  # Fetch the Competition instance
     for i in range(1, 5):
         tireur1 = dict_classement[i]
         tireur2 = dict_classement[9 - i]
-        match = Match(3, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
-        match_comp = MatchCompetition(match.idMatch, id_comp)
+        match = Match(3, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), 0, 0, 0, 0)
+        match_comp = MatchCompetition(match, competition)
         db.session.add(match)
         db.session.add(match_comp)
     db.session.commit()
     
 def creer_demis(id_comp):
     dict_classement = get_dict_classement(id_comp)
+    if dict_classement == {}:
+        return
     competition = Competition.query.get(id_comp)  # Fetch the Competition instance
     for i in range(1, 3):
         tireur1 = dict_classement[i]
         tireur2 = dict_classement[5 - i]
-        match = Match(4, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
+        match = Match(4, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), 0, 0, 0, 0)
         match_comp = MatchCompetition(match, competition)
         db.session.add(match)
         db.session.add(match_comp)
@@ -967,7 +973,7 @@ def est_termine_phase_huitieme(id_comp):
     if (matchs_comp == []):
         return False
     for match in matchs_comp:
-        if match.match.idTypeMatch == 2 and match.gagnant == None:
+        if match.match.idTypeMatch == 2 and match.match.gagnant == None:
             return False
     return True
 
@@ -976,7 +982,7 @@ def est_termine_phase_quart(id_comp):
     if (matchs_comp == []):
         return False
     for match in matchs_comp:
-        if match.match.idTypeMatch == 3 and match.gagnant == None:
+        if match.match.idTypeMatch == 3 and match.match.gagnant == None:
             return False
     return True
 
@@ -998,33 +1004,39 @@ def creer_quarts_apres_huitieme(id_comp):
     for i in range(0, 7, 2):
         tireur1 = Tireur.query.filter_by(numeroLicenceE=huitiemes[i].gagnant).first().numeroLicenceE
         tireur2 = Tireur.query.filter_by(numeroLicenceE=huitiemes[i + 1].gagnant).first().numeroLicenceE
-        match = Match(3, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
+        match = Match(3, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), 0, 0, 0, 0)
         db.session.add(match)
     db.session.commit()
     
 def creer_demis_apres_quart(id_comp):
     quarts = []
+    competition = Competition.query.get(id_comp)  # Fetch the Competition instance
     match_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
     for match in match_comp:
         if match.match.idTypeMatch == 3:
             quarts.append(match)
     for i in range(0, 3, 2):
-        tireur1 = Tireur.query.filter_by(numeroLicenceE=quarts[i].gagnant).first().numeroLicenceE
-        tireur2 = Tireur.query.filter_by(numeroLicenceE=quarts[i + 1].gagnant).first().numeroLicenceE
-        match = Match(4, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
+        tireur1 = Tireur.query.filter_by(numeroLicenceE=quarts[i].match.gagnant).first().numeroLicenceE
+        tireur2 = Tireur.query.filter_by(numeroLicenceE=quarts[i + 1].match.gagnant).first().numeroLicenceE
+        match = Match(4, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), 0, 0, 0, 0)
+        match_comp = MatchCompetition(match, competition)
         db.session.add(match)
+        db.session.add(match_comp)
     db.session.commit()
     
 def creer_finale_apres_demi(id_comp):
     demis = []
     match_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    comp = Competition.query.get(id_comp)
     for match in match_comp:
         if match.match.idTypeMatch == 4:
             demis.append(match)
-    tireur1 = Tireur.query.filter_by(numeroLicenceE=demis[0].gagnant).first().numeroLicenceE
-    tireur2 = Tireur.query.filter_by(numeroLicenceE=demis[1].gagnant).first().numeroLicenceE
-    match = Match(5, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
+    tireur1 = Tireur.query.filter_by(numeroLicenceE=demis[0].match.gagnant).first().numeroLicenceE
+    tireur2 = Tireur.query.filter_by(numeroLicenceE=demis[1].match.gagnant).first().numeroLicenceE
+    match = Match(5, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), 0, 0, 0, 0)
+    match_comp = MatchCompetition(match, comp)
     db.session.add(match)
+    db.session.add(match_comp)
     db.session.commit()
 
 def get_matchs_non_poule(id_comp):
@@ -1063,6 +1075,14 @@ def get_demis(id_comp):
         if match.match.idTypeMatch == 4:
             demis.append(match.match)
     return demis
+
+def get_quarts(id_comp):
+    match_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    quarts = []
+    for match in match_comp:
+        if match.match.idTypeMatch == 3:
+            quarts.append(match.match)
+    return quarts
 
 #sql utile débug
 # select idMatch, idPoule, idComp, numeroLicenceE1, numeroLicenceE2 from CONTENIR natural join `MATCH` where idComp = 24;

@@ -81,18 +81,24 @@ def arbitrage(id_comp, id_type_match=1):
         match_info = [{
             'idMatch': match.idMatch,
             'tireur1': {
-                'nom': match.tireur1.nomE,
-                'prenom': match.tireur1.prenomE,
-                'score': match.touchesDonneesTireur1
-            },
+                'nom': match.tireur1.escrimeur.nomE,
+                'prenom': match.tireur1.escrimeur.prenomE,
+                'score': match.touchesDonneesTireur1,
+                'club': match.tireur1.club.nomClub,
+                'touchesDonneesTireur1': match.touchesDonneesTireur1,
+                'touchesRecuesTireur1': match.touchesRecuesTireur2
+                },
             'tireur2': {
-                'nom': match.tireur2.nomE,
-                'prenom': match.tireur2.prenomE,
-                'score': match.touchesDonneesTireur2
+                'nom': match.tireur2.escrimeur.nomE,
+                'prenom': match.tireur2.escrimeur.prenomE,
+                'score': match.touchesDonneesTireur2,
+                'club': match.tireur2.club.nomClub,
+                'touchesDonneesTireur2': match.touchesDonneesTireur2,
+                'touchesRecuesTireur2': match.touchesRecuesTireur1
             }
         } for match in matches]
         phase_name = get_phase_name(id_type_match)
-        return render_template("arbitrage.html", match_info=match_info, phase_name=phase_name, id_type_match=id_type_match)
+        return render_template("arbitrage.html", match_info=match_info, phase_name=phase_name, id_type_match=id_type_match, id_comp=id_comp)
     else:
         liste_absents = []
         numsAbsent = []
@@ -373,7 +379,7 @@ def get_scores_for_competition(id_comp):
             )
         ).count()
         print(victoires, total_matchs)
-        vm_ratio = (victoires / total_matchs) if total_matchs > 0 else "N/A"
+        vm_ratio = (victoires / total_matchs) if tgestionotal_matchs > 0 else "N/A"
         scores.append({
             'Classement': classement.position,
             'Prenom': escrimeur.prenomE,
@@ -984,7 +990,6 @@ def classement_provisioire(id_comp):
                 id_phase_en_cours = 4
                 if est_termine_phase_demi(id_comp):
                     id_phase_en_cours = 5
-    print(id_phase_en_cours)
     poules = Poule.query.filter_by(idComp=id_comp).all()
     nb_participants = get_nb_participants(id_comp)
     print(f'nb_participants: {nb_participants}')
@@ -1012,7 +1017,8 @@ def classement_provisioire(id_comp):
     huitiemes, quarts, demis, finale = get_all_phase(id_comp)
     # Test avec le meme matchs pour toutes les phases
     semi = get_demis(id_comp)
-    print(f'semi: {semi}')
+    quart = get_quarts(id_comp)
+    print(f'quart : {quart}')
     print(f'demi : {demis}')
     return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, huitiemes = huitiemes, type_match = id_phase_en_cours)
 

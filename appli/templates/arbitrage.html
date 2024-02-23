@@ -33,7 +33,6 @@
 
 <main>
     <div class="classement-provisoire-match">
-        <a class="btn__retour" href="{{ url_for('appel', id_comp=id_comp)}}"><i class="fa-solid fa-arrow-left"></i> Retour</a>
         <p> {{ phase_name }}</p>
     </div>
     <div class="table__arbitrage">
@@ -52,9 +51,9 @@
               {% for match in match_info %}
                 <tr>
                     <td></td>
-                    <td>{{ match.tireur1.escrimeur.nomE }}</td>
-                    <td>{{ match.tireur1.escrimeur.prenomE }}</td>
-                    <td>{{ match.tireur1.club.nomClub }}</td>
+                    <td>{{ match.tireur1.nom }}</td>
+                    <td>{{ match.tireur1.prenom }}</td>
+                    <td>{{ match.tireur1.club }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -70,9 +69,9 @@
             <tbody>
               {% for match in match_info %}
               <tr>
-                  <td class="btn__score"><input type="text" value="{{ match.touchesDonneesTireur1 }}" disabled></td>
-                  <td class="btn__arbitrer"><a href="{{ url_for('gestion_scores', id_comp=id_comp, id_match=match.idMatch) }}"><button>Arbitrer</button></a></td>
-                  <td class="btn__score"><input type="text" value="{{ match.touchesDonneesTireur2 }}" disabled></td>
+                <td class="btn__score"><input type="text" value="{{ match.tireur1.touchesDonneesTireur1 }}" disabled></td>
+                <td class="btn__arbitrer"><a href="{{ url_for('gestion_score_match',id_comp = id_comp, id_match=match.idMatch) }}"><button>Arbitrer</button></a></td>
+                <td class="btn__score"><input type="text" value="{{ match.tireur2.touchesDonneesTireur2 }}" disabled></td>
               </tr>
               {% endfor %}
             </tbody>
@@ -88,9 +87,9 @@
             <tbody>
                  {% for match in match_info %}
                 <tr>
-                    <td>{{ match.tireur2.escrimeur.nomE }}</td>
-                    <td>{{ match.tireur2.escrimeur.prenomE }}</td>
-                    <td>{{ match.tireur2.club.nomClub }}</td>
+                    <td>{{ match.tireur2.nom }}</td>
+                    <td>{{ match.tireur2.prenom }}</td>
+                    <td>{{ match.tireur2.club }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
