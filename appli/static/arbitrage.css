@@ -41,6 +41,13 @@ tr td{
     border: none;
     border-radius: 10px;
     background-color: var(--couleur-background-gagnant);
+    text-align: center;   
+    color: black;
+}
+
+.table__arbitrage p{
+    color: black;
+
 }
 
 .btn__retour{

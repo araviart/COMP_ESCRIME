@@ -62,15 +62,19 @@ def inject_user_status():
         return {"user_status": current_user.statutUser}
     return {"user_status": None}
 
-@app.route("/gestions_scores/<int:id_match>/", methods=["GET", "POST"])
-def gestion_scores(id_match):
+@app.route("/gestions_scores/<int:id_comp>/<int:id_match>/", methods=["GET", "POST"])
+def gestion_scores(id_comp, id_match):
     match_actu = get_match_by_id(id_match)
-    return render_template("page-score.html", id_match=id_match, match_actu=match_actu)
+    return render_template("page-score.html", id_comp=id_comp, id_match=id_match, match_actu=match_actu)
 
 @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
 def arbitrage(id_comp, id_type_match=1):
+    liste_absents = []
+    numsAbsent = []
     if request.method == "POST":
         absent = request.form.get('liste_absents', '')
+        numsAbsent = absent.split(',')
+        print("Liste absents: ", numsAbsent)
     if id_type_match == 1:
         poules = {}
         nb_poules = get_nb_poules(id_comp)
@@ -101,20 +105,17 @@ def arbitrage(id_comp, id_type_match=1):
                         'touchesRecuesTireur1': match_found.touchesRecuesTireur1
                     }
             poules[num_poule]['scores'] = scores
-        liste_absents = []
-        numsAbsent = absent.split(',')
-        print("Liste absents: ", numsAbsent)
-        for licence in numsAbsent:
-            int_licence = int(licence)
-            tireur = get_tireur_by_licence(int_licence)
-            liste_absents.append(tireur.to_dict())
-            print(liste_absents)
-            liste_absents_dico = []
-            if liste_absents != []:
-                for dict_tireur in liste_absents:
-                    tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
-                    if tireur is not None:
-                        liste_absents_dico.append(tireur)          
+        if numsAbsent != ['']:
+            for licence in numsAbsent:
+                int_licence = int(licence)
+                tireur = get_tireur_by_licence(int_licence)
+                liste_absents.append(tireur.to_dict())
+                liste_absents_dico = []
+                if liste_absents != []:
+                    for dict_tireur in liste_absents:
+                        tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
+                        if tireur is not None:
+                            liste_absents_dico.append(tireur)          
     return render_template("arbitrage.html", poules=poules, id_comp=id_comp, id_type_match=id_type_match, list_absents=liste_absents)
 
     
