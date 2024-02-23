@@ -1,41 +1,41 @@
 {% extends 'base.html' %} {% block content %}
 <link
-  rel="stylesheet"
-  href="{{ url_for('static', filename = 'progress-bar.css') }}"
+rel="stylesheet"
+href="{{ url_for('static', filename = 'progress-bar.css') }}"
 />
-
+<input type="hidden" id="idTypeMatch" value="{{ id_type_match }}">
 <link
-  rel="stylesheet"
-  href="{{ url_for('static', filename = 'progress-bar.css') }}"
+rel="stylesheet"
+href="{{ url_for('static', filename = 'progress-bar.css') }}"
 />
 <link rel="stylesheet" href="{{ url_for('static', filename = 'arbitrage.css') }}" />
+<script src="{{ url_for('static', filename='js/gestionParticipant.js') }}" defer></script>
 
 <div class="progress-bar">
   <a class="active-url" href="{{ url_for('ajout_comp_page')}}"
-    >Définir une compétition</a
+  >Définir une compétition</a
   >
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
   <a
-    class="active-url"
-    >Gestion participants</a
+  class="active-url"
+  >Gestion participants</a
   >
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    >Créer les poules</a
+  >Créer les poules</a
   >
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    >Gestion score</a
+  >Gestion score</a
   >
   <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
-    >Classement Final</a
+  >Classement Final</a
   >
 </div>
-
 <main>
-    <div class="classement-provisoire-match">
-        <p> {{ phase_name }}</p>
-    </div>
-    <div class="table__arbitrage">
+  <div class="classement-provisoire-match">
+  </div>
+  <div class="table__arbitrage">
+      {{ phase_name }}
     <div class="head__arbitrage">
     </div>
     <div class="content__arbitrage">
@@ -70,7 +70,7 @@
               {% for match in match_info %}
               <tr>
                 <td class="btn__score"><input type="text" value="{{ match.tireur1.touchesDonneesTireur1 }}" disabled></td>
-                <td class="btn__arbitrer"><a href="{{ url_for('gestion_score_match',id_comp = id_comp, id_match=match.idMatch) }}"><button>Arbitrer</button></a></td>
+                <td class="btn__arbitrer"><a href="{{ url_for('gestion_score_match',id_comp = id_comp, id_match=match.idMatch, id_type_match = id_type_match) }}"><button>Arbitrer</button></a></td>
                 <td class="btn__score"><input type="text" value="{{ match.tireur2.touchesDonneesTireur2 }}" disabled></td>
               </tr>
               {% endfor %}
