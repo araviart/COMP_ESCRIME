@@ -62,15 +62,14 @@ def inject_user_status():
         return {"user_status": current_user.statutUser}
     return {"user_status": None}
 
-@app.route("/gestions_scores_match/<int:id_match>/", methods=["GET", "POST"])
-def gestion_scores_match(id_match):
+@app.route("/gestions_scores/<int:id_comp>/<int:id_match>/", methods=["GET", "POST"])
+def gestion_scores(id_comp, id_match):
     match_actu = get_match_by_id(id_match)
-    return render_template("page-score.html", id_match=id_match, match_actu=match_actu)
+    return render_template("page-score.html", id_comp=id_comp, id_match=id_match, match_actu=match_actu)
 
 @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
-def arbitrage(id_comp, id_type_match=2):
-    if request.method == "POST":
-        absent = request.form.get('liste_absents', '')
+
+def arbitrage(id_comp, id_type_match=1):
     if id_type_match != 1:
         matches = Match.query.join(
             MatchCompetition, Match.idMatch == MatchCompetition.idMatch
@@ -94,7 +93,13 @@ def arbitrage(id_comp, id_type_match=2):
         phase_name = get_phase_name(id_type_match)
         return render_template("arbitrage.html", match_info=match_info, phase_name=phase_name, id_type_match=id_type_match)
     else:
-        poules = {}
+        liste_absents = []
+        numsAbsent = []
+        if request.method == "POST":
+          absent = request.form.get('liste_absents', '')
+          numsAbsent = absent.split(',')
+          print("Liste absents: ", numsAbsent)
+          poules = {}
         nb_poules = get_nb_poules(id_comp)
         for i in range(1, nb_poules+1):
             poules[i] = {}
@@ -123,21 +128,19 @@ def arbitrage(id_comp, id_type_match=2):
                         'touchesRecuesTireur1': match_found.touchesRecuesTireur1
                     }
             poules[num_poule]['scores'] = scores
-        liste_absents = []
-        numsAbsent = absent.split(',')
-        print("Liste absents: ", numsAbsent)
-        for licence in numsAbsent:
-            int_licence = int(licence)
-            tireur = get_tireur_by_licence(int_licence)
-            liste_absents.append(tireur.to_dict())
-            print(liste_absents)
-            liste_absents_dico = []
-            if liste_absents != []:
-                for dict_tireur in liste_absents:
-                    tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
-                    if tireur is not None:
-                        liste_absents_dico.append(tireur)          
-        return render_template("arbitrage-poule.html", poules=poules, id_comp=id_comp, id_type_match=id_type_match, list_absents=liste_absents)
+        if numsAbsent != ['']:
+            for licence in numsAbsent:
+                int_licence = int(licence)
+                tireur = get_tireur_by_licence(int_licence)
+                liste_absents.append(tireur.to_dict())
+                liste_absents_dico = []
+                if liste_absents != []:
+                    for dict_tireur in liste_absents:
+                        tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
+                        if tireur is not None:
+                            liste_absents_dico.append(tireur)          
+      return render_template("arbitrage-poule.html", poules=poules, id_comp=id_comp, id_type_match=id_type_match, list_absents=liste_absents)
+
 # @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
 # def arbitrage(id_comp, id_type_match=1):
 #     if request.method == "POST":
@@ -192,8 +195,12 @@ def arbitrage(id_comp, id_type_match=2):
 @app.route("/gestion_score/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
 def gestion_score(id_comp, id_type_match=1): # par défaut renvoie à la phase des poules il faut vérifier ça
     # récuperer les infos des poules dans un dict avec le numéro de poule en clé et la liste des tireurs,le nom de la piste, le nom de l'arbitre en valeur
+    liste_absents = []
+    numsAbsent = []
     if request.method == "POST":
         absent = request.form.get('liste_absents', '')
+        numsAbsent = absent.split(',')
+        print("Liste absents: ", numsAbsent)
     if id_type_match == 1:
         poules = {}
         nb_poules = get_nb_poules(id_comp)
@@ -224,20 +231,19 @@ def gestion_score(id_comp, id_type_match=1): # par défaut renvoie à la phase d
                         'touchesRecuesTireur1': match_found.touchesRecuesTireur1
                     }
             poules[num_poule]['scores'] = scores
-    liste_absents = []
-    numsAbsent = absent.split(',')
-    print("Liste absents: ", numsAbsent)
-    for licence in numsAbsent:
-        int_licence = int(licence)
-        tireur = get_tireur_by_licence(int_licence)
-        liste_absents.append(tireur.to_dict())
-        print(liste_absents)
-        liste_absents_dico = []
-        if liste_absents != []:
-            for dict_tireur in liste_absents:
-                tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
-                if tireur is not None:
-                    liste_absents_dico.append(tireur)
+        if numsAbsent != ['']:
+            for licence in numsAbsent:
+                int_licence = int(licence)
+                tireur = get_tireur_by_licence(int_licence)
+                liste_absents.append(tireur.to_dict())
+                print(liste_absents)
+                liste_absents_dico = []
+                if liste_absents != []:
+                    for dict_tireur in liste_absents:
+                        tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
+                        if tireur is not None:
+                            tireur.append(tireur)
+                            liste_absents_dico.append(tireur)
         return render_template('gestion_score.html', poules=poules, id_comp=id_comp, id_type_match=1, list_absents=liste_absents)
     else:
         print("autre phases")

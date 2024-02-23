@@ -33,7 +33,7 @@
 
 <main>
     <div class="classement-provisoire-match">
-        <a class="btn__retour" href=""><i class="fa-solid fa-arrow-left"></i> Retour</a>
+        <a class="btn__retour" href="{{ url_for('appel', id_comp=id_comp)}}"><i class="fa-solid fa-arrow-left"></i> Retour</a>
         <p> {{ phase_name }}</p>
     </div>
     <div class="table__arbitrage">
@@ -51,10 +51,10 @@
             <tbody>
               {% for match in match_info %}
                 <tr>
+                    <td></td>
                     <td>{{ match.tireur1.escrimeur.nomE }}</td>
                     <td>{{ match.tireur1.escrimeur.prenomE }}</td>
                     <td>{{ match.tireur1.club.nomClub }}</td>
-                    <td>{{ match.touchesDonneesTireur1 }}</td> }}
                 </tr>
                 {% endfor %}
             </tbody>
@@ -70,9 +70,9 @@
             <tbody>
               {% for match in match_info %}
               <tr>
-                  <td class="btn__score"><input type="text"></td>
-                  <td class="btn__arbitrer"><a href="{{ url_for('gestion_scores', id_match=match.idMatch) }}"><button>Arbitrer</button></a></td>
-                  <td class="btn__score"><input type="text"></td>
+                  <td class="btn__score"><input type="text" value="{{ match.touchesDonneesTireur1 }}" disabled></td>
+                  <td class="btn__arbitrer"><a href="{{ url_for('gestion_scores', id_comp=id_comp, id_match=match.idMatch) }}"><button>Arbitrer</button></a></td>
+                  <td class="btn__score"><input type="text" value="{{ match.touchesDonneesTireur2 }}" disabled></td>
               </tr>
               {% endfor %}
             </tbody>
@@ -91,7 +91,6 @@
                     <td>{{ match.tireur2.escrimeur.nomE }}</td>
                     <td>{{ match.tireur2.escrimeur.prenomE }}</td>
                     <td>{{ match.tireur2.club.nomClub }}</td>
-                    <td>{{ match.touchesDonneesTireur2 }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
