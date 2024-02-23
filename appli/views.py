@@ -839,6 +839,16 @@ def classement_provisioire(id_comp):
         creer_finale_apres_demi(id_comp)
     matchs = get_matchs_non_poule(id_comp)
     huitiemes, quarts, demis, finale = get_all_phase(id_comp)
+    # Test avec le meme matchs pour toutes les phases
+    for i in range(8):
+        match = Match.query.filter_by(idMatch=2).first()
+        huitiemes.append(match.to_dict())
+        if i <= 4:
+            quarts.append(match.to_dict())
+        if i <= 2:
+            demis.append(match.to_dict())
+        if i <= 1:
+            finale.append(match.to_dict())
     return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, huitiemes = huitiemes)
 
 @app.route('/update_absents', methods=['POST'])
