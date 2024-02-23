@@ -63,13 +63,14 @@ def inject_user_status():
     return {"user_status": None}
 
 @app.route("/gestions_scores/<int:id_comp>/<int:id_match>/", methods=["GET", "POST"])
-def gestion_scores(id_comp, id_match):
+def gestion_score_match(id_comp, id_match):
     match_actu = get_match_by_id(id_match)
     return render_template("page-score.html", id_comp=id_comp, id_match=id_match, match_actu=match_actu)
 
 @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
 
 def arbitrage(id_comp, id_type_match=1):
+    poules = {}
     if id_type_match != 1:
         matches = Match.query.join(
             MatchCompetition, Match.idMatch == MatchCompetition.idMatch
@@ -139,7 +140,7 @@ def arbitrage(id_comp, id_type_match=1):
                         tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
                         if tireur is not None:
                             liste_absents_dico.append(tireur)          
-      return render_template("arbitrage-poule.html", poules=poules, id_comp=id_comp, id_type_match=id_type_match, list_absents=liste_absents)
+        return render_template("arbitrage-poule.html", poules=poules, id_comp=id_comp, id_type_match=id_type_match, list_absents=liste_absents)
 
 # @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
 # def arbitrage(id_comp, id_type_match=1):
