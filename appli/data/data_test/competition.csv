@@ -17,3 +17,4 @@ idLieu;idSaison;idArme;idCat;nomComp;descComp;dateComp;heureComp;sexeComp;estInd
 1;2;2;2;Compétition Saison 2024 Fleuret M15 F;Description de la compétition;2024-04-18;12:00:00;F;FALSE
 1;2;3;1;Compétition Saison 2024 Sabre M13 F;Description de la compétition;2024-04-19;13:00:00;F;TRUE
 1;2;3;2;Compétition Saison 2024 Sabre M15 F;Description de la compétition;2024-04-20;14:00:00;F;TRUE
+1;2;1;1;Compétition Saison 2024 Épée M13 M;Description de la compétition;2024-04-15;09:00:00;H;TRUE

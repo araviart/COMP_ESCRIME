@@ -75,7 +75,7 @@ def loaddb(dirname):
                     print(fonctions_csv[nom_fichier](chemin_fichier, db))
                 # else:
                 #     a= 1
-                    print(f"Aucune fonction définie pour le fichier {nom_fichier}.")
+                    print(f"Aucune fonction définie pour le fichier {nom_fichier}")
 
 @app.cli.command ()
 @click.argument("username")
