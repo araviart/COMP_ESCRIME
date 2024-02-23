@@ -68,15 +68,38 @@ def gestion_scores(id_comp, id_match):
     return render_template("page-score.html", id_comp=id_comp, id_match=id_match, match_actu=match_actu)
 
 @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
+
 def arbitrage(id_comp, id_type_match=1):
-    liste_absents = []
-    numsAbsent = []
-    if request.method == "POST":
-        absent = request.form.get('liste_absents', '')
-        numsAbsent = absent.split(',')
-        print("Liste absents: ", numsAbsent)
-    if id_type_match == 1:
-        poules = {}
+    if id_type_match != 1:
+        matches = Match.query.join(
+            MatchCompetition, Match.idMatch == MatchCompetition.idMatch
+        ).filter(
+            MatchCompetition.idComp == id_comp,
+            Match.idTypeMatch == id_type_match
+        ).all()
+        match_info = [{
+            'idMatch': match.idMatch,
+            'tireur1': {
+                'nom': match.tireur1.nomE,
+                'prenom': match.tireur1.prenomE,
+                'score': match.touchesDonneesTireur1
+            },
+            'tireur2': {
+                'nom': match.tireur2.nomE,
+                'prenom': match.tireur2.prenomE,
+                'score': match.touchesDonneesTireur2
+            }
+        } for match in matches]
+        phase_name = get_phase_name(id_type_match)
+        return render_template("arbitrage.html", match_info=match_info, phase_name=phase_name, id_type_match=id_type_match)
+    else:
+        liste_absents = []
+        numsAbsent = []
+        if request.method == "POST":
+          absent = request.form.get('liste_absents', '')
+          numsAbsent = absent.split(',')
+          print("Liste absents: ", numsAbsent)
+          poules = {}
         nb_poules = get_nb_poules(id_comp)
         for i in range(1, nb_poules+1):
             poules[i] = {}
@@ -116,10 +139,60 @@ def arbitrage(id_comp, id_type_match=1):
                         tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
                         if tireur is not None:
                             liste_absents_dico.append(tireur)          
-    return render_template("arbitrage.html", poules=poules, id_comp=id_comp, id_type_match=id_type_match, list_absents=liste_absents)
+      return render_template("arbitrage-poule.html", poules=poules, id_comp=id_comp, id_type_match=id_type_match, list_absents=liste_absents)
+
+# @app.route("/arbitrage/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
+# def arbitrage(id_comp, id_type_match=1):
+#     if request.method == "POST":
+#         absent = request.form.get('liste_absents', '')
+#     if id_type_match == 1:
+#         poules = {}
+#         nb_poules = get_nb_poules(id_comp)
+#         for i in range(1, nb_poules+1):
+#             poules[i] = {}
+#             tireurs_club = {} # dict avec le tireur en clé et le nom du club en valeur
+#             for tireur in get_liste_tireurs_escrimeurs_poule(id_comp, i):
+#                 tireurs_club[tireur] = get_club_tireur_escrimeur(tireur).nomClub
+#             poules[i]['tireurs'] = tireurs_club
+#             poules[i]['piste'] = get_piste_poule(id_comp, i)
+#             poules[i]["id_arbitre"] = get_id_arbitre_poule(id_comp, i)
+#             poules[i]["stats"] = get_poule_stats(i)
+#             poules[i]["matchs"] = get_matchs_poules(i, id_comp)
+#             poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
+#         for num_poule in range(1, nb_poules + 1):
+#             matches = get_matchs_poules(num_poule, id_comp)
+#             scores = {}
+#             print("avant")
+#             for match in matches:
+#                 match_found = get_match(match.numeroLicenceE1, match.numeroLicenceE2, num_poule, id_comp)
+#                 if match_found:
+#                     scores[(match_found.numeroLicenceE1, match_found.numeroLicenceE2)] = {
+#                         'touchesDonneesTireur1': match_found.touchesDonneesTireur1,                    
+#                         'touchesRecuesTireur2': match_found.touchesRecuesTireur2
+#                     }
+#                     scores[(match_found.numeroLicenceE2, match_found.numeroLicenceE1)] = {
+#                         'touchesDonneesTireur2': match_found.touchesDonneesTireur2,
+#                         'touchesRecuesTireur1': match_found.touchesRecuesTireur1
+#                     }
+#             poules[num_poule]['scores'] = scores
+#         liste_absents = []
+#         numsAbsent = absent.split(',')
+#         print("Liste absents: ", numsAbsent)
+#         for licence in numsAbsent:
+#             int_licence = int(licence)
+#             tireur = get_tireur_by_licence(int_licence)
+#             liste_absents.append(tireur.to_dict())
+#             print(liste_absents)
+#             liste_absents_dico = []
+#             if liste_absents != []:
+#                 for dict_tireur in liste_absents:
+#                     tireur = Tireur.query.get(dict_tireur['numeroLicenceE'])
+#                     if tireur is not None:
+#                         liste_absents_dico.append(tireur)          
+#     return render_template("arbitrage.html", poules=poules, id_comp=id_comp, id_type_match=id_type_match, list_absents=liste_absents)
 
     
-@app.route("/gestion_score/<int:id_comp>/<int:id_type_match>/")
+@app.route("/gestion_score/<int:id_comp>/<int:id_type_match>/", methods=["GET", "POST"])
 def gestion_score(id_comp, id_type_match=1): # par défaut renvoie à la phase des poules il faut vérifier ça
     # récuperer les infos des poules dans un dict avec le numéro de poule en clé et la liste des tireurs,le nom de la piste, le nom de l'arbitre en valeur
     liste_absents = []
@@ -139,7 +212,7 @@ def gestion_score(id_comp, id_type_match=1): # par défaut renvoie à la phase d
             poules[i]['tireurs'] = tireurs_club
             poules[i]['piste'] = get_piste_poule(id_comp, i)
             poules[i]["id_arbitre"] = get_id_arbitre_poule(id_comp, i)
-            # poules[i]["stats"] = get_poule_stats(i)
+            poules[i]["stats"] = get_poule_stats(i)
             poules[i]["matchs"] = get_matchs_poules(i, id_comp)
             poules[i]['arbitre'] = get_arbitre_escrimeur_poule(id_comp, i).nomE + " " + get_arbitre_escrimeur_poule(id_comp, i).prenomE
         for num_poule in range(1, nb_poules + 1):
@@ -199,6 +272,8 @@ def update_scores():
         print("Avant: ", match1.touchesRecuesTireur1, match1.touchesDonneesTireur1, match1.touchesRecuesTireur2, match1.touchesDonneesTireur2)
         match1.touchesDonneesTireur1 = score
         match1.touchesRecuesTireur2 = score
+        if score == 5:
+            match1.gagnant = license;
         db.session.commit()
         print("Après: ", match1.touchesRecuesTireur1, match1.touchesDonneesTireur1, match1.touchesRecuesTireur2, match1.touchesDonneesTireur2)
         print("Match mis à jour")
@@ -208,6 +283,9 @@ def update_scores():
         print("Avant: ", match2.touchesRecuesTireur1, match2.touchesDonneesTireur1, match2.touchesRecuesTireur2, match2.touchesDonneesTireur2)
         match2.touchesDonneesTireur2 = score
         match2.touchesRecuesTireur1 = score
+        if score == 5:
+            match2.gagnant = license
+            
         db.session.commit()
         print("Après: ", match2.touchesRecuesTireur1, match2.touchesDonneesTireur1, match2.touchesRecuesTireur2, match2.touchesDonneesTireur2)
         print("Match mis à jour")
@@ -250,6 +328,18 @@ def update_score_match():
     else:
         return jsonify({'success': False, 'message': 'Match non trouvé.'}), 404
 
+@app.route('/arbre/<int:id_comp>',  methods=['GET', 'POST'])
+def classement_provisioire(id_comp):
+    #
+    #else :
+    competition = Competition.query.get_or_404(id_comp)
+    poules = Poule.query.filter_by(idComp=id_comp).all()
+    nb_participants = get_nb_participants(id_comp)
+    huitiemes = []
+    quarts = []
+    demis = []
+    finale = []
+    return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, huitiemes = huitiemes)
 
 @app.route("/afficher-score-poule/<int:id_comp>/")
 def afficher_score_poule(id_comp):
@@ -885,29 +975,6 @@ def actu_stat_comp(id_comp):
         return redirect(url_for('gestion_score', id_comp=id_comp))
     else:
         return "les problèmes"
-
-@app.route('/arbre/<int:id_comp>')
-def classement_provisioire(id_comp):
-    #
-    #else :
-    competition = Competition.query.get_or_404(id_comp)
-    poules = Poule.query.filter_by(idComp=id_comp).all()
-    quarts = []
-    demis = []
-    finale = []
-    troisieme =[]
-    for poule in poules:
-        matchs = Match.query.filter_by(idPoule=poule.idPoule).all()
-        for match in matchs:
-            if match.idTypeMatch == 2 :
-                quarts.append(match.to_dict())
-            elif match.idTypeMatch == 3 :
-                demis.append(match.to_dict())
-            elif match.idTypeMatch == 4 :
-                finale.append(match.to_dict())
-            elif match.idTypeMatch == 5 :
-                troisieme.append(match.to_dict())
-    return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, troisieme = troisieme)
 
 @app.route('/update_absents', methods=['POST'])
 def update_absents():
