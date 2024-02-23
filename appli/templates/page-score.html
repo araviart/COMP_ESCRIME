@@ -3,6 +3,8 @@
   rel="stylesheet"
   href="{{ url_for('static', filename = 'progress-bar.css') }}"
 />
+<script src="{{ url_for('static', filename='js/score_btn_gestion.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/chrono.js') }}"></script>
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename = 'progress-bar.css') }}"
@@ -32,7 +34,7 @@
 
 <main>
   <div class="classement-provisoire-match">
-    <a class="btn__retour" href=""><i class="fa-solid fa-arrow-left"></i> Retour</a>
+    <a class="btn__retour" href="{{ url_for('arbitrage', id_comp=id_comp, id_type_match=1) }}"><i class="fa-solid fa-arrow-left"></i> Retour</a>
   </div>
 
 
@@ -49,85 +51,33 @@
       <div class="escrimeur1">
         <div class="nom__score">
           <div class="nom__escrimeur1">
-            <h2>Nom escrimeur 1</h2>
-            <h3>Club de l'escrimeur1</h3>
+            <h2>{{ match_actu.tireur1.escrimeur.prenomE }} {{ match_actu.tireur1.escrimeur.nomE }}</h2>
+            <h3>{{ match_actu.tireur1.club.nomClub }}</h3>
           </div>
-          <div class="score__escrimeur1">0</div>
+          <div class="score__escrimeur1">{{ match_actu.touchesDonneesTireur1 }}</div>
         </div>
         <div class="btn__ajt__suppr">
-          <button class="btn__ajt">+</button>
-          <button class="btn__suppr">-</button>
+          <button class="btn__ajt1" data-match-id = "{{ match_actu.idMatch }}">+</button>
+          <button class="btn__suppr1"  data-match-id = "{{ match_actu.idMatch }}">-</button>
         </div>
       </div>
       <div class="escrimeur2">
         <div class="nom__score">
           <div class="nom__escrimeur1">
-            <h2>Nom escrimeur 2</h2>
-            <h3>Club de l'escrimeur2</h3>
+            <h2>{{ match_actu.tireur2.escrimeur.prenomE }} {{ match_actu.tireur2.escrimeur.nomE }} </h2>
+            <h3> {{ match_actu.tireur2.club.nomClub }} </h3>
           </div>
-          <div class="score__escrimeur1">0</div>
+          <div class="score__escrimeur2">{{ match_actu.touchesDonneesTireur2 }}</div>
         </div>
         <div class="btn__ajt__suppr btn__ajt__suppr2">
-          <button class="btn__ajt">+</button>
-          <button class="btn__suppr">-</button>
+          <button class="btn__ajt2"  data-match-id = "{{ match_actu.idMatch }}">+</button>
+          <button class="btn__suppr2" data-match-id = "{{ match_actu.idMatch }}">-</button>
         </div>
       </div>
     </div>
     <div class="valider__scores">
-      <button class="btn__valider">Valider</button>
+      <a class="btn__valider" href="{{ url_for('arbitrage', id_comp=id_comp, id_type_match=1) }}">Valider</a>
     </div>
   </div>
 </main>
 {% endblock %}
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const timeDisplay = document.querySelector('.time');
-    const startButton = document.querySelector('.btn__start');
-    const resetButton = document.querySelector('.btn__reset');
-
-    let timer;
-    let timeLeft = 3 * 60; // Initial time in seconds (3 minutes)
-
-    function updateDisplay() {
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      timeDisplay.textContent = `${minutes} : ${seconds < 10 ? '0' : ''}${seconds}`;
-    }
-
-    function startTimer() {
-      timer = setInterval(() => {
-        if (timeLeft > 0) {
-          timeLeft--;
-          updateDisplay();
-        } else {
-          clearInterval(timer);
-          alert("Le minuteur est terminé !");
-          resetButton.disabled = false; 
-        }
-      }, 1000);
-    }
-
-    startButton.addEventListener('click', function() {
-      if (startButton.textContent === 'Start') {
-        startTimer();
-        startButton.textContent = 'Stop';
-        resetButton.disabled = true; 
-      } else if (startButton.textContent === 'Stop') {
-        clearInterval(timer);
-        startButton.textContent = 'Start';
-        resetButton.disabled = false; 
-      }
-    });
-
-    resetButton.addEventListener('click', function() {
-      timeLeft = 3 * 60;
-      updateDisplay();
-      clearInterval(timer);
-      startButton.textContent = 'Start';
-      resetButton.disabled = false; 
-    });
-
-    updateDisplay();
-  });
-</script>

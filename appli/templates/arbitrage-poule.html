@@ -3,7 +3,7 @@
   rel="stylesheet"
   href="{{ url_for('static', filename = 'progress-bar.css') }}"
 />
-
+<script src="{{ url_for('static', filename='js/gestionParticipant.js') }}"></script>
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename = 'progress-bar.css') }}"
@@ -33,10 +33,14 @@
 
 <main>
     <div class="classement-provisoire-match">
-        <a class="btn__retour" href="{{ url_for('appel', id_comp=id_comp)}}"><i class="fa-solid fa-arrow-left"></i> Retour</a>
-        <p> {{ phase_name }}</p>
+      <a class="btn__retour" href="{{ url_for('appel', id_comp=id_comp)}}"><i class="fa-solid fa-arrow-left"></i> Retour</a>
     </div>
     <div class="table__arbitrage">
+    {% for i in range(1, poules|length +1) %}
+    <p>
+        Poule n°{{ i }} - “heure_poule” - {{ poules[i]['piste'].nomPiste }} -
+        Arbitre : {{ poules[i]['arbitre'] }}
+      </p>      
     <div class="head__arbitrage">
     </div>
     <div class="content__arbitrage">
@@ -49,10 +53,9 @@
                 </tr>
             </thead>
             <tbody>
-              {% for match in match_info %}
+                {% for match in poules[i]["matchs"] %}
                 <tr>
-                    <td></td>
-                    <td>{{ match.tireur1.escrimeur.nomE }}</td>
+                    <td>{{  match.tireur1.escrimeur.nomE }}</td>
                     <td>{{ match.tireur1.escrimeur.prenomE }}</td>
                     <td>{{ match.tireur1.club.nomClub }}</td>
                 </tr>
@@ -68,10 +71,10 @@
                 </tr>
             </thead>
             <tbody>
-              {% for match in match_info %}
+              {% for match in poules[i]["matchs"] %}
               <tr>
-                  <td class="btn__score"><input type="text" value="{{ match.touchesDonneesTireur1 }}" disabled></td>
-                  <td class="btn__arbitrer"><a href="{{ url_for('gestion_scores', id_comp=id_comp, id_match=match.idMatch) }}"><button>Arbitrer</button></a></td>
+                <td class="btn__score"><input type="text" value="{{ match.touchesDonneesTireur1 }}" disabled></td>
+                  <td class="btn__arbitrer"><a href="{{ url_for('gestion_score_match',id_comp = id_comp, id_match=match.idMatch) }}"><button>Arbitrer</button></a></td>
                   <td class="btn__score"><input type="text" value="{{ match.touchesDonneesTireur2 }}" disabled></td>
               </tr>
               {% endfor %}
@@ -86,7 +89,7 @@
                 </tr>
             </thead>
             <tbody>
-                 {% for match in match_info %}
+                 {% for match in poules[i]["matchs"] %}
                 <tr>
                     <td>{{ match.tireur2.escrimeur.nomE }}</td>
                     <td>{{ match.tireur2.escrimeur.prenomE }}</td>
@@ -96,9 +99,10 @@
             </tbody>
         </table>
     </div>
+    {% endfor %}
     <div class="btn__conclure">
-      <a href="{{ url_for('classement_provisioire', id_comp=id_comp )}}"><button>Conclure</button></a>
-  </div>
+        <a href="{{ url_for('classement_provisioire', id_comp=id_comp )}}"><button>Conclure</button></a>
+    </div>
   </div>
 
 </main>

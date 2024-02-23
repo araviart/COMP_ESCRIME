@@ -108,7 +108,6 @@
               {% set opponent_tireur =opponent_tireur[0] %} 
               {% set tireur_license =opponent_tireur.numeroLicenceE %} 
               {% set match_score = poules[i]['scores'].get((tireur.numeroLicenceE,opponent_tireur.numeroLicenceE), None) %} 
-              {{ match_score }}
               {% if loop.index0 > jind %}
               <td class="td-textfield-matrice">
                 <input
@@ -117,7 +116,6 @@
                   name="name"
                   min="0"
                   max="5"
-                  value="{{ match_score.touchesDonneesTireur1 if match_score else '' }}"
                   data-license="{{ tireur_license }}"
                   data-licence-opponent="{{ tireur.numeroLicenceE }}"
                   data-id-competition="{{ id_comp }}"
@@ -127,7 +125,6 @@
                 />
               </td>
               {% else %}
-              {{ match_score.touchesDonneesTireur1}}
               <td class="td-textfield-matrice">
                 <input
                   class="textfield-score score-gris textfield-score-ok row-{{ row_index }} col-{{ col_index }}"
@@ -135,7 +132,6 @@
                   name="name"
                   min="0"
                   max="5"
-                  value="{{ match_score.touchesDonneesTireur2 if match_score else '' }}"
                   data-license="{{ tireur_license }}"
                   data-licence-opponent="{{ tireur.numeroLicenceE }}"
                   data-id-competition="{{ id_comp }}"
@@ -174,10 +170,11 @@
       {% endfor %}
     </form>
   </div>
-
-  <div class="div-btn-conclure">
-    <button type="submit">Conclure</button>
-  </div>
+  <form id="conclureForm" method="POST" action="{{ url_for('classement_provisioire', id_comp=id_comp, id_type_match=1) }}">
+    <div class="div-btn-conclure">
+      <button type="submit">Conclure</button>
+    </div>
+  </form>  
 </main>
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/score_textfield.js') }}"></script>

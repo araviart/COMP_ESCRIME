@@ -346,7 +346,8 @@ class MatchCompetition(db.Model):
     def __init__(self, match, competition):
         self.match = match
         self.competition = competition
-
+        
+        
 class User(db.Model, UserMixin):
     __tablename__ = 'USER'
     idUser = db.Column(db.Integer, primary_key=True)
@@ -756,6 +757,9 @@ def get_poule_stats(poule_id):
         }
     return poule_stats
 
+def get_match_by_id(id):
+    return Match.query.filter_by(idMatch=id).first()
+
 def get_matchs_poules(poule_id, id_comp):
     return db.session.query(Match).join(
         Contenir, 
@@ -804,6 +808,15 @@ def get_match(tireur1, tireur2, id_poule, id_comp):
         )
     ).first()
     return match
+
+def get_phase_name(id_type_match):
+    phase_names = {
+        2: "Huitièmes de finale",
+        3: "Quarts de finale",
+        4: "Demi-finale",
+        5: "Finale"
+    }
+    return phase_names.get(id_type_match, "Autre phase")
 
 def get_match_phase_elim(id_comp, id_type_match):
     return Match.query.filter_by(idComp=id_comp, idTypeMatch=id_type_match).all()
