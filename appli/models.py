@@ -335,6 +335,18 @@ class Contenir(db.Model):
         self.idPoule = poule
         self.idMatch = match
         self.idComp = idComp
+    
+class MatchCompetition(db.Model):
+    __tablename__ = 'MATCH_COMPETITION'
+    idMatch = db.Column(db.Integer, db.ForeignKey('MATCH.idMatch'), primary_key=True)
+    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
+    
+    match = db.relationship('Match', backref='match_competition')
+    competition = db.relationship('Competition', backref='match_competition')
+    
+    def __init__(self, match, competition):
+        self.match = match
+        self.competition = competition
 
 class MatchCompetition(db.Model):
     __tablename__ = 'MATCH_COMPETITION'
@@ -767,20 +779,21 @@ def get_matchs_poules(poule_id, id_comp):
 
 
 def est_terminer_match(idMatch):
-    match_poule = Match.query.filter_by(idMatch=idMatch).first()
-    return match_poule.touchesDonneesTireur1 >= match_poule.type_match.nbnbTouches or match_poule.touchesDonneesTireur2 >= match_poule.type_match.nbnbTouches
+    match = Match.query.filter_by(idMatch=idMatch).first()
+    if match.gagnant is not None:
+        return True
     
-def est_terminer_poule(idPoule):
-    match_poules = Match.query.filter_by(idPoule=idPoule).all()
-    for match_poule in match_poules:
-        if not est_terminer_match(match_poule.idMatch):
+def est_terminer_poule(idPoule, id_comp):
+    matchs = get_matchs_poules(idPoule, id_comp)
+    for match in matchs:
+        if not est_terminer_match(match.idMatch):
             return False
     return True
 
 def est_terminer_phase_poule(idComp):
     poules = Poule.query.filter_by(idComp=idComp).all()
     for poule in poules:
-        if not est_terminer_poule(poule.idPoule):
+        if not est_terminer_poule(poule.idPoule, idComp):
             return False
     return True
 
@@ -815,6 +828,215 @@ def get_phase_name(id_type_match):
 
 def get_match_phase_elim(id_comp, id_type_match):
     return Match.query.filter_by(idComp=id_comp, idTypeMatch=id_type_match).all()
+
+def get_nb_victoires(numeroLicenceE, idComp):
+    return Match.query.filter_by(idComp=idComp, idTypeMatch=1, gagnant=numeroLicenceE).count()
+
+def get_ratio_donner_recu(numeroLicence, idComp):
+    matches = Match.query.filter_by(idComp=idComp, idTypeMatch=1).all()
+    total_touches_recues = 0
+    total_touches_donnees = 0
+    for match in matches:
+        if match.numeroLicenceE1 == numeroLicence:
+            total_touches_recues += match.touchesRecuesTireur1
+            total_touches_donnees += match.touchesDonneesTireur1
+        elif match.numeroLicenceE2 == numeroLicence:
+            total_touches_recues += match.touchesRecuesTireur2
+            total_touches_donnees += match.touchesDonneesTireur2
+    return total_touches_donnees - total_touches_recues
+
+def etablir_classement_poule(id_comp):
+    poules = Poule.query.filter_by(idComp=id_comp).all()
+    classement = []
+    
+    for poule in poules:
+        participants = get_liste_participants_competitions(poule.idComp)
+        poule_stats = get_poule_stats(poule.idPoule)
+        
+        for participant in participants:
+            num_licence = participant.ParticipantsCompetition.numeroLicenceE
+            victoires = poule_stats.get(num_licence, 0)
+            ratio_donner_recu = get_ratio_donner_recu(num_licence, poule.idComp)
+            tireur = get_tireur_by_licence(num_licence)
+            
+            classement.append({
+                'num_licence': num_licence,
+                'victoires': victoires,
+                'ratio_donner_recu': ratio_donner_recu
+            })
+    
+    classement.sort(key=lambda x: (x['victoires'], x['ratio_donner_recu']), reverse=True)
+
+    for index, participant in enumerate(classement):
+        num_licence = participant['num_licence']
+        position = index + 1
+        objet_classement = Classement(id_comp, num_licence, position)   
+        db.session.add(objet_classement)
+
+    db.session.commit()
+    return classement
+
+def classement_suffisant(id_comp):
+    nb_rows = Classement.query.filter_by(idComp=id_comp).count()
+    return nb_rows < 16
+
+def get_dict_classement(id_comp):
+    classement = Classement.query.filter_by(idComp=id_comp).all()
+    dict_classement = {}
+    for participant in classement:
+        dict_classement[participant.position] = participant.numeroLicenceE
+    return dict_classement
+
+def creer_huitiemes(id_comp):
+    dict_classement = get_dict_classement(id_comp)
+    if dict_classement == {}:
+        return
+    for i in range(1, 9):
+        tireur1 = dict_classement[i]
+        tireur2 = dict_classement[17 - i]
+        match = Match(2, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
+        match_comp = MatchCompetition(match.idMatch, id_comp)
+        db.session.add(match)
+        db.session.add(match_comp)
+    db.session.commit()
+    
+def creer_quarts(id_comp):
+    dict_classement = get_dict_classement(id_comp)
+    for i in range(1, 5):
+        tireur1 = dict_classement[i]
+        tireur2 = dict_classement[9 - i]
+        match = Match(3, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
+        match_comp = MatchCompetition(match.idMatch, id_comp)
+        db.session.add(match)
+        db.session.add(match_comp)
+    db.session.commit()
+    
+def creer_demis(id_comp):
+    dict_classement = get_dict_classement(id_comp)
+    for i in range(1, 3):
+        tireur1 = dict_classement[i]
+        tireur2 = dict_classement[5 - i]
+        match = Match(4, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
+        match_comp = MatchCompetition(match.idMatch, id_comp)
+        db.session.add(match)
+        db.session.add(match_comp)
+    db.session.commit()
+
+def get_nb_participants(id_comp):
+    return Classement.query.filter_by(idComp=id_comp).count()
+
+def est_cree_huitieme(id_comp):
+    matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for matchs in matchs_comp:
+        if matchs.match.idTypeMatch == 2:
+            return True
+    return False
+
+def est_cree_quart(id_comp):
+    matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for matchs in matchs_comp:
+        if matchs.match.idTypeMatch == 3:
+            return True
+    return False
+
+def est_cree_demi(id_comp):
+    matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for matchs in matchs_comp:
+        if matchs.match.idTypeMatch == 4:
+            return True
+    return False
+
+def est_cree_finale(id_comp):
+    matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for matchs in matchs_comp:
+        if matchs.match.idTypeMatch == 5:
+            return True
+    return False
+
+def est_termine_phase_huitieme(id_comp):
+    matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for match in matchs_comp:
+        if match.match.idTypeMatch == 2 and match.gagnant is None:
+            return False
+    return True
+
+def est_termine_phase_quart(id_comp):
+    matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for match in matchs_comp:
+        if match.match.idTypeMatch == 3 and match.gagnant is None:
+            return False
+    return True
+
+def est_termine_phase_demi(id_comp):
+    matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for match in matchs_comp:
+        if match.match.idTypeMatch == 4 and match.gagnant is None:
+            return False
+    return True
+
+def creer_quarts_apres_huitieme(id_comp):
+    huitiemes = []
+    match_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for match in match_comp:
+        if match.match.idTypeMatch == 2:
+            huitiemes.append(match)
+    for i in range(0, 7, 2):
+        tireur1 = Tireur.query.filter_by(numeroLicenceE=huitiemes[i].gagnant).first().numeroLicenceE
+        tireur2 = Tireur.query.filter_by(numeroLicenceE=huitiemes[i + 1].gagnant).first().numeroLicenceE
+        match = Match(3, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
+        db.session.add(match)
+    db.session.commit()
+    
+def creer_demis_apres_quart(id_comp):
+    quarts = []
+    match_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for match in match_comp:
+        if match.match.idTypeMatch == 3:
+            quarts.append(match)
+    for i in range(0, 3, 2):
+        tireur1 = Tireur.query.filter_by(numeroLicenceE=quarts[i].gagnant).first().numeroLicenceE
+        tireur2 = Tireur.query.filter_by(numeroLicenceE=quarts[i + 1].gagnant).first().numeroLicenceE
+        match = Match(4, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
+        db.session.add(match)
+    db.session.commit()
+    
+def creer_finale_apres_demi(id_comp):
+    demis = []
+    match_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for match in match_comp:
+        if match.match.idTypeMatch == 4:
+            demis.append(match)
+    tireur1 = Tireur.query.filter_by(numeroLicenceE=demis[0].gagnant).first().numeroLicenceE
+    tireur2 = Tireur.query.filter_by(numeroLicenceE=demis[1].gagnant).first().numeroLicenceE
+    match = Match(5, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
+    db.session.add(match)
+    db.session.commit()
+
+def get_matchs_non_poule(id_comp):
+    matchs = []
+    matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    for match in matchs_comp:
+        if match.match.idTypeMatch != 1:
+            matchs.append(match)
+
+def get_all_phase(id_comp):
+    huitieme = []
+    quarts = []
+    demis = []
+    finale = []
+    matchs = get_matchs_non_poule(id_comp)
+    if matchs is None:
+        return huitieme, quarts, demis, finale
+    for match in matchs:
+        if match.idTypeMatch == 2:
+            huitieme.append(match.to_dict())
+        elif match.idTypeMatch == 3:
+            quarts.append(match.to_dict())
+        elif match.idTypeMatch == 4:
+            demis.append(match.to_dict())
+        elif match.idTypeMatch == 5:
+            finale.append(match.to_dict())
+    return huitieme, quarts, demis, finale
 
 #sql utile débug
 # select idMatch, idPoule, idComp, numeroLicenceE1, numeroLicenceE2 from CONTENIR natural join `MATCH` where idComp = 24;

@@ -928,22 +928,30 @@ def classement_provisioire(id_comp):
     #else :
     competition = Competition.query.get_or_404(id_comp)
     poules = Poule.query.filter_by(idComp=id_comp).all()
+    nb_participants = get_nb_participants(id_comp)
+    huitiemes = []
     quarts = []
     demis = []
     finale = []
-    troisieme =[]
-    for poule in poules:
-        matchs = Match.query.filter_by(idPoule=poule.idPoule).all()
-        for match in matchs:
-            if match.idTypeMatch == 2 :
-                quarts.append(match.to_dict())
-            elif match.idTypeMatch == 3 :
-                demis.append(match.to_dict())
-            elif match.idTypeMatch == 4 :
-                finale.append(match.to_dict())
-            elif match.idTypeMatch == 5 :
-                troisieme.append(match.to_dict())
-    return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, troisieme = troisieme)
+    if est_terminer_phase_poule(id_comp) and not est_cree_huitieme(id_comp) and not est_cree_quart(id_comp) and not est_cree_demi(id_comp):
+        etablir_classement_poule(id_comp)
+        if classement_suffisant(id_comp):
+            creer_huitiemes(id_comp)
+        elif nb_participants > 8 and not classement_suffisant(id_comp):
+            creer_quarts(id_comp)
+        elif nb_participants > 4 and not classement_suffisant(id_comp):
+            creer_demis(id_comp)
+        elif nb_participants > 2 :
+            return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, huitiemes = huitiemes)
+    elif est_terminer_phase_poule(id_comp) and est_cree_huitieme(id_comp) and est_termine_phase_huitieme(id_comp) and not est_cree_quart(id_comp) and not est_cree_demi(id_comp):
+        creer_quarts_apres_huitieme(id_comp)
+    elif est_terminer_phase_poule(id_comp) and est_cree_quart(id_comp) and est_termine_phase_quart(id_comp) and not est_cree_demi(id_comp):
+        creer_demis_apres_quart(id_comp)
+    elif est_terminer_phase_poule(id_comp) and est_cree_demi(id_comp) and est_termine_phase_demi(id_comp) and not est_cree_finale(id_comp):
+        creer_finale_apres_demi(id_comp)
+    matchs = get_matchs_non_poule(id_comp)
+    huitiemes, quarts, demis, finale = get_all_phase(id_comp)
+    return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, huitiemes = huitiemes)
 
 @app.route('/update_absents', methods=['POST'])
 def update_absents():
