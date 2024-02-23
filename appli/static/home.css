@@ -282,6 +282,21 @@ input[type="text"], #nom_club {
 }
 
 .deja-inscrit_comp {
+  background-color: green;
+}
+
+.desinscription {
   background-color: red;
 }
 
+.popup-desinscription {
+  display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}

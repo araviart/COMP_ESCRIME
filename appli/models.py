@@ -755,3 +755,11 @@ def get_all_categories():
 
 def get_nom_club_by_id(idClub):
     return Club.query.filter_by(idClub=idClub).first().nomClub
+
+def supprimer_participant(numeroLicenceE, idComp):
+    participant = ParticipantsCompetition.query.filter_by(numeroLicenceE=numeroLicenceE, idComp=idComp).first()
+    if participant is not None:
+        db.session.delete(participant)
+        db.session.commit()
+    else:
+        print(f"No participant found with numeroLicenceE={numeroLicenceE} and idComp={idComp}")

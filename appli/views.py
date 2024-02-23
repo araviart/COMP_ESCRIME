@@ -365,6 +365,7 @@ def home_def(items):
         erreur_categorie=erreur_categorie,
         erreur_sexe=erreur_sexe,
     )
+
     
 @app.route('/home/')
 def home_default():

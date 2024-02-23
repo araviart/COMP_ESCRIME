@@ -100,7 +100,9 @@
                     <form action="{{ url_for('home_def', items=items) }}" method="post">
                       {% if session["escrimeur_inscrit"] and
                         competition.idComp in escrimeur_inscrit["liste_competitions"] %}
-                        <button class="deja-inscrit_comp" data-idComp="{{ competition.idComp }}" disabled>Déjà inscrit</button>
+                        <div id="boutons-inscrit">
+                          <button class="deja-inscrit_comp" data-idComp="{{ competition.idComp }}" disabled>Déjà inscrit</button>
+                        </div>
                       {% else %}
                         <button class="inscription-comp" data-idComp="{{ competition.idComp }}">S'inscrire</button>
                       {% endif %}
@@ -177,6 +179,7 @@
       {% endif %}
   </form>
 </div>
+
 <script>
   let btnsInscriptionComp = document.querySelectorAll(".inscription-comp");
   btnsInscriptionComp.forEach(btn => {
@@ -219,7 +222,7 @@ radioArbitres.forEach((radioArbitre, index) => {
     });
 });
 
-let idComp; // Définir idComp en dehors de l'événement click
+let idComp;
 
 document.querySelectorAll('.inscription-comp').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -243,8 +246,9 @@ document.querySelector('#filtreForm').addEventListener('submit', () => {
 });
 
 let idCompInputs = document.querySelectorAll('input[name="id_comp"]');
-idCompInput.value = idComp;
-
+idCompInputs.forEach(input => {
+  input.value = idComp;
+});
 
 </script>
   {% endblock %}
