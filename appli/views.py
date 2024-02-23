@@ -104,8 +104,8 @@ def update_scores():
 
     print("license: ", license , "opponent_license: ", opponent_license, "score: ", score, "id_poule: ", id_poule, "id_piste: ", id_piste, "id_comp: ", id_comp, "id_arbitre: ", id_arbitre)
 
-    match1 = MatchPoule.query.filter_by(numeroLicenceE1=license, numeroLicenceE2=opponent_license).first()
-    match2 = MatchPoule.query.filter_by(numeroLicenceE1=opponent_license, numeroLicenceE2=license).first()
+    match1 = Match.query.filter_by(numeroLicenceE1=license, numeroLicenceE2=opponent_license).first()
+    match2 = Match.query.filter_by(numeroLicenceE1=opponent_license, numeroLicenceE2=license).first()
 
     # si score est pas un nombre, on ne fait rien
     try:
@@ -134,7 +134,7 @@ def update_scores():
     else:
         # créer le match
         print("Création du match")
-        match = MatchPoule(type_match=1, poule=id_poule, piste=id_piste, arbitre=id_arbitre,
+        match = Match(type_match=1, poule=id_poule, piste=id_piste, arbitre=id_arbitre,
                             tireur1=license, tireur2=opponent_license,
                             date_match=datetime.date.today(), heure_match=datetime.datetime.now().time().strftime("%H:%M:%S"),
                             touches_recues_tireur1=0, touches_donnees_tireur1=score,
@@ -152,35 +152,35 @@ def afficher_score_poule(id_comp):
     return render_template('Affichage-score.html', data=scores, competition=competition)
 
 def get_scores_for_competition(id_comp):
-    classements = db.session.query(ClassementFinal, Escrimeur, Club).join(
-        Tireur, ClassementFinal.numeroLicenceE == Tireur.numeroLicenceE
+    classements = db.session.query(Classement, Escrimeur, Club).join(
+        Tireur, Classement.numeroLicenceE == Tireur.numeroLicenceE
     ).join(
         Escrimeur, Tireur.numeroLicenceE == Escrimeur.numeroLicenceE
     ).join(
         Club, Tireur.idClub == Club.idClub
     ).filter(
-        ClassementFinal.idComp == id_comp
+        Classement.idComp == id_comp
     ).order_by(
-        ClassementFinal.position
+        Classement.position
     ).all()
     
     scores = []
     for classement, escrimeur, club in classements:
         poules = Poule.query.filter_by(idComp=id_comp).subquery()
 
-        victoires = db.session.query(MatchPoule).join(poules, MatchPoule.idPoule == poules.c.idPoule).filter(
+        victoires = db.session.query(Match).join(poules, Match.idPoule == poules.c.idPoule).filter(
             db.or_(
-                db.and_(MatchPoule.numeroLicenceE1 == escrimeur.numeroLicenceE,
-                        MatchPoule.touchesDonneesTireur1 > MatchPoule.touchesRecuesTireur1),
-                db.and_(MatchPoule.numeroLicenceE2 == escrimeur.numeroLicenceE,
-                        MatchPoule.touchesDonneesTireur2 > MatchPoule.touchesRecuesTireur2)
+                db.and_(Match.numeroLicenceE1 == escrimeur.numeroLicenceE,
+                        Match.touchesDonneesTireur1 > Match.touchesRecuesTireur1),
+                db.and_(Match.numeroLicenceE2 == escrimeur.numeroLicenceE,
+                        Match.touchesDonneesTireur2 > Match.touchesRecuesTireur2)
             )
         ).count()
         
-        total_matchs = db.session.query(MatchPoule).join(poules, MatchPoule.idPoule == poules.c.idPoule).filter(
+        total_matchs = db.session.query(Match).join(poules, Match.idPoule == poules.c.idPoule).filter(
             db.or_(
-                MatchPoule.numeroLicenceE1 == escrimeur.numeroLicenceE,
-                MatchPoule.numeroLicenceE2 == escrimeur.numeroLicenceE
+                Match.numeroLicenceE1 == escrimeur.numeroLicenceE,
+                Match.numeroLicenceE2 == escrimeur.numeroLicenceE
             )
         ).count()
         print(victoires, total_matchs)
@@ -620,7 +620,7 @@ def appel(id_comp):
                     for k in range(j+1, len(poule)):
                         numero_licence_e1 = poule[j]
                         numero_licence_e2 = poule[k]
-                        ajouter_match_poule(id_type_match, id_poule, id_piste, id_arbitre, numero_licence_e1, numero_licence_e2, date_match_str, heure_match, 0, 0, 0, 0)       
+                        ajouter_match(id_type_match, id_piste, id_arbitre, numero_licence_e1, numero_licence_e2, date_match_str, heure_match, 0, 0, 0, 0)       
             redirect(url_for('appel', id_comp=id_comp))
             competition = Competition.query.get(id_comp) 
             return render_template('appel.html', competition = competition, rows_data=rows_data, participants_present=participants_present)
@@ -856,7 +856,7 @@ def classement_provisioire(id_comp):
     finale = []
     troisieme =[]
     for poule in poules:
-        matchs = MatchPoule.query.filter_by(idPoule=poule.idPoule).all()
+        matchs = Match.query.filter_by(idPoule=poule.idPoule).all()
         for match in matchs:
             if match.idTypeMatch == 2 :
                 quarts.append(match.to_dict())
