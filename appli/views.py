@@ -319,28 +319,20 @@ def update_score_match():
         if tireur_number == 1:
             match.touchesDonneesTireur1 = score
             match.touchesRecuesTireur2 = score
+            if score == 5:
+                match.gagnant = match.numeroLicenceE1;
+
         elif tireur_number == 2:
             match.touchesDonneesTireur2 = score
             match.touchesRecuesTireur1 = score
+            if score == 5:
+                match.gagnant = match.numeroLicenceE2;
         
         db.session.commit()
         
         return jsonify({'success': True, 'message': 'Score mis à jour.'})
     else:
         return jsonify({'success': False, 'message': 'Match non trouvé.'}), 404
-
-@app.route('/arbre/<int:id_comp>',  methods=['GET', 'POST'])
-def classement_provisioire(id_comp):
-    #
-    #else :
-    competition = Competition.query.get_or_404(id_comp)
-    poules = Poule.query.filter_by(idComp=id_comp).all()
-    nb_participants = get_nb_participants(id_comp)
-    huitiemes = []
-    quarts = []
-    demis = []
-    finale = []
-    return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, huitiemes = huitiemes)
 
 @app.route("/afficher-score-poule/<int:id_comp>/")
 def afficher_score_poule(id_comp):
@@ -995,17 +987,18 @@ def classement_provisioire(id_comp):
     print(id_phase_en_cours)
     poules = Poule.query.filter_by(idComp=id_comp).all()
     nb_participants = get_nb_participants(id_comp)
+    print(f'nb_participants: {nb_participants}')
     huitiemes = []
     quarts = []
     demis = []
     finale = []
     if est_terminer_phase_poule(id_comp) and not est_cree_huitieme(id_comp) and not est_cree_quart(id_comp) and not est_cree_demi(id_comp):
         etablir_classement_poule(id_comp)
-        if classement_suffisant(id_comp):
+        if nb_participants > 16:
             creer_huitiemes(id_comp)
-        elif nb_participants > 8 and not classement_suffisant(id_comp):
+        elif nb_participants > 8:
             creer_quarts(id_comp)
-        elif nb_participants > 4 and not classement_suffisant(id_comp):
+        elif nb_participants > 4:
             creer_demis(id_comp)
         elif nb_participants > 2 :
             return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, huitiemes = huitiemes)
@@ -1018,15 +1011,9 @@ def classement_provisioire(id_comp):
     matchs = get_matchs_non_poule(id_comp)
     huitiemes, quarts, demis, finale = get_all_phase(id_comp)
     # Test avec le meme matchs pour toutes les phases
-    for i in range(8):
-        match = Match.query.filter_by(idMatch=2).first()
-        huitiemes.append(match.to_dict())
-        if i <= 4:
-            quarts.append(match.to_dict())
-        if i <= 2:
-            demis.append(match.to_dict())
-        if i <= 1:
-            finale.append(match.to_dict())
+    semi = get_demis(id_comp)
+    print(f'semi: {semi}')
+    print(f'demi : {demis}')
     return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, huitiemes = huitiemes, type_match = id_phase_en_cours)
 
 @app.route('/update_absents', methods=['POST'])

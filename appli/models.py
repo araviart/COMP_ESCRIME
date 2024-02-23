@@ -681,6 +681,7 @@ def get_participants(id_comp, club=None):
 def get_liste_participants_competitions(id_comp):
     participants = ParticipantsCompetition.query.filter_by(idComp=id_comp).all()
     for part in participants:
+        print(f"Numero licence : {part.numeroLicenceE}")
         arbitre = Arbitre.query.filter_by(numeroLicenceE=part.numeroLicenceE).first()
         if arbitre:
             participants.remove(part)
@@ -825,7 +826,11 @@ def get_nb_victoires(numeroLicenceE, idComp):
     return Match.query.filter_by(idComp=idComp, idTypeMatch=1, gagnant=numeroLicenceE).count()
 
 def get_ratio_donner_recu(numeroLicence, idComp):
-    matches = Match.query.filter_by(idComp=idComp, idTypeMatch=1).all()
+    match_comp = MatchCompetition.query.filter_by(idComp=idComp).all()
+    matches = []
+    for matchs in match_comp:
+        if matchs.match.idTypeMatch == 1:
+            matches.append(matchs.match)
     total_touches_recues = 0
     total_touches_donnees = 0
     for match in matches:
@@ -837,35 +842,46 @@ def get_ratio_donner_recu(numeroLicence, idComp):
             total_touches_donnees += match.touchesDonneesTireur2
     return total_touches_donnees - total_touches_recues
 
+def get_liste_participants_poule(id_comp, id_poule):
+    participants = []
+    participants_poule = ParticipantsPoule.query.filter_by(idComp=id_comp, idPoule=id_poule).all()
+    for participant in participants_poule:
+        tireur = get_tireur_by_licence(participant.numeroLicenceE)
+        participants.append(tireur)
+    return participants
+
 def etablir_classement_poule(id_comp):
     poules = Poule.query.filter_by(idComp=id_comp).all()
     classement = []
     
     for poule in poules:
-        participants = get_liste_participants_competitions(poule.idComp)
+        participants = get_liste_participants_poule(id_comp, poule.idPoule)
         poule_stats = get_poule_stats(poule.idPoule)
         
         for participant in participants:
-            num_licence = participant.ParticipantsCompetition.numeroLicenceE
+            num_licence = participant.numeroLicenceE
             victoires = poule_stats.get(num_licence, 0)
             ratio_donner_recu = get_ratio_donner_recu(num_licence, poule.idComp)
             tireur = get_tireur_by_licence(num_licence)
-            
+            try:
+                victoires = victoires['V']
+            except:
+                victoires = 0
             classement.append({
                 'num_licence': num_licence,
                 'victoires': victoires,
                 'ratio_donner_recu': ratio_donner_recu
             })
-    
     classement.sort(key=lambda x: (x['victoires'], x['ratio_donner_recu']), reverse=True)
-
-    for index, participant in enumerate(classement):
-        num_licence = participant['num_licence']
-        position = index + 1
-        objet_classement = Classement(id_comp, num_licence, position)   
-        db.session.add(objet_classement)
-
-    db.session.commit()
+    classementExist = Classement.query.filter_by(idComp=id_comp).all()
+    if not classementExist:
+        for index, participant in enumerate(classement):
+            print(f"index : {index}, participant : {participant}")
+            num_licence = participant['num_licence']
+            position = index + 1
+            objet_classement = Classement(id_comp, num_licence, position)   
+            db.session.add(objet_classement)
+        db.session.commit()
     return classement
 
 def classement_suffisant(id_comp):
@@ -905,11 +921,12 @@ def creer_quarts(id_comp):
     
 def creer_demis(id_comp):
     dict_classement = get_dict_classement(id_comp)
+    competition = Competition.query.get(id_comp)  # Fetch the Competition instance
     for i in range(1, 3):
         tireur1 = dict_classement[i]
         tireur2 = dict_classement[5 - i]
         match = Match(4, 1, 1, tireur1, tireur2, datetime.date.today(), datetime.datetime.now(), None, None, None, None)
-        match_comp = MatchCompetition(match.idMatch, id_comp)
+        match_comp = MatchCompetition(match, competition)
         db.session.add(match)
         db.session.add(match_comp)
     db.session.commit()
@@ -968,7 +985,7 @@ def est_termine_phase_demi(id_comp):
     if (matchs_comp == []):
         return False
     for match in matchs_comp:
-        if match.match.idTypeMatch == 4 and match.gagnant == None:
+        if match.match.idTypeMatch == 4 and match.match.gagnant == None:
             return False
     return True
 
@@ -1015,7 +1032,8 @@ def get_matchs_non_poule(id_comp):
     matchs_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
     for match in matchs_comp:
         if match.match.idTypeMatch != 1:
-            matchs.append(match)
+            matchs.append(match.match)
+    return matchs
 
 def get_all_phase(id_comp):
     huitieme = []
@@ -1023,9 +1041,11 @@ def get_all_phase(id_comp):
     demis = []
     finale = []
     matchs = get_matchs_non_poule(id_comp)
+    print(f'matchs : {matchs}')
     if matchs is None:
         return huitieme, quarts, demis, finale
     for match in matchs:
+        print(f'match : {match.to_dict()}')
         if match.idTypeMatch == 2:
             huitieme.append(match.to_dict())
         elif match.idTypeMatch == 3:
@@ -1035,6 +1055,14 @@ def get_all_phase(id_comp):
         elif match.idTypeMatch == 5:
             finale.append(match.to_dict())
     return huitieme, quarts, demis, finale
+
+def get_demis(id_comp):
+    match_comp = MatchCompetition.query.filter_by(idComp=id_comp).all()
+    demis = []
+    for match in match_comp:
+        if match.match.idTypeMatch == 4:
+            demis.append(match.match)
+    return demis
 
 #sql utile débug
 # select idMatch, idPoule, idComp, numeroLicenceE1, numeroLicenceE2 from CONTENIR natural join `MATCH` where idComp = 24;
