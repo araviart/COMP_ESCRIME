@@ -14,31 +14,18 @@
     visibility: hidden;
     display: flex;
     flex-direction: column;
-    z-index: 3; /* pour l'overlay */
+    align-items: center;
+    z-index: 3;
 }
-
-.content-popup {
-    margin-top: 1em;
-    display: flex;
-    justify-content: center;
-}
-
 .open-popup {
     visibility: visible;
     top: 50%;
     transform: translate(-50%, -50%) scale(1);
 }
 
-ul li{
-    font-size: 18px;
-}
+.popup .content-popup div {
+    margin: 20px 0;
 
-
-.uladdadh{
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 
 .btn {
@@ -57,17 +44,20 @@ ul li{
 }
 
 .popup h1 {
-    color: white;
+    color: black;
     font-family: Poppins;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    padding: 10px;
     text-align: left;
 }
 
-
+#popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #boutons {
     display: flex;
@@ -76,8 +66,8 @@ ul li{
 
 #boutons button {
     color: white;
-    width: 6em;
-    height: 3em;
+    width: 6rem;
+    height: 3rem;
     flex-shrink: 0;
     border-radius: 8px;
     border: none;
@@ -94,7 +84,6 @@ ul li{
 #input-liste-adherent {
     width: 12em;
     border-radius: 8px;
-    background: #F5F5F5;
     border-style: none;
 }
 
@@ -140,4 +129,7 @@ select {
     white-space: nowrap;
 }
 
-
+#sexe select {
+    width: 10rem;
+    height: 3rem;
+}
