@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Ajoutez un écouteur d'événement à chaque champ de texte
   textfields.forEach(function (textfield) {
-    textfield.addEventListener('change', function () {
+    textfield.addEventListener('input', function () {
       // Récupérez les données nécessaires pour la requête AJAX
       var license = textfield.getAttribute('data-license');
       var opponentLicense = textfield.getAttribute('data-licence-opponent');

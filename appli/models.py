@@ -347,20 +347,8 @@ class MatchCompetition(db.Model):
     def __init__(self, match, competition):
         self.match = match
         self.competition = competition
-
-class MatchCompetition(db.Model):
-    __tablename__ = 'MATCH_COMPETITION'
-    idMatch = db.Column(db.Integer, db.ForeignKey('MATCH.idMatch'), primary_key=True)
-    idComp = db.Column(db.Integer, db.ForeignKey('COMPETITION.idComp'), primary_key=True)
-    
-    match = db.relationship('Match', backref='match_competition')
-    competition = db.relationship('Competition', backref='match_competition')
-    
-    def __init__(self, match, competition):
-        self.match = match
-        self.competition = competition
-
-
+        
+        
 class User(db.Model, UserMixin):
     __tablename__ = 'USER'
     idUser = db.Column(db.Integer, primary_key=True)
