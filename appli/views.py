@@ -383,7 +383,7 @@ def liste_adherents(items):
     else:
         page = request.args.get('page', 1, type=int)
     adherents = get_adherents()
-    categories = get_categories()
+    categories = get_all_categories()
     role = request.form.get('statut', session.get('statuta', ''))
     categorie = request.form.get('categorie', session.get('categoriea', ''))
     sexe = request.form.get('sexe', session.get('sexea', ''))
@@ -507,16 +507,22 @@ def ajouter_un_escrimeur():
         numero_licence = request.form['numero_licence_e']
         numero_licence = int(numero_licence)
         print(numero_licence)
-
-        sexe = 'Homme'
+        sexe = request.form['sexe_e']
         print(sexe)
-        num_tel = '0648572513'
+        if sexe == "Femme":
+            sexe = "Dames"
+        print(sexe)
+        num_tel = request.form['numTelE'].replace(" ", "")
         num_tel = int(num_tel)
         print(num_tel)
-        default_cat = 1
+        categorie = request.form['categorie_e'].strip()
+        print(categorie)
+        liste_noms_categories = [categorie.nomCategorie for categorie in get_all_categories()]
+        print(f"toutes les catégiories : {liste_noms_categories}")
+        ind_categorie = liste_noms_categories.index(categorie)
         
-        # creez un nouvel enregistrement d'adherent
-        nouvel_adherent = Escrimeur(numero_licence_e=numero_licence, categorie=default_cat, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, sexe_e=sexe, num_tel_e=num_tel)
+        # creez un nouvel enregistrement d'adherent 
+        nouvel_adherent = Escrimeur(numero_licence_e=numero_licence, categorie=ind_categorie, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, sexe_e=sexe, num_tel_e=num_tel)
         db.session.add(nouvel_adherent)
         db.session.commit()
         print("escrimeur ajouté")
