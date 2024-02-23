@@ -9,59 +9,52 @@
     <button type="button" class="ajoutadh" onclick="showPopup()">AJOUTER UN ADHÉRENT</button> 
   </h2>
   <div class="popup">
-    <form action="{{ url_for('ajouter_escrimeur') }}" method="POST">
+    <form action="{{ url_for('ajouter_un_escrimeur') }}" method="POST">
       <div class="container">
           <div class="popup" id="popup">
              <h1>AJOUT ADHERENT</h1> 
-                 <div class="content-popup">  
-                  <ul class = "uladdadh">
-                      <li>
-                          <div id="nom">
-                              <label id="label-liste-adherent" for="nom">Nom :</label>
-                              <input type="text" id="iinput-liste-adherent nom" name="nom_e" required placeholder="Nom"><br>
-                          </div>
-                      </li>
-                      <li>
-                              <div id="prenom">
-                              <label id="label-liste-adherent" for="prenom">Prénom :</label>
-                              <input type="text" id="input-liste-adherent prenom" name="prenom_e" required placeholder="Prénom"><br>
-                          </div>
-                      </li>
-                      <li>
-                          <div id="datenaissance">
-                              <label id="label-liste-adherent" for="date_naissance">Date de naissance :</label>
-                              <input type="date" id="input-liste-adherent date_naissance" name="date_naissance_e" required><br>
-                          </div>
-                      </li>
-                      <li>
-                          <div id="numlicence"> 
-                              <label id="label-liste-adherent" for="numero_licence">Numéro de licence :</label>
-                              <input type="text" id="input-liste-adherent numero_licence" name="numero_licence_e" required placeholder="Numéro de licence"><br>
-                          </div>
-                      </li>
-                      <li>
-                          <div id="sexe">
-                              <label id="label-liste-adherent" for="categorieSexe">Sexe :</label>
-                              <select id="categorieSexe" name="sexeE">
-                                  <option value="M">Homme</option>
-                                  <option value="F">Femme</option>
-                              </select>
-                          </div>
-                      </li>
-    
-                      <li>
-                          <div id ="telephone">
-                              <label id="label-liste-adherent" for="numTelE">Numéro de Téléphone :</label>
-                              <input type="text" id="input-liste-adherent numTelE" name="numTelE" placeholder="+33"><br>
-                          </div>
-                      </li>
-                      <li>
-                          <div id="boutons">
-                            <button type="button" onclick="closePopup()">Annuler</button>
-                              <button type="submit">Ajouter</button>
-                          </div>
-                      </li>
-                  </ul>
+                <div class="content-popup">  
+                  <div id="nom">
+                    <label class="label-liste-adherent" for="nom">Nom</label>
+                    <input type="text" class="input-liste-adherent nom" name="nom_e" required placeholder="Nom">
+                  </div>
+                  <div id="prenom">
+                    <label class="label-liste-adherent" for="prenom">Prénom</label>
+                    <input type="text" class="input-liste-adherent prenom" name="prenom_e" required placeholder="Prénom">
+                  </div>
+                  <div id="datenaissance">
+                    <label class="label-liste-adherent" for="date_naissance">Date de naissance</label>
+                    <input type="date" class="input-liste-adherent date_naissance" name="date_naissance_e" required>
+                  </div>
+                  <div id="numlicence"> 
+                    <label class="label-liste-adherent" for="numero_licence">Numéro de licence</label>
+                    <input type="text" class="input-liste-adherent numero_licence" name="numero_licence_e" required placeholder="Numéro de licence" value="{{ dernier_id }}">
+                  </div>
+                  <div id="sexe">
+                    <label class="label-liste-adherent" for="categorieSexe">Sexe</label>
+                    <select id="categorieSexe" name="sexe_e">
+                      <option value="M">Homme</option>
+                      <option value="F">Femme</option>
+                    </select>
+                  </div>
+                  <div id ="telephone">
+                    <label class="label-liste-adherent" for="numTelE">Numéro de Téléphone</label>
+                    <input type="text" class="input-liste-adherent numTelE" name="numTelE" placeholder="+33" required>
+                  </div>
+                  <div id="categorie">
+                    <label class="label-liste-adherent" for="categorie">Catégorie</label>
+                    <select id="select-cat" name="categorie_e" id="categorie_id">
+                      {% for cat in les_categories %}
+                          <option value="{{ cat.nomCategorie }}">
+                              {{ cat.nomCategorie }}
+                          </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div id="boutons">
+                    <button type="button" onclick="closePopup()">Annuler</button>
+                    <button type="submit">Ajouter</button>
+                  </div>
               </div>
           </div>
       </div>
@@ -106,16 +99,6 @@
                 </select>
             </form>
         </div>
-        <div class="Statut">
-            <form method="POST" action="{{ url_for('liste_adherents', items=items) }}" id="statutForm">
-                <label id="label-liste-adherent" for="categorieStatut">Statut:</label>
-                <select id="categorieStatut" name="statut" onchange="document.getElementById('statutForm').submit();">
-                    <option value="">Non définie</option>
-                    <option value="Tireur" {% if "Tireur" == selec_statut %}selected{% endif %}>Tireur</option>
-                    <option value="Arbitre" {% if "Arbitre" == selec_statut %}selected{% endif %}>Arbitre</option>
-                </select>
-            </form>
-        </div>
         </div>
       </section>
       <div class="competition-container">
@@ -152,7 +135,7 @@
               <td>{{ adherent.dateNaissanceE }}</td>
               <td>{{ adherent.nomCategorie }}</td>
               <td>{{ adherent.numeroLicenceE }}</td>
-              <td>{{ adherent.sexeE }}</td>
+              <td>{{ "Femme" if adherent.sexeE == "F" else "Homme" }}</td>
               <td><a href="#" class="consulter">Consulter</a></td>
             </tr>
             <div class = "ligne"></div>

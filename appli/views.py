@@ -460,8 +460,11 @@ def home_default():
     return home_def(5)
 
 @app.route('/home/<int:items>', methods=("GET","POST",))
-def home_def(items, opt= None):
+def home_def(items):
+    categories = get_categories()
     total_pages = 0
+    erreur_categorie = None
+    erreur_sexe = None
     if request.method == "POST":
         page = int(request.form.get('page', 1))
         if 'next' in request.form:
@@ -473,6 +476,64 @@ def home_def(items, opt= None):
         session['arme'] = request.form.get('arme')
         session['sexe'] = request.form.get('sexe')
         session['statut'] = request.form.get('statut')
+        print("---------------------------------------")
+        id_comp = request.form.get("id_comp")
+        print(f"id comp : {id_comp}")
+        categorie_comp = request.form.get("categorie_comp").strip() if request.form.get("categorie_comp") else None
+        print(f"categorie : {categorie_comp}")
+        sexe_comp = request.form.get("sexe_comp")
+        if sexe_comp == "H":
+            sexe_comp = "Homme"
+        else:
+            sexe_comp = "Dames"
+        print(f"sexe : {sexe_comp}")
+        escrimeur_inscrit = session.get("escrimeur_inscrit")
+        print(f"escrimeur inscrit : {escrimeur_inscrit}")
+        categorie_escrimeur = escrimeur_inscrit["categorie"].strip() if escrimeur_inscrit else None
+        print(f"categorie escrimeur : {categorie_escrimeur}")
+        ind_categorie_escrimeur = categories.index(categorie_escrimeur) if categorie_escrimeur else None
+        print(f"ind categorie escrimeur : {ind_categorie_escrimeur}")
+        ind_categorie_comp = categories.index(categorie_comp) if categorie_comp else None
+        print(f"ind categorie comp : {ind_categorie_comp}")
+        radio_selectionnee = request.form.get("role")
+        print(f"role : {radio_selectionnee}")
+        numero_licence = escrimeur_inscrit["numero_licence"] if escrimeur_inscrit else None
+        print(f"numero licence : {numero_licence}")
+        match radio_selectionnee:
+            case "tireur":
+                club = request.form.get("nom_club")
+                print(f"club : {club}")
+                classement = request.form.get("classement")
+                print(f"classement : {classement}")
+                if abs(ind_categorie_escrimeur - ind_categorie_comp) <= 2 and ind_categorie_escrimeur <= ind_categorie_comp:
+                    erreur_categorie = False
+                else:
+                    erreur_categorie = True
+                if escrimeur_inscrit["sexe"] == sexe_comp:
+                    erreur_sexe = False
+                else:
+                    erreur_sexe = True
+                print(erreur_sexe, erreur_categorie)
+                if not erreur_categorie and not erreur_sexe:
+                    if not session["tireur"]:
+                        ajouter_tireur(numero_licence, club, classement)
+                        session['tireur'] = {
+                            "numero_licence": numero_licence,
+                            "club": get_nom_club_by_id(club),
+                            "classement": classement
+                        }
+                    print(ajouter_tireur(numero_licence, club, classement))
+                    ajouter_participant(numero_licence, id_comp)
+                    print(ajouter_participant(numero_licence, id_comp))
+                    escrimeur_inscrit["liste_competitions"].append(int(id_comp))
+                    print(escrimeur_inscrit["liste_competitions"])
+                else:
+                    print("On ne peut pas ajouter à la compétition")
+            case "arbitre":
+                ajouter_arbitre(numero_licence)
+                session["arbitre"] = numero_licence
+                print(ajouter_arbitre(numero_licence))
+                escrimeur_inscrit["liste_competitions"].append(int(id_comp))
     else:
         page = request.args.get('page', 1, type=int)
         session['categorie'] = request.args.get('categorie', session.get('categorie'))
@@ -480,16 +541,19 @@ def home_def(items, opt= None):
         session['sexe'] = request.args.get('sexe', session.get('sexe'))
         session['statut'] = request.args.get('statut', session.get('statut'))
     competitions = get_sample()
-    categories = get_categories()
     armes = get_armes()
     nb_participants = {comp.idComp: get_nb_participants(comp.idComp) for comp in competitions}
     # filtre pour les compet
     compet_filtre = filtrer_competitions(competitions, session.get('categorie'), session.get('arme'), session.get('sexe'), session.get('statut'))
-    if len(compet_filtre) !=0:
+    compet_filtre_a_venir = filtrer_competitions(competitions, session.get('categorie'), session.get('arme'), session.get('sexe'), 'A venir')
+    if len(compet_filtre) != 0:
         total_pages = math.ceil(len(compet_filtre) / items)
         competitions = compet_filtre[(page - 1) * items:page * items]
     else:
         competitions = []
+    liste_club = get_all_club()
+    inscription_possible = False
+        
     return render_template(
         "competition.html",
         title="Compétitions ESCRIME",
@@ -504,12 +568,22 @@ def home_def(items, opt= None):
         selec_statut=session.get('statut'),
         page=page,
         compet_filtre = compet_filtre,
-        total_pages=total_pages
+        total_pages=total_pages,
+        compet_filtre_a_venir=compet_filtre_a_venir,
+        liste_club=liste_club,
+        erreur_categorie=erreur_categorie,
+        erreur_sexe=erreur_sexe,
     )
+
+    
+@app.route('/home/')
+def home_default():
+    return home_def(5)
     
 @app.route('/liste-adherent/<int:items>', methods=["GET", "POST"])
 def liste_adherents(items):
     total_pages = 0
+    dernier_id = dernier_escrimeur_id() + 1
     if request.method == "POST":
         page = int(request.form.get('page', 1))
         if 'next' in request.form:
@@ -520,9 +594,11 @@ def liste_adherents(items):
         page = request.args.get('page', 1, type=int)
     adherents = get_adherents()
     categories = get_categories()
+    les_categories = get_all_categories()
     role = request.form.get('statut', session.get('statuta', ''))
     categorie = request.form.get('categorie', session.get('categoriea', ''))
     sexe = request.form.get('sexe', session.get('sexea', ''))
+    print(sexe)
     
     adherents = filtrer_adherent(adherents, categorie, sexe)
     if request.method == "POST":
@@ -544,13 +620,16 @@ def liste_adherents(items):
         "liste-adherents.html",
         title="Compétitions ESCRIME",
         categories=categories,
+        les_categories=les_categories,
         selec_categorie=categorie,
         selec_sexe=sexe,
         selec_statut=role,
         adherents=adherents,
         items=items,
         page=page,
-        total_pages=total_pages)
+        total_pages=total_pages,
+        dernier_id=dernier_id)
+
 
     
 @app.route('/annuler_comp', methods=['POST'])
@@ -626,7 +705,7 @@ def verify_code(name):
     return render_template("edit-user.html", name=name, form=EditUserForm(), show_verification_popup=True)
 
 @app.route('/ajouter_escrimeur/', methods=['GET', 'POST'])
-def ajouter_escrimeur():
+def ajouter_un_escrimeur():
     if request.method == 'POST':
         id = dernier_escrimeur_id() + 1
         print(id)
@@ -641,16 +720,22 @@ def ajouter_escrimeur():
         numero_licence = request.form['numero_licence_e']
         numero_licence = int(numero_licence)
         print(numero_licence)
-
-        sexe = 'Homme'
+        sexe = request.form['sexe_e']
         print(sexe)
-        num_tel = '0648572513'
+        if sexe == "Femme":
+            sexe = "Dames"
+        print(sexe)
+        num_tel = request.form['numTelE'].replace(" ", "")
         num_tel = int(num_tel)
         print(num_tel)
-        default_cat = 1
+        categorie = request.form['categorie_e'].strip()
+        print(categorie)
+        liste_noms_categories = [categorie.nomCategorie for categorie in get_all_categories()]
+        print(f"toutes les catégiories : {liste_noms_categories}")
+        ind_categorie = liste_noms_categories.index(categorie) + 1
         
-        # creez un nouvel enregistrement d'adherent
-        nouvel_adherent = Escrimeur(numero_licence_e=numero_licence, categorie=default_cat, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, sexe_e=sexe, num_tel_e=num_tel)
+        # creez un nouvel enregistrement d'adherent 
+        nouvel_adherent = Escrimeur(numero_licence_e=numero_licence, categorie=ind_categorie, prenom_e=prenom, nom_e=nom, date_naissance_e=date_naissance, sexe_e=sexe, num_tel_e=num_tel)
         db.session.add(nouvel_adherent)
         db.session.commit()
         print("escrimeur ajouté")
@@ -1037,3 +1122,74 @@ def update_absents():
     participants_absents = request.json['participants_absents']
     session['participants_absents'] = participants_absents
     return jsonify(success=True)
+    troisieme =[]
+    for poule in poules:
+        matchs = Match.query.filter_by(idPoule=poule.idPoule).all()
+        for match in matchs:
+            if match.idTypeMatch == 2 :
+                quarts.append(match.to_dict())
+            elif match.idTypeMatch == 3 :
+                demis.append(match.to_dict())
+            elif match.idTypeMatch == 4 :
+                finale.append(match.to_dict())
+            elif match.idTypeMatch == 5 :
+                troisieme.append(match.to_dict())
+    return render_template('arbre.html', competition=competition, quarts=quarts, demis=demis, finale=finale, troisieme = troisieme)
+
+@app.route("/inscription_escrimeur/", methods=["GET", "POST"])
+def inscription_escrimeur():
+    print("---------------------")
+    liste_categories = get_all_categories()
+    if request.method == "POST":
+        categorie = request.form.get("categorie")
+        print(f"categorie : {categorie}")
+        nom = request.form.get("nom")
+        print(f"nom : {nom}")
+        prenom = request.form.get("prenom")
+        print(f"prenom : {prenom}")
+        sexe = request.form.get("sexes")
+        if sexe == "Femme":
+            sexe = "Dames"
+        print(f"sexe : {sexe}")
+        numero_licence = request.form.get("numero_licence")
+        print(f"numero : {numero_licence}")
+        date_naissance = request.form.get("date_naissance")
+        print(f"date : {date_naissance}")
+        telephone = request.form.get("telephone")
+        telephone_sans_espace = telephone.replace(" ", "")
+        telephone_int = int(telephone_sans_espace)
+        print(f"tel : {telephone}")
+        ajouter_escrimeur(categorie, prenom, nom, date_naissance, numero_licence, sexe, telephone_int)
+        print(ajouter_escrimeur(categorie, prenom, nom, date_naissance, numero_licence, sexe, telephone_int))
+        session["escrimeur_inscrit"] = {
+            "categorie": categorie,
+            "nom": nom,
+            "prenom": prenom,
+            "date_naissance": date_naissance,
+            "numero_licence": numero_licence,
+            "sexe": sexe,
+            "telephone": telephone_int,
+            "liste_competitions": []
+        }
+        if session.get("tireur"):
+            session["tireur"] = None
+        if session.get("arbitre"):
+            session["arbitre"] = None
+        print(f"escrimeur inscrit : {session['escrimeur_inscrit']}")
+        return redirect(url_for('home_def', items=5))
+    return render_template('inscription_escrimeur.html', liste_categories=liste_categories)
+
+@app.context_processor
+def inject_escrimeur_inscrit():
+    escrimeur_inscrit = session.get('escrimeur_inscrit', None)
+    return dict(escrimeur_inscrit=escrimeur_inscrit)
+
+@app.context_processor
+def inject_tireur():
+    tireur = session.get('tireur', None)
+    return dict(tireur=tireur)
+
+@app.context_processor
+def inject_arbitre():
+    arbitre = session.get('arbitre', None)
+    return dict(arbitre=arbitre)

@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+#content {
+    max-width: 800px;
+    padding: 1rem;
+    margin: 0 auto;
+    background-color: white;
+}
+
+#textfields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#textfields .label-input {
+    display: flex;
+    flex-direction: column;
+}
+
+#textfields .label-select {
+    display: flex;
+    justify-content: space-between;
+}
+
+.label-radios {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radio {
+    display: flex;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.option_tireur {
+    display: none;
+}
+
+#club {
+    display: flex;
+}
+
+#categories {
+    display: flex;
+    justify-content: space-between;
+}
+
+#classement-tireur {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button:first-child {
+    background: linear-gradient(0deg, #D32C2C 0%, #D32C2C 100%), lightgray 50% / cover no-repeat;
+}
+
+.buttons button:last-child {
+    background: linear-gradient(0deg, #01437C 0%, #01437C 100%), lightgray 50% / cover no-repeat;
+}
+
+#title {
+    background-color: #01437C;
+    color: white;
+    font-weight: 400;   
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.label-input #nom, #prenom, #numero_licence, #date_naissance, #telephone {
+    background-color: #F5F5F5;
+    border-radius: 1rem;
+    width: 13rem;
+    height: 3rem;
+    border: none;
+}
