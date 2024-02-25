@@ -1,0 +1,84 @@
+{% extends 'base.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename = 'progress-bar.css') }}"
+/>
+<script src="{{ url_for('static', filename='js/score_btn_gestion.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/chrono.js') }}"></script>
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename = 'progress-bar.css') }}"
+/>
+<input type="hidden" id="idTypeMatch" value="{{ id_type_match }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'page-score.css') }}" />
+
+<div class="progress-bar">
+  <a class="active-url" href="{{ url_for('ajout_comp_page')}}"
+    >Définir une compétition</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <a
+    class="active-url"
+    >Gestion participants</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    >Créer les poules</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    >Gestion score</a
+  >
+  <img class="fleche-bar" src="../static/img/fleche.png" alt="fleche" />
+    >Classement Final</a
+  >
+</div>
+
+<main>
+  <div class="classement-provisoire-match">
+      <a class="btn__retour" href="{{ url_for('arbitrage', id_comp=id_comp, id_type_match=match_actu.idTypeMatch) }}"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+  </div>
+
+
+  
+  <div class="chrono__escrimeur">
+    <div class="chrono">
+      <div class="time">3 : 00</div>
+    </div>
+    <div class="btn__chrono">
+      <button class="btn__start">Start</button>
+      <button class="btn__reset">Reset</button>
+    </div>
+    <div class="escrimeurs">
+      <div class="escrimeur1">
+        <div class="nom__score">
+          <div class="nom__escrimeur1">
+            <h2>{{ match_actu.tireur1.escrimeur.prenomE }} {{ match_actu.tireur1.escrimeur.nomE }}</h2>
+            <h3>{{ match_actu.tireur1.club.nomClub }}</h3>
+          </div>
+          <div class="score__escrimeur1">{{ match_actu.touchesDonneesTireur1 }}</div>
+        </div>
+        <div class="btn__ajt__suppr">
+          <button class="btn__ajt1" data-match-id = "{{ match_actu.idMatch }}">+</button>
+          <button class="btn__suppr1"  data-match-id = "{{ match_actu.idMatch }}">-</button>
+        </div>
+      </div>
+      <div class="escrimeur2">
+        <div class="nom__score">
+          <div class="nom__escrimeur1">
+            <h2>{{ match_actu.tireur2.escrimeur.prenomE }} {{ match_actu.tireur2.escrimeur.nomE }} </h2>
+            <h3> {{ match_actu.tireur2.club.nomClub }} </h3>
+          </div>
+          <div class="score__escrimeur2">{{ match_actu.touchesDonneesTireur2 }}</div>
+        </div>
+        <div class="btn__ajt__suppr btn__ajt__suppr2">
+          <button class="btn__ajt2"  data-match-id = "{{ match_actu.idMatch }}">+</button>
+          <button class="btn__suppr2" data-match-id = "{{ match_actu.idMatch }}">-</button>
+        </div>
+      </div>
+    </div>
+    <div class="valider__scores">
+      <a class="btn__valider" href="{{ url_for('arbitrage', id_comp=id_comp, id_type_match=match_actu.idTypeMatch) }}">Valider</a>
+    </div>
+  </div>
+</main>
+{% endblock %}

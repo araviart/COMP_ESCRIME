@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Ajoutez un écouteur d'événement à chaque champ de texte
   textfields.forEach(function (textfield) {
-    textfield.addEventListener('change', function () {
+    textfield.addEventListener('input', function () {
       // Récupérez les données nécessaires pour la requête AJAX
       var license = textfield.getAttribute('data-license');
       var opponentLicense = textfield.getAttribute('data-licence-opponent');
@@ -20,16 +20,20 @@ document.addEventListener("DOMContentLoaded", function () {
       var idCompetition = textfield.getAttribute('data-id-competition');
       var idPiste = textfield.getAttribute('data-id-piste');
       var idArbitre = textfield.getAttribute('data-id-arbitre');
+      var idTypeMatch = document.getElementById('id-type-match').value;
+
 
       // Construisez les données à envoyer dans la requête AJAX
       var data = {
         'license': license,
+        'idTypeMatch': idTypeMatch,
         'opponentLicense': opponentLicense,
         'score': score,
         'idPoule': idPoule,
         'idCompetition': idCompetition,
         'idPiste': idPiste,
         'idArbitre': idArbitre,
+        'idTypeMatch': idTypeMatch
 
       };
 

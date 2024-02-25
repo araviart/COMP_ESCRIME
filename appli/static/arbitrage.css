@@ -1,0 +1,62 @@
+.content__arbitrage{
+    display: flex;
+}
+
+.content__arbitrage table{
+    background-color: white;
+} 
+
+th{
+    color: transparent;
+    display: none;
+}
+
+.score__btn__arbitrer{
+    flex-basis: 30%;
+}
+
+.table__arbitrage{
+    margin: 5% 10%;
+    border-radius: 10px;
+}
+
+tr td{
+    text-align: center;
+    padding: 5%;
+}
+.head__arbitrage{
+    background-color: #01437C;
+}
+
+.btn__arbitrer button{
+    background-color: #01437C;
+    color: white;
+    border-radius: 10px;
+}
+
+.btn__score input{
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--couleur-background-gagnant);
+    text-align: center;   
+    color: black;
+}
+
+.table__arbitrage p{
+    color: black;
+
+}
+
+.btn__retour{
+    margin-left: 10%;
+    color: black !important;
+    text-decoration: none;
+}
+
+.btn__conclure{
+    display: flex;
+    justify-content: end;
+    margin-top: 2%;
+}

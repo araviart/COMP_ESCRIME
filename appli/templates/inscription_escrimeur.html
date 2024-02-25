@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% block styles %} {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='inscription_escrimeur.css') }}" />
+{% endblock %}
+
+{% block content %}
+    <form method="POST" action="{{ url_for('inscription_escrimeur') }}">
+        <div id="content">
+            <div id="textfields">
+                <div id="title">
+                    <h1>S'INSCRIRE</h1>
+                </div>
+                <div class="label-input">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" value="{{ escrimeur_inscrit["nom"] if session["escrimeur_inscrit"] else "" }}" required>
+                </div>
+                <div class="label-input">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" value="{{ escrimeur_inscrit["prenom"] if session["escrimeur_inscrit"] else "" }}" required>
+                </div>
+                <div class="label-select">
+                    <label for="sexe">Sexe</label>
+                    <select name="sexes" id="sexe">
+                        <option value="Homme" {% if session['escrimeur_inscrit'] and escrimeur_inscrit['sexe'] == 'Homme' %}selected{% endif %}>Homme</option>
+                        <option value="Dames" {% if session['escrimeur_inscrit'] and escrimeur_inscrit['sexe'] == 'Dames' %}selected{% endif %}>Femme</option>
+                    </select>
+                </div>
+                <div class="label-input">
+                    <label for="numero_licence">Numéro de licence</label>
+                    <input type="text" id="numero_licence" name="numero_licence" value="{{ escrimeur_inscrit["numero_licence"] if session["escrimeur_inscrit"] else "" }}" required>
+                </div>
+                <div class="label-input">
+                    <label for="date_naissance">Date de naissance :</label>
+                    <input type="text" id="date_naissance" name="date_naissance" placeholder="jj/mm/yyyyy" value="{{ escrimeur_inscrit["date_naissance"] if session["escrimeur_inscrit"] else "" }}" required>
+                </div>
+                <div class="label-input">
+                    <label for="telephone">Téléphone</label>
+                    <input type="text" id="telephone" name="telephone" value="{{ escrimeur_inscrit["telephone"] if session["escrimeur_inscrit"] else "" }}" required>
+                </div>
+                
+                <div id="categories">
+                    <label for="categorie">Catégorie</label>
+                    <select id="select-cat" name="categorie" id="categorie_id">
+                        {% for cat in liste_categories %}
+                            <option value="{{ cat.nomCategorie }}" {% if session["escrimeur_inscrit"] and escrimeur_inscrit["categorie"] == cat.nomCategorie %}selected{% endif %}>
+                                {{ cat.nomCategorie }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="buttons">
+                    <button onclick="location.href='{{ url_for('home_def', items=5) }}';"> Annuler </button>
+                    <button type="submit">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+    </form> 
+    
+{% endblock %}

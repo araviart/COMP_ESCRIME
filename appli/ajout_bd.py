@@ -87,10 +87,6 @@ def ajouter_club(nom, region):
         else :
             return f"Le club {nom} existe déjà."
         db.session.commit()  # Validez la transaction
-        if db.session.is_active:
-            print("Une transaction sur le club est en cours.")
-        else:
-            print("Aucune transaction en cours.")
         return f"Le club {nom} a été ajouté avec succès."
     except IntegrityError:
         # En cas d'erreur d'intégrité (nom du club déjà pris), annulez la transaction
@@ -449,7 +445,7 @@ def ajouter_participant(numeroLicenceE, idComp):
     except ValueError:
         return "L'identifiant du tireur doit être un nombre."
     try:
-        idComp = int(idComp)
+        idComp = int(idComp) if isinstance(idComp, str) else idComp
     except ValueError:
         return "L'identifiant de la compétition doit être un nombre."
     try:
@@ -486,8 +482,8 @@ def ajouter_classement_final(idComp, numeroLicenceE, classement):
         return "Le classement doit être un nombre."
     try:
         # Ajoutez le classement final à la base de données
-        classement_final = ClassementFinal(comp = idComp, tireur = numeroLicenceE, position = classement)
-        classement_final_existe = ClassementFinal.query.filter_by(idComp=idComp, numeroLicenceE=numeroLicenceE).first()
+        classement_final = Classement(comp = idComp, tireur = numeroLicenceE, position = classement)
+        classement_final_existe = Classement.query.filter_by(idComp=idComp, numeroLicenceE=numeroLicenceE).first()
         if not classement_final_existe:
             db.session.add(classement_final)
         else :
@@ -535,7 +531,7 @@ def ajouter_poule(idComp, idPiste, idArbitre, nomPoule):
         db.session.rollback()
         return f"Une erreur s'est produite lors de l'ajout de la poule : {str(e)}"
 
-def ajouter_participant_poule(idPoule, numeroLicenceE):
+def ajouter_participant_poule(idPoule, numeroLicenceE, idComp):
     try:
         idPoule = int(idPoule)
     except ValueError:
@@ -546,8 +542,8 @@ def ajouter_participant_poule(idPoule, numeroLicenceE):
         return "L'identifiant du tireur doit être un nombre."
     try:
         # Ajoutez le participant à la base de données
-        participant_poule = ParticipantsPoule(poule = idPoule, tireur = numeroLicenceE)
-        participant_poule_existe = ParticipantsPoule.query.filter_by(idPoule=idPoule, numeroLicenceE=numeroLicenceE).first()
+        participant_poule = ParticipantsPoule(poule = idPoule, tireur = numeroLicenceE, idComp = idComp)
+        participant_poule_existe = ParticipantsPoule.query.filter_by(idPoule=idPoule, numeroLicenceE=numeroLicenceE, idComp = idComp).first()
         if not participant_poule_existe:
             db.session.add(participant_poule)
         else :
@@ -563,10 +559,9 @@ def ajouter_participant_poule(idPoule, numeroLicenceE):
         db.session.rollback()
         return f"Une erreur s'est produite participant poule : {str(e)}"
     
-def ajouter_match_poule(idTypeMatch, idPoule, idPiste, idArbitre, numeroLicenceE1, numeroLicenceE2, dateMatch, heureMatch, toucheRecuTireur1, toucheDonnerTireur1, toucheRecuTireur2, toucheDonnerTireur2):
+def ajouter_match(idTypeMatch, idPiste, idArbitre, numeroLicenceE1, numeroLicenceE2, dateMatch, heureMatch, toucheRecuTireur1, toucheDonnerTireur1, toucheRecuTireur2, toucheDonnerTireur2):
     try:
         idTypeMatch = int(idTypeMatch)
-        idPoule = int(idPoule)
         idPiste = int(idPiste)
         idArbitre = int(idArbitre)
         numeroLicenceE1 = int(numeroLicenceE1)
@@ -579,11 +574,10 @@ def ajouter_match_poule(idTypeMatch, idPoule, idPiste, idArbitre, numeroLicenceE
         heureMatch = datetime.strptime(heureMatch, "%H:%M:%S").time()
 
         # Vérifiez si le match poule existe
-        match_poule_existe = (
-            MatchPoule.query
+        match_existe = (
+            Match.query
             .filter_by(
                 idTypeMatch=idTypeMatch,
-                idPoule=idPoule,
                 idPiste=idPiste,
                 idArbitre=idArbitre,
                 numeroLicenceE1=numeroLicenceE1,
@@ -592,11 +586,10 @@ def ajouter_match_poule(idTypeMatch, idPoule, idPiste, idArbitre, numeroLicenceE
             .first()
         )
 
-        if not match_poule_existe:
+        if not match_existe:
             # Si le match poule n'existe pas, ajoutez-le à la base de données
-            match_poule = MatchPoule(
+            match = Match(
                 type_match=idTypeMatch,
-                poule=idPoule,
                 piste=idPiste,
                 arbitre=idArbitre,
                 tireur1=numeroLicenceE1,
@@ -608,9 +601,12 @@ def ajouter_match_poule(idTypeMatch, idPoule, idPiste, idArbitre, numeroLicenceE
                 touches_recues_tireur2=toucheRecuTireur2,
                 touches_donnees_tireur2=toucheDonnerTireur2
             )
-            db.session.add(match_poule)
+            db.session.add(match)
+            db.session.flush() 
+            match_id = match.idMatch  
             db.session.commit()
-            return f"Le match poule {idTypeMatch} a été ajouté avec succès."
+            print("Le match poule {idTypeMatch} a été ajouté avec succès.")
+            return match_id
         else:
             return f"Le match poule {idTypeMatch} existe déjà."
     except ValueError:
@@ -621,58 +617,22 @@ def ajouter_match_poule(idTypeMatch, idPoule, idPiste, idArbitre, numeroLicenceE
     except Exception as e:
         db.session.rollback()
         return f"Une erreur s'est produite lors de l'ajout du match poule : {str(e)}"
-
-
-def ajouter_feuille_match(idPoule, idComp, numeroLicenceE1, numeroLicenceE2, scoreTireur1, scoreTireur2):
+    
+def ajouter_contenir(idComp, idMatch, idPoule):
     try:
-        idPoule = int(idPoule)
         idComp = int(idComp)
-        numeroLicenceE1 = int(numeroLicenceE1)
-        numeroLicenceE2 = int(numeroLicenceE2)
-        
-        if scoreTireur1 != 'null' and scoreTireur2 != 'null' and scoreTireur1 != 'Null' and scoreTireur2 != 'Null':
-            scoreTireur1 = int(scoreTireur1)
-            scoreTireur2 = int(scoreTireur2)
-        else:
-            scoreTireur1 = None
-            scoreTireur2 = None
-
-        # Vérifiez si la feuille de match existe
-        feuille_match_existe = (
-            FeuilleMatch.query
-            .filter_by(
-                idPoule=idPoule,
-                idComp=idComp,
-                numeroLicenceE1=numeroLicenceE1,
-                numeroLicenceE2=numeroLicenceE2
-            )
-            .first()
-        )
-
-        if not feuille_match_existe:
-            # Si la feuille de match n'existe pas, ajoutez-la à la base de données
-            feuille_match = FeuilleMatch(
-                poule=idPoule,
-                competition=idComp,
-                tireur1=numeroLicenceE1,
-                tireur2=numeroLicenceE2,
-                score_tireur1=scoreTireur1,
-                score_tireur2=scoreTireur2
-            )
-            db.session.add(feuille_match)
+        idMatch = int(idMatch)
+        idPoule = int(idPoule)
+        contenir_existe = Contenir.query.filter_by(idComp=idComp, idMatch=idMatch, idPoule=idPoule).first()
+        if not contenir_existe:
+            contenir = Contenir(idComp=idComp, idMatch=idMatch, idPoule=idPoule)
+            db.session.add(contenir)
             db.session.commit()
-            return f"La feuille de match de poule {idPoule} pour la compétition {idComp} entre {numeroLicenceE1} et {numeroLicenceE2} a été ajoutée avec succès."
+            return f"Le lien entre la compétition {idComp}, le match {idMatch} et la poule {idPoule} a été ajouté avec succès."
         else:
-            return f"La feuille de match de poule {idPoule} pour la compétition {idComp} entre {numeroLicenceE1} et {numeroLicenceE2} existe déjà."
+            return f"Le lien entre la compétition {idComp}, le match {idMatch} et la poule {idPoule} existe déjà."
     except ValueError:
         return "Assurez-vous que les valeurs numériques sont correctes."
-    except IntegrityError:
-        db.session.rollback()
-        return f"La feuille de match de poule {idPoule} pour la compétition {idComp} entre {numeroLicenceE1} et {numeroLicenceE2} existe déjà."
-    except Exception as e:
-        db.session.rollback()
-        return f"Une erreur s'est produite feuille de match : {str(e)}"
-    
     
 def load_lieu(file_name, db):
     try:
@@ -826,19 +786,19 @@ def load_participants_poule(file_name, db):
             for row in reader: 
                 idPoule = row['idPoule']
                 numeroLicenceE = row['numeroLicenceE']
-                print(ajouter_participant_poule(idPoule, numeroLicenceE))
+                idComp = row['idComp']
+                print(ajouter_participant_poule(idPoule, numeroLicenceE, idComp))
         return(f"Les données du fichier {file_name} ont été ajoutées à la base de données.")
     except Exception as e:
         db.session.rollback()
         return(f"Erreur lors du traitement du fichier {file_name}: {e}")
         
-def load_match_poule(file_name, db):
+def load_match(file_name, db):
     try:
         with open(file_name, 'r', newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=';')
             for row in reader: 
                 idTypeMatch = row['idTypeMatch']
-                idPoule = row['idPoule']
                 idPiste = row['idPiste']
                 idArbitre = row['idArbitre']
                 numeroLicenceE1 = row['numeroLicenceE1']
@@ -849,29 +809,26 @@ def load_match_poule(file_name, db):
                 toucheDonnerTireur1 = row['touchesDonneesTireur1']
                 toucheRecuTireur2 = row['touchesRecuesTireur2']
                 toucheDonnerTireur2 = row['touchesDonneesTireur2']
-                print(ajouter_match_poule(idTypeMatch, idPoule, idPiste, idArbitre, numeroLicenceE1, numeroLicenceE2, dateMatch, heureMatch, toucheRecuTireur1, toucheDonnerTireur1, toucheRecuTireur2, toucheDonnerTireur2))
+                print(ajouter_match(idTypeMatch, idPiste, idArbitre, numeroLicenceE1, numeroLicenceE2, dateMatch, heureMatch, toucheRecuTireur1, toucheDonnerTireur1, toucheRecuTireur2, toucheDonnerTireur2))
         return(f"Les données du fichier {file_name} ont été ajoutées à la base de données.")
     except Exception as e:
         db.session.rollback()        
         return(f"Erreur lors du traitement du fichier {file_name}: {e}")
-        
-def load_feuille_match(file_name, db):
+    
+def load_contenir(file_name, db):
     try:
-        with open(file_name, 'r', newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile, delimiter=';')
-            for row in reader: 
-                idPoule = row['idPoule']
-                idComp = row['idComp']
-                numeroLicenceE1 = row['numeroLicenceE1']
-                numeroLicenceE2 = row['numeroLicenceE2']
-                scoreTireur1 = row['scoreTireur1']
-                scoreTireur2 = row['scoreTireur2']
-                print(ajouter_feuille_match(idPoule, idComp, numeroLicenceE1, numeroLicenceE2, scoreTireur1, scoreTireur2))
+        with open(file_name, 'r', newline='', encoding='utf8') as csvfile:
+            reader = csv.DictReader(csvfile,delimiter=";")
+            for row in reader:
+                idComp = row["idComp"]
+                idMatch = row["idMatch"]
+                idPoule = row["idPoule"]
+                ajouter_contenir(idComp, idMatch, idPoule)
         return(f"Les données du fichier {file_name} ont été ajoutées à la base de données.")
     except Exception as e:
-        db.session.rollback()
         return(f"Erreur lors du traitement du fichier {file_name}: {e}")
-    
+                
+        
 fonctions_csv = {
     "lieu.csv": load_lieu,
     "saison.csv": load_saison,
@@ -884,8 +841,8 @@ fonctions_csv = {
     "classement_final.csv": load_classement_final,
     "poule.csv": load_poule,
     "participants_poule.csv": load_participants_poule,
-    "match_poule.csv": load_match_poule,
-    "feuille_match.csv": load_feuille_match
+    "match.csv": load_match,
+    "contenir.csv":load_contenir
 }
 
 priorite_fichier = {
@@ -900,6 +857,6 @@ priorite_fichier = {
     "classement_final.csv": "9",
     "poule.csv": "10",
     "participants_poule.csv": "11",
-    "match_poule.csv": "12",
-    "feuille_match.csv": "13"
+    "match.csv": "12",
+    "contenir.csv": "13"
 }

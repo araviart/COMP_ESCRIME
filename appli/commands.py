@@ -4,6 +4,7 @@ from .ajout_bd import *
 from .models import *
 from hashlib import sha256
 import os
+import sys
 import csv
 
 def replace_special_characters(prenom):
@@ -40,8 +41,8 @@ def loaddb(dirname):
             arme = infos_arme_sex_cat[1]
             sex = infos_arme_sex_cat[2]
             nom_categorie = infos_arme_sex_cat[3]
-            print(ajouter_arme(arme))
-            print(ajouter_categorie(nom_categorie))
+            ajouter_arme(arme)
+            ajouter_categorie(nom_categorie)
             try:
                 with open(chemin_fichier, 'r', newline='', encoding="ISO-8859-1") as csvfile:
                     reader = csv.DictReader(csvfile, delimiter=';')
@@ -53,17 +54,17 @@ def loaddb(dirname):
                         region = row['comite regional']
                         club = row['club']
                         points = row['points']
-                        print(ajouter_club(club, region))
-                        print(ajouter_escrimeur(nom_categorie, prenom, nom, date_naissance, num_license, sex, None))
-                        print(ajouter_tireur_via_str(num_license, club, points))
-                        print(pratiquer_arme(num_license, arme))
+                        ajouter_club(club, region)
+                        ajouter_escrimeur(nom_categorie, prenom, nom, date_naissance, num_license, sex, None)
+                        ajouter_tireur_via_str(num_license, club, points)
+                        pratiquer_arme(num_license, arme)
                 print(f"Les données du fichier {nom_fichier} ont été ajoutées à la base de données.")
             except Exception as e:
                 print(f"Erreur lors du traitement du fichier {nom_fichier}: {e}")
                 db.session.rollback()
     if chemin_dossier != "":
         fichiers = os.listdir(chemin_dossier)
-        fichiers_tries = sorted(fichiers, key=lambda x: int(priorite_fichier.get(x, float('inf'))))
+        fichiers_tries = sorted(fichiers, key=lambda x: int(priorite_fichier.get(x, sys.maxsize)) if priorite_fichier.get(x) != float('inf') else sys.maxsize)
         for nom_fichier in fichiers_tries:
             chemin_fichier = os.path.join(chemin_dossier, nom_fichier)
             if os.path.isfile(chemin_fichier) and nom_fichier.endswith('.csv'):
@@ -72,8 +73,21 @@ def loaddb(dirname):
                     print(f"Traitement du fichier CSV {nom_fichier} :")
                     # Appeler la fonction associée
                     print(fonctions_csv[nom_fichier](chemin_fichier, db))
-                else:
-                    print(f"Aucune fonction définie pour le fichier {nom_fichier}.")
+                # else:
+                #     a= 1
+                    print(f"Aucune fonction définie pour le fichier {nom_fichier}")
+    print(ajouter_type_match("Huitieme de finale", 15))
+    print(ajouter_type_match("Quarts de finale", 15))
+    print(ajouter_type_match("Demis finale", 15))
+    print(ajouter_type_match("Finale", 15))
+    username = "admin1"
+    password = "admin123"
+    email = "admin@admin"
+    m = sha256()
+    m.update(password.encode())
+    u = User(pseudoUser=username , mdpUser=m.hexdigest(), emailUser=email, statutUser="Administrateur")
+    db.session.add(u)
+    db.session.commit()
 
 @app.cli.command ()
 @click.argument("username")

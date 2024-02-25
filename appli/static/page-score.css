@@ -1,0 +1,131 @@
+.chrono__escrimeur{
+    margin: 3% 25%;
+}
+
+h2{
+    font-size: 95%;
+}
+
+h3{
+    font-size: 85%;
+}
+
+.chrono{
+    height: 15rem;
+    width: 100%;
+    background-color: #CFCFCF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.btn__chrono{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.btn__start{
+    background-color: rgba(0, 106, 255, 0.62);
+    border: none;
+    border-radius: 10rem;
+    padding: 1% 2%;
+    cursor: pointer;
+    color: #000;
+}
+
+.btn__reset{
+    background-color: rgba(255, 0, 0, 0.62);
+    border: none;
+    border-radius: 10rem;
+    padding: 1% 2%;
+    cursor: pointer;
+    color: #000;
+}
+
+.time{
+    font-size: 5em;
+    color: #000;
+}
+
+.escrimeurs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.escrimeur1, .escrimeur2{
+    flex-basis: 25%;
+}
+
+.score__escrimeur1{
+    padding: 5% 6.5%;
+    background-color: #C7C7C7;
+    border-radius: 10px;
+}
+
+.score__escrimeur2{
+    padding: 5% 6.5%;
+    background-color: rgba(50, 135, 255, 0.62);
+    border-radius: 10px;
+}
+
+.nom__score{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 100%;
+}
+
+.escrimeur2 .nom__score{
+    flex-direction: row;
+}
+
+.escrimeur2 .score__escrimeur1{
+    background-color: rgba(50, 135, 255, 0.62);
+}
+
+.btn__ajt__suppr{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+    flex-direction: row-reverse;
+}
+
+.btn__ajt__suppr button{
+    background-color: #C7C7C7;
+    border: none;
+    border-radius: 10rem;
+    padding: 5% 7%;
+    cursor: pointer;
+    color: #000;
+}
+
+.btn__ajt__suppr2 button{
+    background-color: rgba(50, 135, 255, 0.62);
+}
+
+.valider__scores{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.btn__valider{
+    background-color: #C7C7C7;
+    border: none;
+    cursor: pointer;
+    color: #000;
+}
+
+.btn__retour{
+    margin-left: 10%;
+    color: black !important;
+    text-decoration: none;
+}

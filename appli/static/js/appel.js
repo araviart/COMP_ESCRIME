@@ -54,4 +54,18 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(participants_absents);
         $('#absents-count').text(participants_absents.length + "/" + participants_total);
       });
+
+      document.getElementById("bouton_valid").addEventListener("click", function(){
+        var listeLicence = "";
+        for (var part of participants_absents) {
+            listeLicence += part.numeroLicenceE + ",";
+        }
+        listeLicence = listeLicence.slice(0, -1);
+    
+        // Mettre à jour la valeur du champ caché avec la liste des absents
+        document.getElementById("listeAbsentsInput").value = listeLicence;
+    
+        // Soumettre le formulaire
+        document.getElementById("validationForm").submit();
+    });    
   });
