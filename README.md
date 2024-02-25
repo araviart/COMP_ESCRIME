@@ -34,7 +34,7 @@ Avant de charger les tables, veuillez verifier de rentrer les informations de vo
 Pour charger la base de données, si l'environnement flask est dans le dossier COMP_ESCRIME, il suffit de taper la commande : 
 
 ```bash
-flask laoddb appli/data
+flask loaddb appli/data
 ```
 
 Ensuite, pour créer un compte administrateur, il faut taper la commande :
